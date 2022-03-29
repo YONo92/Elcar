@@ -43,6 +43,7 @@ public class chargerController {
 	        rd.close();
 	        conn.disconnect();
 	        System.out.println(sb.toString());
+	        System.out.println("그");
 		return mav;
 	}
 	
