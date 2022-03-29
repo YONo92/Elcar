@@ -35,10 +35,7 @@ public class MainController {
 		return "about/commu";
 	}
 	
-//	@GetMapping("/charger")
-//	public String charger() {
-//		return "charger/charger";
-//	}
+
 	
 	@GetMapping("/share")
 	public String share() {

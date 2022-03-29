@@ -1,8 +1,9 @@
 package com.elcar.charger;
 
+import org.apache.ibatis.builder.xml.XMLConfigBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -11,13 +12,11 @@ import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+@RequestMapping("/charger")
 @Controller
-
 public class chargerController {
 	
-	
-	@ResponseBody 
-	@GetMapping("/allcharger")
+	@GetMapping("/")
 	public ModelAndView AllCharger() throws IOException {
 		ModelAndView mav = new ModelAndView("charger");
 		   StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552584/EvCharger/getChargerInfo"); /*URL*/

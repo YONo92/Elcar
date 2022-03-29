@@ -31,7 +31,7 @@
 	
 	<section class="py-5">
 		<!-- 지도를 표시할 div 입니다 -->
-		<div id="map" style="width: 500px; height: 400px;"></div>
+		<div id="map" style="width: 100%; height: 600px;"></div>
 		<script type="text/javascript"
 			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d120f13b0bfd585a04627b83e71c82f8"></script>
 		<script>
