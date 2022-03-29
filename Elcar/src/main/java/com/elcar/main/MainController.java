@@ -10,15 +10,15 @@ public class MainController {
 		return "main/main";
 	}
 	
-	@GetMapping("login")
-	public String login() {
-		return "main/login";
-	}
-	
-	@GetMapping("join")
-	public String join() {
-		return "main/join";
-	}
+//	@GetMapping("login")
+//	public String login() {
+//		return "main/login";
+//	}
+//	
+//	@GetMapping("join")
+//	public String join() {
+//		return "main/join";
+//	}
 	
 	@GetMapping("/about")
 	public String about() {
