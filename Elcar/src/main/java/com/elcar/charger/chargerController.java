@@ -1,5 +1,8 @@
 package com.elcar.charger;
 
-public class chargerController {
+import org.springframework.web.bind.annotation.GetMapping;
 
+public class chargerController {
+	
+	
 }
