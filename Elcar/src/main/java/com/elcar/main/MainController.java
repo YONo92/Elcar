@@ -19,4 +19,35 @@ public class MainController {
 	public String join() {
 		return "main/join";
 	}
+	
+	@GetMapping("/about")
+	public String about() {
+		return "about/about";
+	}
+	
+	@GetMapping("/driver-regist")
+	public String driverregist() {
+		return "about/driver-regist";
+	}
+	
+	@GetMapping("/commu")
+	public String commu() {
+		return "about/commu";
+	}
+	
+//	@GetMapping("/charger")
+//	public String charger() {
+//		return "charger/charger";
+//	}
+	
+	@GetMapping("/share")
+	public String share() {
+		return "share/share";
+	}
+	
+	@GetMapping("/mypage")
+	public String mypage() {
+		return "mypage/mypage";
+	}
+	
 }

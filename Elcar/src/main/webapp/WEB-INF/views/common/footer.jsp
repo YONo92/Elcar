@@ -5,7 +5,7 @@
 <html>
 <body>
 	<!-- Footer Section Begin -->
-	<footer class="footer set-bg" data-setbg="${path }/img/footer-bg.jpg">
+	<footer class="footer set-bg" data-setbg="resources/img/footer-bg.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
@@ -47,16 +47,5 @@
 		</div>
 	</footer>
 	<!-- Footer Section End -->
-
-	<!-- Search Begin -->
-	<div class="search-model">
-		<div class="h-100 d-flex align-items-center justify-content-center">
-			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
-		</div>
-	</div>
-	<!-- Search End -->
 </body>
 </html>
