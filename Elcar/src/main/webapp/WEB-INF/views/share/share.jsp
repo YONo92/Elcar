@@ -614,8 +614,8 @@ function end(lat,lon,name){
         </div>
     </div>
     <!-- Breadcrumb Begin -->
-
-        <div>
+<section style="width: 100%; height: 1000px">
+    <div>
 		<input type="text" class="text_custom" id="searchKeyword1" name="searchKeyword1" placeholder="출발지 검색" value="">	
 		<input type="text" id="startlat" name="startlat" value="" style="display:none">	
 		<input type="text" id="startlon" name="startlon" value="" style="display:none">	
@@ -627,8 +627,7 @@ function end(lat,lon,name){
 		<input type="text" id="endlon" name="startlon" value="" style="display:none">	
 		<button id="btn_select_end">찾기</button>
 	</div>
-	<div>
-		<div style="width: 30%; float:left;">
+		<div style="width: 20%; float:left">
 			<div class="title"><strong>Search</strong> Results</div>
 			<div class="rst_wrap">
 				<div class="rst mCustomScrollbar">
@@ -650,12 +649,13 @@ function end(lat,lon,name){
 						<option value="10">최단거리+유/무료</option>
 						<option value="12">이륜차도로우선</option>
 						<option value="19">교통최적+어린이보호구역 회피</option>
-					</select> <select id="year">
+					</select> 
+					<select id="year">
 						<option value="N" selected="selected">교통정보 표출 옵션</option>
 						<option value="Y">Y</option>
 						<option value="N">N</option>
 					</select>
-					<button id="btn_select">적용하기</button>
+					<button id="btn_select">길찾기</button>
 				</div>
 			</div>
 			<div class="map_act_btn_wrap clear_box"></div>
@@ -664,7 +664,8 @@ function end(lat,lon,name){
 		<div class="map_act_btn_wrap clear_box"></div>
 		<p id="result"></p>
 		<div id="map_div" class="map_wrap" style="float:left"></div>
-	</div>
+</section>
+
 
 </body>
 </html>
