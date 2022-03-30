@@ -1,15 +1,13 @@
 * {margin: 0; padding: 0; box-sizing: border-box;}
-body{   
+ div.btn-area{   
 	text-align:center;
     justify-content:center;
     align-items: center;
-    height: 100vh;
-}
-body::before{
-    content: "";
+} 
+ div.btn-area::before{
     position : absolute; z-index: 1;
     top:0; right: 0; bottom: 0; left: 0;
-}
+} 
 .login-form {position: relative; z-index: 2;}
 .login-form h1{
     font-size: 20px; color: rgb(24, 22, 22);
