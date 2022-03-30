@@ -23,6 +23,9 @@ var drawInfoArr2 = [];
 var chktraffic = [];
 var resultdrawArr = [];
 var resultMarkerArr = [];
+
+var status = "출발지";
+
 function initTmap(){
  	// 1. 지도 띄우기
 	map = new Tmapv2.Map("map_div", {
@@ -34,7 +37,8 @@ function initTmap(){
 		scrollwheel : true
 		
 	});
-	
+	map.addListener('click', onClick);
+ 	
 	// 2. POI 통합 검색 API 요청
 	$("#btn_select_start").click(function(){
 		
@@ -579,6 +583,11 @@ function end(lat,lon,name){
 	$("#searchKeyword2").val(name);
 	$("#endlat").attr("value",lat);
 	$("#endlon").attr("value",lon);
+	
+	if(	marker_e != null){
+		marker_e.setMap(null);
+	}
+	
 	marker_e = new Tmapv2.Marker(
 			{
 				position : new Tmapv2.LatLng(lat,
@@ -593,6 +602,59 @@ function end(lat,lon,name){
 		}
 	}
 }
+
+function click_start() {
+    status = $('#start').val();
+    alert('출발지를 설정합니다.');
+  }
+
+function click_end() {
+    status = $('#end').val();
+    alert('도착지를 설정합니다.');
+  }
+
+function onClick(e) {
+    if (status == '출발지') {
+      console.log(status);
+      // 클릭한 위치에 새로 마커를 찍기 위해 이전에 있던 마커들을 제거
+  	  if(	marker_s != null){
+		marker_s.setMap(null);
+	    }
+
+      lonlat = e.latLng;
+  	  $("#startlat").attr("value",lonlat.lat());
+	  $("#startlon").attr("value",lonlat.lng());
+      //Marker 객체 생성.
+	  marker_s = new Tmapv2.Marker(
+			{
+				position : new Tmapv2.LatLng(lonlat.lat(),
+						lonlat.lng()),
+				icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_s.png",
+				iconSize : new Tmapv2.Size(24, 38),
+				map : map
+			});
+      console.log(lonlat.lat());
+      console.log(lonlat.lng());
+    } else {
+      console.log(status);
+      // 클릭한 위치에 새로 마커를 찍기 위해 이전에 있던 마커들을 제거
+  	  if(marker_e != null){
+		marker_e.setMap(null);
+	    }
+      lonlat = e.latLng;
+  	  $("#endlat").attr("value",lonlat.lat());
+	  $("#endlon").attr("value",lonlat.lng());
+      //Marker 객체 생성.
+		marker_e = new Tmapv2.Marker(
+				{
+					position : new Tmapv2.LatLng(lonlat.lat(),
+							lonlat.lng()),
+					icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_r_m_e.png",
+					iconSize : new Tmapv2.Size(24, 38),
+					map : map
+				});
+    }
+  }
 
 </script>
 </head>
@@ -615,16 +677,21 @@ function end(lat,lon,name){
     </div>
     <!-- Breadcrumb Begin -->
 <section style="width: 100%; height: 1000px">
+	<div id="map_wrap" class="map_wrap">
+      <input type="button" value="출발지" id="start" onclick="click_start()" />
+      <input type="button" value="도착지" id="end" onclick="click_end()" />
+      <div id="map_div"></div>
+    </div>
     <div>
 		<input type="text" class="text_custom" id="searchKeyword1" name="searchKeyword1" placeholder="출발지 검색" value="">	
-		<input type="text" id="startlat" name="startlat" value="" style="display:none">	
-		<input type="text" id="startlon" name="startlon" value="" style="display:none">	
+		<input type="text" id="startlat" name="startlat" value="" style="display: none">	
+		<input type="text" id="startlon" name="startlon" value="" style="display: none">	
 		<button id="btn_select_start">찾기</button>
 	</div>
 	<div>
 		<input type="text" class="text_custom" id="searchKeyword2" name="searchKeyword2" placeholder="도착지 검색" value="">	
-		<input type="text" id="endlat" name="startlat" value="" style="display:none">	
-		<input type="text" id="endlon" name="startlon" value="" style="display:none">	
+		<input type="text" id="endlat" name="startlat" value="" style="display: none">	
+		<input type="text" id="endlon" name="startlon" value="" style="display: none">	
 		<button id="btn_select_end">찾기</button>
 	</div>
 		<div style="width: 20%; float:left">
