@@ -711,87 +711,92 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           });
           reverseGeo(lonlat.lng(), lonlat.lat());
         }
+      }
 
-        function reverseGeo(lon, lat) {
-          $.ajax({
-            method: 'GET',
-            url: 'https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result',
-            async: false,
-            data: {
-              appKey: 'l7xxdc2cafff3e344431b237973ca1c8c1a2',
-              coordType: 'WGS84GEO',
-              addressType: 'A10',
-              lon: lon,
-              lat: lat,
-            },
-            success: function (response) {
-              // 3. json에서 주소 파싱
-              var arrResult = response.addressInfo;
+      function reverseGeo(lon, lat) {
+        $.ajax({
+          method: 'GET',
+          url: 'https://apis.openapi.sk.com/tmap/geo/reversegeocoding?version=1&format=json&callback=result',
+          async: false,
+          data: {
+            appKey: 'l7xxdc2cafff3e344431b237973ca1c8c1a2',
+            coordType: 'WGS84GEO',
+            addressType: 'A10',
+            lon: lon,
+            lat: lat,
+          },
+          success: function (response) {
+            // 3. json에서 주소 파싱
+            var arrResult = response.addressInfo;
 
-              //법정동 마지막 문자
-              var lastLegal = arrResult.legalDong.charAt(
-                arrResult.legalDong.length - 1
-              );
+            //법정동 마지막 문자
+            var lastLegal = arrResult.legalDong.charAt(
+              arrResult.legalDong.length - 1
+            );
 
-              // 새주소
-              newRoadAddr = arrResult.city_do + ' ' + arrResult.gu_gun + ' ';
+            // 새주소
+            newRoadAddr = arrResult.city_do + ' ' + arrResult.gu_gun + ' ';
 
-              if (
-                arrResult.eup_myun == '' &&
-                (lastLegal == '읍' || lastLegal == '면')
-              ) {
-                //읍면
-                newRoadAddr += arrResult.legalDong;
+            if (
+              arrResult.eup_myun == '' &&
+              (lastLegal == '읍' || lastLegal == '면')
+            ) {
+              //읍면
+              newRoadAddr += arrResult.legalDong;
+            } else {
+              newRoadAddr += arrResult.eup_myun;
+            }
+            newRoadAddr +=
+              ' ' + arrResult.roadName + ' ' + arrResult.buildingIndex;
+
+            // 새주소 법정동& 건물명 체크
+            if (
+              arrResult.legalDong != '' &&
+              lastLegal != '읍' &&
+              lastLegal != '면'
+            ) {
+              //법정동과 읍면이 같은 경우
+
+              if (arrResult.buildingName != '') {
+                //빌딩명 존재하는 경우
+                newRoadAddr +=
+                  ' (' +
+                  arrResult.legalDong +
+                  ', ' +
+                  arrResult.buildingName +
+                  ') ';
               } else {
-                newRoadAddr += arrResult.eup_myun;
+                newRoadAddr += ' (' + arrResult.legalDong + ')';
               }
-              newRoadAddr +=
-                ' ' + arrResult.roadName + ' ' + arrResult.buildingIndex;
+            } else if (arrResult.buildingName != '') {
+              //빌딩명만 존재하는 경우
+              newRoadAddr += ' (' + arrResult.buildingName + ') ';
+            }
 
-              // 새주소 법정동& 건물명 체크
-              if (
-                arrResult.legalDong != '' &&
-                lastLegal != '읍' &&
-                lastLegal != '면'
-              ) {
-                //법정동과 읍면이 같은 경우
+            result = newRoadAddr;
 
-                if (arrResult.buildingName != '') {
-                  //빌딩명 존재하는 경우
-                  newRoadAddr +=
-                    ' (' +
-                    arrResult.legalDong +
-                    ', ' +
-                    arrResult.buildingName +
-                    ') ';
-                } else {
-                  newRoadAddr += ' (' + arrResult.legalDong + ')';
-                }
-              } else if (arrResult.buildingName != '') {
-                //빌딩명만 존재하는 경우
-                newRoadAddr += ' (' + arrResult.buildingName + ') ';
-              }
-
-              result = newRoadAddr;
-
-              var resultDiv = document.getElementById('result');
-              resultDiv.innerHTML = result;
-              console.log(result);
-            },
-            error: function (request, status, error) {
-              console.log(
-                'code:' +
-                  request.status +
-                  '\n' +
-                  'message:' +
-                  request.responseText +
-                  '\n' +
-                  'error:' +
-                  error
-              );
-            },
-          });
-        }
+            var resultDiv = document.getElementById('result');
+            if (status == '출발지') {
+              document.getElementById('searchKeyword1').value = result;
+            } else {
+              document.getElementById('searchKeyword2').value = result;
+            }
+            resultDiv.innerHTML = result;
+            console.log(result);
+          },
+          error: function (request, status, error) {
+            console.log(
+              'code:' +
+                request.status +
+                '\n' +
+                'message:' +
+                request.responseText +
+                '\n' +
+                'error:' +
+                error
+            );
+          },
+        });
       }
     </script>
   </head>
@@ -834,7 +839,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           id="searchKeyword1"
           name="searchKeyword1"
           placeholder="출발지 검색"
-          value=""
         />
         <input
           type="text"
@@ -859,7 +863,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           id="searchKeyword2"
           name="searchKeyword2"
           placeholder="도착지 검색"
-          value=""
+          value="endAdd"
         />
         <input
           type="text"
