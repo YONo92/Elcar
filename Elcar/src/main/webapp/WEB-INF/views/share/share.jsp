@@ -26,15 +26,33 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
       function initTmap() {
         // 1. 지도 띄우기
-        map = new Tmapv2.Map('map_div', {
-          center: new Tmapv2.LatLng(37.570028, 126.986072),
-          width: '70%',
-          height: '400px',
-          zoom: 15,
-          zoomControl: true,
-          scrollwheel: true,
+        navigator.geolocation.getCurrentPosition(function (pos) {
+          var latitude = pos.coords.latitude;
+          var longitude = pos.coords.longitude;
+          console.log(latitude);
+          console.log(longitude);
+          if (latitude == null || longitude == null) {
+            map = new Tmapv2.Map('map_div', {
+              center: new Tmapv2.LatLng(37.5666743834608, 126.9784426689152),
+              width: '70%',
+              height: '400px',
+              zoom: 15,
+              zoomControl: true,
+              scrollwheel: true,
+            });
+            map.addListener('click', onClick);
+          } else {
+            map = new Tmapv2.Map('map_div', {
+              center: new Tmapv2.LatLng(latitude, longitude),
+              width: '70%',
+              height: '400px',
+              zoom: 15,
+              zoomControl: true,
+              scrollwheel: true,
+            });
+            map.addListener('click', onClick);
+          }
         });
-        map.addListener('click', onClick);
 
         // 2. POI 통합 검색 API 요청
         $('#btn_select_start').click(function () {
@@ -777,8 +795,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
             var resultDiv = document.getElementById('result');
             if (status == '출발지') {
+              //출발지 주소
               document.getElementById('searchKeyword1').value = result;
             } else {
+              //도착지 주소
               document.getElementById('searchKeyword2').value = result;
             }
             resultDiv.innerHTML = result;
@@ -863,7 +883,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           id="searchKeyword2"
           name="searchKeyword2"
           placeholder="도착지 검색"
-          value="endAdd"
         />
         <input
           type="text"
