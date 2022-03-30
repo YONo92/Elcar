@@ -27,15 +27,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.atCommonLocations()); 
 		}
 
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.cors().disable()
 		.csrf().disable()
 		.formLogin().disable()
-		.headers().frameOptions().disable();
-
-		
+		.headers().frameOptions().disable();		
 	}
 	
 }
