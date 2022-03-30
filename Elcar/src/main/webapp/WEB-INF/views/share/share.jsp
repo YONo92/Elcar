@@ -224,6 +224,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           var searchOption = $('#selectLevel').val();
 
           var trafficInfochk = $('#year').val();
+          
+          var PTbounds = new Tmapv2.LatLngBounds();
 
           //JSON TYPE EDIT [S]
           $.ajax({
@@ -287,9 +289,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                         new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(latlng);
 
                       sectionInfos.push(convertPoint);
+                      PTbounds.extend(convertPoint);
                     }
-
                     drawLine(sectionInfos, trafficArr);
+                    map.fitBounds(PTbounds);
+                    
                   } else {
                     var markerImg = '';
                     var pType = '';
@@ -352,8 +356,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                       );
                       // 배열에 담기
                       drawInfoArr.push(convertChange);
+                      PTbounds.extend(convertChange);
                     }
                     drawLine(drawInfoArr, '0');
+                    map.fitBounds(PTbounds);
                   } else {
                     var markerImg = '';
                     var pType = '';
@@ -440,7 +446,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       //라인그리기
       function drawLine(arrPoint, traffic) {
         var polyline_;
-
+		
         if (chktraffic.length != 0) {
           // 교통정보 혼잡도를 체크
           // strokeColor는 교통 정보상황에 다라서 변화
@@ -863,7 +869,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           id="searchKeyword2"
           name="searchKeyword2"
           placeholder="도착지 검색"
-          value="endAdd"
+          value=""
         />
         <input
           type="text"
