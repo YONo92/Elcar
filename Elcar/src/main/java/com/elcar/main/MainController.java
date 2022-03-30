@@ -10,19 +10,24 @@ public class MainController {
 		return "main/main";
 	}
 	
-	@GetMapping("login")
-	public String login() {
-		return "main/login";
-	}
-	
-	@GetMapping("join")
-	public String join() {
-		return "main/join";
-	}
+//	@GetMapping("login")
+//	public String login() {
+//		return "main/login";
+//	}
+//	
+//	@GetMapping("join")
+//	public String join() {
+//		return "main/join";
+//	}
 	
 	@GetMapping("/about")
 	public String about() {
 		return "about/about";
+	}
+	
+	@GetMapping("/charger")
+	public String charger() {
+		return "charger/charger";
 	}
 	
 	@GetMapping("/driver-regist")
@@ -34,11 +39,6 @@ public class MainController {
 	public String commu() {
 		return "about/commu";
 	}
-	
-//	@GetMapping("/charger")
-//	public String charger() {
-//		return "charger/charger";
-//	}
 	
 	@GetMapping("/share")
 	public String share() {

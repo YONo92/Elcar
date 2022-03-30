@@ -13,8 +13,7 @@
 						<div class="footer__widget">
 							<h5>ELCAR</h5>
 						</div>
-						<p>여러분 모두 우리 함께 엘카 잘 완성 시켜보아요 굉장히 힘들겠지만 잠 좀 줄여보고 커피 때리구 그럼 아마
-							눈이 떨리겠지만 마그네슘 잘 챙겨먹고 화이팅....**^_^**!!!</p>
+						<p>엘카입니다.......!!!!</p>
 					</div>
 				</div>
 				<div class="col-lg-2 offset-lg-1 col-md-3"></div>
