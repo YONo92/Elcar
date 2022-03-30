@@ -46,7 +46,7 @@
 							</ul>
 						</nav>
 						<div class="header__nav__widget">
-							<a href="../login" class="primary-btn">Login</a>
+							<a href="../loginform" class="primary-btn">Login</a>
 						</div>
 					</div>
 				</div>
