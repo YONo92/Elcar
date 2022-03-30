@@ -1,9 +1,7 @@
 package com.elcar.charger;
 
-import org.apache.ibatis.builder.xml.XMLConfigBuilder;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -12,13 +10,12 @@ import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-@RequestMapping("/charger")
-@Controller
+@RestController
 public class chargerController {
 	
-	@GetMapping("/")
+	@GetMapping("/allcharger")
 	public ModelAndView AllCharger() throws IOException {
-		ModelAndView mav = new ModelAndView("charger");
+		ModelAndView mav = new ModelAndView();
 		   StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552584/EvCharger/getChargerInfo"); /*URL*/
 	        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=j8lHmFnVimJX6m3ZfHziybKMYh7PpfKXxOhy460OU0cJT1YQhawD24zzDZERajQRHO0C15y85oNN0LbPs8eZWg%3D%3D"); /*Service Key*/
 	        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지 번호*/

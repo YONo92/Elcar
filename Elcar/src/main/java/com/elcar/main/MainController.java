@@ -25,6 +25,11 @@ public class MainController {
 		return "about/about";
 	}
 	
+	@GetMapping("/charger")
+	public String charger() {
+		return "charger/charger";
+	}
+	
 	@GetMapping("/driver-regist")
 	public String driverregist() {
 		return "about/driver-regist";
@@ -34,8 +39,6 @@ public class MainController {
 	public String commu() {
 		return "about/commu";
 	}
-	
-
 	
 	@GetMapping("/share")
 	public String share() {
