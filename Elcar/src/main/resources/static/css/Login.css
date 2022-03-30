@@ -16,11 +16,11 @@
 }
 .int-area{
     font-size: 10px;
-    width: 300px; position:relative;
+    width: 460px; position:relative;
     margin-top: 20px;
     padding-bottom: 20px;
-    margin-left:34%;
-}
+    margin:auto;
+    }
 .int-area:first-child {margin-top:0;}
 .int-area input{
     width:460px;
