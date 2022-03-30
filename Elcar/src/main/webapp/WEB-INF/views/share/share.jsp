@@ -22,12 +22,27 @@
         var chktraffic = [];
         var resultdrawArr = [];
         var resultMarkerArr = [];
-
+		
         var status = '출발지';
-
-        function initTmap() {
-          // 1. 지도 띄우기
-          if (!navigator.geolocation) {
+      function initTmap() {
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+              map = new Tmapv2.Map('map_div', {
+                center: new Tmapv2.LatLng(
+                  pos.coords.latitude,
+                  pos.coords.longitude
+                ),
+                width: '70%',
+                height: '400px',
+                zoom: 15,
+                zoomControl: true,
+                scrollwheel: true,
+              });
+              map.addListener('click', onClick);
+            });
+          },
+          function (err) {
             map = new Tmapv2.Map('map_div', {
               center: new Tmapv2.LatLng(37.570028, 126.986072),
               width: '70%',
@@ -37,40 +52,26 @@
               scrollwheel: true,
             });
             map.addListener('click', onClick);
-          } else {
-            navigator.geolocation.getCurrentPosition(function (pos) {
-              var latitude = pos.coords.latitude;
-              var longitude = pos.coords.longitude;
-              console.log(latitude);
-              console.log(longitude);
-              map = new Tmapv2.Map('map_div', {
-                center: new Tmapv2.LatLng(latitude, longitude),
-                width: '70%',
-                height: '400px',
-                zoom: 15,
-                zoomControl: true,
-                scrollwheel: true,
-              });
-              map.addListener('click', onClick);
-            });
           }
+        );
+        // 1. 지도 띄우기
 
-          // 2. POI 통합 검색 API 요청
-          $('#btn_select_start').click(function () {
-            var searchKeyword = $('#searchKeyword1').val();
-            $.ajax({
-              method: 'GET',
-              url: 'https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result',
-              async: false,
-              data: {
-                appKey: 'l7xxdc2cafff3e344431b237973ca1c8c1a2',
-                searchKeyword: searchKeyword,
-                resCoordType: 'EPSG3857',
-                reqCoordType: 'WGS84GEO',
-                count: 10,
-              },
-              success: function (response) {
-                var resultpoisData = response.searchPoiInfo.pois.poi;
+        //2. POI 통합 검색 API 요청
+        $('#btn_select_start').click(function () {
+          var searchKeyword = $('#searchKeyword1').val();
+          $.ajax({
+            method: 'GET',
+            url: 'https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result',
+            async: false,
+            data: {
+              appKey: 'l7xxdc2cafff3e344431b237973ca1c8c1a2',
+              searchKeyword: searchKeyword,
+              resCoordType: 'EPSG3857',
+              reqCoordType: 'WGS84GEO',
+              count: 10,
+            },
+            success: function (response) {
+              var resultpoisData = response.searchPoiInfo.pois.poi;
 
                 // 기존 마커, 팝업 제거
                 if (markerArr.length > 0) {
