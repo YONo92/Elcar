@@ -9,7 +9,6 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-아이디 : 인풋
-비밀번호 : 인풋
+
 </body>
 </html>

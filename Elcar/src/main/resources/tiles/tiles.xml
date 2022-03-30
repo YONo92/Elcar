@@ -15,11 +15,6 @@
 			value="/WEB-INF/views/main.jsp" />
 	</definition>
 	
-	<definition name="*/*" extends="baseLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/{1}/{2}.jsp" />
-	</definition>
-	
 	<definition name="about/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/about/{1}.jsp" />
@@ -38,6 +33,11 @@
 	<definition name="mypage/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/{1}.jsp" />
+	</definition>
+	
+	<definition name="*/*" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
 	
 </tiles-definitions>
