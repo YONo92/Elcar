@@ -24,7 +24,8 @@
 <body>
     <section class="login-form" style="margin-bottom: 100px; margin-top: 30px;">
         <h1>LOGIN</h1>
-        <form action="login" method="post">
+
+        <form action="login" method="post" >
             <div class="int-area">
             <input type="text" name="id" id="id"
             autocomplete="off" required>
