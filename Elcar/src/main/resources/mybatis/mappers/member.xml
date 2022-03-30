@@ -3,7 +3,7 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.elcar.member.memberDAO">
+<mapper namespace="com.elcar.member.MemberDAO">
  
 	 <select id="selectMember_kakao" resultType="member" parameterType="String">
       <![CDATA[
@@ -23,6 +23,19 @@
          select * from member where id=#{id}
       ]]>
 	</select>
+	
+	<select id="queryMember_email" resultType="member" parameterType="String">
+      <![CDATA[
+         select * from member where email=#{email}
+      ]]>
+	</select>
+	
+	<select id="queryMember_nickname" resultType="member" parameterType="String">
+      <![CDATA[
+         select * from member where nickname=#{nickname}
+      ]]>
+	</select>
+	
 	
 	
 </mapper>

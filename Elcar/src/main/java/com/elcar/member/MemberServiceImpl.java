@@ -1,27 +1,27 @@
-package com.elcar.member;
+ package com.elcar.member;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.elcar.dto.member;
+import com.elcar.dto.Member;
 
 @Service
-public class memberServiceImpl implements memberService {
+public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
-	memberDAO memdao;
+	MemberDAO memdao;
 	
 	@Override
-	public member selectMember_kakao(String id) throws Exception {
+	public Member selectMember_kakao(String id) throws Exception {
 		return memdao.selectMember_kakao(id);
 	}
 
 	@Override
-	public void insertMember_kakao(member mem) throws Exception {
+	public void insertMember_kakao(Member mem) throws Exception {
 		mem.setPw("no");
 		mem.setEmail(mem.getId());
 		String gender = mem.getGender2();
@@ -35,7 +35,7 @@ public class memberServiceImpl implements memberService {
 	}
 
 	@Override
-	public void insertMember(member mem) throws Exception {
+	public void insertMember(Member mem) throws Exception {
 		String encodedPassword = passwordEncoder.encode(mem.getPw());
 		mem.setPw(encodedPassword);
 		memdao.insertMember(mem);
@@ -44,7 +44,7 @@ public class memberServiceImpl implements memberService {
 
 	@Override
 	public Boolean access(String id, String pw) throws Exception {
-		member mem = memdao.queryMember(id);
+		Member mem = memdao.queryMember(id);
 		if(!mem.getId().equals(null)){
 			try {
 				if(passwordEncoder.matches(pw, mem.getPw())){
@@ -55,6 +55,27 @@ public class memberServiceImpl implements memberService {
 			}	
 		}
 		throw  new Exception("로그인 실패");		
+	}
+
+	@Override
+	public boolean emailcheck(String email) throws Exception {
+		Member mem = memdao.queryMember_email(email);
+		if(mem==null) return false;
+		return true;
+	}
+
+	@Override
+	public boolean nicknameCheck(String nickname) throws Exception {
+		Member mem = memdao.queryMember_nickname(nickname);
+		if(mem==null) return false;
+		return true;
+	}
+
+	@Override
+	public boolean idCheck(String id) throws Exception {
+		Member mem = memdao.queryMember(id);
+		if(mem==null)return false;
+		return true;
 	}
 
 	

@@ -24,13 +24,13 @@
             <label for="id">Gender</label>
             </div>
             
-            <div class="int-area">
-            <input type="text" name="name" id="name" autocomplete="off"  required></input>
+            <div class="int-area" style="display:none">
+            <input type="text" name="name" id="name" value="${nickname }"autocomplete="off"  required></input>
             <label for="id">Name</label>
             </div>
             
-            <div class="int-area" style="display:none" >
-            <input type="text" name="nickname" id="nickname"  value="${nickname }" autocomplete="off" required>
+            <div class="int-area"  >
+            <input type="text" name="nickname" id="nickname"  autocomplete="off" required>
             <label for="id">Nickname</label>
             </div>
             
