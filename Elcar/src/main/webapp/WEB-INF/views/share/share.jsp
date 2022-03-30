@@ -25,13 +25,24 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       var status = '출발지';
 
       function initTmap() {
-        // 1. 지도 띄우기
-        navigator.geolocation.getCurrentPosition(function (pos) {
-          var latitude = pos.coords.latitude;
-          var longitude = pos.coords.longitude;
-          console.log(latitude);
-          console.log(longitude);
-          if (latitude == null || longitude == null) {
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+              map = new Tmapv2.Map('map_div', {
+                center: new Tmapv2.LatLng(
+                  pos.coords.latitude,
+                  pos.coords.longitude
+                ),
+                width: '70%',
+                height: '400px',
+                zoom: 15,
+                zoomControl: true,
+                scrollwheel: true,
+              });
+              map.addListener('click', onClick);
+            });
+          },
+          function (err) {
             map = new Tmapv2.Map('map_div', {
               center: new Tmapv2.LatLng(37.5666743834608, 126.9784426689152),
               width: '70%',
@@ -41,20 +52,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
               scrollwheel: true,
             });
             map.addListener('click', onClick);
-          } else {
-            map = new Tmapv2.Map('map_div', {
-              center: new Tmapv2.LatLng(latitude, longitude),
-              width: '70%',
-              height: '400px',
-              zoom: 15,
-              zoomControl: true,
-              scrollwheel: true,
-            });
-            map.addListener('click', onClick);
           }
-        });
+        );
+        // 1. 지도 띄우기
 
-        // 2. POI 통합 검색 API 요청
+        //2. POI 통합 검색 API 요청
         $('#btn_select_start').click(function () {
           var searchKeyword = $('#searchKeyword1').val();
           $.ajax({
