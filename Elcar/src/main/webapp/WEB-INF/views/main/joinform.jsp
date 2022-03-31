@@ -152,7 +152,7 @@
 
 <script>
     let id = $('#id');
-    let pw = $('#pw');
+    let pw = $('#pw');1
     let name = $('#name');
     let email = $('#email');
     let nickname = $('#nickname');

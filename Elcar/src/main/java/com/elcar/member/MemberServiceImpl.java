@@ -25,9 +25,9 @@ public class MemberServiceImpl implements MemberService {
 		mem.setPw("no");
 		mem.setEmail(mem.getId());
 		String gender = mem.getGender2();
-		if(gender.equals("male")) {
+		if(gender.equals("male") || gender.equals("M")) {
 			mem.setGender(1);
-		}else if(gender.equals("female")) {
+		}else if(gender.equals("female") || gender.equals("F")) {
 			mem.setGender(2);
 		}
 		

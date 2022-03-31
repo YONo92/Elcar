@@ -1,6 +1,6 @@
-package com.elcar.member;
+package com.elcar.member; 
 
-import java.net.URLEncoder;
+import java.net.URLEncoder; 
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +43,7 @@ public class MemberController {
 			if(mem!=null) {
 				result=memserv.selectMember_kakao(id);
 				session.setAttribute("id", result.getId());
+				System.out.println(result.getId());
 				model.addAttribute("mem", result);
 				return "main/main";
 			}else {
@@ -66,8 +67,11 @@ public class MemberController {
 	//정보입력후 회원가입 버튼 클릭시
 	@PostMapping("join_kakao")
 	public String signup_kakao(@ModelAttribute Member mem) {
+		String id = mem.getId();
 		try {
 			memserv.insertMember_kakao(mem);
+			session.setAttribute("id", id);
+			System.out.println(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -133,5 +137,11 @@ public class MemberController {
 		} catch (Exception e) {
 		}
 		return String.valueOf(check);
+	}
+	
+	//네아로구현부분
+	@GetMapping(value="join_naver1")
+	public String joinnaver1(){
+		return "main/loginnaver";
 	}
 }

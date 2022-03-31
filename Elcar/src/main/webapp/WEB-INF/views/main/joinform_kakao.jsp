@@ -49,35 +49,7 @@
 				</div>
             </form>
     </section>
-<%--     <form id="loginForm" action="sign-up_kakao" method="post">
-					<label for="Email" class="form-label"></label> <input type="text"
-						class="form-control mb-3" id="id" name="id" value="${id }"></input>
 
-					 <label	for="nickname" class="form-label">Nickname</label> <input type="text"
-						class="form-control mb-3" id="nickname" name="nickname" placeholder="enter your nickname">
-					<input class="btn btn-primary w-100 mb-3" type="submit"
-						value="Sign up">
-
-					<button id="signin" type="button"
-						class="btn btn-outline-danger mb-3"
-						style="float: center; width: 100%">Sign in</button>
-				</form> --%>
-				
- <!-- <form id="loginForm" action="sign-in" method="post">
-                    <label for="Input Email" class="form-label">Input ID</label>
-                    <input type="text" class="form-control mb-3" id="id" name="id" placeholder="Input your ID">
-
-                    <label for="inputPW" class="form-label">Input PW</label>
-                    <input type="password" class="form-control mb-3" id="password" name="password"
-                        placeholder="Input your password">
-
-
-                    <input class="btn btn-primary w-100 mb-3" type="submit"  value="Sign In">      
-                    <button id="signup" type="button" class="btn btn-outline-success mb-3"
-                        style="float:right; width:100%">Sign Up</button>
-                </form>
-                <a id="kakao-login-btn" href="javascript:kakaoLogin();"><img src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-    alt="카카오 로그인 버튼"/></a> -->
 </body>
 
 <script>
@@ -97,4 +69,5 @@
     });
 
 </script>
+
 </html>
