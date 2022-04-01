@@ -10,7 +10,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <style>
       section {
         width: 100%;
-        height: 1800px;
+        height: 2400px;
         display: table;
       }
       div.frame {
@@ -22,37 +22,37 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
       div.top_frame {
         width: 100%;
+		height: 850px;
         margin-bottom: 50px;
         text-align: center;
       }
       div.top_title {
         width: 80%;
-        height: 15%;
+        height: 150px;
         text-align: center;
         margin: 0 auto;
       }
       div.top_text {
         width: 500px;
-        height: 85%;
+        height: 600px;
         text-align: center;
         margin: 0 auto;
       }
-      div.right_frame {
+      div.top_bottom {
         width: 70%;
-        height: 600px;
+        height: 40px;
         margin: 0 auto;
       }
-      div.right_addr {
-        width: 30%;
-        height: 100%;
-        float: left;
-        background-color: rgb(36, 114, 71);
+      div.center_frame {
+        width: 100%;
+        height: 34%;
+        margin: 0 auto;
+		display: flex;
       }
-      div.right_map {
-        width: 70%;
+      div.center_map {
+        width: 100%;
         height: 100%;
-        float: right;
-        background-color: rgb(2, 7, 21);
+        
       }
       div.bottom {
         margin-top: 50px;
@@ -70,6 +70,17 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         outline: none;
         padding-left: 10px;
         background-color: rgb(233, 233, 233);
+      }
+      textarea {
+        width: 1000px;
+        height: 300px;
+        font-size: 15px;
+        border: 0;
+        border-radius: 15px;
+        outline: none;
+        padding-left: 10px;
+        background-color: rgb(233, 233, 233);
+        resize: none;
       }
     </style>
   </head>
@@ -101,26 +112,32 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         <div class="top_title"></div>
         <div class="top_frame">
           <div class="top_text">
+            <h4 style="float: left">닉네임</h4>
             <input
               type="text"
               class="text_custom text"
               name=""
               value="{#닉네임db}"
-            /><br /><br />
+            />
+			<br /><br />
+            <h4 style="float: left">성별</h4>
+            <input
+              type="text"
+              class="text_custom text"
+              name=""
+              value="{#성별db}"
+              disabled
+            />
+			<br /><br />
+            <h4 style="float: left">인원수</h4>
             <input
               type="text"
               class="text_custom text"
               name=""
               value="{#인원수db}"
-            /><br /><br />
-
-            <input
-              type="text"
-              class="text_custom text"
-              name=""
-              value="{#요구사항db}"
-              style="height: 200"
-            /><br /><br />
+            />
+			<br /><br />
+            <h4 style="float: left">출발지 검색</h4>
             <input
               type="text"
               class="text_custom text"
@@ -141,15 +158,17 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               name="startlon"
               value=""
               style="display: none"
-            /><br />
+            />
+			<br />
             <button
               id="btn_select_start"
-              class="btn btn-danger"
+              class="btn btn-danger searchbtn"
               style="float: left; margin-top: 10px"
             >
               찾기</button
-            ><br /><br />
-
+            >
+			<br /><br /><br />
+            <h4 style="float: left">도착지 검색</h4>
             <input
               type="text"
               class="text_custom text"
@@ -174,15 +193,19 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             />
             <button
               id="btn_select_end"
-              class="btn btn-danger"
+              class="btn btn-danger searchbtn"
               style="float: left; margin-top: 10px"
             >
-              찾기
-            </button>
+              찾기</button
+            >
+			<br /><br />
+			
+			
           </div>
 
-          <div style="margin-top: 100px">
-            <div id="map_wrap" class="map_wrap">
+          <div class="top_bottom" style="margin-top: 100px">
+            <br id="map_wrap" class="map_wrap">
+              <h4>클릭하여 찾기</h4></br>	  
               <input
                 type="button"
                 value="출발지 클릭하기"
@@ -200,10 +223,22 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             </div>
           </div>
           <p id="result" style="display: none"></p>
-          <p id="resultTotal"></p>
-        </div>
-        <div class="right_frame">
-          <div class="right_map" style="float: right">
+          <p id="resultTotal" style="text-align: center;"></p>
+      
+        <div class="center_frame">
+			<div class="center_addr">
+				<div class="map_act_btn_wrap clear_box"></div>
+				<div>
+				  <div class="rst_wrap">
+					<div class="rst mCustomScrollbar">
+					  <ul id="searchResult" name="searchResult">
+						<!-- <li>검색결과</li> -->
+					  </ul>
+					</div>
+				  </div>
+				</div>
+			  </div>
+          <div class="center_map">
             <div style="float: left">
               <select id="selectLevel" style="margin: 0 auto">
                 <option value="0" selected="selected">교통최적+추천</option>
@@ -234,28 +269,23 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             <div class="clear"></div>
             <div id="map_div"></div>
           </div>
-          <div class="right_addr">
-            <div class="map_act_btn_wrap clear_box"></div>
-            <div>
-              <div class="rst_wrap">
-                <div class="rst mCustomScrollbar">
-                  <ul id="searchResult" name="searchResult">
-                    <!-- <li>검색결과</li> -->
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
         <div class="bottom">
+			<h4>요청사항</h4></br>	  
+          <textarea
+            class="text_custom text"
+            name=""
+            value="{#요구사항db}"
+          ></textarea
+          ><br /><br />
           <input
             type="button"
             value="날 태워"
             class="btn btn-danger"
             style="width: 100px"
           />
+		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
-        <div class="map_act_btn_wrap clear_box"></div>
       </div>
     </section>
 
@@ -309,7 +339,16 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         // 1. 지도 띄우기
 
         //2. POI 통합 검색 API 요청
+        
         $('#btn_select_start').click(function () {
+          //동적 사이즈 
+			map.resize(2029*0.7,693);
+			$('.center_map').css({
+				"width": "70%"
+			})
+			$('.center_addr').css({
+				"width": "30%"
+			})
           var searchKeyword = $('#searchKeyword1').val();
           $.ajax({
             method: 'GET',
@@ -346,6 +385,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 var lon = projectionCng._lng;
 
                 var markerPosition = new Tmapv2.LatLng(lat, lon);
+
 
                 marker = new Tmapv2.Marker({
                   position: markerPosition,
