@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.elcar.share.ShareDAO">
+
+ 	<insert id="insertShare" parameterType="Share">
+ 	<![CDATA[
+		insert into talge(sincheng_id,date,person,request,start_long,start_lat,goal_long,goal_lat,status,start_name,goal_name) 
+		values(#{sincheng_id},#{date},#{person},#{request},#{start_long},#{start_lat},#{goal_long},#{goal_lat},#{status},#{start_name},#{goal_name})
+	]]>
+ 	</insert>
+ 		 <select id="selectShareList" resultType="share" parameterType="date">
+      <![CDATA[
+         select * from talge where date>now();
+      ]]>
+	</select>
+ 	
+</mapper>

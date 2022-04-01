@@ -3,41 +3,46 @@
 "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">
+	<definition name="baseLayout"
+		template="/WEB-INF/views/common/layout.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/common/header.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
-	
+
 	<definition name="main" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/main.jsp" />
 	</definition>
-	
+
+
 	<definition name="about/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/about/{1}.jsp" />
 	</definition>
-	
+
 	<definition name="charger/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/charger/{1}.jsp" />
 	</definition>
-	
+
 	<definition name="share/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/share/{1}.jsp" />
 	</definition>
-	
+
 	<definition name="mypage/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/{1}.jsp" />
 	</definition>
-	
+
 	<definition name="*/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/{1}/{2}.jsp" />
 	</definition>
-	
+
+
 </tiles-definitions>

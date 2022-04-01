@@ -6,17 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Elcar loginForm</title>
- <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <!--Bootstrap-->
+
     <link rel ="stylesheet" href="resources/css/Login.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -24,7 +14,8 @@
 <body>
     <section class="login-form" style="margin-bottom: 100px; margin-top: 30px;">
         <h1>LOGIN</h1>
-        <form action="login" method="post">
+
+        <form action="login" method="post" >
             <div class="int-area">
             <input type="text" name="id" id="id"
             autocomplete="off" required>
@@ -41,11 +32,12 @@
                 <li><input type = "checkbox" id="chk_id"><label for="chk_id"> 아이디 저장</label></li>
             </div> -->
             
-                <div class="btn-area"></div>
+                <div class="btn-area">
                 <button id="btn" type="submit" class="btn btn-dark" style="width:230px;">LOGIN</button>
                 <a href="joinform">
                     <button id="btn" type="button" class="btn btn-outline-dark" style="width:230px;">JOIN</button>
                 </a>
+                </div>
             </form>
             <div class = "Forgot">  
                 <li><a href="index.html">아이디 찾기</a></li>

@@ -6,7 +6,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   <head>
     <meta charset="UTF-8" />
     <title>ELCAR | Hello :)</title>
-
     <style>
       section {
         width: 100%;
@@ -118,6 +117,15 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               class="text_custom text"
               name=""
               value="{#닉네임db}"
+            >
+			<br /><br />
+      <h4 style="float: left">날짜 시간</h4>
+            <input
+              type="text"
+              id="datepicker"
+              class="text_custom text"
+              value=""
+              name=""
             />
 			<br /><br />
             <h4 style="float: left">성별</h4>
@@ -288,8 +296,14 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
       </div>
     </section>
-
+    <!-- <script src="./jquery-3.1.1.min.js"></script> 값 제어를 위해 jquery -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- Air datepicker css -->
+    <!-- 달력 스크립트 -->
+    
+    <link href="/resources/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
+    <script src="resources/js/datepicker.js"></script> <!-- Air datepicker js -->
+    <script src="/resources/js/datepicker.ko.js"></script> <!-- 달력 한글 추가를 위해 커스텀 -->
     <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxdc2cafff3e344431b237973ca1c8c1a2"></script>
     <script type="text/javascript">
       var map, marker;
@@ -304,7 +318,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       var chktraffic = [];
       var resultdrawArr = [];
       var resultMarkerArr = [];
-
+      $("#datepicker").datepicker({
+    	language: 'ko',
+      timepicker: true,
+    timeFormat: "hh:ii"
+    }); 
       var status = '출발지 클릭하기';
       function initTmap() {
         navigator.geolocation.getCurrentPosition(
@@ -400,20 +418,20 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 });
 
                 innerHtml +=
-                  "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
-                  k +
-                  ".png' style='vertical-align:middle;'/><span>" +
-                  name +
-                  '</span><span>' +
-                  '<button id= start' +
-                  k +
-                  ' onclick="start(' +
-                  lat +
-                  ',' +
-                  lon +
-                  ",'" +
-                  name +
-                  '\')">선택</button></span></li>';
+                    "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
+                    k +
+                    ".png' style='vertical-align:middle;'/><span>" +
+                    name +
+                    '</span><span>' +
+                    '<button type = button class = "btn btn-danger\" id= start' +
+                    k +
+                    ' onclick="start_search(' +
+                    lat +
+                    ',' +
+                    lon +
+                    ",'" +
+                    name +
+                    '\')">선택</button></span></li>';
 
                 markerArr.push(marker);
                 positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
@@ -489,21 +507,20 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 });
 
                 innerHtml +=
-                  "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
-                  k +
-                  ".png' style='vertical-align:middle;'/><span>" +
-                  name +
-                  '</span><span>' +
-                  '<button id= end' +
-                  k +
-                  'class="btn btn-danger;"' +
-                  ' onclick="end(' +
-                  lat +
-                  ',' +
-                  lon +
-                  ",'" +
-                  name +
-                  '\')">선택</button></span></li>';
+                    "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
+                    k +
+                    ".png' style='vertical-align:middle;'/><span>" +
+                    name +
+                    '</span><span>' +
+                    '<button type = button class = "btn btn-danger\" id= end' +
+                    k +
+                    ' onclick="end_search(' +
+                    lat +
+                    ',' +
+                    lon +
+                    ",'" +
+                    name +
+                    '\')">선택</button></span></li>';
 
                 markerArr.push(marker);
                 positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
@@ -928,7 +945,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         resultdrawArr = [];
       }
 
-      function start(lat, lon, name) {
+      function start_search(lat, lon, name) {
         alert(lat + '/' + lon + '/' + name);
         $('#searchKeyword1').val(name);
         $('#startlat').attr('value', lat);
@@ -952,7 +969,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         }
       }
 
-      function end(lat, lon, name) {
+      function end_search(lat, lon, name) {
         alert(lat + '/' + lon + '/' + name);
         $('#searchKeyword2').val(name);
         $('#endlat').attr('value', lat);
@@ -1114,6 +1131,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           },
         });
       }
+      $("datepicker").datepicker({
+        language:'ko'
+      });
     </script>
   </body>
 </html>
