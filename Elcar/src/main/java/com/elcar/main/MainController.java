@@ -39,13 +39,8 @@ public class MainController {
 	public String commu() {
 		return "about/commu";
 	}
-	
-<<<<<<< HEAD
-	@GetMapping("/share")
-	public String share() {
-		return "share/share";
-	}
-=======
+
+
 //	@GetMapping("/charger")
 //	public String charger() {
 //		return "charger/charger";
@@ -55,7 +50,7 @@ public class MainController {
 //	public String share() {
 //		return "share/share";
 //	}
->>>>>>> refs/remotes/origin/kjh
+
 	
 	@GetMapping("/mypage")
 	public String mypage() {
