@@ -400,20 +400,20 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 });
 
                 innerHtml +=
-                  "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
-                  k +
-                  ".png' style='vertical-align:middle;'/><span>" +
-                  name +
-                  '</span><span>' +
-                  '<button id= start' +
-                  k +
-                  ' onclick="start(' +
-                  lat +
-                  ',' +
-                  lon +
-                  ",'" +
-                  name +
-                  '\')">선택</button></span></li>';
+                    "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
+                    k +
+                    ".png' style='vertical-align:middle;'/><span>" +
+                    name +
+                    '</span><span>' +
+                    '<button type = button class = "btn btn-danger\" id= start' +
+                    k +
+                    ' onclick="start_search(' +
+                    lat +
+                    ',' +
+                    lon +
+                    ",'" +
+                    name +
+                    '\')">선택</button></span></li>';
 
                 markerArr.push(marker);
                 positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
@@ -489,21 +489,20 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 });
 
                 innerHtml +=
-                  "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
-                  k +
-                  ".png' style='vertical-align:middle;'/><span>" +
-                  name +
-                  '</span><span>' +
-                  '<button id= end' +
-                  k +
-                  'class="btn btn-danger;"' +
-                  ' onclick="end(' +
-                  lat +
-                  ',' +
-                  lon +
-                  ",'" +
-                  name +
-                  '\')">선택</button></span></li>';
+                    "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
+                    k +
+                    ".png' style='vertical-align:middle;'/><span>" +
+                    name +
+                    '</span><span>' +
+                    '<button type = button class = "btn btn-danger\" id= end' +
+                    k +
+                    ' onclick="end_search(' +
+                    lat +
+                    ',' +
+                    lon +
+                    ",'" +
+                    name +
+                    '\')">선택</button></span></li>';
 
                 markerArr.push(marker);
                 positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
@@ -928,7 +927,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         resultdrawArr = [];
       }
 
-      function start(lat, lon, name) {
+      function start_search(lat, lon, name) {
         alert(lat + '/' + lon + '/' + name);
         $('#searchKeyword1').val(name);
         $('#startlat').attr('value', lat);
@@ -952,7 +951,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         }
       }
 
-      function end(lat, lon, name) {
+      function end_search(lat, lon, name) {
         alert(lat + '/' + lon + '/' + name);
         $('#searchKeyword2').val(name);
         $('#endlat').attr('value', lat);

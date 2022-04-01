@@ -40,10 +40,22 @@ public class MainController {
 		return "about/commu";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/share")
 	public String share() {
 		return "share/share";
 	}
+=======
+//	@GetMapping("/charger")
+//	public String charger() {
+//		return "charger/charger";
+//	}
+	
+//	@GetMapping("/share")
+//	public String share() {
+//		return "share/share";
+//	}
+>>>>>>> refs/remotes/origin/kjh
 	
 	@GetMapping("/mypage")
 	public String mypage() {
