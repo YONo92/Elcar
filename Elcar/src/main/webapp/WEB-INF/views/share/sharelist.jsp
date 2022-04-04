@@ -9,11 +9,12 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   </head>
   <body>
     <form action="sharelist" method="get">
-      <input type="text" id="lat" name="lat" value="" />
-      <input type="text" id="lng" name="lng" value="" />
+      <input type="text" id="lat" name="lat" value="" style="display: none" />
+      <input type="text" id="lng" name="lng" value="" style="display: none" />
       <c:forEach items="${sharelist}" var="sharelist">
-        <input type="text" value="${sharelist.sharelist_date}" />
+        ${sharelist.date} ${sharelist.num}
       </c:forEach>
+      <button></button>
     </form>
     <script>
       function getLocation() {

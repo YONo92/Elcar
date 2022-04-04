@@ -1,6 +1,5 @@
 package com.elcar.share;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.elcar.dto.PageInfo;
 import com.elcar.dto.Share;
 import com.elcar.dto.member;
 import com.elcar.member.memberService;
