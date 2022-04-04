@@ -15,7 +15,7 @@ import com.elcar.dto.Share;
 public interface ShareDAO {
 	public void insertShare(Share share) throws Exception;
 
-	public List<Share> selectShareList(double lat, double lng)throws Exception;
+	public List<Share> selectShareList(@Param(value="lat") double lat,@Param(value="lng") double lng)throws Exception;
 
 	public int shareListCount(@Param(value = "lat") Double lat, @Param(value = "lng") Double lng)throws Exception;
 }
