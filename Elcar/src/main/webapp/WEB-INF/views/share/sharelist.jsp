@@ -8,13 +8,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <title>Insert title here</title>
   </head>
   <body>
-    <!-- <form action="sharelist" method="get"> -->
-    <input type="text" id="lat" name="lat" style="display: none" />
-    <input type="text" id="lng" name="lng" style="display: none" />
-    <c:forEach items="${sharelist}" var="sharelist">
-      ${sharelist_date}
-    </c:forEach>
-    <!--  </form> -->
+    <form action="sharelist" method="get">
+      <input type="text" id="lat" name="lat" value="" />
+      <input type="text" id="lng" name="lng" value="" />
+      <c:forEach items="${sharelist}" var="sharelist">
+        <input type="text" value="${sharelist.sharelist_date}" />
+      </c:forEach>
+    </form>
     <script>
       function getLocation() {
         // GPS를 지원하면
@@ -22,7 +22,29 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           function (position) {
             $('#lat').val(position.coords.latitude);
             $('#lng').val(position.coords.longitude);
-            alert(position.coords.latitude + ' ' + position.coords.longitude);
+
+            // $.ajax({
+            //   url:
+            //     'http://localhost:8080/sharelist?lat=' +
+            //     position.coords.latitude +
+            //     '&lng=' +
+            //     position.coords.longitude,
+            //   type: get,
+            //   data: params,
+            //   success: function (res) {
+            //     alert('성공');
+            //   },
+            //   error: function (XMLHttpRequst, textStatus, errorThrown) {
+            //     alert('통신실패');
+            //   },
+            // });
+            // alert(position.coords.latitude + ' ' + position.coords.longitude);
+
+            // window.location.href =
+            //   'http://localhost:8080/sharelist?lat=' +
+            //   position.coords.latitude +
+            //   '&lng=' +
+            //   position.coords.longitude;
           },
           function (error) {
             console.error(error);

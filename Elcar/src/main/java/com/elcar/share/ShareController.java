@@ -20,63 +20,63 @@ import com.elcar.member.memberService;
 
 @Controller
 public class ShareController {
-	
+
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	memberService memserv;
-	
+
 	@Autowired
 	ShareService shareserv;
-	
+
 	@GetMapping(value = "/share")
-	public String shareform(Model model){
+	public String shareform(Model model) {
 		String id = (String) session.getAttribute("id");
 		try {
-			if(id==null) {
+			if (id == null) {
 				return "main/loginform";
 			}
-		   member mem = memserv.selectMember_kakao(id);
-		   model.addAttribute("nickname", mem.getNickname());
-		   if(mem.getGender()==0) {
-			   model.addAttribute("gender", "남자");
-		   }else {
-			   model.addAttribute("gender", "여자");
-		   }
-		}catch(Exception e){
+			member mem = memserv.selectMember_kakao(id);
+			model.addAttribute("nickname", mem.getNickname());
+			if (mem.getGender() == 0) {
+				model.addAttribute("gender", "남자");
+			} else {
+				model.addAttribute("gender", "여자");
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "share/share";
 	}
-	
+
 	@PostMapping(value = "/share")
 	public String insert_share(@ModelAttribute Share share) {
 		try {
 			share.setSincheng_id((String) session.getAttribute("id"));
 			share.setStatus(0);
 			shareserv.insertShare(share);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "main/main";
 	}
-	
-	@GetMapping(value ="/sharelist")
-	public ModelAndView shareList(@ModelAttribute Share share,@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+
+	@GetMapping(value = "/sharelist")
+	public ModelAndView shareList(
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(value = "lat", required=false, defaultValue = "0") double lat,
+			@RequestParam(value = "lng", required=false, defaultValue = "0") double lng) {
 		ModelAndView mav = new ModelAndView("share/sharelist");
-		PageInfo pageInfo = new PageInfo();
-		double lat = (double) session.getAttribute("lat");
-		double lng = (double) session.getAttribute("lng");
-		share.setStart_lat(lat);
-		share.setStart_long(lng);
+//		PageInfo pageInfo = new PageInfo();
 		System.out.println(lat);
 		System.out.println(lng);
 		try {
-			List<Share> shareList = shareserv.selectShareList(lat,lng);
+		 	List<Share> shareList = shareserv.selectShareList(lat, lng);
 			System.out.println("control");
-			mav.addObject("shareList",shareList);
-		}catch (Exception e) {
+		 	mav.addObject("shareList", shareList);
+		 	System.out.println("control2");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;

@@ -14,8 +14,8 @@
 	<select id="selectShareList" resultType="share">
       <![CDATA[
          SELECT *,
-		(6371*acos(cos(radians(${lat}))*cos(radians(start_lat))*cos(radians(start_long)
-		-radians(${lng}))+sin(radians(${lat}))*sin(radians(start_lat))))
+		(6371*acos(cos(radians(#{lat}))*cos(radians(start_lat))*cos(radians(start_long)
+		-radians(#{lng}))+sin(radians(#{lat}))*sin(radians(start_lat))))
 		AS distance 
 		FROM talge 
 		having date > now() 
@@ -29,8 +29,8 @@
       <![CDATA[
          select count(*) from 
 		(SELECT *,
-		(6371*acos(cos(radians(${start_lat}))*cos(radians(start_lat))*cos(radians(start_long)
-		-radians(${start_long}))+sin(radians(${start_lat}))*sin(radians(start_lat))))
+		(6371*acos(cos(radians(#{lat}))*cos(radians(start_lat))*cos(radians(start_long)
+		-radians(#{lng}))+sin(radians(#{lat}))*sin(radians(start_lat))))
 		AS distance 
 		FROM talge 
 		having date > now() 
