@@ -4,7 +4,6 @@ package com.elcar.share;
 
 import java.util.List;
 
-import com.elcar.dto.PageInfo;
 import com.elcar.dto.Share;
 
 public interface ShareService {

@@ -11,7 +11,7 @@
 		values(#{sincheng_id},#{date},#{person},#{request},#{start_long},#{start_lat},#{goal_long},#{goal_lat},#{status},#{start_name},#{goal_name})
 	]]>
 	</insert>
-	<select id="selectShareList" resultType="share">
+	<select id="selectShareList" parameterType="Double" resultType="share">
       <![CDATA[
          SELECT *,
 		(6371*acos(cos(radians(#{lat}))*cos(radians(start_lat))*cos(radians(start_long)

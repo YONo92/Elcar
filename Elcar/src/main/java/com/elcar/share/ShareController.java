@@ -60,22 +60,20 @@ public class ShareController {
 		}
 		return "main/main";
 	}
-
-	@GetMapping(value = "/sharelist")
+	
+	@PostMapping(value = "/sharelist")
 	public ModelAndView shareList(
 			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
 			@RequestParam(value = "lat", required=false, defaultValue = "0") double lat,
 			@RequestParam(value = "lng", required=false, defaultValue = "0") double lng) {
 		ModelAndView mav = new ModelAndView("share/sharelist");
 //		PageInfo pageInfo = new PageInfo();
-		System.out.println(lat);
-		System.out.println(lng);
 		try {
 		 	List<Share> shareList = shareserv.selectShareList(lat, lng);
-			System.out.println("control");
 		 	mav.addObject("shareList", shareList);
-		 	System.out.println("control2");
+		 	System.out.println(shareList.size());
 		} catch (Exception e) {
+			
 			e.printStackTrace();
 		}
 		return mav;

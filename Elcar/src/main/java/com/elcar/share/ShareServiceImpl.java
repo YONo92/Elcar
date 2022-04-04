@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.elcar.dto.PageInfo;
 import com.elcar.dto.Share;
 
 @Service
@@ -49,8 +48,6 @@ public class ShareServiceImpl implements ShareService {
 //		//즉, getBoardList를 호출한 컨트롤러에 생성된(new) pageInfo 객체에 초기화하는 것이다.
 //		
 //		int startrow=(page-1)*10+1;
-		System.out.println(lat);
-		System.out.println(lng);
 		return sharedao.selectShareList(lat,lng);
 	}
 

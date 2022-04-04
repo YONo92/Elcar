@@ -364,7 +364,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         
         $('#btn_select_start').click(function () {
           //동적 사이즈 
-			map.resize(1066,694);
+			map.resize(1420,694);
 			$('.center_map').css({
 				"width": "70%"
 			})
