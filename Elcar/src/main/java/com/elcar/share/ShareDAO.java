@@ -2,7 +2,10 @@ package com.elcar.share;
 
 
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.elcar.dto.Share;
@@ -12,5 +15,7 @@ import com.elcar.dto.Share;
 public interface ShareDAO {
 	public void insertShare(Share share) throws Exception;
 
-	public Share selectShareList()throws Exception;
+	public List<Share> selectShareList(double lat, double lng)throws Exception;
+
+	public int shareListCount(@Param(value = "lat") Double lat, @Param(value = "lng") Double lng)throws Exception;
 }

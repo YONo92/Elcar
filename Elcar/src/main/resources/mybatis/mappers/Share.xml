@@ -5,16 +5,40 @@
 
 <mapper namespace="com.elcar.share.ShareDAO">
 
- 	<insert id="insertShare" parameterType="Share">
+	<insert id="insertShare" parameterType="Share">
  	<![CDATA[
 		insert into talge(sincheng_id,date,person,request,start_long,start_lat,goal_long,goal_lat,status,start_name,goal_name) 
 		values(#{sincheng_id},#{date},#{person},#{request},#{start_long},#{start_lat},#{goal_long},#{goal_lat},#{status},#{start_name},#{goal_name})
 	]]>
- 	</insert>
- 		 <select id="selectShareList" resultType="share" parameterType="date">
+	</insert>
+	<select id="selectShareList" resultType="share">
       <![CDATA[
-         select * from talge where date>now();
+         SELECT *,
+		(6371*acos(cos(radians(${lat}))*cos(radians(start_lat))*cos(radians(start_long)
+		-radians(${lng}))+sin(radians(${lat}))*sin(radians(start_lat))))
+		AS distance 
+		FROM talge 
+		having date > now() 
+		and distance <= 10 
+		ORDER BY distance 
+		LIMIT 0,1000;
       ]]>
 	</select>
- 	
+
+	<select id="shareListCount" resultType="int">
+      <![CDATA[
+         select count(*) from 
+		(SELECT *,
+		(6371*acos(cos(radians(${start_lat}))*cos(radians(start_lat))*cos(radians(start_long)
+		-radians(${start_long}))+sin(radians(${start_lat}))*sin(radians(start_lat))))
+		AS distance 
+		FROM talge 
+		having date > now() 
+		and distance <= 10 
+		ORDER BY distance 
+		LIMIT 0,1000) t;
+      ]]>
+      
+	</select>
+
 </mapper>
