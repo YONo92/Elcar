@@ -1,12 +1,10 @@
 package com.elcar.dto;
 
-import java.sql.Date;
-
 public class Share {
 	int num;
 	String sincheng_id;
 	String surak_id;
-	Date date;
+	String date;
 	int person;
 	String request;
 	double start_long;
@@ -21,8 +19,9 @@ public class Share {
 		
 	}
 
-	public Share(int num, String sincheng_id, String surak_id, Date date, int person, String request, double start_long,
-			double start_lat, double goal_long, double goal_lat, int status, String start_name, String goal_name) {
+	public Share(int num, String sincheng_id, String surak_id, String date, int person, String request,
+			double start_long, double start_lat, double goal_long, double goal_lat, int status, String start_name,
+			String goal_name) {
 		super();
 		this.num = num;
 		this.sincheng_id = sincheng_id;
@@ -63,11 +62,11 @@ public class Share {
 		this.surak_id = surak_id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 
@@ -142,6 +141,6 @@ public class Share {
 	public void setGoal_name(String goal_name) {
 		this.goal_name = goal_name;
 	}
-	
+
 	
 }

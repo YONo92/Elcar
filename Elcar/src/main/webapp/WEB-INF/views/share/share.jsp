@@ -9,7 +9,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <style>
       section {
         width: 100%;
-        height: 2400px;
+        height: 2600px;
         display: table;
       }
       div.frame {
@@ -106,9 +106,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </div>
     <!-- Breadcrumb Begin -->
+    <form action="share" method="post">
     <section>
       <div class="frame">
-        <div class="top_title"></div>
+        <div class="top_title" style="margin-top: 30px"><h1>탈래 신청폼</h1></div>
         <div class="top_frame">
           <div class="top_text">
             <h4 style="float: left">닉네임</h4>
@@ -116,7 +117,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               name=""
-              value="{#닉네임db}"
+              value=${nickname}
+              readonly
             >
 			<br /><br />
       <h4 style="float: left">날짜 시간</h4>
@@ -125,7 +127,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               id="datepicker"
               class="text_custom text"
               value=""
-              name=""
+              name="date"
             />
 			<br /><br />
             <h4 style="float: left">성별</h4>
@@ -133,16 +135,15 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               name=""
-              value="{#성별db}"
-              disabled
+              value=${gender}
+              readonly
             />
 			<br /><br />
             <h4 style="float: left">인원수</h4>
             <input
               type="text"
               class="text_custom text"
-              name=""
-              value="{#인원수db}"
+              name="person"
             />
 			<br /><br />
             <h4 style="float: left">출발지 검색</h4>
@@ -150,25 +151,26 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               id="searchKeyword1"
-              name="searchKeyword1"
+              name="start_name"
               placeholder="출발지 검색"
             />
             <input
               type="text"
               id="startlat"
-              name="startlat"
+              name="start_lat"
               value=""
               style="display: none"
             />
             <input
               type="text"
               id="startlon"
-              name="startlon"
+              name="start_long"
               value=""
               style="display: none"
             />
 			<br />
             <button
+              type="button"
               id="btn_select_start"
               class="btn btn-danger searchbtn"
               style="float: left; margin-top: 10px"
@@ -181,25 +183,26 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               id="searchKeyword2"
-              name="searchKeyword2"
+              name="goal_name"
               placeholder="도착지 검색"
               value=""
             />
             <input
               type="text"
               id="endlat"
-              name="startlat"
+              name="goal_lat"
               value=""
               style="display: none"
             />
             <input
               type="text"
               id="endlon"
-              name="startlon"
+              name="goal_long"
               value=""
               style="display: none"
             />
             <button
+              type="button"
               id="btn_select_end"
               class="btn btn-danger searchbtn"
               style="float: left; margin-top: 10px"
@@ -267,6 +270,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               </select>
             </div>
             <button
+              type="button"
               id="btn_select"
               class="btn btn-danger"
               style="float: right; width: 100px"
@@ -282,12 +286,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			<h4>요청사항</h4></br>	  
           <textarea
             class="text_custom text"
-            name=""
-            value="{#요구사항db}"
+            name="request"
           ></textarea
           ><br /><br />
           <input
-            type="button"
+            type="submit"
             value="날 태워"
             class="btn btn-danger"
             style="width: 100px"
@@ -296,6 +299,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         </div>
       </div>
     </section>
+      </form>
     <!-- <script src="./jquery-3.1.1.min.js"></script> 값 제어를 위해 jquery -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <!-- Air datepicker css -->
@@ -360,7 +364,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         
         $('#btn_select_start').click(function () {
           //동적 사이즈 
-			map.resize(2029*0.7,693);
+			map.resize(1066,694);
 			$('.center_map').css({
 				"width": "70%"
 			})

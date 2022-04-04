@@ -1,5 +1,6 @@
 package com.elcar.share;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -51,8 +52,8 @@ public class ShareController {
 	}
 	
 	@PostMapping(value = "/share")
-	public String insert_share(@ModelAttribute Share share) {
-		try {
+	public String insert_share(@ModelAttribute Share share, @RequestParam(value = "date") String date) {
+		try { 
 			share.setSincheng_id((String) session.getAttribute("id"));
 			share.setStatus(0);
 			shareserv.insertShare(share);
