@@ -37,7 +37,7 @@
 					<div class="breadcrumb__text">
 						<h2>Admin</h2>
 						<div class="breadcrumb__links">
-							<a href="./"><i class="fa fa-home"></i> Home</a> <span>관리자_회원관리
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>관리자_신고회원관리
 							</span>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 									<div
 										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">관리자_회원관리</h6>
+										<h6 class="text-white text-capitalize ps-3">Authors table</h6>
 									</div>
 								</div>
 								<div class="card-body px-0 pb-2">

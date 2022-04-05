@@ -43,6 +43,12 @@
 								<li><a href="./charger">전기차 충전소</a></li>
 								<li><a href="./share">카쉐어링</a></li>
 								<li><a href="./mypage">Mypage</a></li>
+								<li><a href="#">Admin</a>
+									<ul class="dropdown">
+										<li><a href="./admin_memlist">회원관리</a></li>
+										<li><a href="./admin_driverlist">드라이버회원관리</a></li>
+										<li><a href="./admin_singolist">신고회원관리</a></li>
+									</ul></li>
 							</ul>
 						</nav>
 						<div class="header__nav__widget">

@@ -11,20 +11,27 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>ELCAR | Hello :)</title>
+<style>
+.nice-select {
+	width: 100%;
+}
 
+.nice-select .list {
+	max-height: 200px;
+	overflow-y: scroll;
+}
+</style>
 <!-- Custom fonts for this template-->
-<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 <body>
-	<!-- Breadcrumb End -->
+	<!-- 드라이버 등록 상단 이미지 -->
 	<div class="breadcrumb-option set-bg"
 		data-setbg="resources/img/breadcrumb-bg.jpg">
 		<div class="container">
@@ -33,7 +40,7 @@
 					<div class="breadcrumb__text">
 						<h2>Driver registration</h2>
 						<div class="breadcrumb__links">
-							<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>드라이버
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>드라이버
 								등록</span>
 						</div>
 					</div>
@@ -41,27 +48,23 @@
 			</div>
 		</div>
 	</div>
-	<!-- Breadcrumb Begin -->
 
-	<!-- Car Details Section Begin -->
-	<!-- <div style="height: 700px; width: 600px; margin-top: 100px"> -->
-	<!-- <body class="bg-gradient-primary">
- -->
+	<!-- 드라이버 신청 내용 -->
 	<div class="container">
-
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
-				<!-- Nested Row within Card Body -->
-				<form id='form' method="post" action="/driver-regist" enctype="multipart/form-data">
+				<form id='form' method="post" action="/driver-regist"
+					enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-lg-5">
 							<img id="preview"
-								style="width: 350px; height: 250px; margin-left: 100px; margin-top: 70px;" />
+								style="width: 350px; height: 250px; margin-left: 90px; margin-top: 100px;" />
 							<br /> <br />
-							<div class="input-group mb-3" style="margin-left: 40px;">
+							<div class="input-group mb-3"
+								style="margin-left: 90px; width: 350px;">
 								<label class="input-group-text" for="inputGroupFile01">Upload</label>
-								<input type="file" class="form-control" id="inputGroupFile01" name="file"
-									onchange="readURL(this);">
+								<input type="file" class="form-control" id="inputGroupFile01"
+									name="file" onchange="readURL(this);" required>
 							</div>
 						</div>
 						<div class="col-lg-7">
@@ -69,28 +72,24 @@
 								<div class="text-center">
 									<h1 class="h4 text-gray-900 mb-4">드라이버 등록</h1>
 								</div>
-								<!-- <form class="user"> -->
-								<!-- <form id='form' method="post" action="/driver-regist"> -->
-								<div class="form-group row">
-									<div class="col-sm-6 mb-3 mb-sm-0">
+								<div class="row mb-4">
+									<div class="input-group col-6">
 										<input type="text" class="form-control form-control-user"
-											id="exampleId" name="id" value=${id } readOnly>
+											id="exampleId" name="id" value=${id } readOnly
+											style="height: 40px;">
 									</div>
-									<div class="col-sm-6">
+									<div class="input-group col-6">
 										<input type="text" class="form-control form-control-user"
-											id="exampleName" name="name" value=${name } readOnly>
+											id="exampleName" name="name" value=${name } readOnly
+											style="height: 40px;">
 									</div>
 								</div>
-								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
-										id="exampleInputCarnum" name="carnum" placeholder="차 번호">
-								</div>
-								<div class="form-group">
-									<div class="input-group mb-3 mb-sm-0">
+								<div class="row mb-4">
+									<div class="input-group col-12">
 										<label class="input-group-text" for="inputGroupSelect01">차종</label>
-										<select class="form-select" id="inputGroupSelect01"
-											name="cartype" style="width: 800px;" size=6>
-											<option selected>Choose...</option>
+										<select class="form-control form-control-user required"
+											id="inputGroupSelect01" name="cartype" style="height: 40px;" required="required">
+											<option selected value="">차종을 선택하세요</option>
 											<option value="쏘나타">쏘나타</option>
 											<option value="아이오닉5">아이오닉5</option>
 											<option value="그랜저">그랜저</option>
@@ -103,48 +102,53 @@
 											<option value="eG80">eG80</option>
 										</select>
 									</div>
+									<div id="err"></div>
 								</div>
-
-								<div class="form-group">
-									<!-- <input type="password" class="form-control form-control-user"
-										id="exampleInputPassword" placeholder="면허취득일"> -->
-									<!-- <label> 면허 취득일 <input type="date"
-										name="startDate" id="startDate" max="2022-03-31">
-									</label> -->
-									<div class="input-group mb-3">
+								<div class="row mb-4">
+									<div class="input-group col-12">
+										<label class="input-group-text" for="exampleInputCarnum">차
+											번호</label> <input type="text" class="form-control form-control-user"
+											id="exampleInputCarnum" name="carnum"
+											placeholder="차 번호를 입력하세요" required style="height: 40px;">
+									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="input-group col-12">
 										<span class="input-group-text" id="inputGroup-sizing-default">면허
-											취득일</span> <input type="date" name="getdate" id="startDate"
-											max="2022-03-31" style="width: 445px;">
+											취득일</span> <input type="date" class="form-control" name="getdate"
+											id="startDate" max="2022-03-31" style="height: 40px;"
+											required>
 									</div>
 								</div>
 								<hr>
-								<div class="d-grid gap-2 col-10 mx-auto">
-									<button type="Submit" class="btn btn-danger col-10 mx-auto"
-										value='Submit'>Register</button>
+								<div class="d-grid gap-2 col-10 mx-auto text-center">
+									<button type="Submit" id="driverSubmit"
+										class="btn btn-danger col-10 mx-auto" value='Submit'
+										>Register</button>
 								</div>
+							</div>
+						</div>
+					</div>
 				</form>
-				<!-- </form> -->
 				<hr>
+				<br>
 				<div class="text-center">
 					<a class="small">※ 면허증 무단 도용 및 위조는 법적처벌을 받을 수 있습니다. ※</a>
 				</div>
 				<div class="text-center">
 					<a class="small">드라이버 등록 후 카쉐어링 서비스를 이용하실 수 있습니다.</a>
 				</div>
+				<br> <br>
 			</div>
 		</div>
 	</div>
-	</form>
-	</div>
-	</div>
-	</div>
 
 	<!-- Bootstrap core JavaScript-->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="resources/js/jquery.easing.min.js"></script>
 
 	<!-- Custom scripts for all pages-->
 	<script src="resources/js/sb-admin-2.min.js"></script>
@@ -164,17 +168,23 @@
 		}
 	}
 </script>
-<!-- <script>
-	$('input[name="single"]').daterangepicker({
-		singleDatePicker : true,
-	});
-</script> -->
 <script>
-	$(document).ready(
+/* 	$(document).ready(
 			function() {
 				$('li.active').removeClass('active');
 				$('a[href="' + "/driver-regist" + '"]').closest('li').addClass(
 						'active');
-			});
+
+				$("#driverSubmit").on('click', function() {
+					let carT = $('#inputGroupSelect01 option:selected').val();
+					if (carT) {
+					} else {
+						$('#err').text('차종을 선택하세요')
+						return false;
+					}
+				});
+			}); */
 </script>
+
+
 </html>

@@ -76,5 +76,20 @@ public class MainController {
 	public String mypage() {
 		return "mypage/mypage";
 	}
+
+	@GetMapping("/admin_memlist")
+	public String admin_memlist() {
+		return "admin/admin_memlist";
+	}
+	
+	@GetMapping("/admin_driverlist")
+	public String admin_driverlist() {
+		return "admin/admin_driverlist";
+	}
+	
+	@GetMapping("/admin_singolist")
+	public String admin_singolist() {
+		return "admin/admin_singolist";
+	}
 	
 }

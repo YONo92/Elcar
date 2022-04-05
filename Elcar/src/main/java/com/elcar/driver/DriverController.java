@@ -20,20 +20,19 @@ public class DriverController {
 
 	@Autowired
 	HttpSession session;
-	
+
 	@Autowired
 	ServletContext servletContext;
-	
+
 	@Autowired
 	DriverService driverserv;
-	
-	//드라이버 신청 등록하기
+
+	// 드라이버 신청 등록하기
 	@PostMapping(value = "/driver-regist")
 	public String driverregist(@ModelAttribute Driver driver, Model model, @RequestParam("file") MultipartFile file) {
 		System.out.println(file);
 		try {
 			model.addAttribute("id", session.getAttribute("id"));
-			driverserv.driverregist(driver);
 			if (file.isEmpty()) {
 				System.out.println("이미지를 등록해 주세요");
 			} else {
