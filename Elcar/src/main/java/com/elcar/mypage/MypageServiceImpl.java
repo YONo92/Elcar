@@ -27,5 +27,11 @@ public class MypageServiceImpl implements MypageService {
 	public void memberPasswordModify(String member_id, String password) throws Exception {
 		mypageDAO.updatePw(member_id, password);
 	}
+	
+	@Override
+	public Member deleteMember(String id) throws Exception {
+		Member member = mypageDAO.deleteId(id);
+		return member;
+	}
 
 }

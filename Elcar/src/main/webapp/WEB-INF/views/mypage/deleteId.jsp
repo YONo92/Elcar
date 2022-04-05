@@ -70,7 +70,7 @@
 					<br>
 					<br>
 					<li><h6>
-							<b>사용하고 계신 <b style="color: green;">"$[id ]"</b>는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
+							<b>사용하고 계신 <b style="color: green;">"${id}"</b>는 탈퇴할 경우 재사용 및 복구가 불가능합니다.
 							</b>
 							<h6>
 								<span></span></li>
@@ -113,17 +113,19 @@
 			<div style="height:200px;"></div>
 			<div class="radio-box" align=left>
 					<div style="height:70px;">
-						<span style="color: orange;" ><b> 탈퇴 후에는 아이디 <b style="color: green;">"$[id ]"</b> 로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다. </b> </span><br>
+						<span style="color: orange;" ><b> 탈퇴 후에는 아이디 <b style="color: green;">${id}</b> 로 다시 가입할 수 없으며 아이디와 데이터는 복구할 수 없습니다. </b> </span><br>
 					</div>
 				<input type="radio" name="radio" id="r1"> <label for="r1" style="height:50px">안내 사항을 모두 확인하였으며, 이에 동의합니다.</label>
 				
 			</div>
+			<form action="deleteId" method="post" >
 			<div align=center>
 			<div style='width: 150px;'>
 				<button type="submit" class="site-btn" style="width: 150px;">확인</button>
 
 			</div>
 </div>
+</form>
 		</div>
 		<!--  회원 탈퇴 끝 -->
 				

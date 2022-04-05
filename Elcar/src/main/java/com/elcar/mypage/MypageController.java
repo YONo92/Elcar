@@ -1,5 +1,6 @@
 package com.elcar.mypage;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,7 @@ public class MypageController {
 	@Autowired
 	HttpSession session;
 
-	@GetMapping(value = "log")
-	public ModelAndView logout() {
-		ModelAndView mav = new ModelAndView("main/main");
-		session.invalidate();
-		return mav;
-	}
+
 	
 	@GetMapping("/mypage")
 	public ModelAndView mypage() {
@@ -85,8 +81,7 @@ public class MypageController {
 		} catch (Exception e){
 			e.printStackTrace();
 		}
-		
-			
+
 		return mav;
 	}
 	
@@ -109,29 +104,78 @@ public class MypageController {
 
 	
 	@PostMapping(value = "pwmodify")
-	public ModelAndView pwmodify(@RequestParam String password) {
-		System.out.println("성공입니다.");
-		System.out.println(password);
+	public ModelAndView pwmodify(HttpServletRequest request, @RequestParam String password) {
+			System.out.println();
 		
 		ModelAndView mav = new ModelAndView("mypage/mypage");
 		String member_id = (String) session.getAttribute("id");
-		try {
+		String pass1 = request.getParameter("pass1");
+        String pass2  = request.getParameter("pass2");
+		try {	
 			String encodedPassword = passwordEncoder.encode(password);
 			mypageService.memberPasswordModify(member_id, encodedPassword);
+			mav.addObject("", "");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
 	
-
 	
-	
-	@GetMapping(value = "tal")
-	public ModelAndView talForm() {
-		ModelAndView mav = new ModelAndView("mypage/checkPw");
+	@GetMapping(value = "talcheckPw")
+	public ModelAndView talcheckPwForm() {
+		ModelAndView mav = new ModelAndView("mypage/talcheckPw");
+		String member_id = (String) session.getAttribute("id");
+		try {
+			Member member = mypageService.mypageInfo(member_id);
+			if (member.getPw().equals("no")) {
+				mav.setViewName("mypage/mypage");
+				mav.addObject("alertMsg", "카카오 회원은 회원탈퇴를 하실 수 없습니다.");
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
 		return mav;
 	}
+	
+	
+	
+	@PostMapping(value = "deleteIdform")
+	public ModelAndView deleteIdForm(@RequestParam String password) {
+		ModelAndView mav = new ModelAndView("mypage/deleteId");
+		String member_id = (String) session.getAttribute("id");
+		
+		try {
+			Member member = mypageService.mypageInfo(member_id);
+			if(!passwordEncoder.matches(password, member.getPw())) {
+				mav.setViewName("mypage/talcheckPw");
+				mav.addObject("alertMsg", "비밀번호가 틀렸습니다.");
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	
+	@PostMapping(value = "deleteId")
+	public ModelAndView deleteId(@ModelAttribute Member member) {
+		
+		ModelAndView mav = new ModelAndView("main/main");
+		try {	
+			String id = (String) session.getAttribute("id");
+			mypageService.deleteMember(id);
+			mav.addObject("member", member);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	
+	
+	
+	
 	
 	@GetMapping(value = "deleteId")
 	public ModelAndView deleteIdForm() {

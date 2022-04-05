@@ -42,19 +42,17 @@
 								style="color: black;">를 입력해주세요.</span>
 						</div>
 						<div align="center" style="height: 100px;">
-							<label for="name" style="width: 200px; height: 200px;"><h4>
+							<label for="password1" style="width: 200px; height: 200px;"><h4>
 									<b>새 비밀번호 </b>
-								</h4></label> <input type="password" id="name"
-								style="width: 250px; height: 45px;">
+								</h4></label> <input type="password" id="password1" name="password1" style="width: 250px; height: 45px;">
 						</div>
 
 						<div align="center" style="height: 250px;">
-							<label for="name" style="width: 200px; height: 200px;"><h4>
+							<label for="password2" style="width: 200px; height: 200px;"><h4>
 									<b>비밀번호 확인</b>
-								</h4></label> <input type="password" id="name"
-								style="width: 250px; height: 45px;">
+								</h4></label> <input type="password" id="password2" name="password2"  style="width: 250px; height: 45px;">
 						</div>
-						<button type="submit" class="site-btn" style="width: 380px;">다음</button>
+						<input type="button" onclick="equalPw()" class="site-btn" style="width: 380px;" value="다음"></button>
 					</div>
 				</div>
 			</form>
@@ -68,15 +66,22 @@
 	
 </body>
 <script>
-	$(document).ready(function () {
-		let equalPw = '${equalPw}';
-		if(equalPw) {
-			alert(equalPw);
-		}
-		// 폼태그가 작동 되기 전에 비밀번호 입력과 확인을 비교해서 일치해야 컨트롤러로 이동
-	})
 
-
+// 폼태그가 작동 되기 전에 비밀번호 입력과 확인을 비교해서 일치해야 컨트롤러로 이동
+function equalPw() {
+	var pass1 = document.getElementById('password1').value;
+	var pass2 = document.getElementById('password2').value;
+	if(pass1.length < 1) {
+        alert('1글자 이상 입력해주세요.');
+        return false;
+    }
+	if( pass1 != pass2 ) {
+		alert("비밀번호가 일치하지 않습니다");
+	return false;
+		} else{
+	alert("비밀번호가 변경되었습니다."); 
+			return true;
+			}}
 </script>
 
 </html>
