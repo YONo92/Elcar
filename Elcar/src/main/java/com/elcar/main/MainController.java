@@ -7,14 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.elcar.dto.member;
-import com.elcar.member.memberService;
 
 @Controller
 public class MainController {
 	
-	@Autowired
-	memberService memserv;
+	/*
+	 * @Autowired memberService memserv;
+	 */
 	
 	@Autowired
 	HttpSession session;
@@ -46,21 +45,15 @@ public class MainController {
 		return "charger/charger";
 	}
 	
-	@GetMapping("/driver-regist")
-	public String driverregist(Model model) {
-		String id = (String) session.getAttribute("id");
-		try {
-			member mem = memserv.selectMember_kakao(id);
-			if(id != null) {
-				model.addAttribute("name", mem.getName());
-				return "about/driver-regist";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "main/main";
-		
-	}
+	/*
+	 * @GetMapping("/driver-regist") public String driverregist(Model model) {
+	 * String id = (String) session.getAttribute("id"); try { member mem =
+	 * memserv.selectMember_kakao(id); if(id != null) { model.addAttribute("name",
+	 * mem.getName()); return "about/driver-regist"; } } catch (Exception e) {
+	 * e.printStackTrace(); } return "main/main";
+	 * 
+	 * }
+	 */
 	
 	@GetMapping("/commu")
 	public String commu() {
