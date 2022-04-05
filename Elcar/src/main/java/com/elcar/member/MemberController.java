@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.elcar.dto.member;
+import com.elcar.dto.Member;
 
 @Controller
-public class memberController {
+public class MemberController {
 	
 	@Autowired
 	HttpSession session;
 	
 	@Autowired
-	memberService memserv;
+	MemberService memserv;
 	
 	@GetMapping(value="/loginform")
 	public String loginform() {
@@ -35,8 +35,8 @@ public class memberController {
 	public String sign_in(@RequestParam("id")String id,@RequestParam("gender")String gender,@RequestParam("nickname")String nickname
 			, Model model) {
 		
-		member mem = null;
-		member result=null;
+		Member mem = null;
+		Member result=null;
 		try {
 			mem=memserv.selectMember_kakao(id);
 			if(mem!=null) {
@@ -64,7 +64,7 @@ public class memberController {
 	
 	//정보입력후 회원가입 버튼 클릭시
 	@PostMapping("join_kakao")
-	public String signup_kakao(@ModelAttribute member mem) {
+	public String signup_kakao(@ModelAttribute Member mem) {
 		try {
 			memserv.insertMember_kakao(mem);
 		} catch (Exception e) {
@@ -79,7 +79,7 @@ public class memberController {
 	}
 	
 	@PostMapping(value="/join")
-	public String access_joinform(@ModelAttribute member mem) {
+	public String access_joinform(@ModelAttribute Member mem) {
 		try {
 			memserv.insertMember(mem);
 		} catch (Exception e) {

@@ -2,6 +2,7 @@ package com.elcar.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -43,11 +44,6 @@ public class MainController {
 	@GetMapping("/share")
 	public String share() {
 		return "share/share";
-	}
-	
-	@GetMapping("/mypage")
-	public String mypage() {
-		return "mypage/mypage";
 	}
 	
 }

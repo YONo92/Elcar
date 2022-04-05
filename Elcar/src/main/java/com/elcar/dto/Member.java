@@ -1,6 +1,6 @@
 package com.elcar.dto;
 
-public class member {
+public class Member {
 	String id;
 	String pw;
 	String name;
@@ -14,10 +14,21 @@ public class member {
 	int type;
 	String gender2;
 	
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", pw=" + pw + ", name=" + name + ", nickname=" + nickname + ", email=" + email
+				+ ", gender=" + gender + ", phone=" + phone + ", birth=" + birth + ", point=" + point + ", license="
+				+ license + ", type=" + type + ", gender2=" + gender2 + ", getId()=" + getId() + ", getPw()=" + getPw()
+				+ ", getName()=" + getName() + ", getNickname()=" + getNickname() + ", getEmail()=" + getEmail()
+				+ ", getGender()=" + getGender() + ", getPhone()=" + getPhone() + ", getBirth()=" + getBirth()
+				+ ", getPoint()=" + getPoint() + ", getLicense()=" + getLicense() + ", getType()=" + getType()
+				+ ", getGender2()=" + getGender2() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 
-	public member() {}
+	public Member() {}
 	
-	public member(String id, String pw, String name, String nickname, String email, int gender, int phone, String birth,
+	public Member(String id, String pw, String name, String nickname, String email, int gender, int phone, String birth,
 			int point, int license, int type) {
 		this.id = id;
 		this.pw = pw;

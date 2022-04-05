@@ -1,27 +1,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.elcar.dao.mypageDAO">
+<mapper namespace="com.elcar.mypage.MypageDAO">
 
 
 	<!-- 아이디로 회원 조회 -->
 	<select id="queryMember" resultType="Member" parameterType="String">
       <![CDATA[
-         select * from member where member_id = #{member_id}
+         select * from member where id = #{id}
       ]]>
 	</select>
 	
 	<!-- 나의 정보 수정 -->
 	<update id="updateMember" parameterType="member">
       <![CDATA[
-      update member set member_name=#{member_name},member_email=#{member_email}, member_nickname=#{member_nickname},member_phone=#{member_phone}
-      where member_id=#{member_id}
+      update member set name=#{name}, email=#{email}, nickname=#{nickname}, phone=#{phone}
+      where id=#{id}
       ]]>
    </update>
    
 	<!-- 비밀번호 변경 -->
-	<update id="updatePw" parameterType="Member">
+	<update id="updatePw" parameterType="String">
       <![CDATA[
-      update member set mem_pw=#{member_pw2} where member_id=#{member_id}
+      update member set mem_pw=#{member_pw} where member_id=#{member_id}
       ]]>
 	</update>
 	
@@ -58,12 +58,7 @@
 	]]>
 	</update>
 	
-	<!-- 태울래 매너 점수 변동 -->
-	<update id="updateTalgaePoint" parameterType="Map">
-		<![CDATA[ 
-		update member set member_point = #{member_point} where sincheng_id=#{sincheng_id}
-	]]>
-	</update>
+
 	
 	
 	

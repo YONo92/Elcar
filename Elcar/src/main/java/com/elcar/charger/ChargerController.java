@@ -14,7 +14,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 @RestController
-public class chargerController {
+public class ChargerController {
 	
 	@GetMapping("/allcharger")
 	public ModelAndView AllCharger() throws IOException {

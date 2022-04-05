@@ -15,10 +15,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>My Page </h2>
+                        <h2>정보 수정 </h2>
                         <div class="breadcrumb__links">
-                            <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                            <span>마이 페이지</span>
+                            <a href="../"><i class="fa fa-home"></i> Home</a>
+                            <span>정보 수정</span>
                         </div>
                     </div>
                 </div>
@@ -31,29 +31,36 @@
     <section class="contact spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="contact__text">
-                        <div class="section-title">
-                            <h2>Let’s Work Together</h2>
-                            <p>To make requests for further information, contact us via our social channels.</p>
-                        </div>
-                        <ul>
-                            <li><span>Weekday</span> 08:00 am to 18:00 pm</li>
-                            <li><span>Saturday:</span> 10:00 am to 16:00 pm</li>
-                            <li><span>Sunday:</span> Closed</li>
-                        </ul>
-                    </div>
-                </div>
+
                 <div class="col-lg-6 col-md-6">
                     <div class="contact__form">
                         <form action="#">
                             <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="text" placeholder="Name">
+                             <div class="col-lg-6">
+                                	<label for="name">아이디</label>
+                                    <input type="text" id="id" value="$[id ]">
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="text" placeholder="Email">
+                                	<label for="name">이름</label>
+                                    <input type="text" id="name" value="$[name ]">
                                 </div>
+                                <div class="col-lg-6">
+                                	<label for="email">이메일</label>
+                                    <input type="text" id="emaii" value="$[email ]">
+                                </div>
+                                 <div class="col-lg-6">
+                                	<label for="nickname">닉네임</label>
+                                    <input type="text" id="nickname" value="$[nickname ]">
+                                </div>
+                                 <div class="col-lg-6">
+                                	<label for="phone">전화번호</label>
+                                    <input type="text" id="phone" value="$[phone ]">
+                                </div>
+                                <div class="col-lg-6">
+                                	<label for="gender">성별</label>
+                                    <input type="text" id="gender" value="$[gender ]">
+                                </div>
+
                             </div>
                             <input type="text" placeholder="Subject">
                             <textarea placeholder="Your Question"></textarea>
