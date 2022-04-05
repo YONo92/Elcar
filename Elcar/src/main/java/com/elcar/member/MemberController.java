@@ -1,6 +1,6 @@
-package com.elcar.member;
+package com.elcar.member; 
 
-import java.net.URLEncoder;
+import java.net.URLEncoder; 
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,17 +13,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.elcar.dto.member;
+import com.elcar.dto.Member;
 
 @Controller
-public class memberController {
+public class MemberController {
 	
 	@Autowired
 	HttpSession session;
 	
 	@Autowired
-	memberService memserv;
+	MemberService memserv;
 	
 	@GetMapping(value="/loginform")
 	public String loginform() {
@@ -35,13 +36,14 @@ public class memberController {
 	public String sign_in(@RequestParam("id")String id,@RequestParam("gender")String gender,@RequestParam("nickname")String nickname
 			, Model model) {
 		
-		member mem = null;
-		member result=null;
+		Member mem = null;
+		Member result=null;
 		try {
 			mem=memserv.selectMember_kakao(id);
 			if(mem!=null) {
 				result=memserv.selectMember_kakao(id);
 				session.setAttribute("id", result.getId());
+				System.out.println(result.getId());
 				model.addAttribute("mem", result);
 				return "main/main";
 			}else {
@@ -64,9 +66,12 @@ public class memberController {
 	
 	//정보입력후 회원가입 버튼 클릭시
 	@PostMapping("join_kakao")
-	public String signup_kakao(@ModelAttribute member mem) {
+	public String signup_kakao(@ModelAttribute Member mem) {
+		String id = mem.getId();
 		try {
 			memserv.insertMember_kakao(mem);
+			session.setAttribute("id", id);
+			System.out.println(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,7 +84,7 @@ public class memberController {
 	}
 	
 	@PostMapping(value="/join")
-	public String access_joinform(@ModelAttribute member mem) {
+	public String access_joinform(@ModelAttribute Member mem) {
 		try {
 			memserv.insertMember(mem);
 		} catch (Exception e) {
@@ -101,4 +106,42 @@ public class memberController {
 			return "main/main";
 	}
 	
+	@ResponseBody
+	@PostMapping(value="/emailcheck")
+	public String emailCheck(@RequestParam(value="email", required=true)String email) {
+		boolean check=false;
+		try {
+			check=memserv.emailcheck(email);
+		} catch (Exception e) {
+		}
+		return String.valueOf(check);
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/nicknameCheck")
+	public String nicknameCheck(@RequestParam(value="nickname", required=true)String nickname) {
+		boolean check=false;
+		try {
+			check=memserv.nicknameCheck(nickname);
+		} catch (Exception e) {
+		}
+		return String.valueOf(check);
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/idCheck")
+	public String idCheck(@RequestParam(value="id", required=true)String id) {
+		boolean check=false;
+		try {
+			check=memserv.idCheck(id);
+		} catch (Exception e) {
+		}
+		return String.valueOf(check);
+	}
+	
+	//네아로구현부분
+	@GetMapping(value="join_naver1")
+	public String joinnaver1(){
+		return "main/loginnaver";
+	}
 }

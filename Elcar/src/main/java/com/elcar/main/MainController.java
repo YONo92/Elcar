@@ -39,11 +39,18 @@ public class MainController {
 	public String commu() {
 		return "about/commu";
 	}
+
+
+//	@GetMapping("/charger")
+//	public String charger() {
+//		return "charger/charger";
+//	}
 	
-	@GetMapping("/share")
-	public String share() {
-		return "share/share";
-	}
+//	@GetMapping("/share")
+//	public String share() {
+//		return "share/share";
+//	}
+
 	
 	@GetMapping("/mypage")
 	public String mypage() {

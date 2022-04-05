@@ -1,6 +1,6 @@
 package com.elcar.dto;
 
-public class member {
+public class Member {
 	String id;
 	String pw;
 	String name;
@@ -15,9 +15,9 @@ public class member {
 	String gender2;
 	
 
-	public member() {}
+	public Member() {}
 	
-	public member(String id, String pw, String name, String nickname, String email, int gender, int phone, String birth,
+	public Member(String id, String pw, String name, String nickname, String email, int gender, int phone, String birth,
 			int point, int license, int type) {
 		this.id = id;
 		this.pw = pw;
