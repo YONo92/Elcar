@@ -17,20 +17,6 @@ public class Share {
 	
 	
 	
-	@Override
-	public String toString() {
-		return "Share [num=" + num + ", sincheng_id=" + sincheng_id + ", surak_id=" + surak_id + ", date=" + date
-				+ ", person=" + person + ", request=" + request + ", start_long=" + start_long + ", start_lat="
-				+ start_lat + ", goal_long=" + goal_long + ", goal_lat=" + goal_lat + ", status=" + status
-				+ ", start_name=" + start_name + ", goal_name=" + goal_name + ", getNum()=" + getNum()
-				+ ", getSincheng_id()=" + getSincheng_id() + ", getSurak_id()=" + getSurak_id() + ", getDate()="
-				+ getDate() + ", getPerson()=" + getPerson() + ", getRequest()=" + getRequest() + ", getStart_long()="
-				+ getStart_long() + ", getStart_lat()=" + getStart_lat() + ", getGoal_long()=" + getGoal_long()
-				+ ", getGoal_lat()=" + getGoal_lat() + ", getStatus()=" + getStatus() + ", getStart_name()="
-				+ getStart_name() + ", getGoal_name()=" + getGoal_name() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-	}
-
 	public Share() {
 		
 	}
