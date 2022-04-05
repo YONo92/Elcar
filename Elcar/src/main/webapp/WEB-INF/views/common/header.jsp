@@ -47,7 +47,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     <form id="locationForm" action="sharelist" method="post">
                       <input type="hidden" id="lat" name="lat" />
                       <input type="hidden" id="lng" name="lng" />
-                      <a onclick="shareList()"> 카쉐어링 </a>
+                      <a onclick="shareList()" style="cursor: pointer;"> 카쉐어링 </a>
                     </form>
                   </li>
                   <li><a href="./mypage">Mypage</a></li>

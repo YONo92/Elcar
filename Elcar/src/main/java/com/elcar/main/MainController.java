@@ -33,7 +33,7 @@ public class MainController {
 //	public String join() {
 //		return "main/join";
 //	}
-//	
+
 	@GetMapping("/about")
 	public String about() {
 		session.invalidate();
