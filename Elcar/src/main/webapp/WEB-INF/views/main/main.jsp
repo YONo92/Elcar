@@ -19,7 +19,7 @@
 							<span>FIND YOUR ELCAR</span>
 							<h2>전기차 충전소 서비스</h2>
 						</div>
-						<a href="#" class="primary-btn more-btn">More</a>
+						<a href="http://localhost:8080/log" class="primary-btn more-btn">More</a>
 					</div>
 				</div>
 			</div>
