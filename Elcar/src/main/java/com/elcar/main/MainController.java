@@ -12,10 +12,11 @@ import com.elcar.member.MemberService;
 
 @Controller
 public class MainController {
+	
 
-	@Autowired
-	MemberService memserv;
+	@Autowired MemberService memserv;
 
+	
 	@Autowired
 	HttpSession session;
 
@@ -23,17 +24,17 @@ public class MainController {
 	public String main() {
 		return "main/main";
 	}
-
-	@GetMapping("login")
-	public String login() {
-		return "main/login";
-	}
-
-	@GetMapping("join")
-	public String join() {
-		return "main/join";
-	}
-
+	
+//	@GetMapping("login")
+//	public String login() {
+//		return "main/login";
+//	}
+//	
+//	@GetMapping("join")
+//	public String join() {
+//		return "main/join";
+//	}
+//	
 	@GetMapping("/about")
 	public String about() {
 		session.invalidate();
@@ -76,10 +77,11 @@ public class MainController {
 //		return "share/share";
 //	}
 
-	@GetMapping("/mypage")
-	public String mypage() {
-		return "mypage/mypage";
-	}
+	
+//	@GetMapping("/mypage")
+//	public String mypage() {
+//		return "mypage/mypage";
+//	}
 
 	@GetMapping("/admin_memlist")
 	public String admin_memlist() {
