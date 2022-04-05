@@ -14,6 +14,17 @@ public class Member {
 	int type;
 	String gender2;
 	
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", pw=" + pw + ", name=" + name + ", nickname=" + nickname + ", email=" + email
+				+ ", gender=" + gender + ", phone=" + phone + ", birth=" + birth + ", point=" + point + ", license="
+				+ license + ", type=" + type + ", gender2=" + gender2 + ", getId()=" + getId() + ", getPw()=" + getPw()
+				+ ", getName()=" + getName() + ", getNickname()=" + getNickname() + ", getEmail()=" + getEmail()
+				+ ", getGender()=" + getGender() + ", getPhone()=" + getPhone() + ", getBirth()=" + getBirth()
+				+ ", getPoint()=" + getPoint() + ", getLicense()=" + getLicense() + ", getType()=" + getType()
+				+ ", getGender2()=" + getGender2() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
+	}
 
 	public Member() {}
 	
