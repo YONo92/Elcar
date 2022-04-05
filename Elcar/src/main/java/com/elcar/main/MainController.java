@@ -4,17 +4,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
+
+import com.elcar.member.MemberService;
 
 
 @Controller
 public class MainController {
 	
-	/*
-	 * @Autowired memberService memserv;
-	 */
+	@Autowired MemberService memserv;
 	
 	@Autowired
 	HttpSession session;
@@ -73,10 +71,10 @@ public class MainController {
 //	}
 
 	
-	@GetMapping("/mypage")
-	public String mypage() {
-		return "mypage/mypage";
-	}
+//	@GetMapping("mypage")
+//	public String join() {
+//		return "main/mypage";
+//	}
 
 	@GetMapping("/admin_memlist")
 	public String admin_memlist() {
