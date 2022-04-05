@@ -61,7 +61,7 @@
         </a> 
    		<!-- 네아로버튼 -->
    		<div id="naverIdLogin" ></div>
-   		<!-- <a href="" id="naverLogin">
+   		<!--  <a href="" id="naverLogin">
     	<img src="resources/img/btnG_완성형.png "alt="네이버 로그인 버튼" style="width: 183px !important; height: 45px !important;"/>
         </a> -->
         </div>
