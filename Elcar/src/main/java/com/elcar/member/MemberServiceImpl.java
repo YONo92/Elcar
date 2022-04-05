@@ -26,9 +26,9 @@ public class MemberServiceImpl implements MemberService {
 		mem.setEmail(mem.getId());
 		String gender = mem.getGender2();
 		if(gender.equals("male") || gender.equals("M")) {
-			mem.setGender(1);
+			mem.setGender(0);
 		}else if(gender.equals("female") || gender.equals("F")) {
-			mem.setGender(2);
+			mem.setGender(1);
 		}
 		
 		memdao.insertMember(mem);		
@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Boolean access(String id, String pw) throws Exception {
+	public boolean access(String id, String pw) throws Exception {
 		Member mem = memdao.queryMember(id);
 		if(!mem.getId().equals(null)){
 			try {
