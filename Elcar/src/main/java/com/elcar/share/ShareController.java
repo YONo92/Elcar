@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.elcar.dto.Member;
 import com.elcar.dto.Share;
-import com.elcar.dto.member;
-import com.elcar.member.memberService;
+import com.elcar.member.MemberService;
 
 @Controller
 public class ShareController {
@@ -24,7 +24,7 @@ public class ShareController {
 	HttpSession session;
 
 	@Autowired
-	memberService memserv;
+	MemberService memserv;
 
 	@Autowired
 	ShareService shareserv;
@@ -36,7 +36,7 @@ public class ShareController {
 			if (id == null) {
 				return "main/loginform";
 			}
-			member mem = memserv.selectMember_kakao(id);
+			Member mem = memserv.selectMember_kakao(id);
 			model.addAttribute("nickname", mem.getNickname());
 			if (mem.getGender() == 0) {
 				model.addAttribute("gender", "남자");
