@@ -13,7 +13,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 </head>
 <body>
-	<!-- Breadcrumb End -->
+	<!-- Breadcrumb Begin -->
 	<div class="breadcrumb-option set-bg"
 		data-setbg="resources/img/breadcrumb-bg.jpg">
 		<div class="container">
@@ -30,7 +30,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Breadcrumb Begin -->
+	<!-- Breadcrumb End -->
 
 	<!-- Blog Section Begin -->
 
