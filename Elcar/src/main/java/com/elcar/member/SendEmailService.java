@@ -38,11 +38,8 @@ public class SendEmailService {
 	    }
 
 	    public void updatePassword(String str,String email) throws Exception{
-	    	System.out.println("str="+str);
 	        String pw = passwordEncoder.encode(str);
-	        System.out.println("암호화str="+pw);
 	        String id = memdao.queryMember_email(email).getId();
-	        System.out.println(id);
 	        memdao.updateUserPassword(id,pw);
 	    }
 
@@ -64,12 +61,6 @@ public class SendEmailService {
 	    public void mailSend(Mail mailDto){
 	        System.out.println("이메일 전송 완료!");
 	        SimpleMailMessage message = new SimpleMailMessage();
-	        
-	        System.out.println(mailDto.getAddress());
-	        System.out.println(SendEmailService.FROM_ADDRESS);
-	        System.out.println(mailDto.getTitle());
-	        System.out.println(mailDto.getMessage());
-	        
 	        message.setTo(mailDto.getAddress());
 	        message.setFrom(SendEmailService.FROM_ADDRESS);
 	        message.setSubject(mailDto.getTitle());

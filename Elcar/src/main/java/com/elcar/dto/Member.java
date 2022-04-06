@@ -7,7 +7,7 @@ public class Member {
 	String nickname;
 	String email;
 	int gender;
-	int phone;
+	String phone;
 	String birth;
 	int point;
 	int license;
@@ -28,7 +28,7 @@ public class Member {
 
 	public Member() {}
 	
-	public Member(String id, String pw, String name, String nickname, String email, int gender, int phone, String birth,
+	public Member(String id, String pw, String name, String nickname, String email, int gender, String phone, String birth,
 			int point, int license, int type) {
 		this.id = id;
 		this.pw = pw;
@@ -91,11 +91,11 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

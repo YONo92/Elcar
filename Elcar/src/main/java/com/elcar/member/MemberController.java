@@ -43,7 +43,6 @@ public class MemberController {
 			if(mem!=null) {
 				result=memserv.selectMember_kakao(id);
 				session.setAttribute("id", result.getId());
-				System.out.println(result.getId());
 				model.addAttribute("mem", result);
 				return "main/main";
 			}else {
@@ -139,6 +138,17 @@ public class MemberController {
 		return String.valueOf(check);
 	}
 	
+	@ResponseBody
+	@PostMapping(value="/phoneCheck")
+	public String phoneCheck(@RequestParam(value="phone", required=true)String phone) {
+		boolean check=false;
+		try {
+			check=memserv.phoneCheck(phone);
+		} catch (Exception e) {
+		}
+		return String.valueOf(check);
+	}
+	
 	//네아로구현부분
 	@GetMapping(value="/join_naver1")
 	public String joinnaver1(){
@@ -149,5 +159,28 @@ public class MemberController {
 	@GetMapping(value="findpw")
 	public String findpw() {
 		return "main/findpw";
+	}
+	
+	@GetMapping(value="findid")
+	public  String findid() {
+		return "main/findid";
+	}
+	
+	
+	@PostMapping(value="findId")
+	public String findid_result(@RequestParam Map<String, String> info, Model model) {
+		String name = info.get("name");
+		String birth = info.get("birth");
+		
+		try {
+			Member mem = memserv.searchId(name,birth);
+			if(mem!=null) {
+			model.addAttribute("mem",mem);
+			return "main/findid_result";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "main/findid_join";
 	}
 }
