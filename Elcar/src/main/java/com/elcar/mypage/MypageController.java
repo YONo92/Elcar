@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.elcar.dto.Driver;
 import com.elcar.dto.Member;
 
 @Controller
@@ -27,6 +28,7 @@ public class MypageController {
 	@Autowired
 	HttpSession session;
 
+	//(마이 페이지)
 	@GetMapping("/mypage")
 	public ModelAndView mypage() {
 		ModelAndView mav = new ModelAndView("mypage/mypage");
@@ -45,14 +47,14 @@ public class MypageController {
 		return mav;
 	}
 
-	// 진짜 정보 수정하는 화면 이동
+	// 진짜 정보 수정하는 화면 이동(프로필 보기)
 	@PostMapping(value = "membermodifyform")
 	public String memberModifyForm(Member member, Model model) {
 		model.addAttribute("member", member);
 		return "mypage/membermodify";
 	}
 
-	// 진짜 정보 수정
+	// 진짜 정보 수정(프로필 보기)
 	@PostMapping(value = "membermodify")
 	public ModelAndView membermodify(@ModelAttribute Member member) {
 		ModelAndView mav = new ModelAndView("mypage/mypage");
@@ -64,7 +66,9 @@ public class MypageController {
 		}
 		return mav;
 	}
-
+	
+	
+	// 비번 변경 전 비번 확인(현재 비밀번호 창)
 	@GetMapping(value = "checkPw")
 	public ModelAndView checkPwForm() {
 		ModelAndView mav = new ModelAndView("mypage/checkPw");
@@ -81,7 +85,8 @@ public class MypageController {
 
 		return mav;
 	}
-
+	
+	// 비밀번호 수정
 	@PostMapping(value = "pwmodifyform")
 	public ModelAndView pwmodifyFormForm(@RequestParam String password) {
 		ModelAndView mav = new ModelAndView("mypage/pwmodify");
@@ -99,6 +104,7 @@ public class MypageController {
 		return mav;
 	}
 
+	// 비밀번호 수정
 	@PostMapping(value = "pwmodify")
 	public ModelAndView pwmodify(HttpServletRequest request, @RequestParam(value = "password1") String password) {
 		ModelAndView mav = new ModelAndView("mypage/mypage");
@@ -113,6 +119,7 @@ public class MypageController {
 		return mav;
 	}
 
+	// 탈퇴전 비밀번호 입력 창(회원탈퇴)
 	@GetMapping(value = "talcheckPw")
 	public ModelAndView talcheckPwForm() {
 		ModelAndView mav = new ModelAndView("mypage/talcheckPw");
@@ -129,6 +136,7 @@ public class MypageController {
 		return mav;
 	}
 
+	// 회원탈퇴
 	@PostMapping(value = "deleteIdform")
 	public ModelAndView deleteIdForm(@RequestParam String password) {
 		ModelAndView mav = new ModelAndView("mypage/deleteId");
@@ -146,6 +154,7 @@ public class MypageController {
 		return mav;
 	}
 
+	// 회원탈퇴
 	@PostMapping(value = "deleteId")
 	public ModelAndView deleteId() {
 		ModelAndView mav = new ModelAndView("main/main");
@@ -162,12 +171,36 @@ public class MypageController {
 		return mav;
 	}
 
+	// 드라이버 정보
 	@GetMapping(value = "driverInfo")
 	public ModelAndView driverInfoForm() {
 		ModelAndView mav = new ModelAndView("mypage/driverInfo");
+		try {
+			String id = (String) session.getAttribute("id");
+			Member member = mypageService.mypageInfo(id);
+			
+			mav.addObject("id", member.getId());
+			
+			
+			// 신청 중인지=..
+			Driver driver = mypageService.selectDriverInfo(id);
+			if (driver != null) {
+				mav.addObject("status", driver.getStatus());
+			}
+			
+			
+			// 신청 중이라면 인증 대기중, 거절 , 인증되었는지 (status)  0 : 대기중 1 : 거절 2 : 승인
+			// 'driverForm'
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
+	
+	
 
+	// 이용내역
 	@GetMapping(value = "history")
 	public ModelAndView historyForm() {
 		ModelAndView mav = new ModelAndView("mypage/history");
@@ -181,7 +214,7 @@ public class MypageController {
 		return mav;
 	}
 	
-
+	// 매너포인트
 	@GetMapping(value = "mannerPoint")
 	public ModelAndView mannerPointForm() {
 		ModelAndView mav = new ModelAndView("mypage/mannerPoint");
@@ -211,36 +244,42 @@ public class MypageController {
 		return mav;
 	}
 
+	// 이용평가
 	@GetMapping(value = "pyeongga")
 	public ModelAndView pyeonggaForm() {
 		ModelAndView mav = new ModelAndView("mypage/pyeongga");
 		return mav;
 	}
 
+	// 신고
 	@GetMapping(value = "singo")
 	public ModelAndView singoForm() {
 		ModelAndView mav = new ModelAndView("mypage/singo");
 		return mav;
 	}
 
+	// 신고내역
 	@GetMapping(value = "singoHistory")
 	public ModelAndView singoHistoryForm() {
 		ModelAndView mav = new ModelAndView("mypage/singoHistory");
 		return mav;
 	}
 
+	// 신고내역에 대한  처리 결과 페이지
 	@GetMapping(value = "singoHistoryDetail")
 	public ModelAndView singoHistoryDetailForm() {
 		ModelAndView mav = new ModelAndView("mypage/singoHistoryDetail");
 		return mav;
 	}
-
+	
+	// 태울래 수락 내역
 	@GetMapping(value = "taewoolraeSurak")
 	public ModelAndView taewoolraeSurakForm() {
 		ModelAndView mav = new ModelAndView("mypage/taewoolraeSurak");
 		return mav;
 	}
-
+	
+	// 탈래 신청 내역
 	@GetMapping(value = "talgaeSincheng")
 	public ModelAndView talgaeSinchengForm() {
 		ModelAndView mav = new ModelAndView("mypage/talgaeSincheng");

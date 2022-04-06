@@ -95,7 +95,7 @@
 							</div>
 							
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> $[name]<span> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.sinchengId }<span> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-3'>
@@ -128,11 +128,11 @@
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> $[name]<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${member.name }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> $[name]<span	> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.sinchengId }<span	> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-3'>
@@ -215,14 +215,14 @@
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> $[id]<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
-							</div>
-							
-							<div class='col-lg-3'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> $[sincheng_id]<span> <b style="font-size: 1.2em; color: black;">님에게</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${member.name }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-2'>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.surakId}<span> <b style="font-size: 1.2em; color: black;">님에게</b></span> </h5>
+							</div>
+							
+							<div class='col-lg-3'>
 							<span style="font-size: 1.2em; color: black;">
 								<b>  탈래했습니다.</b>
 							</span>
@@ -237,8 +237,16 @@
 								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.0em; color: black;">
 									<i class="fas fa-car"> 도착지</i>
 								</botton>
-
-						</div></div>
+							</div>
+							
+							<div class='col-lg-3'>
+								
+								<botton type="submit" class="col-3 nanum txtBox00" style="font-size: 1.0em; color: black;">
+									 평가하기
+								</botton>
+							</div>
+						</div>
+						
 					</div>	
 					<hr style=" height:150px;">
 					<!-- 태울래 이용 완 끝/// -->
