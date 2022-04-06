@@ -79,5 +79,19 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	
+	@Override
+	public boolean EmailCheck(String email, String name) throws Exception{
+
+        Member mem = memdao.queryMember_email(email);
+        System.out.println(name);
+        System.out.println(mem.getName());
+        if(mem!=null && mem.getName().equals(name)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+	
 	
 }

@@ -37,6 +37,12 @@
       ]]>
 	</select>
 	
+	<update id="updateUserPassword">
+      <![CDATA[
+      update member set pw=#{pw} where id=#{id}
+      ]]>
+	</update>
+	
 	
 	
 </mapper>
