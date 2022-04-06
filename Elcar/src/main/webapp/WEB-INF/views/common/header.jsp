@@ -68,6 +68,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   </body>
   <script>
     function shareList() {
+  
       navigator.geolocation.getCurrentPosition(function (position) {
         $('#lat').val(position.coords.latitude);
         $('#lng').val(position.coords.longitude);
