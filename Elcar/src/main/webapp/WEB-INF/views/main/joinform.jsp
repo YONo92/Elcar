@@ -385,13 +385,35 @@
    			$('#phone_check').css("color","red");
    			phone_check=false;
    			$('#btn').attr('disabled',true);
-   		}else{
+   		}/* else{
    			$('#phone_check').text("전화번호 사용가능");
    			$('#phone_check').css("color","green");
    			phone_check=true;
    			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
 				$('#btn').attr('disabled',false);
 			}
+   		} */
+   		else{
+   		$.ajax({
+			url:"http://localhost:8080/phoneCheck",
+			type:'post',
+			data:{phone:phone},
+			success:function(data){
+				if(data == 'true'){
+					$('#phone_check').text("이미 사용중인 번호 입니다");
+					$('#phone_check').css("color","red");
+					phone_check=false;
+					$('#btn').attr('disabled',true);
+				}else{
+						$('#phone_check').text("사용가능한 번호 입니다");
+    					$('#phone_check').css("color","green");
+    					phone_check=true;
+    					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+    						$('#btn').attr('disabled',false);
+    					}
+					}
+				}
+		});
    		}
     }
     
