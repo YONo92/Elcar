@@ -26,9 +26,9 @@ public class MemberServiceImpl implements MemberService {
 		mem.setEmail(mem.getId());
 		String gender = mem.getGender2();
 		if(gender.equals("male") || gender.equals("M")) {
-			mem.setGender(0);
-		}else if(gender.equals("female") || gender.equals("F")) {
 			mem.setGender(1);
+		}else if(gender.equals("female") || gender.equals("F")) {
+			mem.setGender(2);
 		}
 		
 		memdao.insertMember(mem);		
@@ -78,6 +78,20 @@ public class MemberServiceImpl implements MemberService {
 		return true;
 	}
 
+	
+	@Override
+	public boolean EmailCheck(String email, String name) throws Exception{
+
+        Member mem = memdao.queryMember_email(email);
+        System.out.println(name);
+        System.out.println(mem.getName());
+        if(mem!=null && mem.getName().equals(name)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 	
 	
 }

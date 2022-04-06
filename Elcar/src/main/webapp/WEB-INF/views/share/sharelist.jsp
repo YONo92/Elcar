@@ -30,38 +30,7 @@
 	<input type="text" id="lat" name="lat" value="" style="display: none" />
 	<input type="text" id="lng" name="lng" value="" style="display: none" />
 
-	<section class="blog spad">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<c:forEach var="share" items="${shareList}">
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<div class="blog__item ">
-									<div class="blog__item__pic set-bg"
-										data-setbg="resources/img/breadcrumb-bg.jpg">
-										<ul>
-											<li>${share.date}</li>
-										</ul>
-									</div>
-									<div class="blog__item__text ">
-										<h5>
-											<a href="#" >출발지: ${share.start_name}</a>
-										</h5>
-										<h5>
-											<a href="#">도착지: ${share.goal_name}</a>
-										</h5>
-										<span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span>
-										<p>요구사항: ${share.request}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
-				</div>
-			</div>
-		</div>
-	</section>
+    <c:forEach var="share" items="${shareList}"> ${share.num} </c:forEach>
 
 	<div class="container">
 		<table class="table">
@@ -89,12 +58,6 @@
 		</table>
 	</div>
 
-
-
-
-	<!-- <p>아니 왜 못가져오냐고 염병</p> -->
-
-	<!-- <p>아니 왜 못가져오냐고 염병</p> -->
 	<button class="badge badge-success rounded-pill d-inline" type="button"
 		onclick="location.href='share'">탈래 신청</button>
 

@@ -91,7 +91,7 @@
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> $[name]<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${member.name }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-2'>

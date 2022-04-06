@@ -53,8 +53,7 @@
 	<div class="container">
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
-				<form id='form' method="post" action="/driver-regist"
-					enctype="multipart/form-data">
+				<form id='form'>
 					<div class="row">
 						<div class="col-lg-5">
 							<img id="preview"
@@ -62,7 +61,7 @@
 							<br /> <br />
 							<div class="input-group mb-3"
 								style="margin-left: 90px; width: 350px;">
-								<label class="input-group-text" for="inputGroupFile01">Upload</label>
+								<label class="input-group-text mr-2" for="inputGroupFile01">Upload</label>
 								<input type="file" class="form-control" id="inputGroupFile01"
 									name="file" onchange="readURL(this);" required>
 							</div>
@@ -87,8 +86,10 @@
 								<div class="row mb-4">
 									<div class="input-group col-12">
 										<label class="input-group-text" for="inputGroupSelect01">차종</label>
-										<select class="form-control form-control-user required"
-											id="inputGroupSelect01" name="cartype" style="height: 40px;" required="required">
+										<input id=car type="text" required
+											style='opacity: 0; width: 0; float: left;'> <select
+											class="form-control form-control-user"
+											id="inputGroupSelect01" name="cartype" style="height: 40px;">
 											<option selected value="">차종을 선택하세요</option>
 											<option value="쏘나타">쏘나타</option>
 											<option value="아이오닉5">아이오닉5</option>
@@ -101,12 +102,12 @@
 											<option value="GV60">GV60</option>
 											<option value="eG80">eG80</option>
 										</select>
+										<div id="cartype-invalid"></div>
 									</div>
-									<div id="err"></div>
 								</div>
 								<div class="row mb-4">
 									<div class="input-group col-12">
-										<label class="input-group-text" for="exampleInputCarnum">차
+										<label class="input-group-text mr-2" for="exampleInputCarnum">차
 											번호</label> <input type="text" class="form-control form-control-user"
 											id="exampleInputCarnum" name="carnum"
 											placeholder="차 번호를 입력하세요" required style="height: 40px;">
@@ -114,17 +115,17 @@
 								</div>
 								<div class="row mb-4">
 									<div class="input-group col-12">
-										<span class="input-group-text" id="inputGroup-sizing-default">면허
-											취득일</span> <input type="date" class="form-control" name="getdate"
+										<span class="input-group-text mr-2"
+											id="inputGroup-sizing-default">면허 취득일</span> <input
+											type="date" class="form-control" name="getdate"
 											id="startDate" max="2022-03-31" style="height: 40px;"
 											required>
 									</div>
 								</div>
 								<hr>
 								<div class="d-grid gap-2 col-10 mx-auto text-center">
-									<button type="Submit" id="driverSubmit"
-										class="btn btn-danger col-10 mx-auto" value='Submit'
-										>Register</button>
+									<button type="submit" id="driverSubmit"
+										class="btn btn-danger col-10 mx-auto" value='Submit'>Register</button>
 								</div>
 							</div>
 						</div>
@@ -169,21 +170,41 @@
 	}
 </script>
 <script>
-/* 	$(document).ready(
-			function() {
-				$('li.active').removeClass('active');
-				$('a[href="' + "/driver-regist" + '"]').closest('li').addClass(
-						'active');
+	// 파일 업로드 + 신청 내용 넘기기
+	$(document).ready(function() {
+		$('#inputGroupSelect01').change(function() {
+			$('#car').val($('#inputGroupSelect01').val());
+		})
 
-				$("#driverSubmit").on('click', function() {
-					let carT = $('#inputGroupSelect01 option:selected').val();
-					if (carT) {
+		$('#form').submit(function(e) {
+			const file = $("#inputGroupFile01")[0].files[0];
+			const formData = new FormData();
+			formData.append("file", file);
+			formData.append("id", $('#exampleId').val())
+			formData.append("name", $('#exampleName').val())
+			formData.append("cartype", $('#inputGroupSelect01').val())
+			formData.append("carnum", $('#exampleInputCarnum').val())
+			formData.append("getdate", $('#startDate').val())
+
+			e.preventDefault();
+			$.ajax({
+				url : '/driver-regist',
+				processData : false,
+				contentType : false,
+				data : formData,
+				type : 'post',
+				success : function(data) {
+					if (data == 'ok') {
+						alert('와 DB 등록 다했다. 고생했어 by_강사님');
+						window.location.href = "/";
 					} else {
-						$('#err').text('차종을 선택하세요')
-						return false;
+						alert('신청을 다시 확인하세요');
+						window.location.href = "/driver-regist";
 					}
-				});
-			}); */
+				}
+			})
+		})
+	});
 </script>
 
 
