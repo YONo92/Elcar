@@ -10,9 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -82,23 +81,26 @@ public class ShareController {
 	}
 
 	@GetMapping(value = "/sincheonginfo")
-	public ModelAndView sincheongInfo() {
+	public ModelAndView sincheongInfo(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("share/sincheonginfo");
-		int num = 10;
+		num = 10;
 		// int num = (Integer) session.getAttribute("num");
 		try {
 			HashMap<String, Object> sincheong = shareserv.sincheongInfo(num);
 			String dateSet = sincheong.get("date").toString().substring(0, 10);
 			String datetime = sincheong.get("date").toString().substring(11, 16);
-			String date = dateSet+" "+datetime;
+			String date = dateSet + " " + datetime;
 			String gender;
 			String status;
+//			Share share = shareserv.selectShare(num);
+//			System.out.println(2);
+////			System.out.println(share.getSincheng_id());
 			if ((Integer) sincheong.get("gender") == 0) {
 				gender = "남자";
 			} else {
 				gender = "여자";
 			}
-			if((Integer) sincheong.get("status") == 0) {
+			if ((Integer) sincheong.get("status") == 0) {
 				status = "매칭중";
 			} else {
 				status = "매칭!";
@@ -107,6 +109,31 @@ public class ShareController {
 			mav.addObject("date", date);
 			mav.addObject("status", status);
 			mav.addObject("gender", gender);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+	@PostMapping(value = "/sincheong")
+	public ModelAndView sincheong(@ModelAttribute Share share) {
+		ModelAndView mav = new ModelAndView("mypage/mypage");
+		System.out.println("-------------------");
+		String id = (String) session.getAttribute("id"); //surak_id 
+		int num = 10;
+		try {
+			if (id == null) {
+				mav.setViewName("main/loginform");
+			}
+			Member mem = memserv.selectMember_kakao(id);
+			if (mem.getLicense() != 1) {
+				mav.setViewName("");
+			}
+			share = shareserv.selectShare(num);
+			System.out.println(share.getSincheng_id());
+			System.out.println(id);
+			shareserv.insertSincheong(id);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -39,7 +39,7 @@
 		LIMIT 0,1000) t;
       ]]>
 	</select>
-	
+
 	<select id="sincheongInfo" resultType="HashMap"
 		parameterType="int">
       <![CDATA[
@@ -53,4 +53,17 @@
     	and t.sincheng_id = m.id ;
       ]]>
 	</select>
+
+	<select id="selectShare" resultType="Share" parameterType="int">
+      <![CDATA[
+       select * from talge where num = #{num};
+      ]]>
+	</select>
+	
+	<insert id="insertSincheong" parameterType="String">
+ 	<![CDATA[
+		insert into sincheonglist(talge_num,sincheng_id,surak_id) 
+		values(#{num},#{sincheng_id},#{id});
+	]]>
+	</insert>
 </mapper>

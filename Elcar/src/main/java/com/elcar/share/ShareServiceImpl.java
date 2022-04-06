@@ -58,6 +58,18 @@ public class ShareServiceImpl implements ShareService {
 		return sharedao.sincheongInfo(num);
 	}
 
+	@Override
+	public void insertSincheong(String id) throws Exception {
+		sharedao.insertSincheong(id);
+		
+	}
+
+	@Override
+	public Share selectShare(int num) throws Exception {
+		System.out.println(1);
+		return sharedao.selectShare(num);
+	}
+
 
 
 

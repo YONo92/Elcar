@@ -21,4 +21,8 @@ public interface ShareDAO {
 	public int shareListCount(@Param(value = "lat") Double lat, @Param(value = "lng") Double lng)throws Exception;
 
 	public HashMap<String, Object> sincheongInfo(int num) throws Exception;
+
+	public Share selectShare(int num)throws Exception;
+
+	public void insertSincheong(String id)throws Exception;
 }

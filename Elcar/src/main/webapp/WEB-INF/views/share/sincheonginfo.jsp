@@ -270,13 +270,20 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >${sincheong.request}</textarea
           ><br /><br />
         </form>
-        <form action="sincheongjoin" method="post"></form>
+        
+
+
+          <form action="/sincheong" method="post">
+          <input type="text" name="num" value="" style="display: none;">
+          <input type="text" name="sincheong_id" style="display: none;">
+          <input type="text" name="surak_id" style="display: none;">
           <input
             type="submit"
             value="태울래"
             class="btn btn-danger"
             style="width: 100px"
           />
+        </form>
 		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
       </div>
