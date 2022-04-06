@@ -145,4 +145,9 @@ public class MemberController {
 		return "main/loginnaver";
 	}
 	
+	
+	@GetMapping(value="findpw")
+	public String findpw() {
+		return "main/findpw";
+	}
 }

@@ -18,5 +18,5 @@ public interface MemberService {
 
 	boolean idCheck(String id)throws Exception;
 
-
+	boolean EmailCheck(String email, String name) throws Exception;
 }

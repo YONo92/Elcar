@@ -48,8 +48,8 @@
                 </div>
             </form>
             <div class = "Forgot">  
-                <li><a href="index.html">아이디 찾기</a></li>
-                <li><a href="">비밀번호 찾기</a></li>
+                <li><a href="">아이디 찾기</a></li>
+                <li><a href="findpw">비밀번호 찾기</a></li>
         </div>
         <div class="Forgot2">
         <!-- 카아로버튼 -->
