@@ -103,6 +103,11 @@ public class ChargerController {
 		return null;
     
 	}
+	
+	@GetMapping("/charchar")
+	public String charchar() {
+		return "charger/char";
+	}
 }
 
 
