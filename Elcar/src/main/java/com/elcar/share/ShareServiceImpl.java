@@ -4,6 +4,7 @@ package com.elcar.share;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class ShareServiceImpl implements ShareService {
 	}
 
 	@Override
-	public List<Share> selectShareList(double lat, double lng) throws Exception {
+	public List<Share> selectShareList(Map <String, Object> mapParam) throws Exception {
 //		int listCount=sharedao.shareListCount(lat,lng);
 //		//table에 있는 모든 row 개수
 //		
@@ -49,7 +50,10 @@ public class ShareServiceImpl implements ShareService {
 //		//즉, getBoardList를 호출한 컨트롤러에 생성된(new) pageInfo 객체에 초기화하는 것이다.
 //		
 //		int startrow=(page-1)*10+1;
-		return sharedao.selectShareList(lat,lng);
+		
+
+		
+		return sharedao.selectShareList(mapParam);
 	}
 
 	@Override
@@ -57,6 +61,8 @@ public class ShareServiceImpl implements ShareService {
 		
 		return sharedao.sincheongInfo(num);
 	}
+
+
 
 
 

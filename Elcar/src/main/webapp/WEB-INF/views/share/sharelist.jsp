@@ -34,6 +34,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
+					<button class="badge badge-success rounded-pill d-inline"
+						type="button" onclick="location.href='share'">탈래 신청</button>
 					<c:forEach var="share" items="${shareList}">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
@@ -42,11 +44,37 @@
 										data-setbg="resources/img/breadcrumb-bg.jpg">
 										<ul>
 											<li>${share.date}</li>
+											<li>${share.num}</li>
 										</ul>
 									</div>
 									<div class="blog__item__text ">
 										<h5>
-											<a href="#" >출발지: ${share.start_name}</a>
+											<a href="#">출발지: ${share.start_name}</a>
+										</h5>
+										<h5>
+											<a href="#">도착지: ${share.goal_name}</a>
+										</h5>
+										<span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span>
+										<p>요구사항: ${share.request}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+					<c:forEach var="share" items="${shareList}">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="blog__item ">
+									<div class="blog__item__pic set-bg"
+										data-setbg="resources/img/breadcrumb-bg.jpg">
+										<ul>
+											<li>${share.date}</li>
+											<li>${share.num}</li>
+										</ul>
+									</div>
+									<div class="blog__item__text ">
+										<h5>
+											<a href="#">출발지: ${share.start_name}</a>
 										</h5>
 										<h5>
 											<a href="#">도착지: ${share.goal_name}</a>
@@ -63,11 +91,12 @@
 		</div>
 	</section>
 
-	<div class="container">
+	<%-- <div class="container">
 		<table class="table">
 			<!--<table class="table table-striped table-hover">-->
 			<thead>
 				<tr>
+					<th>번호</th>
 					<th>작성자</th>
 					<th>출발지</th>
 					<th>도착지</th>
@@ -78,8 +107,9 @@
 			<tbody>
 				<c:forEach var="share" items="${shareList}">
 					<tr>
+						<td class="scrolling">${share.num}</td>
 						<td>${share.sincheng_id}</td>
-						<td class="fw-bold mb-1">${share.start_name}</td>
+						<td class="fw-bold mb-1 ">${share.start_name}</td>
 						<td class="fw-bold mb-1">${share.goal_name}</td>
 						<td><span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span></td>
 						<td>${share.date}</td>
@@ -87,25 +117,59 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		<button class="badge badge-success rounded-pill d-inline" type="button"
+		onclick="location.href='share'">탈래 신청</button>
 	</div>
 
+ --%>
 
 
 
-	<button class="badge badge-success rounded-pill d-inline" type="button"
-		onclick="location.href='share'">탈래 신청</button>
 
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!-- 무한스크롤링 기능구현  -->
 	<script>
-    let currentPage = 1;
-    let isLoading = false;
-		    $(".board_body").scroll(function () {
-        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            return;
-        }
-        isLoading = true;
-        $(".loading").show();
-        setTimeout(loadNewPage, 1400);
-    });
+		var liststartsize = ${listsize};
+		var lat = ${lat};
+		var lng = ${lng};
+		var lastScrollTop  = 0 ;
+		var easeEffect = 'easeInQuint';
+
+
+		$(window).scroll(function (){
+			var currentScrollTop = $(window).scrollTop();
+
+
+			if(currentScrollTop - lastScrollTop >0 ) {
+				/* console.log("다운 스크롤") */
+			}
+
+			if($(window).scrollTop() >= ($(document).height() -$(window).height())) {
+				console.log(liststartsize);
+				console.log($(window).scrollTop());
+				var lastshare = $(".scrolling:last").attr("items");
+
+				$.ajax({
+					type: "post",
+					url: "http://localhost:8080/sharelist_more",
+					dataType: "json",
+					data: {
+						"liststartsize": liststartsize,
+						"lat": lat,
+						"lng": lng,
+					},
+					success: function (response) {
+						console.log(response);
+						if (response != null) {
+							liststartsize += 10;
+						}
+						
+					}
+				}); 
+			}
+
+		})
 	</script>
+	<!-- 무한 스크롤링  기능 구현 끝 !-->
 </body>
 </html>
