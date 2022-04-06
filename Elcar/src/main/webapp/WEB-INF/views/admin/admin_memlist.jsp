@@ -46,11 +46,10 @@
 		</div>
 	</div>
 
-	<!-- Contact Address Begin -->
+	<!-- 관리자_전체 회원 조회 -->
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
-
 				<div class="container-fluid py-4">
 					<div class="row">
 						<div class="col-12">
@@ -62,182 +61,107 @@
 										<h6 class="text-white text-capitalize ps-3">관리자_회원관리</h6>
 									</div>
 								</div>
+								<form action="admin_memlist" method="get">
 								<div class="card-body px-0 pb-2">
 									<div class="table-responsive p-0">
 										<table class="table align-items-center mb-0">
 											<thead>
 												<tr>
 													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-5">번호</th>
 													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-5">이름</th>
 													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">아이디</th>
 													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-													<th class="text-secondary opacity-7"></th>
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">닉네임</th>
+													<th
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">생일</th>
+													<th
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">연락처</th>
+													<th
+														class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">이메일</th>
 												</tr>
 											</thead>
 											<tbody>
+												<c:forEach items="${mem }" var="mem">
 												<tr>
+													<td>
+														<p class="text-xs font-weight-bold mb-0 ps-5">1</p>
+													</td>
 													<td>
 														<div class="d-flex px-2 py-1">
 															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">John Michael</h6>
-																<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+																<h6 class="mb-0 text-sm ps-4">${mem.name }</h6>
 															</div>
 														</div>
 													</td>
 													<td>
-														<p class="text-xs font-weight-bold mb-0">Manager</p>
-														<p class="text-xs text-secondary mb-0">Organization</p>
+														<p class="text-xs font-weight-bold mb-0">${mem.id }</p>
 													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-success">Online</span></td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">23/04/18</span>
+													<td>
+														<p class="text-xs font-weight-bold mb-0">${mem.nickname }</p>
 													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
+													<td>
+														<p class="text-xs font-weight-bold mb-0">${mem.birth }</p>
+													</td>
+													<td>
+														<p class="text-xs font-weight-bold mb-0">${mem.phone }</p>
+													</td>
+													<td>
+														<p class="text-xs font-weight-bold mb-0">${mem.email }</p>
+													</td>
 												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Alexa Liras</h6>
-																<p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Programator</p>
-														<p class="text-xs text-secondary mb-0">Developer</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-secondary">Offline</span>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">11/01/19</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Laurent Perrier</h6>
-																<p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Executive</p>
-														<p class="text-xs text-secondary mb-0">Projects</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-success">Online</span></td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">19/09/17</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Michael Levi</h6>
-																<p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Programator</p>
-														<p class="text-xs text-secondary mb-0">Developer</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-success">Online</span></td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">24/12/08</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Richard Gran</h6>
-																<p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Manager</p>
-														<p class="text-xs text-secondary mb-0">Executive</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-secondary">Offline</span>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">04/10/21</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Miriam Eric</h6>
-																<p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Programator</p>
-														<p class="text-xs text-secondary mb-0">Developer</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-secondary">Offline</span>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">14/09/20</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
+		</c:forEach>
 											</tbody>
 										</table>
 									</div>
 								</div>
+								</form>
+								<!-- 페이징 처리  -->
+								<section id="pageList" style="text-align: center;">
+					<c:choose>
+						<c:when test="${pageInfo.page<=1}">
+					[이전]&nbsp;
+				</c:when>
+						<c:otherwise>
+							<a
+								href="admin_memlist?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
+				</c:otherwise>
+					</c:choose>
+					<c:forEach var="i" begin="${pageInfo.startPage }"
+						end="${pageInfo.endPage }">
+						<c:choose>
+							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+							<c:otherwise>
+								<a href="admin_memlist?page=${i}&mem_text=${mem_text}">[${i }]</a>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					<c:choose>
+						<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+						<c:otherwise>
+							<a
+								href="admin_memlist?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
+						</c:otherwise>
+					</c:choose>
+				</section>
 							</div>
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>
-	<!-- Contact Address End -->
 </body>
 
 <!--   Core JS Files   -->
