@@ -47,21 +47,23 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     <form id="locationForm" action="sharelist" method="post">
                       <input type="hidden" id="lat" name="lat" />
                       <input type="hidden" id="lng" name="lng" />
-                      <a onclick="shareList()" style="cursor: pointer;"> 카쉐어링 </a>
+                      <a onclick="shareList()" style="cursor: pointer">
+                        카쉐어링
+                      </a>
                     </form>
                   </li>
                   <li><a href="./mypage">Mypage</a></li>
                 </ul>
               </nav>
               <div class="header__nav__widget">
-              <c:choose>
-				<c:when test="${empty id}">
-					<a href="../loginform" class="primary-btn">Login</a> 
-				</c:when>
-				<c:otherwise>
-	                <a href="../logout" class="primary-btn">Logout</a>
-				</c:otherwise>
-			 </c:choose>
+                <c:choose>
+                  <c:when test="${empty id}">
+                    <a href="../loginform" class="primary-btn">Login</a>
+                  </c:when>
+                  <c:otherwise>
+                    <a href="../logout" class="primary-btn">Logout</a>
+                  </c:otherwise>
+                </c:choose>
               </div>
             </div>
           </div>
@@ -75,12 +77,19 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   </body>
   <script>
     function shareList() {
-  
-      navigator.geolocation.getCurrentPosition(function (position) {
-        $('#lat').val(position.coords.latitude);
-        $('#lng').val(position.coords.longitude);
-        document.getElementById('locationForm').submit();
-      });
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          $('#lat').val(position.coords.latitude);
+          $('#lng').val(position.coords.longitude);
+          document.getElementById('locationForm').submit();
+        },
+        function (err) {
+          alert('위치정보 허용 하시는 것을 권장 드립니다.');
+          $('#lat').val(37.570028);
+          $('#lng').val(126.986072);
+          document.getElementById('locationForm').submit();
+        }
+      );
     }
   </script>
 </html>
