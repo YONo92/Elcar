@@ -15,7 +15,6 @@ public class DriverServiceImpl implements DriverService {
 	@Override
 	public void driverregist(Driver driver) throws Exception {
 		driverdao.insertDriver(driver);
-		
 	}
 }
 	

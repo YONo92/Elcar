@@ -76,6 +76,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- Header Section End -->
   </body>
   <script>
+    // function shareList() {
+
+    //   navigator.geolocation.getCurrentPosition(function (position) {
+    //     $('#lat').val(position.coords.latitude);
+    //     $('#lng').val(position.coords.longitude);
+    //     document.getElementById('locationForm').submit();
+    //   });
+    // }
+
     function shareList() {
       navigator.geolocation.getCurrentPosition(
         function (position) {
