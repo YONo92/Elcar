@@ -38,7 +38,19 @@
 		ORDER BY distance 
 		LIMIT 0,1000) t;
       ]]>
-      
 	</select>
-
+	
+	<select id="sincheongInfo" resultType="HashMap"
+		parameterType="int">
+      <![CDATA[
+    	select 
+    	t.date,t.person,t.start_name,t.goal_name,t.request,
+    	t.start_long,t.start_long,goal_lat,goal_long,t.status,
+    	m.nickname,m.gender,m.point,m.phone
+    	from talge t 
+    	inner join member m 
+    	where t.num=#{num} 
+    	and t.sincheng_id = m.id ;
+      ]]>
+	</select>
 </mapper>

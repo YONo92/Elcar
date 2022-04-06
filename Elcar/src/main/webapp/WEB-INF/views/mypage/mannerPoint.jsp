@@ -46,12 +46,14 @@
 					<div style="height:80px;"></div>
 
 					<!-- 현재 매너 포인트는~~ 위치 변경 -->
+					<form action="lookpoint" method="post">
 					<div style="height:100px;" align="center">
-						<span style="font-size: 2em; color: green;">$[id] </span> <span
+						<span style="font-size: 2em; color: green;">${member.name} </span> <span
 							style="font-size: 2em; color: black;"> 님의 현재 매너 포인트는 </span> <span
-							style="font-size: 2em; color: darkblue;"> $[point] </span> <span
+							style="font-size: 2em; color: darkblue;">${member.point} </span> <span
 							style="font-size: 2em; color: black;"> 입니다. </span>
 					</div>
+					</form>
 				</div>
 				
 				<hr />
@@ -81,7 +83,7 @@
 											</i></div> -->
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.7em; color: green"> $[name]<span> <b style="font-size: 1.5em; color: black;">님이</b></span> </h5>
+								<h5 style="font-size: 1.7em; color: green" > ${id }<span> <b style="font-size: 1.5em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-1'>

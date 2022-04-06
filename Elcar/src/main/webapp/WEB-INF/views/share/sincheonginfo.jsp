@@ -106,18 +106,27 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </div>
     <!-- Breadcrumb Begin -->
-    <form action="share" method="post">
+    <form action="sincheonginfo" method="get">
     <section>
       <div class="frame">
-        <div class="top_title" style="margin-top: 30px"><h1>탈래 신청폼</h1></div>
+        <div class="top_title" style="margin-top: 30px"><h1>날 태워</h1></div>
         <div class="top_frame">
           <div class="top_text">
+            <h4 style="float: left">매칭상태</h4>
+            <input
+              type="text"
+              class="text_custom text"
+              name=""
+              value="${status}"
+              readonly
+            >
+			<br /><br />
             <h4 style="float: left">닉네임</h4>
             <input
               type="text"
               class="text_custom text"
               name=""
-              value=${nickname}
+              value="${sincheong.nickname}"
               readonly
             >
 			<br /><br />
@@ -126,8 +135,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               id="datepicker"
               class="text_custom text"
-              value=""
+              value="${date}"
               name="date"
+              readonly
             />
 			<br /><br />
             <h4 style="float: left">성별</h4>
@@ -135,7 +145,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               name=""
-              value=${gender}
+              value="${gender}"
               readonly
             />
 			<br /><br />
@@ -144,93 +154,63 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               name="person"
+              value="${sincheong.person}"
+              readonly
             />
 			<br /><br />
-            <h4 style="float: left">출발지 검색</h4>
+            <h4 style="float: left">출발지</h4>
             <input
               type="text"
               class="text_custom text"
               id="searchKeyword1"
               name="start_name"
-              placeholder="출발지 검색"
+              value="${sincheong.start_name}"
+              readonly
             />
             <input
               type="text"
               id="startlat"
               name="start_lat"
-              value=""
+              value="${sincheong.start_lat}"
               style="display: none"
             />
             <input
               type="text"
               id="startlon"
               name="start_long"
-              value=""
+              value="${sincheong.start_long}"
               style="display: none"
             />
-			<br />
-            <button
-              type="button"
-              id="btn_select_start"
-              class="btn btn-danger searchbtn"
-              style="float: left; margin-top: 10px"
-            >
-              찾기</button
-            >
-			<br /><br /><br />
-            <h4 style="float: left">도착지 검색</h4>
+ 
+			<br /><br />
+            <h4 style="float: left">도착지</h4>
             <input
               type="text"
               class="text_custom text"
               id="searchKeyword2"
               name="goal_name"
-              placeholder="도착지 검색"
-              value=""
+              value="${sincheong.goal_name}"
+              readonly
             />
             <input
               type="text"
               id="endlat"
               name="goal_lat"
-              value=""
+              value="${sincheong.goal_lat}"
               style="display: none"
             />
             <input
               type="text"
               id="endlon"
               name="goal_long"
-              value=""
+              value="${sincheong.goal_long}"
               style="display: none"
             />
-            <button
-              type="button"
-              id="btn_select_end"
-              class="btn btn-danger searchbtn"
-              style="float: left; margin-top: 10px"
-            >
-              찾기</button
-            >
 			<br /><br />
-			
-			
           </div>
 
           <div class="top_bottom" style="margin-top: 100px">
             <br id="map_wrap" class="map_wrap">
-              <h4>클릭하여 찾기</h4></br>	  
-              <input
-                type="button"
-                value="출발지 클릭하기"
-                id="start"
-                onclick="click_start()"
-                class="btn btn-danger"
-              />
-              <input
-                type="button"
-                value="도착지 클릭하기"
-                id="end"
-                onclick="click_end()"
-                class="btn btn-danger"
-              />
             </div>
           </div>
           <p id="result" style="display: none"></p>
@@ -243,7 +223,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 				  <div class="rst_wrap">
 					<div class="rst mCustomScrollbar">
 					  <ul id="searchResult" name="searchResult">
-						<!-- <li>검색결과</li> -->
 					  </ul>
 					</div>
 				  </div>
@@ -287,7 +266,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <textarea
             class="text_custom text"
             name="request"
-          ></textarea
+          >${sincheong.request}</textarea
           ><br /><br />
           <input
             type="submit"
@@ -300,14 +279,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </section>
       </form>
-    <!-- <script src="./jquery-3.1.1.min.js"></script> 값 제어를 위해 jquery -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <!-- Air datepicker css -->
-    <!-- 달력 스크립트 -->
-    
-    <link href="/resources/css/datepicker.min.css" rel="stylesheet" type="text/css" media="all">
-    <script src="resources/js/datepicker.js"></script> <!-- Air datepicker js -->
-    <script src="/resources/js/datepicker.ko.js"></script> <!-- 달력 한글 추가를 위해 커스텀 -->
     <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxdc2cafff3e344431b237973ca1c8c1a2"></script>
     <script type="text/javascript">
       var map, marker;
@@ -322,12 +294,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       var chktraffic = [];
       var resultdrawArr = [];
       var resultMarkerArr = [];
-      $("#datepicker").datepicker({
-    	language: 'ko',
-      timepicker: true,
-    timeFormat: "hh:ii"
-    }); 
-      var status = '출발지 클릭하기';
+     
+      console.log(('#startlon'));
       function initTmap() {
             navigator.geolocation.getCurrentPosition(function (pos) {
               map = new Tmapv2.Map('map_div', {
@@ -358,193 +326,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         // 1. 지도 띄우기
 
         //2. POI 통합 검색 API 요청
-        
-        $('#btn_select_start').click(function () {
-          //동적 사이즈 
-			map.resize(1420,694);
-			$('.center_map').css({
-				"width": "70%"
-			})
-			$('.center_addr').css({
-				"width": "30%"
-			})
-          var searchKeyword = $('#searchKeyword1').val();
-          $.ajax({
-            method: 'GET',
-            url: 'https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result',
-            async: false,
-            data: {
-              appKey: 'l7xxdc2cafff3e344431b237973ca1c8c1a2',
-              searchKeyword: searchKeyword,
-              resCoordType: 'EPSG3857',
-              reqCoordType: 'WGS84GEO',
-              count: 10,
-            },
-            success: function (response) {
-              var resultpoisData = response.searchPoiInfo.pois.poi;
-
-              // 기존 마커, 팝업 제거
-              if (markerArr.length > 0) {
-                for (var i in markerArr) {
-                  markerArr[i].setMap(null);
-                }
-              }
-              var innerHtml = ''; // Search Reulsts 결과값 노출 위한 변수
-              var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
-              for (var k in resultpoisData) {
-                var noorLat = Number(resultpoisData[k].noorLat);
-                var noorLon = Number(resultpoisData[k].noorLon);
-                var name = resultpoisData[k].name;
-
-                var pointCng = new Tmapv2.Point(noorLon, noorLat);
-                var projectionCng =
-                  new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(pointCng);
-
-                var lat = projectionCng._lat;
-                var lon = projectionCng._lng;
-
-                var markerPosition = new Tmapv2.LatLng(lat, lon);
-
-
-                marker = new Tmapv2.Marker({
-                  position: markerPosition,
-                  icon: 'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png',
-                  icon:
-                    'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_' +
-                    k +
-                    '.png',
-                  iconSize: new Tmapv2.Size(24, 38),
-                  title: name,
-                  map: map,
-                });
-
-                innerHtml +=
-                    "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
-                    k +
-                    ".png' style='vertical-align:middle;'/><span>" +
-                    name +
-                    '</span><span>' +
-                    '<button type = button class = "btn btn-danger\" id= start' +
-                    k +
-                    ' onclick="start_search(' +
-                    lat +
-                    ',' +
-                    lon +
-                    ",'" +
-                    name +
-                    '\')">선택</button></span></li>';
-
-                markerArr.push(marker);
-                positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
-              }
-
-              $('#searchResult').html(innerHtml); //searchResult 결과값 노출
-              map.panToBounds(positionBounds); // 확장된 bounds의 중심으로 이동시키기
-              map.zoomOut();
-            },
-            error: function (request, status, error) {
-              console.log(
-                'code:' +
-                  request.status +
-                  '\n' +
-                  'message:' +
-                  request.responseText +
-                  '\n' +
-                  'error:' +
-                  error
-              );
-            },
-          });
-        });
-        $('#btn_select_end').click(function () {
-          var searchKeyword = $('#searchKeyword2').val();
-          $.ajax({
-            method: 'GET',
-            url: 'https://apis.openapi.sk.com/tmap/pois?version=1&format=json&callback=result',
-            async: false,
-            data: {
-              appKey: 'l7xxdc2cafff3e344431b237973ca1c8c1a2',
-              searchKeyword: searchKeyword,
-              resCoordType: 'EPSG3857',
-              reqCoordType: 'WGS84GEO',
-              count: 10,
-            },
-            success: function (response) {
-              var resultpoisData = response.searchPoiInfo.pois.poi;
-
-              // 기존 마커, 팝업 제거
-              if (markerArr.length > 0) {
-                for (var i in markerArr) {
-                  markerArr[i].setMap(null);
-                }
-              }
-              var innerHtml = ''; // Search Reulsts 결과값 노출 위한 변수
-              var positionBounds = new Tmapv2.LatLngBounds(); //맵에 결과물 확인 하기 위한 LatLngBounds객체 생성
-
-              for (var k in resultpoisData) {
-                var noorLat = Number(resultpoisData[k].noorLat);
-                var noorLon = Number(resultpoisData[k].noorLon);
-                var name = resultpoisData[k].name;
-
-                var pointCng = new Tmapv2.Point(noorLon, noorLat);
-                var projectionCng =
-                  new Tmapv2.Projection.convertEPSG3857ToWGS84GEO(pointCng);
-
-                var lat = projectionCng._lat;
-                var lon = projectionCng._lng;
-
-                var markerPosition = new Tmapv2.LatLng(lat, lon);
-
-                marker = new Tmapv2.Marker({
-                  position: markerPosition,
-                  //icon : "http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_a.png",
-                  icon:
-                    'http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_' +
-                    k +
-                    '.png',
-                  iconSize: new Tmapv2.Size(24, 38),
-                  title: name,
-                  map: map,
-                });
-
-                innerHtml +=
-                    "<li><img src='http://tmapapi.sktelecom.com/upload/tmap/marker/pin_b_m_" +
-                    k +
-                    ".png' style='vertical-align:middle;'/><span>" +
-                    name +
-                    '</span><span>' +
-                    '<button type = button class = "btn btn-danger\" id= end' +
-                    k +
-                    ' onclick="end_search(' +
-                    lat +
-                    ',' +
-                    lon +
-                    ",'" +
-                    name +
-                    '\')">선택</button></span></li>';
-
-                markerArr.push(marker);
-                positionBounds.extend(markerPosition); // LatLngBounds의 객체 확장
-              }
-
-              $('#searchResult').html(innerHtml); //searchResult 결과값 노출
-              map.panToBounds(positionBounds); // 확장된 bounds의 중심으로 이동시키기
-              map.zoomOut();
-            },
-            error: function (request, status, error) {
-              console.log(
-                'code:' +
-                  request.status +
-                  '\n' +
-                  'message:' +
-                  request.responseText +
-                  '\n' +
-                  'error:' +
-                  error
-              );
-            },
-          });
-        });
 
         // 3. 경로탐색 API 사용요청
         $('#btn_select').click(function () {
@@ -1132,9 +913,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           },
         });
       }
-      $("datepicker").datepicker({
-        language:'ko'
-      });
     </script>
-  </body>
+</body>
 </html>

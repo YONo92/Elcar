@@ -2,6 +2,7 @@ package com.elcar.share;
 
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,6 @@ public interface ShareDAO {
 	public List<Share> selectShareList(@Param(value="lat") double lat,@Param(value="lng") double lng)throws Exception;
 
 	public int shareListCount(@Param(value = "lat") Double lat, @Param(value = "lng") Double lng)throws Exception;
+
+	public HashMap<String, Object> sincheongInfo(int num) throws Exception;
 }

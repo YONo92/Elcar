@@ -2,6 +2,7 @@ package com.elcar.share;
 
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,12 @@ public class ShareServiceImpl implements ShareService {
 //		
 //		int startrow=(page-1)*10+1;
 		return sharedao.selectShareList(lat,lng);
+	}
+
+	@Override
+	public HashMap<String, Object> sincheongInfo(int num) throws Exception {
+		
+		return sharedao.sincheongInfo(num);
 	}
 
 

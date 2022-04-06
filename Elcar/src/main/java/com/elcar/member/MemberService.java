@@ -10,7 +10,7 @@ public interface MemberService {
 
 	void insertMember(Member mem)throws Exception;
 
-	Boolean access(String id, String pw)throws Exception;
+	boolean access(String id, String pw)throws Exception;
 
 	boolean emailcheck(String email)throws Exception;
 
@@ -18,5 +18,5 @@ public interface MemberService {
 
 	boolean idCheck(String id)throws Exception;
 
-
+	boolean EmailCheck(String email, String name) throws Exception;
 }
