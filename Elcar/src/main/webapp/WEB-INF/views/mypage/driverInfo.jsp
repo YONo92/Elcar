@@ -80,8 +80,93 @@
 
 				<hr style="height:100px;"/>
 
-				<div>드라이버 신청서 가져와야 함...</div>
-
+				<!-- 드라이버 신청 내용 -->
+	<div class="container">
+		<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<form id='form' method="post" action="/driver-regist"
+					enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-lg-5">
+							<img id="preview"
+								style="width: 350px; height: 250px; margin-left: 90px; margin-top: 100px;" />
+							<br /> <br />
+							
+						</div>
+						<div class="col-lg-7">
+							<div class="p-5">
+								<div class="text-center">
+									<h1 class="h4 text-gray-900 mb-4">드라이버 등록</h1>
+								</div>
+								<div class="row mb-4">
+									<div class="input-group col-6">
+										<input type="text" class="form-control form-control-user"
+											id="exampleId" name="id" value=${id } style="height: 40px;" readonly>
+									</div>
+									<div class="input-group col-6">
+										<input type="text" class="form-control form-control-user"
+											id="exampleName" name="name"  value=${member.name } style="height: 40px;"   readOnly>
+									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="input-group col-12">
+										<label class="input-group-text" for="inputGroupSelect01" >차종</label>
+										<select class="form-control form-control-user required"
+											id="inputGroupSelect01" name="cartype" style="height: 40px;" required="required" >
+											<option value="$[cartype?]" >차종을 선택하세요</option>
+											<option value="쏘나타">쏘나타</option>
+											<option value="아이오닉5">아이오닉5</option>
+											<option value="그랜저">그랜저</option>
+											<option value="싼타페">싼타페</option>
+											<option value="포터2">포터2</option>
+											<option value="Taycan">Taycan</option>
+											<option value="ModelS">ModelS</option>
+											<option value="Model3">Model3</option>
+											<option value="GV60">GV60</option>
+											<option value="eG80">eG80</option>
+										</select>
+									</div>
+									<div id="err"></div>
+								</div>
+								<div class="row mb-4">
+									<div class="input-group col-12">
+										<label class="input-group-text" for="exampleInputCarnum">차
+											번호</label> <input type="text" class="form-control form-control-user"
+											id="exampleInputCarnum" name="carnum"
+											placeholder="차 번호를 입력하세요" value="$[]car_num"required style="height: 40px;" readonly>
+									</div>
+								</div>
+								<div class="row mb-4">
+									<div class="input-group col-12">
+										<span class="input-group-text" id="inputGroup-sizing-default">면허
+											취득일</span> <input type="date" class="form-control" name="getdate"
+											id="startDate" max="2022-03-31" style="height: 40px;"
+											required>
+									</div>
+								</div>
+								<hr>
+								<div class="d-grid gap-2 col-10 mx-auto text-center">
+									<button type="Submit" id="driverSubmit"
+										class="btn btn-danger col-10 mx-auto" value='Submit'
+										>Register</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<hr>
+				<br>
+				<div class="text-center">
+					<a class="small">※ 면허증 무단 도용 및 위조는 법적처벌을 받을 수 있습니다. ※</a>
+				</div>
+				<div class="text-center">
+					<a class="small">드라이버 등록 후 카쉐어링 서비스를 이용하실 수 있습니다.</a>
+				</div>
+				<br> <br>
+			</div>
+		</div>
+	</div>
+<!-- 드라이버 신청 내용 -->
 	</section>
 	<!--  이용 내역 끝 -->
 </body>

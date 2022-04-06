@@ -60,7 +60,7 @@
 							<li><a href="checkPw"><b>비밀번호 변경</b></a></li>
 							<li><a href="mypageMyinfo"><b>프로필 보기</b></a></li>
 							<li><a href="driverInfo"><b>드라이버 정보</b></a></li>
-							<li><a href="tal"><b>회원 탈퇴</b></a></li>
+							<li><a href="talcheckPw"><b>회원 탈퇴</b></a></li>
 						</ul>
 					</div>
 				</div>
@@ -126,6 +126,7 @@
 			alert(alertMsg);
 		}
 	})
+	
 	
 </script>
 </html>
