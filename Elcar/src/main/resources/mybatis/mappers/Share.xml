@@ -45,7 +45,7 @@
       <![CDATA[
     	select 
     	t.date,t.person,t.start_name,t.goal_name,t.request,
-    	t.start_long,t.start_long,goal_lat,goal_long,t.status,
+    	t.start_lat,t.start_long,t.start_long,goal_lat,goal_long,t.status,
     	m.nickname,m.gender,m.point,m.phone
     	from talge t 
     	inner join member m 
