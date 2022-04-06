@@ -10,6 +10,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	   <mapper resource="mybatis/mappers/Share.xml"/>
 
 	   <mapper resource="mybatis/mappers/Driver.xml"/>
+	   
+	   
 		<mapper resource="mybatis/mappers/mypage.xml"/>
 	</mappers>
 </configuration>

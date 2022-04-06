@@ -329,8 +329,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     }); 
       var status = '출발지 클릭하기';
       function initTmap() {
-        navigator.geolocation.getCurrentPosition(
-          function (pos) {
             navigator.geolocation.getCurrentPosition(function (pos) {
               map = new Tmapv2.Map('map_div', {
                 center: new Tmapv2.LatLng(
@@ -344,9 +342,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 scrollwheel: true,
               });
               map.addListener('click', onClick);
-            });
-          },
-          function (err) {
+            }, function (err) {
             map = new Tmapv2.Map('map_div', {
               center: new Tmapv2.LatLng(37.570028, 126.986072),
               width: '100%',
@@ -357,7 +353,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             });
             map.addListener('click', onClick);
           }
-        );
+            );
+         
         // 1. 지도 띄우기
 
         //2. POI 통합 검색 API 요청

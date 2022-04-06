@@ -54,7 +54,7 @@
         <div class="Forgot2">
         <!-- 카아로버튼 -->
             <a id="kakao-login-btn" href="javascript:kakaoLogin();" >
-            <img src="//k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"alt="카카오 로그인 버튼" style="padding-bottom: 15px;"/>
+            <img src="resources/img/kakao_id_login_bt.png"alt="카카오 로그인 버튼" style="padding-bottom: 15px; width: 208px; height: 60px;"/>
             </a>
             <!--  <a href="" id="naverLogin">
     	<img src="resources/img/btnG_완성형.png "alt="네이버 로그인 버튼" style="width: 183px !important; height: 45px !important;"/> -->

@@ -11,7 +11,7 @@
       ]]>
 	</select> 
 	
-		<select id="queryMember" resultType="Member" parameterType="String">
+	<select id="queryMember" resultType="Member" parameterType="String">
       <![CDATA[
          select * from member where id = #{id}
       ]]>
@@ -36,6 +36,7 @@
          select * from member where nickname=#{nickname}
       ]]>
 	</select>
+	
 	
 	
 	

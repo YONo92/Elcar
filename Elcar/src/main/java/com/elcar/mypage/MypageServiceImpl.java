@@ -1,5 +1,8 @@
 package com.elcar.mypage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +27,25 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public void memberPasswordModify(String member_id, String password) throws Exception {
-		mypageDAO.updatePw(member_id, password);
+	public void memberPasswordModify(String id, String password) throws Exception {
+		Map<String, String> mapParam = new HashMap<String, String>();
+		mapParam.put("id", id);
+		mapParam.put("pw", password);
+		mypageDAO.updatePw(mapParam);
 	}
 	
 	@Override
-	public Member deleteMember(String id) throws Exception {
-		Member member = mypageDAO.deleteId(id);
+	public void deleteMember(String id) throws Exception {
+		mypageDAO.deleteId(id);
+	}
+	
+	@Override
+	public Member pyeonggaPoint(String id) throws Exception {
+		Member member =mypageDAO.queryPoint(id);
 		return member;
 	}
 
+	
 }
+
+	

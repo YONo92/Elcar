@@ -43,7 +43,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public Boolean access(String id, String pw) throws Exception {
+	public boolean access(String id, String pw) throws Exception {
 		Member mem = memdao.queryMember(id);
 		if(!mem.getId().equals(null)){
 			try {
