@@ -47,14 +47,21 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     <form id="locationForm" action="sharelist" method="post">
                       <input type="hidden" id="lat" name="lat" />
                       <input type="hidden" id="lng" name="lng" />
-                      <a onclick="shareList()"> 카쉐어링 </a>
+                      <a onclick="shareList()" style="cursor: pointer;"> 카쉐어링 </a>
                     </form>
                   </li>
                   <li><a href="./mypage">Mypage</a></li>
                 </ul>
               </nav>
               <div class="header__nav__widget">
-                <a href="../loginform" class="primary-btn">Login</a>
+              <c:choose>
+				<c:when test="${empty id}">
+					<a href="../loginform" class="primary-btn">Login</a> 
+				</c:when>
+				<c:otherwise>
+	                <a href="../logout" class="primary-btn">Logout</a>
+				</c:otherwise>
+			 </c:choose>
               </div>
             </div>
           </div>

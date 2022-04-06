@@ -33,6 +33,7 @@ public class MainController {
 //	public String join() {
 //		return "main/join";
 //	}
+
 	@GetMapping("/about")
 	public String about() {
 		session.invalidate();
@@ -43,17 +44,23 @@ public class MainController {
 	public String charger() {
 		return "charger/charger";
 	}
-	
 
-	  @GetMapping("/driver-regist") public String driverregist(Model model) {
-	  String id = (String) session.getAttribute("id"); try { Member mem =
-	  memserv.selectMember_kakao(id); if(id != null) { model.addAttribute("name",
-	  mem.getName()); return "about/driver-regist"; } } catch (Exception e) {
-	  e.printStackTrace(); } return "main/main";
-	  
-	  }
-	 
-	
+	@GetMapping("/driver-regist")
+	public String driverregist(Model model) {
+		String id = (String) session.getAttribute("id");
+		try {
+			Member mem = memserv.selectMember_kakao(id);
+			if (id != null) {
+				model.addAttribute("name", mem.getName());
+				return "about/driver-regist";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "main/main";
+
+	}
+
 	@GetMapping("/commu")
 	public String commu() {
 		return "about/commu";
@@ -69,7 +76,6 @@ public class MainController {
 //		return "share/share";
 //	}
 
-	
 //	@GetMapping("/mypage")
 //	public String mypage() {
 //		return "mypage/mypage";

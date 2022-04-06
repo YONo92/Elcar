@@ -17,7 +17,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!-- <p>아니 왜 못가져오냐고 염병</p> -->
     <button type="button" onclick="location.href='share'">탈래 신청</button>
-
+	
     <script>
       //   function getLocation() {
       //     // GPS를 지원하면

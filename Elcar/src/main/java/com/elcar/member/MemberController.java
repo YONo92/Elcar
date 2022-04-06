@@ -1,6 +1,6 @@
 package com.elcar.member; 
 
-import java.net.URLEncoder; 
+import java.net.URLEncoder;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -140,8 +140,14 @@ public class MemberController {
 	}
 	
 	//네아로구현부분
-	@GetMapping(value="join_naver1")
+	@GetMapping(value="/join_naver1")
 	public String joinnaver1(){
 		return "main/loginnaver";
+	}
+	
+	
+	@GetMapping(value="findpw")
+	public String findpw() {
+		return "main/findpw";
 	}
 }
