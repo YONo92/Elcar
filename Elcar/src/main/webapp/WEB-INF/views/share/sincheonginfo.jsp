@@ -274,8 +274,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
 
           <form action="/sincheng" method="post">
-          <input type="text" name="num" value="${num }">
-          <input type="text" name="sincheng_id" value="${sincheng.id }">
+          <input type="hidden" name="num" value="${num }">
+          <input type="hidden" name="sincheng_id" value="${sincheng.id }">
           <input
             type="submit"
             value="태울래"
