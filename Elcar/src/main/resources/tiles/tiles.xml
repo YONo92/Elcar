@@ -34,6 +34,11 @@
 			value="/WEB-INF/views/share/{1}.jsp" />
 	</definition>
 
+	<definition name="share/sincheonginfo/*" extends="baseLayout">
+		<put-attribute name="body"
+			value="/WEB-INF/views/share/sincheonginfo/{1}.jsp" />
+	</definition>
+ 	
 	<definition name="mypage/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/mypage/{1}.jsp" />

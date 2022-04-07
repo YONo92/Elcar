@@ -88,6 +88,21 @@
 				}
 			});
 			
+			
+			// 카테고리로 은행을 검색합니다
+			ps.categorySearch('OL7', placesSearchCB, {useMapBounds:true}); 
+
+			// 키워드 검색 완료 시 호출되는 콜백함수 입니다
+			function placesSearchCB (data, status, pagination) {
+			    if (status === kakao.maps.services.Status.OK) {
+			        for (var i=0; i<data.length; i++) {
+			            displayMarker(data[i]);    
+			        }       
+			    }
+			}
+
+			
+			
 			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 			if (navigator.geolocation) {
 				// GeoLocation을 이용해서 접속 위치를 얻어옵니다

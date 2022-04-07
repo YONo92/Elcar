@@ -29,24 +29,28 @@
 	<!-- <form action="sharelist" method="get"> -->
 	<input type="text" id="lat" name="lat" value="" style="display: none" />
 	<input type="text" id="lng" name="lng" value="" style="display: none" />
-
 	<section class="blog spad">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
+					<button class="badge badge-success rounded-pill d-inline"
+						type="button" onclick="location.href='share'">탈래 신청</button>
 					<c:forEach var="share" items="${shareList}">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<div class="blog__item ">
 									<div class="blog__item__pic set-bg"
 										data-setbg="resources/img/breadcrumb-bg.jpg">
-										<ul>
-											<li>${share.date}</li>
-										</ul>
+										<a href="shareList/${share.num}">
+											<ul>
+												<li>${share.date}</li>
+												<li>${share.num}</li>
+											</ul>
+										</a>
 									</div>
 									<div class="blog__item__text ">
 										<h5>
-											<a href="#" >출발지: ${share.start_name}</a>
+											<a href="#">출발지: ${share.start_name}</a>
 										</h5>
 										<h5>
 											<a href="#">도착지: ${share.goal_name}</a>
@@ -58,16 +62,18 @@
 							</div>
 						</div>
 					</c:forEach>
+					<div id="disp"></div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<div class="container">
+	<%-- <div class="container">
 		<table class="table">
 			<!--<table class="table table-striped table-hover">-->
 			<thead>
 				<tr>
+					<th>번호</th>
 					<th>작성자</th>
 					<th>출발지</th>
 					<th>도착지</th>
@@ -78,8 +84,9 @@
 			<tbody>
 				<c:forEach var="share" items="${shareList}">
 					<tr>
+						<td class="scrolling">${share.num}</td>
 						<td>${share.sincheng_id}</td>
-						<td class="fw-bold mb-1">${share.start_name}</td>
+						<td class="fw-bold mb-1 ">${share.start_name}</td>
 						<td class="fw-bold mb-1">${share.goal_name}</td>
 						<td><span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span></td>
 						<td>${share.date}</td>
@@ -87,25 +94,76 @@
 				</c:forEach>
 			</tbody>
 		</table>
-	</div>
-
-
-
-
-	<button class="badge badge-success rounded-pill d-inline" type="button"
+		<button class="badge badge-success rounded-pill d-inline" type="button"
 		onclick="location.href='share'">탈래 신청</button>
+	</div>
+--%>
 
+
+
+
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!-- 무한스크롤링 기능구현  -->
 	<script>
-    let currentPage = 1;
-    let isLoading = false;
-		    $(".board_body").scroll(function () {
-        if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-            return;
-        }
-        isLoading = true;
-        $(".loading").show();
-        setTimeout(loadNewPage, 1400);
-    });
+		var liststartsize = ${listsize};
+		var lat = ${lat};
+		var lng = ${lng};
+		var lastScrollTop  = 0 ;
+		var easeEffect = 'easeInQuint';
+
+
+		$(window).scroll(function (){
+			var currentScrollTop = $(window).scrollTop();
+
+
+			if(currentScrollTop - lastScrollTop >0 ) {
+				/* console.log("다운 스크롤") */
+			}
+
+			if($(window).scrollTop() >= ($(document).height() -$(window).height())) {
+				console.log(liststartsize);
+				console.log($(window).scrollTop());
+				var lastshare = $(".scrolling:last").attr("items");
+
+				$.ajax({
+					type: "post",
+					url: "http://localhost:8080/sharelist_more",
+					dataType: "json",
+					data: {
+						"liststartsize": liststartsize,
+						"lat": lat,
+						"lng": lng,
+					},
+					success: function (response) {
+						var html =""
+						$.each(response,function(key,value){
+							html += '<div class="row">'
+							html += '<div class="col-lg-12 col-md-12 col-sm-12">'
+							html += '<div class="blog__item">'
+							html += '<div class="blog__item__pic set-bg">'
+							html += '<div class="resources/img/breadcrumb-bg.jpg">'
+							html += '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>'
+							html += '<div class="blog__item__text">'+'<h5>'+value.start_name+'</h5>'+'<h5>'+value.goal_name+'</h5>'
+								// 자문을 구하도록하자 
+							html += '<span class="badge badge-success rounded-pill d-inline">' +  '{'+value.status  == 0 ? "매칭전" : "매칭" +'}'+'</span>'
+							html += '<p>'+'요구사항:'+ value.request+'</p>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+						});
+						$('#disp').append(html)
+						console.log(response);
+						if (response != null) {
+							liststartsize += 10;
+						}
+						
+					}
+				}); 
+			}
+		})
 	</script>
 </body>
 </html>

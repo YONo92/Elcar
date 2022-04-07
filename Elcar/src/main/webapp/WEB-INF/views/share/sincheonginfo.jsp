@@ -106,7 +106,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </div>
     <!-- Breadcrumb Begin -->
-    <form action="sincheonginfo" method="get">
+    <form action="sincheonginfo/{num}" method="get">
     <section>
       <div class="frame">
         <div class="top_title" style="margin-top: 30px"><h1>날 태워</h1></div>
@@ -270,7 +270,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >${sincheong.request}</textarea
           ><br /><br />
         </form>
-        
+  
 
 
           <form action="/sincheong" method="post">
