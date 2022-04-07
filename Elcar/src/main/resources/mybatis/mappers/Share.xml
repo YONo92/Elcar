@@ -46,7 +46,7 @@
     	select 
     	t.date,t.person,t.start_name,t.goal_name,t.request,
     	t.start_lat,t.start_long,t.start_long,goal_lat,goal_long,t.status,
-    	m.nickname,m.gender,m.point,m.phone
+    	m.nickname,m.gender,m.point,m.phone,m.id
     	from talge t 
     	inner join member m 
     	where t.num=#{num} 
@@ -60,10 +60,10 @@
       ]]>
 	</select>
 	
-	<insert id="insertSincheong" parameterType="String">
+	<insert id="insertSincheong" parameterType="Share">
  	<![CDATA[
-		insert into sincheonglist(talge_num,sincheng_id,surak_id) 
-		values(#{num},#{sincheng_id},#{id});
+		insert into sincheonglist(talge_num,sincheong_id,surak_id) 
+		values(#{num},#{sincheng_id},#{surak_id});
 	]]>
 	</insert>
 </mapper>

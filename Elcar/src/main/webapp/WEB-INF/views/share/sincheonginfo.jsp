@@ -89,7 +89,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <div
       class="breadcrumb-option set-bg"
-      data-setbg="resources/img/breadcrumb-bg.jpg"
+      data-setbg="../resources/img/breadcrumb-bg.jpg"
     >
       <div class="container">
         <div class="row">
@@ -274,9 +274,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
 
           <form action="/sincheong" method="post">
-          <input type="text" name="num" value="" style="display: none;">
-          <input type="text" name="sincheong_id" style="display: none;">
-          <input type="text" name="surak_id" style="display: none;">
+          <input type="text" name="num" value="${num }">
+          <input type="text" name="sincheng_id" value="${sincheong.id }">
           <input
             type="submit"
             value="태울래"

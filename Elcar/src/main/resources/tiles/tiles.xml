@@ -18,32 +18,6 @@
 			value="/WEB-INF/views/main.jsp" />
 	</definition>
 
-
-	<definition name="about/*" extends="baseLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/about/{1}.jsp" />
-	</definition>
-
-	<definition name="charger/*" extends="baseLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/charger/{1}.jsp" />
-	</definition>
-
-	<definition name="share/*" extends="baseLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/share/{1}.jsp" />
-	</definition>
-
-	<definition name="share/sincheonginfo/*" extends="baseLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/share/sincheonginfo/{1}.jsp" />
-	</definition>
- 	
-	<definition name="mypage/*" extends="baseLayout">
-		<put-attribute name="body"
-			value="/WEB-INF/views/mypage/{1}.jsp" />
-	</definition>
-
 	<definition name="*/*" extends="baseLayout">
 		<put-attribute name="body"
 			value="/WEB-INF/views/{1}/{2}.jsp" />

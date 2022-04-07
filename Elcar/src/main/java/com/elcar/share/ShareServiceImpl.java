@@ -63,8 +63,8 @@ public class ShareServiceImpl implements ShareService {
 	}
 
 	@Override
-	public void insertSincheong(String id) throws Exception {
-		sharedao.insertSincheong(id);
+	public void insertSincheong(Share share) throws Exception {
+		sharedao.insertSincheong(share);
 		
 	}
 
