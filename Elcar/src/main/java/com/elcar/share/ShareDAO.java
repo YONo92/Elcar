@@ -25,5 +25,5 @@ public interface ShareDAO {
 
 	public Share selectShare(int num)throws Exception;
 
-	public void insertSincheong(Share share)throws Exception;
+	public void insertSincheng(Share share)throws Exception;
 }

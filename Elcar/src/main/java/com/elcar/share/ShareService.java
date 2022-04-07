@@ -20,7 +20,7 @@ public interface ShareService {
 
 	public HashMap<String, Object> sincheongInfo(int num) throws Exception;
 
-	public void insertSincheong(Share share) throws Exception;
+	public void insertSincheng(Share share) throws Exception;
 
 	public Share selectShare(int num)throws Exception;
 }

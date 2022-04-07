@@ -117,7 +117,7 @@ public class ShareController {
 		return mav;
 	}
 
-	@GetMapping(value = "/sincheonginfo/{num}")
+	@GetMapping(value = "/sinchenginfo/{num}")
 	public ModelAndView sincheongInfo(@PathVariable("num") int num) {
 		ModelAndView mav = new ModelAndView("share/sincheonginfo");
 
@@ -127,25 +127,25 @@ public class ShareController {
 			if (id == null) {
 				mav.setViewName("redirect:/loginform");
 			} else {
-				HashMap<String, Object> sincheong = shareserv.sincheongInfo(num);
+				HashMap<String, Object> sincheng = shareserv.sincheongInfo(num);
 
-				String dateSet = sincheong.get("date").toString().substring(0, 10);
-				String datetime = sincheong.get("date").toString().substring(11, 16);
+				String dateSet = sincheng.get("date").toString().substring(0, 10);
+				String datetime = sincheng.get("date").toString().substring(11, 16);
 				String date = dateSet + " " + datetime;
 				String gender;
 				String status;
-				if ((Integer) sincheong.get("gender") == 0) {
+				if ((Integer) sincheng.get("gender") == 0) {
 					gender = "남자";
 				} else {
 					gender = "여자";
 				}
-				if ((Integer) sincheong.get("status") == 0) {
+				if ((Integer) sincheng.get("status") == 0) {
 					status = "매칭중";
 				} else {
 					status = "매칭!";
 				}
 				mav.addObject("num", num);
-				mav.addObject("sincheong", sincheong);
+				mav.addObject("sincheng", sincheng);
 				mav.addObject("date", date);
 				mav.addObject("status", status);
 				mav.addObject("gender", gender);
@@ -156,8 +156,8 @@ public class ShareController {
 		return mav;
 	}
 
-	@PostMapping(value = "/sincheong")
-	public ModelAndView sincheong(@ModelAttribute Share share) {
+	@PostMapping(value = "/sincheng")
+	public ModelAndView sincheng(@ModelAttribute Share share) {
 		ModelAndView mav = new ModelAndView("mypage/mypage");
 		System.out.println("-------------------");
 		System.out.println(share.getSincheng_id());
@@ -177,7 +177,7 @@ public class ShareController {
 			System.out.println(share.getSincheng_id());
 			System.out.println(id);
 			share.setSurak_id(id);
-			shareserv.insertSincheong(share);
+			shareserv.insertSincheng(share);
 
 		} catch (Exception e) {
 			e.printStackTrace();

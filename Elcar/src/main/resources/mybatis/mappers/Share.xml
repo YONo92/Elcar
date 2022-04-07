@@ -60,9 +60,9 @@
       ]]>
 	</select>
 	
-	<insert id="insertSincheong" parameterType="Share">
+	<insert id="insertSincheng" parameterType="Share">
  	<![CDATA[
-		insert into sincheonglist(talge_num,sincheong_id,surak_id) 
+		insert into sincheonglist(talge_num,sincheng_id,surak_id) 
 		values(#{num},#{sincheng_id},#{surak_id});
 	]]>
 	</insert>
