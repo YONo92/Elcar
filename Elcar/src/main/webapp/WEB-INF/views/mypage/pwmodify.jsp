@@ -90,6 +90,7 @@
 	if (name == "modify") {
 		location.href = "main/main";
 	}
+	
 </script>
 
 </html>

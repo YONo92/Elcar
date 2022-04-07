@@ -39,10 +39,17 @@
 	]]>
 	</delete>
 	
+	<!-- 드라이버 정보 -->
+	<select id="queryDriver" resultType="Driver" parameterType="String">
+		<![CDATA[ 
+		select * from driver where id = #{id}
+	]]>
+	</select>
+	
 	<!-- 매너 점수 조회 -->
 	<select id="queryPoint" resultType="Member" parameterType="String">
       <![CDATA[
-         select point from member where member_id = #{member_id}
+         select point from member where id = #{member_id}
       ]]>
 	</select>
 	
@@ -50,9 +57,9 @@
 	
     <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->
 	<!-- 매너 점수 변동 -->
-	<update id="updatePoint" parameterType="Map">
+	<update id="updatePoint" parameterType="Member">
 		<![CDATA[ 
-		update member set member_point = #{member_point} where sincheng_id=#{sincheng_id} and surak_id=#{surak_id}
+		update member set point = #{point} where sincheng_id=#{sincheng_id} and surak_id=#{surak_id}
 	]]>
 	</update>
 	

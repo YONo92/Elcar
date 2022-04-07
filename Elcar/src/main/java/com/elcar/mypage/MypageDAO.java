@@ -5,6 +5,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import com.elcar.dto.Driver;
 import com.elcar.dto.Member;
 
 @Mapper
@@ -16,4 +17,5 @@ public interface MypageDAO {
 	public void deleteId(String member_id) throws Exception;
 	public  Member queryPoint(String member_id) throws Exception;
 	public void updatePoint(Member member)throws Exception;
+	public Driver queryDriver(String id) throws Exception;
 }
