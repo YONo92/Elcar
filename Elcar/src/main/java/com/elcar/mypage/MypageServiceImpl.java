@@ -1,12 +1,14 @@
 package com.elcar.mypage;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.History;
 import com.elcar.dto.Member;
 
 @Service
@@ -47,10 +49,17 @@ public class MypageServiceImpl implements MypageService {
 	
 	//매너 점수 현재 포인트 조회
 	@Override
-	public Member pyeonggaPoint(String id) throws Exception {
-		Member member =mypageDAO.queryPoint(id);
-		return member;
+	public List<History> mannerDriverPoint(String id) throws Exception {
+		List<History> historyList =mypageDAO.queryDriverPoint(id);
+		return historyList;
 	}
+	
+	//매너 점수 현재 포인트 조회
+		@Override
+		public List<History> mannerDDubukPoint(String id) throws Exception {
+			List<History> historyList =mypageDAO.queryDDubukPoint(id);
+			return historyList;
+		}
 
 	//드라이버 정보 가져오기
 		@Override

@@ -63,7 +63,7 @@
 
 				<div align="left">
 
-
+				<div class="container col-15" align="right">
 					<div class="row">
 						<div class='col-3' style="margin:5px; height:100px;">
 							<select style="display: none;" >
@@ -77,8 +77,10 @@
 
 
 
+    
 					<!-- 태울래 거절  -->
 					<div class="testimonial__item__author" >
+					<c:forEach var="history" items="${historyDrivingList }">
 						<div class="row">
 							<div class='col-lg-1'>
 								
@@ -86,53 +88,57 @@
 											</i></div> -->
 							</div>
 							<div class='col-lg-1'>
-								22.03.26
-								 16:30
+								${history.date}
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${member.name }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.taker_id }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.sinchengId }<span> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.giver_id }<span> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-3'>
 							<span style="font-size: 1.2em; color: black;">
 								<b >거절하셨습니다.</b>
 							</span>
-							</div>
-		
+							</div><br><br><br><br><br>
+							
 							<div class='col-lg-3'>
 								
 
 						</div></div>
+						</c:forEach>
 					</div>	
+
 					<hr>
 					<!-- 태울래 거절 끝/// -->
 					
 					
-					
-					
+								
 					<!-- 태울래 이용 완  -->
 					<div class="testimonial__item__author">
+					<c:forEach var="history" items="${historyDrivingList }">
 						<div class="row">
 							<div class='col-lg-1'>
-								<button>신고</button>
+								<span id="alerts" style="margin: 5px;">
+						<span id="alert" class="alert" style="border:none;background-color:#d3d3d3;cursor:pointer;width: 55px;padding:0px"><a href="singo">신고</a></span>
+						<input type="hidden" id="mwarning" name="mwarning" value=''>
+					</span>
 									<!--	<i class="fa-solid fa-circle-user">
 											</i></div> -->
 							</div>
-							<div class='col-lg-1 txtBox10'>
-								22.03.26
+							<div class='col-lg-1 '>
+								${history.date}
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${member.name }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.taker_id  }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.sinchengId }<span	> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.giver_id }<span	> <b style="font-size: 1.2em; color: black;">님을</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-3'>
@@ -150,11 +156,14 @@
 								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.0em; color: black;">
 									<i class="fas fa-car"> 도착지</i>
 								</botton>
-
+				<br><br><br><br><br>
 						</div></div>
+						</c:forEach>
 					</div>	
 					<hr style=" height:150px;">
+
 					<!-- 태울래 이용 완 끝/// -->
+					</div>
 					
 					
 					
@@ -203,23 +212,26 @@
 					
 					<!-- 태울래 이용 완  -->
 					<div class="testimonial__item__author">
+		<c:forEach var="history" items="${historyDDubukList }">
 						<div class="row">
 							<div class='col-lg-1'>
-								<button>신고</button>
+									<span id="alerts" style="margin: 5px;">
+						<span id="alert" class="alert" style="border:none;background-color:#d3d3d3;cursor:pointer;width: 55px;padding:0px"><a href="singo">신고</a></span>
+						<input type="hidden" id="mwarning" name="mwarning" value=''>
+					</span>
 									<!--	<i class="fa-solid fa-circle-user">
 											</i></div> -->
 							</div>
 							<div class='col-lg-1'>
-								22.03.26
-								 16:30
+								${history.date }
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${member.name }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.taker_id }<span> <b style="font-size: 1.2em; color: black;">님이</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.surakId}<span> <b style="font-size: 1.2em; color: black;">님에게</b></span> </h5>
+								<h5 style="font-size: 1.4em; color: green" class="nanum"> ${history.giver_id }<span> <b style="font-size: 1.2em; color: black;">님에게</b></span> </h5>
 							</div>
 							
 							<div class='col-lg-3'>
@@ -244,7 +256,8 @@
 								<botton type="submit" class="col-3 nanum txtBox00" style="font-size: 1.0em; color: black;">
 									 평가하기
 								</botton>
-							</div>
+							</div><br><br><br><br><br>
+							</c:forEach>
 						</div>
 						
 					</div>	
@@ -273,5 +286,10 @@
 	<div class="col-1 nanum txtBox10" ><a> 평가 완료</a></div>
 	</section>
 	<!--  이용 내역 끝 -->
+	
+	<span id="alerts" style="margin: 5px;">
+						<span id="alert" class="alert" style="border:none;background-color:#d3d3d3;cursor:pointer;width: 55px;padding:0px">신고</span>
+						<input type="hidden" id="mwarning" name="mwarning" value=''>
+					</span>
 </body>
 </html>

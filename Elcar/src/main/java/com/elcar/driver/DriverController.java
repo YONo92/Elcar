@@ -34,7 +34,7 @@ public class DriverController {
 	public String driverregist(@ModelAttribute Driver driver, Model model, @RequestParam("file") MultipartFile file) {
 		try {
 			model.addAttribute("id", session.getAttribute("id"));
-			String path = servletContext.getRealPath("/upload/");
+			String path = servletContext.getRealPath("../resources/upload");
 			File destFile = new File(path + file.getOriginalFilename());
 			driver.setImg(file.getOriginalFilename());
 			file.transferTo(destFile);

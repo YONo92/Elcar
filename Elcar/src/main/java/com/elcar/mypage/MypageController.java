@@ -1,5 +1,7 @@
 package com.elcar.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.History;
 import com.elcar.dto.Member;
 
 @Controller
@@ -27,7 +30,12 @@ public class MypageController {
 
 	@Autowired
 	HttpSession session;
-
+	
+	
+//////////////////// 산하
+//////////////////// 6조 화이팅
+	
+	
 	//(마이 페이지)
 	@GetMapping("/mypage")
 	public ModelAndView mypage() {
@@ -180,18 +188,12 @@ public class MypageController {
 			Member member = mypageService.mypageInfo(id);
 			
 			mav.addObject("id", member.getId());
-			
-			
 			// 신청 중인지=..
 			Driver driver = mypageService.selectDriverInfo(id);
 			if (driver != null) {
-				mav.addObject("status", driver.getStatus());
+				mav.addObject("driver", driver);
 			}
-			
-			
-			// 신청 중이라면 인증 대기중, 거절 , 인증되었는지 (status)  0 : 대기중 1 : 거절 2 : 승인
-			// 'driverForm'
-			
+			// 신청 중이라면 인증 대기중, 거절 , 인증되었는지 (status)  0 : 대기중 1 : 거절 2 : 승인		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -199,36 +201,51 @@ public class MypageController {
 	}
 	
 	
-
+	
+	
+	// 매너포인트
+		@GetMapping(value = "mannerPoint")
+		public ModelAndView mannerPointForm() {
+			ModelAndView mav = new ModelAndView("mypage/mannerPoint");
+			String taker_id = (String) session.getAttribute("id");
+			try {
+				Member member = mypageService.mypageInfo(taker_id);
+				mav.addObject("member", member);
+				
+				List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
+				mav.addObject("historyDrivingList", historyDrivingList);
+				
+				List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
+				mav.addObject("historyDDubukList", historyDDubukList);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return mav;
+		}
+		
+		
+		
 	// 이용내역
 	@GetMapping(value = "history")
 	public ModelAndView historyForm() {
 		ModelAndView mav = new ModelAndView("mypage/history");
-		String member_id = (String) session.getAttribute("id");
+		String taker_id = (String) session.getAttribute("id");
 		try {
-			Member member = mypageService.mypageInfo(member_id);
+			Member member = mypageService.mypageInfo(taker_id);
 			mav.addObject("member", member);
+			List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
+			mav.addObject("historyDrivingList", historyDrivingList);
+			
+			List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
+			mav.addObject("historyDDubukList", historyDDubukList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
 	
-	// 매너포인트
-	@GetMapping(value = "mannerPoint")
-	public ModelAndView mannerPointForm() {
-		ModelAndView mav = new ModelAndView("mypage/mannerPoint");
-		String member_id = (String) session.getAttribute("id");
-		try {
-			Member member = mypageService.mypageInfo(member_id);
-			mav.addObject("member", member);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mav;
-	}
 
-	
 	// 프로필 보기 화면 이동
 	@GetMapping(value = "mypageMyinfo")
 	public ModelAndView mypageMyinfoForm() {
@@ -247,7 +264,7 @@ public class MypageController {
 	// 이용평가
 	@GetMapping(value = "pyeongga")
 	public ModelAndView pyeonggaForm() {
-		ModelAndView mav = new ModelAndView("mypage/pyeongga");
+		ModelAndView mav = new ModelAndView("mypage/history/pyeongga");
 		return mav;
 	}
 
