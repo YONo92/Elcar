@@ -66,4 +66,11 @@
 		values(#{num},#{sincheng_id},#{surak_id});
 	]]>
 	</insert>
+	
+	<select id="talgelist" resultType="Share" parameterType="String">
+	  <![CDATA[
+       select * from sincheonglist join member on surak_id = member.id join driver on surak_id = driver.id where sincheng_id = #{id}
+      ]]>
+	</select>
+	
 </mapper>

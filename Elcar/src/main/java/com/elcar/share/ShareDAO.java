@@ -26,4 +26,6 @@ public interface ShareDAO {
 	public Share selectShare(int num)throws Exception;
 
 	public void insertSincheng(Share share)throws Exception;
+	
+	public List<Share> talgelist(String id)throws Exception;
 }

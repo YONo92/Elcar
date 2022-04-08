@@ -2,6 +2,7 @@ package com.elcar.dto;
 
 public class Share {
 	int num;
+	int talge_num;
 	String sincheng_id;
 	String surak_id;
 	String date;
@@ -14,18 +15,20 @@ public class Share {
 	int status;
 	String start_name;
 	String goal_name;
-	
-	
+	String nickname;
+	int gender;
+	String cartype;
 	
 	public Share() {
 		
 	}
 
-	public Share(int num, String sincheng_id, String surak_id, String date, int person, String request,
+	public Share(int num, int talge_num, String sincheng_id, String surak_id, String date, int person, String request,
 			double start_long, double start_lat, double goal_long, double goal_lat, int status, String start_name,
-			String goal_name) {
+			String goal_name, String nickname, int gender, String cartype) {
 		super();
 		this.num = num;
+		this.talge_num = talge_num;
 		this.sincheng_id = sincheng_id;
 		this.surak_id = surak_id;
 		this.date = date;
@@ -38,6 +41,9 @@ public class Share {
 		this.status = status;
 		this.start_name = start_name;
 		this.goal_name = goal_name;
+		this.nickname = nickname;
+		this.gender = gender;
+		this.cartype = cartype;
 	}
 
 	public int getNum() {
@@ -46,6 +52,14 @@ public class Share {
 
 	public void setNum(int num) {
 		this.num = num;
+	}
+
+	public int getTalge_num() {
+		return talge_num;
+	}
+
+	public void setTalge_num(int talge_num) {
+		this.talge_num = talge_num;
 	}
 
 	public String getSincheng_id() {
@@ -142,6 +156,30 @@ public class Share {
 
 	public void setGoal_name(String goal_name) {
 		this.goal_name = goal_name;
+	}
+
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public String getCartype() {
+		return cartype;
+	}
+
+	public void setCartype(String cartype) {
+		this.cartype = cartype;
 	}
 
 	

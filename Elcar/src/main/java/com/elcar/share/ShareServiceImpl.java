@@ -74,9 +74,9 @@ public class ShareServiceImpl implements ShareService {
 		return sharedao.selectShare(num);
 	}
 
-
-
-
-
+	@Override
+	public List<Share> talgelist(String id) throws Exception {
+		return sharedao.talgelist(id);
+	}
 
 }

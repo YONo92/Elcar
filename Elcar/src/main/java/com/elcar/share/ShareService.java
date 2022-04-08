@@ -23,4 +23,7 @@ public interface ShareService {
 	public void insertSincheng(Share share) throws Exception;
 
 	public Share selectShare(int num)throws Exception;
+	
+	public List<Share> talgelist(String id)throws Exception;
+
 }

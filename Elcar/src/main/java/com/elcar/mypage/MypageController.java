@@ -1,5 +1,7 @@
 package com.elcar.mypage;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Member;
+import com.elcar.dto.Share;
+import com.elcar.share.ShareService;
 
 @Controller
 public class MypageController {
@@ -23,6 +27,9 @@ public class MypageController {
 
 	@Autowired
 	MypageService mypageService;
+	
+	@Autowired
+	ShareService shareserv;
 
 	@Autowired
 	HttpSession session;
@@ -244,6 +251,14 @@ public class MypageController {
 	@GetMapping(value = "talgaeSincheng")
 	public ModelAndView talgaeSinchengForm() {
 		ModelAndView mav = new ModelAndView("mypage/talgaeSincheng");
+		String id = (String) session.getAttribute("id");
+		try {
+			List<Share> talgeList = shareserv.talgelist(id);
+			mav.addObject("talgeList",talgeList);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 
