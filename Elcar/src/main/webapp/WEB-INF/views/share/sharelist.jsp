@@ -7,6 +7,11 @@
 <meta charset="EUC-KR" />
 <title>Insert title here</title>
 </head>
+<link
+		href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+		rel="stylesheet">
+	
+
 <body>
 	<!-- 드라이버 등록 상단 이미지 -->
 	<div class="breadcrumb-option set-bg"
@@ -32,15 +37,14 @@
 	<section class="blog spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-12"  id="disp">
 					<button class="badge badge-success rounded-pill d-inline"
 						type="button" onclick="location.href='share'">탈래 신청</button>
 					<c:forEach var="share" items="${shareList}">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<div class="blog__item ">
-									<div class="blog__item__pic set-bg"
-										data-setbg="resources/img/breadcrumb-bg.jpg">
+									<div class="blog__item__pic set-bg" data-setbg="resources/img/breadcrumb-bg.jpg">
 										<a href="shareList/${share.num}">
 											<ul>
 												<li>${share.date}</li>
@@ -62,42 +66,43 @@
 							</div>
 						</div>
 					</c:forEach>
-					<div id="disp"></div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> 
 
-	<%-- <div class="container">
+<%-- 	<div class="container">
 		<table class="table">
 			<!--<table class="table table-striped table-hover">-->
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>작성자</th>
-					<th>출발지</th>
-					<th>도착지</th>
-					<th>상태</th>
-					<th>작성일</th>
+					<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
+					<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">작성자</th>
+					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">출발지</th>
+					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">도착지</th>
+					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">상태</th>
+					<th class="text-secondary opacity-7">작성일</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach var="share" items="${shareList}">
 					<tr>
 						<td class="scrolling">${share.num}</td>
-						<td>${share.sincheng_id}</td>
+						<td class="text-xs font-weight-bold mb-0">${share.sincheng_id}</td>
 						<td class="fw-bold mb-1 ">${share.start_name}</td>
 						<td class="fw-bold mb-1">${share.goal_name}</td>
-						<td><span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span></td>
-						<td>${share.date}</td>
+						<td class="text-xs font-weight-bold mb-0"><span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span></td>
+						<td class="text-xs font-weight-bold mb-0">${share.date}</td>
 					</tr>
 				</c:forEach>
+
 			</tbody>
 		</table>
-		<button class="badge badge-success rounded-pill d-inline" type="button"
-		onclick="location.href='share'">탈래 신청</button>
-	</div>
---%>
+		<div id="disp"></div>
+		<button class="badge badge-success rounded-pill d-inline"
+			type="button" onclick="location.href='share'">탈래 신청</button>
+	</div> --%>
+
 
 
 
@@ -137,19 +142,21 @@
 					success: function (response) {
 						var html =""
 						$.each(response,function(key,value){
-							html += '<div class="row">'
-							html += '<div class="col-lg-12 col-md-12 col-sm-12">'
-							html += '<div class="blog__item">'
-							html += '<div class="blog__item__pic set-bg">'
-							html += '<div class="resources/img/breadcrumb-bg.jpg">'
-							html += '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>'
-							html += '<div class="blog__item__text">'+'<h5>'+value.start_name+'</h5>'+'<h5>'+value.goal_name+'</h5>'
-								// 자문을 구하도록하자 
-							html += '<span class="badge badge-success rounded-pill d-inline">' +  '{'+value.status  == 0 ? "매칭전" : "매칭" +'}'+'</span>'
-							html += '<p>'+'요구사항:'+ value.request+'</p>'
-							html += '</div>'
-							html += '</div>'
-							html += '</div>'
+							html += "<div class='row'>"
+								html += "<div class='col-lg-12 col-md-12 col-sm-12'>"
+									html += "<div class='blog__item'>"
+										html += '<div class="blog__item__pic set-bg" data-setbg="resources/img/breadcrumb-bg.jpg">'
+											html += '<a href="shareList/${share.num}">'
+												html += '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>'
+											html += '</a>'
+										html += '</div>'
+										html += '<div class="blog__item__text ">'
+										html += '<h5><a href="#">'+ '출발지:'+ value.start_name + '</a></h5>'
+										html += '<h5><a href="#">'+ '출발지:'+ value.goal_name + '</a></h5>'										
+										html += '<span class="badge badge-success rounded-pill d-inline">' +  '{'+value.status  == 0 ? "매칭전" : "매칭" + '}' + '</span>'
+										html += '<p>'+'요구사항:'+ value.request+'</p>'
+									html += '</div>'
+								html += '</div>'
 							html += '</div>'
 							html += '</div>'
 							html += '</div>'
@@ -159,7 +166,7 @@
 						if (response != null) {
 							liststartsize += 10;
 						}
-						
+
 					}
 				}); 
 			}
