@@ -166,7 +166,6 @@
 						if (response != null) {
 							liststartsize += 10;
 						}
-
 					}
 				}); 
 			}
