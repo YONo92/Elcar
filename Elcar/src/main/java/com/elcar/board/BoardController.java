@@ -40,9 +40,7 @@ public class BoardController {
 			Model model, @RequestParam(value = "search_text", defaultValue = "") String search_text) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			System.out.println("1");
 			List<Board> boardlist = boardserv.boardList(page, pageInfo, search_text);
-			System.out.println("boardlist:"+boardlist);
 			model.addAttribute("search_text", search_text);
 			model.addAttribute("pageInfo", pageInfo);
 			model.addAttribute("boardlist", boardlist);
@@ -59,7 +57,23 @@ public class BoardController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "about/boardlist";
+		return "redirect:/boardlist";
+		
+	}
+	
+	@GetMapping(value="boarddetail")
+	public String boarddetail(@RequestParam(value="num")int num, @RequestParam(value="page", required=false, defaultValue="1")int page,Model model)
+	{
+		Board board;
+		try {
+			board = boardserv.getBoard(num);
+			model.addAttribute("board",board);
+			model.addAttribute("page", page);
+			return "about/boarddetail";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "about/boardlist";
+		}
 		
 	}
 }

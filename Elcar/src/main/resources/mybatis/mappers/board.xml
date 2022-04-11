@@ -14,7 +14,8 @@
 	
 	<select id="selectBoardCount" resultType="int">
  		<![CDATA[
- 			select count(*) from(select title, mem_id, content from board)pro where mem_id like'%${search_text}%' or title like'%${search_text}%' 
+ 			select count(*) from(select title, mem_id, content, location from board)pro where mem_id like'%${search_text}%' or title like'%${search_text}%' 
+ 			or location like'%${search_text}%'
  		]]>
 	</select>
 	
@@ -22,9 +23,16 @@
 	<select id="selectBoardList" resultType="Board">
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
-		from(select title ,mem_id from board where mem_id like'%${search_text}%' or title like'%${search_text}%') tot, 
+		from(select num,title ,mem_id,type,location from board where mem_id like'%${search_text}%' or title like'%${search_text}%' or location
+		like'%${search_text}%') tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
+	</select>
+	
+	<select id="selectBoard" parameterType="int" resultType="Board">
+		<![CDATA[
+			select * from board where num=#{num}
+		]]>
 	</select>
 
 

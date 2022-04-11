@@ -29,6 +29,7 @@
 						<table class="table custom-table">
 							<thead>
 								<tr>
+									<th scope="col">카테고리</th>
 									<th scope="col">제목</th>
 									<th scope="col">아이디</th>
 								</tr>
@@ -36,7 +37,19 @@
 							<tbody>
 							 	<c:forEach items="${boardlist }" var="boardlist">
 									<tr>
-										<td>${boardlist.title }</td>
+										<td>
+										<c:if test="${boardlist.type eq '1'}">
+										 <a>자유</a>
+										</c:if>
+										<c:if test="${boardlist.type eq '2'}">
+										 <a>후기</a>
+										</c:if>
+										</td>
+										<td>
+										<a href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }">
+										${boardlist.title }
+										</a>
+										</td>
 										<td>${boardlist.mem_id }</td> 
 									</tr>
 								</c:forEach>

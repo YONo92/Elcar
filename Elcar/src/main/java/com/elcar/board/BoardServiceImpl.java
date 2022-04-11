@@ -17,15 +17,12 @@ public class BoardServiceImpl implements BoardService {
 	
 	@Override
 	public void write(Board board) throws Exception {
-		System.out.println(board.getMem_id());
 		boarddao.write(board);
 	}
 
 	@Override
 	public List<Board> boardList(int page, PageInfo pageInfo, @RequestParam(value="search_text")String search_text) throws Exception {
-		System.out.println("3");
 		int listCount=boarddao.selectBoardCount(search_text);
-		System.out.println("4");
 		//table에 있는 모든 row 개수
 		
 		int maxPage=(int)Math.ceil((double)listCount/10);
@@ -51,8 +48,12 @@ public class BoardServiceImpl implements BoardService {
 		//즉, getBoardList를 호출한 컨트롤러에 생성된(new) pageInfo 객체에 초기화하는 것이다.
 		
 		int startrow=(page-1)*10+1;
-		System.out.println("5");
 		return boarddao.selectBoardList(startrow,search_text);
+	}
+
+	@Override
+	public Board getBoard(int num) throws Exception {
+		return boarddao.selectBoard(num);
 	}
 
 }
