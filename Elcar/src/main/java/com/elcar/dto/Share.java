@@ -1,6 +1,7 @@
 package com.elcar.dto;
 
 public class Share {
+	String id;
 	int num;
 	String sincheng_id;
 	String surak_id;
@@ -16,11 +17,33 @@ public class Share {
 	String goal_name;
 	
 	
+
 	
+
+	@Override
+	public String toString() {
+		return "Share [id=" + id + ", num=" + num + ", sincheng_id=" + sincheng_id + ", surak_id=" + surak_id
+				+ ", date=" + date + ", person=" + person + ", request=" + request + ", start_long=" + start_long
+				+ ", start_lat=" + start_lat + ", goal_long=" + goal_long + ", goal_lat=" + goal_lat + ", status="
+				+ status + ", start_name=" + start_name + ", goal_name=" + goal_name + "]";
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public Share() {
 		
 	}
-
+	
+	public Share(int num, String id) {
+		this.num = num;
+		this.id=id;
+	}
 	public Share(int num, String sincheng_id, String surak_id, String date, int person, String request,
 			double start_long, double start_lat, double goal_long, double goal_lat, int status, String start_name,
 			String goal_name) {

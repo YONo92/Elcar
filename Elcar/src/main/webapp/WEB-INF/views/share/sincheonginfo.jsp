@@ -274,27 +274,36 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
 
           <form action="/sincheng" method="post">
-          <input type="text" name="num" value="${num }">
-          <input type="text" name="sincheng_id" value="${sincheng.id }">
+          <input type="hidden" name="num" value="${num }">
+          <input type="hidden" name="sincheng_id" value="${sincheng.id }">
           <input
-            type="submit"
+            type="button"
             value="태울래"
             class="btn btn-danger"
             style="width: 100px"
+            onclick="click_insert()"
           />
+          <input hidden type="submit" id="submit"> 
         </form>
 		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
       </div>
     </section>
-     
+    
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxdc2cafff3e344431b237973ca1c8c1a2"></script>
     <script type="text/javascript">
-      let start_lat = "${sincheng.start_lat}"
-      let start_lon = "${sincheng.start_long}"
-      let goal_lat = "${sincheng.goal_lat}"
-      let goal_lon = "${sincheng.goal_long}"
+      let start_lat = "${sincheng.start_lat}";
+      let start_lon = "${sincheng.start_long}";
+      let goal_lat = "${sincheng.goal_lat}";
+      let goal_lon = "${sincheng.goal_long}";
+      let sincheng_id = "${sincheng.id}";
+      let sincheng_status = "${sincheng.status}";
+      let surak_id = "${id}";
+      let license = "${mem.license}";
+
+      let overlapId = "${sinchengOverlap.surak_id}";
+      let overlapNum = "${sinchengOverlap.talge_num}";
 
       var map;
 			var markerInfo;
@@ -307,7 +316,46 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			var chktraffic = [];
 			var resultdrawArr = [];
 			var resultMarkerArr = [];
-		
+		  
+      function click_insert() {
+        if(sincheng_id === surak_id) {
+          Swal.fire({
+            icon:'error',
+            title:'태울래 신청',
+            text:'자신이 작성한 글에 신청이 불가능 합니다!',
+          })
+        } else if(overlapId === surak_id & overlapNum ==="${num}" ){
+          Swal.fire({
+            icon:'error',
+            title:'태울래 신청',
+            text:'이미 신청 하셨습니다!',
+          })
+        } else if(sincheng_status != 0){
+          Swal.fire({
+            icon:'error',
+            title:'태울래 신청',
+            text:'이미 매칭이 끝난 신청입니다.',
+          }).then(function(isOkay){
+          })
+        }  else if(license != 1){
+          Swal.fire({
+            icon:'error',
+            title:'태울래 신청',
+            text:'드라이버 등록이 되어있지 않습니다.',
+          }).then(function(isOkay){
+            document.getElementById("submit").click();
+          })
+        } 
+        else {
+          Swal.fire({
+            icon:'success',
+            title:"태울래 신청",
+            text:'신청이 완료 되었습니다.',
+          }).then(function(isOkay){
+            document.getElementById("submit").click();
+            })  
+        }
+      }
 			function initTmap() {
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {

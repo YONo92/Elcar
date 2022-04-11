@@ -11,7 +11,8 @@
 		values(#{sincheng_id},#{date},#{person},#{request},#{start_long},#{start_lat},#{goal_long},#{goal_lat},#{status},#{start_name},#{goal_name})
 	]]>
 	</insert>
-	<select id="selectShareList" resultType="share"  parameterType="Map">
+	<select id="selectShareList" resultType="share"
+		parameterType="Map">
       <![CDATA[
          SELECT *,
 		(6371*acos(cos(radians(#{lat}))*cos(radians(start_lat))*cos(radians(start_long)
@@ -40,7 +41,7 @@
       ]]>
 	</select>
 
-	<select id="sincheongInfo" resultType="HashMap"
+	<select id="sinchengInfo" resultType="HashMap"
 		parameterType="int">
       <![CDATA[
     	select 
@@ -58,12 +59,26 @@
       <![CDATA[
        select * from talge where num = #{num};
       ]]>
-	</select>
-	
+	</select> 	
+
 	<insert id="insertSincheng" parameterType="Share">
  	<![CDATA[
-		insert into sincheonglist(talge_num,sincheng_id,surak_id) 
+		insert into sinchenglist(talge_num,sincheng_id,surak_id) 
 		values(#{num},#{sincheng_id},#{surak_id});
 	]]>
 	</insert>
+
+	<!-- <select id="sichengList" resultType="HashMap"
+		parameterType="String">
+      <![CDATA[
+       select talge_num,surak_id from sinchenglist where surak_id=#{id} and talge_num = #{num};
+      ]]>
+	</select> -->
+	
+	<select id="sinchengOverlap" resultType="Sinchenglist"
+		parameterType="Share">
+      <![CDATA[
+       select * from sinchenglist where surak_id=#{id} and talge_num=#{num};
+      ]]>
+	</select>
 </mapper>

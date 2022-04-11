@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.exceptions.TooManyResultsException;
+import org.mybatis.spring.MyBatisSystemException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,15 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Member;
-import com.elcar.dto.PageInfo;
 import com.elcar.dto.Share;
+import com.elcar.dto.Sinchenglist;
 import com.elcar.member.MemberService;
 
 @Controller
@@ -100,7 +99,6 @@ public class ShareController {
 		ModelAndView mav = new ModelAndView("share/sharelist");
 		try {
 			int liststartsize = 0;
-
 			Map<String, Object> mapParam = new HashMap<>();
 			mapParam.put("lat", lat);
 			mapParam.put("lng", lng);
@@ -118,17 +116,22 @@ public class ShareController {
 	}
 
 	@GetMapping(value = "/sinchenginfo/{num}")
-	public ModelAndView sincheongInfo(@PathVariable("num") int num) {
+	public ModelAndView sincheongInfo(@PathVariable("num") int num, Share share) {
 		ModelAndView mav = new ModelAndView("share/sincheonginfo");
-
-		String id = (String) session.getAttribute("id"); // surak_id
-
+		String id = (String) session.getAttribute("id"); 
 		try {
 			if (id == null) {
 				mav.setViewName("redirect:/loginform");
 			} else {
-				HashMap<String, Object> sincheng = shareserv.sincheongInfo(num);
-
+				Member mem = memserv.selectMember_kakao(id);
+				HashMap<String, Object> sincheng = shareserv.sinchengInfo(num);
+				try {
+					share.setId(id);
+					Sinchenglist sinchengOverlap = shareserv.sinchengOverlap(share);
+					mav.addObject("sinchengOverlap", sinchengOverlap);
+				} catch (NullPointerException e) {
+					e.printStackTrace();
+				}
 				String dateSet = sincheng.get("date").toString().substring(0, 10);
 				String datetime = sincheng.get("date").toString().substring(11, 16);
 				String date = dateSet + " " + datetime;
@@ -144,6 +147,8 @@ public class ShareController {
 				} else {
 					status = "매칭!";
 				}
+				mav.addObject("id", id);
+				mav.addObject("mem", mem);
 				mav.addObject("num", num);
 				mav.addObject("sincheng", sincheng);
 				mav.addObject("date", date);
@@ -159,26 +164,19 @@ public class ShareController {
 	@PostMapping(value = "/sincheng")
 	public ModelAndView sincheng(@ModelAttribute Share share) {
 		ModelAndView mav = new ModelAndView("mypage/mypage");
-		System.out.println("-------------------");
-		System.out.println(share.getSincheng_id());
-		System.out.println(share.getNum());
-
 		String id = (String) session.getAttribute("id"); // surak_id
-
+		mav.addObject("id", id);
 		try {
-			if (id == null) {
-				mav.setViewName("main/loginform");
-			}
 			Member mem = memserv.selectMember_kakao(id);
 			if (mem.getLicense() != 1) {
-				mav.setViewName("");
+				mav.setViewName("redirect:/driver-regist");
 			}
 			share = shareserv.selectShare(share.getNum());
-			System.out.println(share.getSincheng_id());
-			System.out.println(id);
-			share.setSurak_id(id);
-			shareserv.insertSincheng(share);
-
+			if (id.equals(share.getSincheng_id())) {
+			} else {
+				share.setSurak_id(id);
+				shareserv.insertSincheng(share);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
