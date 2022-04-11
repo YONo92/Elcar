@@ -61,10 +61,10 @@ public class MainController {
 
 	}
 
-	@GetMapping("/commu")
-	public String commu() {
-		return "about/commu";
-	}
+//	@GetMapping("/commu")
+//	public String commu() {
+//		return "about/commu";
+//	}
 
 //	@GetMapping("/charger")
 //	public String charger() {

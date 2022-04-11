@@ -27,7 +27,7 @@
 	<link rel="stylesheet" href="resources/css/jquery-ui.min.css" type="text/css">
 	<link rel="stylesheet" href="resources/css/owl.carousel.min.css" type="text/css">
 	<link rel="stylesheet" href="resources/css/slicknav.min.css" type="text/css">
-	<link rel="stylesheet" href="resources/css/style.css" type="text/css">
+	<link rel="stylesheet" href="resources/css/style.css" type="text/css"> 
 	</head>
 	
 	<body>
@@ -42,7 +42,7 @@
 			<tiles:insertAttribute name="footer" />
 		</div>
 		
-		<!-- Js Plugins -->
+		<!-- <!-- Js Plugins -->
 		<script src="resources/js/jquery-3.3.1.min.js"></script>
 		<script src="resources/js/bootstrap.min.js"></script>
 		<script src="resources/js/jquery.nice-select.min.js"></script>
@@ -51,6 +51,6 @@
 		<script src="resources/js/mixitup.min.js"></script>
 		<script src="resources/js/jquery.slicknav.js"></script>
 		<script src="resources/js/owl.carousel.min.js"></script>
-		<script src="resources/js/main.js"></script>
+		<script src="resources/js/main.js"></script> 
 	</body>
 	</html>

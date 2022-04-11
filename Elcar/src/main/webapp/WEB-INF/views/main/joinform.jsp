@@ -32,6 +32,14 @@
             </div> 
             
             <div class="int-area">
+            <input type="password" name="checkpw" id="checkpw" autocomplete="off"  required oninput="fcheckpw()"/>
+            <label for="id">PW CHECK</label>
+            </div>
+            <div class="int-area" id="pwpw"> 
+              
+            </div> 
+            
+            <div class="int-area">
             <input type="text" name="name" id="name" autocomplete="off"  required>
             <label for="id">Name</label>
             </div>
@@ -61,8 +69,8 @@
             </div>
             
             <div class="btn-area">
-            <input type="radio" name="gender" id="gender" autocomplete="off" required value="0" checked>남자
-            <input type="radio" name="gender" id="gender" autocomplete="off" required value="1">여자
+            <input type="radio" name="gender" id="gender" autocomplete="off" required value="1" checked>남자
+            <input type="radio" name="gender" id="gender" autocomplete="off" required value="2">여자
             </div>
             
             <div class="int-area">
@@ -152,7 +160,8 @@
 
 <script>
     let id = $('#id');
-    let pw = $('#pw');1
+    let pw = $('#pw');
+    let checkpw = $('#checkpw');
     let name = $('#name');
     let email = $('#email');
     let nickname = $('#nickname');
@@ -163,6 +172,7 @@
     let email_check=false;
     let id_check=false;
     let pw_check=false;
+    let pw_checkcheck=false;
     let nickname_check=false;
     let phone_check=false;
     let birth_check=false;
@@ -211,6 +221,12 @@
                 $('label').removeClass('warning');
             },1500);
         }
+        else if($(checkpw).val() == ""){
+            $(checkpw).next('label').addClass('warning');
+            setTimeout(function() {
+                $('label').removeClass('warning');
+            },1500);
+        }
     });
     
     function idcheck(){
@@ -242,7 +258,7 @@
     						$('#id_check').text("사용 가능한 아이디 입니다");
         					$('#id_check').css("color","green");
         					id_check=true;
-        					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+        					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
         						$('#btn').attr('disabled',false);
         					}
     					}
@@ -283,7 +299,7 @@
     						$('#email_check').text("사용 가능한 이메일주소 입니다");
         					$('#email_check').css("color","green");
         					email_check=true;
-        					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+        					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
         						$('#btn').attr('disabled',false);
         					}
     					}
@@ -327,7 +343,7 @@
     						$('#nickname_check').text("사용가능한 닉네임 입니다");
         					$('#nickname_check').css("color","green");
         					nickname_check=true;
-        					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+        					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
         						$('#btn').attr('disabled',false);
         					}
     					}
@@ -366,11 +382,35 @@
    			$('#pw_check').text("패스워드 사용가능");
    			$('#pw_check').css("color","green");
    			pw_check=true;
-   			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+   			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
 				$('#btn').attr('disabled',false);
 			}
    		}
     }
+    
+   function fcheckpw(){
+    	var checkpw = $("#checkpw").val();
+    	var pw = $("#pw").val();
+   		if(checkpw==''){
+   			$('#pwpw').text("패스워드확인을 입력하세요");
+   			$('#pwpw').css("color","red");
+   			pw_checkcheck=false;
+   			$('#btn').attr('disabled',true);
+   		}else if(checkpw==pw){
+   			$('#pwpw').text("패스워드가 일치합니다.");
+   			$('#pwpw').css("color","green");
+   			pw_checkcheck=true;
+   			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
+				$('#btn').attr('disabled',false);
+			}
+   		}else{
+   			$('#pwpw').text("패스워드를 확인해주세요.");
+   			$('#pwpw').css("color","red");
+   			pw_checkcheck=false;
+   			$('#btn').attr('disabled',true);
+   		}
+}
+
     
     function phonecheck(){
     	var phone = $("#phone").val();
@@ -385,20 +425,14 @@
    			$('#phone_check').css("color","red");
    			phone_check=false;
    			$('#btn').attr('disabled',true);
-   		}/* else{
-   			$('#phone_check').text("전화번호 사용가능");
-   			$('#phone_check').css("color","green");
-   			phone_check=true;
-   			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
-				$('#btn').attr('disabled',false);
-			}
-   		} */
+   		}
    		else{
    		$.ajax({
 			url:"http://localhost:8080/phoneCheck",
 			type:'post',
 			data:{phone:phone},
 			success:function(data){
+				alert(data);
 				if(data == 'true'){
 					$('#phone_check').text("이미 사용중인 번호 입니다");
 					$('#phone_check').css("color","red");
@@ -408,7 +442,7 @@
 						$('#phone_check').text("사용가능한 번호 입니다");
     					$('#phone_check').css("color","green");
     					phone_check=true;
-    					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+    					if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
     						$('#btn').attr('disabled',false);
     					}
 					}
@@ -434,7 +468,7 @@
    			$('#birth_check').text("생년월일 사용가능");
    			$('#birth_check').css("color","green");
    			birth_check=true;
-   			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true){
+   			if(id_check==true&&email_check==true && nickname_check==true&&pw_check==true&&phone_check==true&&birth_check==true&&pw_checkcheck==true){
 				$('#btn').attr('disabled',false);
 			}
    		}

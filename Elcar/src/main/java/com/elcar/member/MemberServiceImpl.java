@@ -104,6 +104,7 @@ public class MemberServiceImpl implements MemberService {
 	public boolean phoneCheck(String phone) throws Exception {
 
         Member mem = memdao.queryMember_phone(phone);
+        System.out.println(phone);
         if(mem!=null) {
             return true;
         }

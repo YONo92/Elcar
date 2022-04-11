@@ -144,6 +144,7 @@ public class MemberController {
 		boolean check=false;
 		try {
 			check=memserv.phoneCheck(phone);
+			System.out.println(String.valueOf(check));
 		} catch (Exception e) {
 		}
 		return String.valueOf(check);
