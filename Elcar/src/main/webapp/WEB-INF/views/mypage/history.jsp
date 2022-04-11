@@ -214,12 +214,21 @@
 					<div class="testimonial__item__author">
 		<c:forEach var="history" items="${historyDDubukList }">
 						<div class="row">
-							<div class='col-lg-1'>
-									<span id="alerts" style="margin: 5px;">
-						<span id="alert" class="alert" style="border:none;background-color:#d3d3d3;cursor:pointer;width: 55px;padding:0px"><a href="singo">신고</a></span>
-						<input type="hidden" id="mwarning" name="mwarning" value=''>
-					</span>
-									<!--	<i class="fa-solid fa-circle-user">
+							<div class='col-lg-2'>
+								<span id="alerts" style="margin: 5px;"> <span id="alert"
+									class="alert"
+									style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
+									<a href="singo">신고</a></span> <input type="hidden" id="mwarning"
+									name="mwarning" value=''><br>
+								</span>
+								
+								<span id="alerts" style="margin: 5px;"> <span id="alert"
+									class="alert"
+									style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
+									<a href="pyeongga">평가하기</a></span> <input type="hidden" id="mwarning"
+									name="mwarning" value=''>
+								</span>
+								<!--	<i class="fa-solid fa-circle-user">
 											</i></div> -->
 							</div>
 							<div class='col-lg-1'>
@@ -251,12 +260,7 @@
 								</botton>
 							</div>
 							
-							<div class='col-lg-3'>
-								
-								<botton type="submit" class="col-3 nanum txtBox00" style="font-size: 1.0em; color: black;">
-									 평가하기
-								</botton>
-							</div><br><br><br><br><br>
+							<br><br><br><br><br>
 							</c:forEach>
 						</div>
 						

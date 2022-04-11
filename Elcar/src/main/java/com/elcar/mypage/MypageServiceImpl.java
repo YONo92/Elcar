@@ -67,6 +67,20 @@ public class MypageServiceImpl implements MypageService {
 			Driver driver =mypageDAO.queryDriver(id);
 			return driver;
 		}
+		
+	//매너포인트 주기
+		@Override
+		public History giveDDubukPoint(String id) throws Exception {
+			History history =mypageDAO.insertDDubukPoint(id);
+			return history;
+		}
+		
+	//매너포인트 주기
+		@Override
+		public History giveDriverPoint(String id) throws Exception {
+			History history =mypageDAO.insertDriverPoint(id);
+			return history;
+		}
 }
 
 

@@ -56,6 +56,57 @@
          select * from history where taker_id = #{id} and type = "뚜벅초" ORDER BY date
       ]]>
 	</select>
+	
+	
+	
+	
+	
+	
+<!-- --><!--  -->	<!--  -->	<!--  -->	<!-- -->
+	<!-- 매너 점수 주기 -->
+	<update id="driverPoint5"  parameterType="history">
+      <![CDATA[
+		update history set point = point+5 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+      ]]>
+	</update>
+	
+		<!-- 매너 점수 주기 -->
+	<update id="driverPoint3"  parameterType="history">
+      <![CDATA[
+		update history set point = point+3 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+      ]]>
+	</update>
+	
+		<!-- 매너 점수 주기 -->
+	<update id="driverPoint-1"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+      ]]>
+	</update>
+	
+	
+	
+	
+		<!-- 매너 점수 주기 -->
+	<update id="ddubukPoint5"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
+      ]]>
+	</update>
+	
+			<!-- 매너 점수 주기 -->
+	<update id="ddubukPoint3"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
+      ]]>
+	</update>
+	
+			<!-- 매너 점수 주기 -->
+	<update id="ddubukPoint-1"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
+      ]]>
+	</update>
 
 
 	

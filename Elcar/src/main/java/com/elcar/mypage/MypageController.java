@@ -264,7 +264,8 @@ public class MypageController {
 	// 이용평가
 	@GetMapping(value = "pyeongga")
 	public ModelAndView pyeonggaForm() {
-		ModelAndView mav = new ModelAndView("mypage/history/pyeongga");
+		ModelAndView mav = new ModelAndView("mypage/pyeongga");
+		String member_id = (String) session.getAttribute("id");
 		return mav;
 	}
 

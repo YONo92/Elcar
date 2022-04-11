@@ -59,7 +59,7 @@
 								
 							</div>
 							<div class='col-lg-2'>
-								<h5 style="font-size: 1.7em; color: green"> $[name]<span> <b style="font-size: 1.5em; color: black;">님을</b></span> </h5>
+								<h5 style="font-size: 1.7em; color: green"> ${name }<span> <b style="font-size: 1.5em; color: black;">님을</b></span> </h5>
 							</div>			
 							
 							<div class='col-lg-2'>
@@ -69,7 +69,7 @@
 							</div>
 							
 							
-							<div class='col-lg-1 txtBox10'>
+							<div class='col-lg-1 txtBox10' style="cursor: pointer">
 							<span style="font-size: 1.4em; color: black;">
 								<b>좋음</b>
 							</span>

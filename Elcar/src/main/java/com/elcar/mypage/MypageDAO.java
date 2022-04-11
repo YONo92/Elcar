@@ -21,4 +21,6 @@ public interface MypageDAO {
 	public Driver queryDriver(String id) throws Exception;
 	public List<History> queryDriverPoint(String id) throws Exception;
 	public List<History> queryDDubukPoint(String id) throws Exception;
+	public History  insertDDubukPoint(String id) throws Exception;
+	public History  insertDriverPoint(String id) throws Exception;
 }

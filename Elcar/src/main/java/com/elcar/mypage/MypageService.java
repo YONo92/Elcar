@@ -13,5 +13,8 @@ public interface MypageService {
 	void deleteMember(String id) throws Exception;
 	List<History> mannerDriverPoint(String id) throws Exception;
 	List<History> mannerDDubukPoint(String id) throws Exception;
-	Driver selectDriverInfo(String id) throws Exception;	
+	Driver selectDriverInfo(String id) throws Exception;
+	History giveDDubukPoint(String id) throws Exception;
+	History giveDriverPoint(String id) throws Exception;
+	
 }
