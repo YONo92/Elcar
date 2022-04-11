@@ -26,4 +26,18 @@ public interface ShareService {
 	
 	public List<Share> talgelist(String id)throws Exception;
 
+	public List<Share> taewoolist(String id)throws Exception;
+
+	public List<Share> talgestatus(String id)throws Exception;
+
+	public List<Share> taewoostatus(String id)throws Exception;
+
+	public void talge_delete(int num);
+
+	public void insertHistory(String sincheng_id, String surak_id);
+
+	public void modifyShare(String surak_id, int talge_num);
+
+	public void accept_delete(int talge_num);
+
 }

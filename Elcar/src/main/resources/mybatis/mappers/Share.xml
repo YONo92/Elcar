@@ -56,14 +56,14 @@
 
 	<select id="selectShare" resultType="Share" parameterType="int">
       <![CDATA[
-       select * from talge where num = #{num};
+       select * from talge where num = #{num}
       ]]>
 	</select>
 	
 	<insert id="insertSincheng" parameterType="Share">
  	<![CDATA[
 		insert into sincheonglist(talge_num,sincheng_id,surak_id) 
-		values(#{num},#{sincheng_id},#{surak_id});
+		values(#{num},#{sincheng_id},#{surak_id})
 	]]>
 	</insert>
 	
@@ -72,5 +72,47 @@
        select * from sincheonglist join member on surak_id = member.id join driver on surak_id = driver.id where sincheng_id = #{id}
       ]]>
 	</select>
+
+	<select id="taewoolist" resultType="Share" parameterType="String">
+	  <![CDATA[
+       select * from sincheonglist join member on sincheng_id = member.id join talge on talge_num = talge.num  where sincheonglist.surak_id = #{id}
+      ]]>
+	</select>
+
+	<select id="talgestatus" resultType="Share" parameterType="String">
+	  <![CDATA[
+       select * from talge join member on surak_id = member.id where sincheng_id = #{id}
+      ]]>
+	</select>
+
+	<select id="taewoostatus" resultType="Share" parameterType="String">
+	  <![CDATA[
+       select * from talge join member on sincheng_id = member.id where surak_id = #{id}
+      ]]>
+	</select>
+
+	<delete id="talge_delete" parameterType="Integer">
+	  <![CDATA[
+		delete from sincheonglist where num=#{num}
+ 		]]>
+	</delete>
 	
+	<insert id="insertHistory">
+ 	<![CDATA[
+		insert into history(giver_id,taker_id) 
+		values(#{sincheng_id},#{surak_id})
+	]]>
+	</insert>
+	
+	<update id="modifyShare">
+	 <![CDATA[
+		update talge set status=1, surak_id = #{surak_id} where num = #{talge_num}
+ 		]]>
+	</update>
+	
+	<delete id="accept_delete" parameterType="Integer">
+	  <![CDATA[
+		delete from sincheonglist where talge_num=#{talge_num}
+ 		]]>
+	</delete>
 </mapper>
