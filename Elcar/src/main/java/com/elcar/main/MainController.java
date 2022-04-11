@@ -24,16 +24,6 @@ public class MainController {
 		return "main/main";
 	}
 
-//	@GetMapping("login")
-//	public String login() {
-//		return "main/login";
-//	}
-//	
-//	@GetMapping("join")
-//	public String join() {
-//		return "main/join";
-//	}
-
 	@GetMapping("/about")
 	public String about() {
 		session.invalidate();
@@ -61,30 +51,10 @@ public class MainController {
 
 	}
 
-	@GetMapping("/commu")
-	public String commu() {
-		return "about/commu";
-	}
-
-//	@GetMapping("/charger")
-//	public String charger() {
-//		return "charger/charger";
+//	@GetMapping("/commu")
+//	public String commu() {
+//		return "about/commu";
 //	}
-
-//	@GetMapping("/share")
-//	public String share() {
-//		return "share/share";
-//	}
-
-//	@GetMapping("/mypage")
-//	public String mypage() {
-//		return "mypage/mypage";
-//	}
-
-	@GetMapping("/admin_memlist")
-	public String admin_memlist() {
-		return "admin/admin_memlist";
-	}
 
 	@GetMapping("/admin_driverlist")
 	public String admin_driverlist() {

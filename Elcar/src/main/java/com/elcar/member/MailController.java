@@ -21,15 +21,13 @@ public class MailController {
 	SendEmailService sendEmailService;
 	
 	 //Email과 name의 일치여부를 check하는 컨트롤러
-	@ResponseBody
+	 @ResponseBody
 	 @GetMapping("/check/findPw")
 	    public Map<String, Boolean> find_pw(String email, String name){
 	        Map<String,Boolean> json = new HashMap<>();
 	        boolean pwFindCheck;
-	        System.out.println("email="+email);
 			try {
 				pwFindCheck = memserv.EmailCheck(email,name);
-		        System.out.println(pwFindCheck);
 		        json.put("check", pwFindCheck);
 		        return json;
 			} catch (Exception e) {

@@ -37,12 +37,23 @@
       ]]>
 	</select>
 	
+	<select id="queryMember_phone" resultType="member" parameterType="String">
+      <![CDATA[
+         select * from member where phone=#{phone}
+      ]]>
+	</select>
+	
 	<update id="updateUserPassword">
       <![CDATA[
       update member set pw=#{pw} where id=#{id}
       ]]>
 	</update>
 	
+	<select id="searchId" resultType="member">
+      <![CDATA[
+         select * from member where name=#{name} and birth=#{birth}
+      ]]>
+	</select>
 	
 
 	

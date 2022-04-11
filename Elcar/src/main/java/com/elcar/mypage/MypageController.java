@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.elcar.dto.Driver;
 import com.elcar.dto.History;
 import com.elcar.dto.Member;
+import com.elcar.dto.Share;
+import com.elcar.share.ShareService;
 
 @Controller
 public class MypageController {
@@ -27,6 +29,9 @@ public class MypageController {
 
 	@Autowired
 	MypageService mypageService;
+	
+	@Autowired
+	ShareService shareserv;
 
 	@Autowired
 	HttpSession session;
@@ -294,14 +299,65 @@ public class MypageController {
 	@GetMapping(value = "taewoolraeSurak")
 	public ModelAndView taewoolraeSurakForm() {
 		ModelAndView mav = new ModelAndView("mypage/taewoolraeSurak");
+		String id = (String) session.getAttribute("id");
+		try {
+			List<Share> taewoolist = shareserv.taewoolist(id);
+			List<Share> taewoostatus = shareserv.taewoostatus(id);
+			mav.addObject("taewoolist",taewoolist);
+			mav.addObject("taewoostatus",taewoostatus);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 	
-	// 탈래 신청 내역
+	@GetMapping(value = "taewooSincheng_delete")
+	public String taewooSincheng_delete(@RequestParam(value = "num", required = false) int num) {
+		try {
+			shareserv.talge_delete(num);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/taewoolraeSurak";
+	}
+
 	@GetMapping(value = "talgaeSincheng")
 	public ModelAndView talgaeSinchengForm() {
 		ModelAndView mav = new ModelAndView("mypage/talgaeSincheng");
+		String id = (String) session.getAttribute("id");
+		try {
+			List<Share> talgeList = shareserv.talgelist(id);
+			List<Share> talgestatus = shareserv.talgestatus(id);
+			mav.addObject("talgeList",talgeList);
+			mav.addObject("talgestatus",talgestatus);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
+	
+	@GetMapping(value = "talgaeSincheng_delete")
+	public String talgaeSincheng_delete(@RequestParam(value = "num", required = false) int num) {
+		try {
+			shareserv.talge_delete(num);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/talgaeSincheng";
+	}
 
+	@GetMapping(value = "talgaeSincheng_accept")
+	public String talgaeSincheng_accept(@RequestParam(value = "sincheng_id", required = false) String sincheng_id, 
+			@RequestParam(value = "surak_id", required = false) String surak_id, @RequestParam(value = "talge_num", required = false) int talge_num) {
+		try {
+			shareserv.insertHistory(sincheng_id,surak_id);
+			shareserv.modifyShare(surak_id,talge_num);
+			shareserv.accept_delete(talge_num);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/talgaeSincheng";
+	}
+	
+	
 }

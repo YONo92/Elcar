@@ -4,11 +4,13 @@ package com.elcar.share;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.elcar.dto.Share;
+import com.elcar.dto.Sinchenglist;
 
 @Service
 public class ShareServiceImpl implements ShareService {
@@ -22,43 +24,69 @@ public class ShareServiceImpl implements ShareService {
 	}
 
 	@Override
-	public List<Share> selectShareList(double lat, double lng) throws Exception {
-//		int listCount=sharedao.shareListCount(lat,lng);
-//		//table에 있는 모든 row 개수
-//		
-//		int maxPage=(int)Math.ceil((double)listCount/10);
-//		//그 개수를 10으로 나누고 올림처리하여 페이지 수 계산
-//		
-//		//아래 2개의 알고리즘은 현재 하나의 페이지에 글 목록을 10개 보여주고
-//		//아래에 페이지 이동 버튼도 10개로 구성하고자 하기 위함이다.
-//		int startPage=(((int) ((double)page/10+0.9))-1)*10+1;
-//		//현재 페이지에 보여줄 시작 페이지 수(1, 11, 21, ...)
-//		
-//		int endPage=startPage+10-1;
-//		//현재 페이지에 보여줄 마지막 페이지 수(10, 20, 30, ...)
-//		
-//		if(endPage>maxPage) endPage=maxPage;
-//		pageInfo.setStartPage(startPage);
-//		pageInfo.setEndPage(endPage);
-//		pageInfo.setMaxPage(maxPage);
-//		pageInfo.setPage(page);
-//		pageInfo.setListCount(listCount);
-//		//컨트롤러가 생성한 pageInfo 객체를 해당 메서드의 매개변수로 넘겨준다,
-//		//메서드는 해당 객체의 값을 setter로 초기화하면 컨트롤러에서 초기화된 값을
-//		//getter로 받을 수 있다.
-//		//즉, getBoardList를 호출한 컨트롤러에 생성된(new) pageInfo 객체에 초기화하는 것이다.
-//		
-//		int startrow=(page-1)*10+1;
-		return sharedao.selectShareList(lat,lng);
+	public List<Share> selectShareList(Map <String, Object> mapParam) throws Exception {
+		return sharedao.selectShareList(mapParam);
 	}
 
 	@Override
-	public HashMap<String, Object> sincheongInfo(int num) throws Exception {
+	public HashMap<String, Object> sinchengInfo(int num) throws Exception {
 		
-		return sharedao.sincheongInfo(num);
+		return sharedao.sinchengInfo(num);
 	}
 
+	@Override
+	public void insertSincheng(Share share) throws Exception {
+		sharedao.insertSincheng(share);
+		
+	}
 
+	@Override
+	public Share selectShare(int num) throws Exception {
+		return sharedao.selectShare(num);
+	}
 
+	@Override
+	public List<Share> talgelist(String id) throws Exception {
+		return sharedao.talgelist(id);
+	}
 
+	@Override
+	public List<Share> talgestatus(String id) throws Exception {
+		return sharedao.talgestatus(id);
+	}
+
+	@Override
+	public void talge_delete(int num) {
+		sharedao.talge_delete(num);		
+	}
+
+	@Override
+	public void insertHistory(String sincheng_id, String surak_id) {
+		sharedao.insertHistory(sincheng_id,surak_id);
+	}
+
+	@Override
+	public void modifyShare(String surak_id, int talge_num) {
+		sharedao.modifyShare(surak_id,talge_num);
+	}
+
+	@Override
+	public void accept_delete(int talge_num) {
+		sharedao.accept_delete(talge_num);
+	}
+
+	@Override
+	public List<Share> taewoolist(String id) throws Exception {
+		return sharedao.taewoolist(id);
+	}
+
+	@Override
+	public List<Share> taewoostatus(String id) throws Exception {
+		return sharedao.taewoostatus(id);
+	}
+	
+	@Override
+	public Sinchenglist sinchengOverlap(Share share) throws Exception {	
+		return sharedao.sinchengOverlap(share);
+	}
 }
