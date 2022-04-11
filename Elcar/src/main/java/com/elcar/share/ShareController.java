@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +11,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Member;
-import com.elcar.dto.PageInfo;
 import com.elcar.dto.Share;
 import com.elcar.member.MemberService;
 
@@ -72,7 +69,7 @@ public class ShareController {
 	@PostMapping("/sharelist_more")
 	public List<Share> shareList_more(@RequestParam(value = "lat", required = false, defaultValue = "0") double lat,
 			@RequestParam(value = "lng", required = false, defaultValue = "0") double lng,
-			@RequestParam(value = "liststartsize") String liststartsize ,Model model) {
+			@RequestParam(value = "liststartsize") String liststartsize, Model model) {
 		try {
 			System.out.println(lng);
 			System.out.println(lat);
@@ -84,8 +81,8 @@ public class ShareController {
 			mapParam.put("liststartsize", listsize);
 			mapParam.put("listlastsize", listsize + 10);
 			List<Share> shareList = shareserv.selectShareList(mapParam);
-			model.addAttribute("shareList",shareList);
-			System.out.println(shareList);
+			model.addAttribute("shareList", shareList);
+			System.out.println(shareList.size());
 			return shareList;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,36 +114,71 @@ public class ShareController {
 		return mav;
 	}
 
-	@GetMapping(value = "/sincheonginfo")
-	public ModelAndView sincheongInfo() {
+	@GetMapping(value = "/sinchenginfo/{num}")
+	public ModelAndView sincheongInfo(@PathVariable("num") int num) {
 		ModelAndView mav = new ModelAndView("share/sincheonginfo");
-		int num = 10;
-		// int num = (Integer) session.getAttribute("num");
+
+		String id = (String) session.getAttribute("id"); // surak_id
+
 		try {
-			HashMap<String, Object> sincheong = shareserv.sincheongInfo(num);
-			String dateSet = sincheong.get("date").toString().substring(0, 10);
-			String datetime = sincheong.get("date").toString().substring(11, 16);
-			String date = dateSet + " " + datetime;
-			String gender;
-			String status;
-			if ((Integer) sincheong.get("gender") == 0) {
-				gender = "남자";
+			if (id == null) {
+				mav.setViewName("redirect:/loginform");
 			} else {
-				gender = "여자";
+				HashMap<String, Object> sincheng = shareserv.sincheongInfo(num);
+
+				String dateSet = sincheng.get("date").toString().substring(0, 10);
+				String datetime = sincheng.get("date").toString().substring(11, 16);
+				String date = dateSet + " " + datetime;
+				String gender;
+				String status;
+				if ((Integer) sincheng.get("gender") == 0) {
+					gender = "남자";
+				} else {
+					gender = "여자";
+				}
+				if ((Integer) sincheng.get("status") == 0) {
+					status = "매칭중";
+				} else {
+					status = "매칭!";
+				}
+				mav.addObject("num", num);
+				mav.addObject("sincheng", sincheng);
+				mav.addObject("date", date);
+				mav.addObject("status", status);
+				mav.addObject("gender", gender);
 			}
-			if ((Integer) sincheong.get("status") == 0) {
-				status = "매칭중";
-			} else {
-				status = "매칭!";
-			}
-			mav.addObject("sincheong", sincheong);
-			mav.addObject("date", date);
-			mav.addObject("status", status);
-			mav.addObject("gender", gender);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
 
+	@PostMapping(value = "/sincheng")
+	public ModelAndView sincheng(@ModelAttribute Share share) {
+		ModelAndView mav = new ModelAndView("mypage/mypage");
+		System.out.println("-------------------");
+		System.out.println(share.getSincheng_id());
+		System.out.println(share.getNum());
+
+		String id = (String) session.getAttribute("id"); // surak_id
+
+		try {
+			if (id == null) {
+				mav.setViewName("main/loginform");
+			}
+			Member mem = memserv.selectMember_kakao(id);
+			if (mem.getLicense() != 1) {
+				mav.setViewName("");
+			}
+			share = shareserv.selectShare(share.getNum());
+			System.out.println(share.getSincheng_id());
+			System.out.println(id);
+			share.setSurak_id(id);
+			shareserv.insertSincheng(share);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
 }

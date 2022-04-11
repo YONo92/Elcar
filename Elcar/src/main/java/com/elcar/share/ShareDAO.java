@@ -22,7 +22,24 @@ public interface ShareDAO {
 	public int shareListCount(@Param(value = "lat") Double lat, @Param(value = "lng") Double lng)throws Exception;
 
 	public HashMap<String, Object> sincheongInfo(int num) throws Exception;
+
+	public Share selectShare(int num)throws Exception;
+
+	public void insertSincheng(Share share)throws Exception;
 	
-//	List<Share> selectShareListPage(@Param('startrow') int startrow) throws Exception;
-	
+	public List<Share> talgelist(String id)throws Exception;
+
+	public List<Share> taewoolist(String id)throws Exception;
+
+	public List<Share> talgestatus(String id)throws Exception;
+
+	public List<Share> taewoostatus(String id)throws Exception;
+
+	public void talge_delete(int num);
+
+	public void insertHistory(@Param(value = "sincheng_id") String sincheng_id, @Param(value = "surak_id") String surak_id);
+
+	public void modifyShare(@Param(value = "surak_id") String surak_id,@Param(value = "talge_num") int talge_num);
+
+	public void accept_delete(int talge_num);
 }
