@@ -62,9 +62,56 @@ public class ShareServiceImpl implements ShareService {
 		return sharedao.sincheongInfo(num);
 	}
 
+	@Override
+	public void insertSincheng(Share share) throws Exception {
+		sharedao.insertSincheng(share);
+		
+	}
 
+	@Override
+	public Share selectShare(int num) throws Exception {
+		System.out.println(1);
+		return sharedao.selectShare(num);
+	}
 
+	@Override
+	public List<Share> talgelist(String id) throws Exception {
+		return sharedao.talgelist(id);
+	}
 
+	@Override
+	public List<Share> talgestatus(String id) throws Exception {
+		return sharedao.talgestatus(id);
+	}
 
+	@Override
+	public void talge_delete(int num) {
+		sharedao.talge_delete(num);		
+	}
+
+	@Override
+	public void insertHistory(String sincheng_id, String surak_id) {
+		sharedao.insertHistory(sincheng_id,surak_id);
+	}
+
+	@Override
+	public void modifyShare(String surak_id, int talge_num) {
+		sharedao.modifyShare(surak_id,talge_num);
+	}
+
+	@Override
+	public void accept_delete(int talge_num) {
+		sharedao.accept_delete(talge_num);
+	}
+
+	@Override
+	public List<Share> taewoolist(String id) throws Exception {
+		return sharedao.taewoolist(id);
+	}
+
+	@Override
+	public List<Share> taewoostatus(String id) throws Exception {
+		return sharedao.taewoostatus(id);
+	}
 
 }

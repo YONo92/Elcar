@@ -89,7 +89,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
     <div
       class="breadcrumb-option set-bg"
-      data-setbg="resources/img/breadcrumb-bg.jpg"
+      data-setbg="../resources/img/breadcrumb-bg.jpg"
     >
       <div class="container">
         <div class="row">
@@ -106,7 +106,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </div>
     <!-- Breadcrumb Begin -->
-    <form action="sincheonginfo" method="get">
+    <form action="sinchenginfo/{num}" method="get">
     <section>
       <div class="frame">
         <div class="top_title" style="margin-top: 30px"><h1>날 태워</h1></div>
@@ -126,7 +126,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               name=""
-              value="${sincheong.nickname}"
+              value="${sincheng.nickname}"
               readonly
             >
 			<br /><br />
@@ -154,7 +154,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               type="text"
               class="text_custom text"
               name="person"
-              value="${sincheong.person}"
+              value="${sincheng.person}"
               readonly
             />
 			<br /><br />
@@ -164,21 +164,21 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               class="text_custom text"
               id="searchKeyword1"
               name="start_name"
-              value="${sincheong.start_name}"
+              value="${sincheng.start_name}"
               readonly
             />
             <input
               type="text"
               id="startlat"
               name="start_lat"
-              value="${sincheong.start_lat}"
+              value="${sincheng.start_lat}"
               style="display: none"
             />
             <input
               type="text"
               id="startlon"
               name="start_long"
-              value="${sincheong.start_long}"
+              value="${sincheng.start_long}"
               style="display: none"
             />
  
@@ -189,21 +189,21 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               class="text_custom text"
               id="searchKeyword2"
               name="goal_name"
-              value="${sincheong.goal_name}"
+              value="${sincheng.goal_name}"
               readonly
             />
             <input
               type="text"
               id="endlat"
               name="goal_lat"
-              value="${sincheong.goal_lat}"
+              value="${sincheng.goal_lat}"
               style="display: none"
             />
             <input
               type="text"
               id="endlon"
               name="goal_long"
-              value="${sincheong.goal_long}"
+              value="${sincheng.goal_long}"
               style="display: none"
             />
 			<br /><br />
@@ -267,16 +267,22 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             class="text_custom text"
             name="request"
             readonly
-          >${sincheong.request}</textarea
+          >${sincheng.request}</textarea
           ><br /><br />
         </form>
-        <form action="sincheongjoin" method="post"></form>
+  
+
+
+          <form action="/sincheng" method="post">
+          <input type="hidden" name="num" value="${num }">
+          <input type="hidden" name="sincheng_id" value="${sincheng.id }">
           <input
             type="submit"
             value="태울래"
             class="btn btn-danger"
             style="width: 100px"
           />
+        </form>
 		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
       </div>
@@ -285,10 +291,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appKey=l7xxdc2cafff3e344431b237973ca1c8c1a2"></script>
     <script type="text/javascript">
-      let start_lat = "${sincheong.start_lat}"
-      let start_lon = "${sincheong.start_long}"
-      let goal_lat = "${sincheong.goal_lat}"
-      let goal_lon = "${sincheong.goal_long}"
+      let start_lat = "${sincheng.start_lat}"
+      let start_lon = "${sincheng.start_long}"
+      let goal_lat = "${sincheng.goal_lat}"
+      let goal_lon = "${sincheng.goal_long}"
 
       var map;
 			var markerInfo;

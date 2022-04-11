@@ -29,22 +29,24 @@
 	<!-- <form action="sharelist" method="get"> -->
 	<input type="text" id="lat" name="lat" value="" style="display: none" />
 	<input type="text" id="lng" name="lng" value="" style="display: none" />
-
 	<section class="blog spad">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-					<button class="badge badge-success rounded-pill d-inline"type="button" onclick="location.href='share'">탈래 신청</button>
+					<button class="badge badge-success rounded-pill d-inline"
+						type="button" onclick="location.href='share'">탈래 신청</button>
 					<c:forEach var="share" items="${shareList}">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<div class="blog__item ">
 									<div class="blog__item__pic set-bg"
 										data-setbg="resources/img/breadcrumb-bg.jpg">
-										<ul>
-											<li>${share.date}</li>
-											<li>${share.num}</li>
-										</ul>
+										<a href="shareList/${share.num}">
+											<ul>
+												<li>${share.date}</li>
+												<li>${share.num}</li>
+											</ul>
+										</a>
 									</div>
 									<div class="blog__item__text ">
 										<h5>
@@ -60,6 +62,7 @@
 							</div>
 						</div>
 					</c:forEach>
+					<div id="disp"></div>
 				</div>
 			</div>
 		</div>
@@ -105,7 +108,26 @@
 						"lng": lng,
 					},
 					success: function (response) {
-						$('#test').text("무한스크롤로로로");
+						var html =""
+						$.each(response,function(key,value){
+							html += '<div class="row">'
+							html += '<div class="col-lg-12 col-md-12 col-sm-12">'
+							html += '<div class="blog__item">'
+							html += '<div class="blog__item__pic set-bg">'
+							html += '<div class="resources/img/breadcrumb-bg.jpg">'
+							html += '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>'
+							html += '<div class="blog__item__text">'+'<h5>'+value.start_name+'</h5>'+'<h5>'+value.goal_name+'</h5>'
+								// 자문을 구하도록하자 
+							html += '<span class="badge badge-success rounded-pill d-inline">' +  '{'+value.status  == 0 ? "매칭전" : "매칭" +'}'+'</span>'
+							html += '<p>'+'요구사항:'+ value.request+'</p>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+							html += '</div>'
+						});
+						$('#disp').append(html)
 						console.log(response);
 						if (response != null) {
 							liststartsize += 10;
@@ -114,9 +136,7 @@
 					}
 				}); 
 			}
-
 		})
 	</script>
-	<!-- 무한 스크롤링  기능 구현 끝 !-->
 </body>
 </html>

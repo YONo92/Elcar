@@ -14,7 +14,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <a href="../login" class="primary-btn">Login</a>
       </div>
       <div class="offcanvas__logo">
-        <a href="../"><img src="resources/img/001.png" alt="" /></a>
+        <a href="../"><img src="../resources/img/001.png" alt="" /></a>
       </div>
       <div id="mobile-menu-wrap"></div>
     </div>
@@ -26,7 +26,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="row">
           <div class="col-lg-2">
             <div class="header__logo">
-              <a href="../"><img src="resources/img/001.png" alt="" /></a>
+              <a href="../"><img src="../resources/img/001.png" alt="" /></a>
             </div>
           </div>
           <div class="col-lg-10">
@@ -37,14 +37,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                   <li>
                     <a href="#">About</a>
                     <ul class="dropdown">
-                      <li><a href="./about">서비스 안내</a></li>
-                      <li><a href="./driver-regist">드라이버 등록</a></li>
-                      <li><a href="./commu">커뮤니티</a></li>
+                      <li><a href="../about">서비스 안내</a></li>
+                      <li><a href="../driver-regist">드라이버 등록</a></li>
+                      <li><a href="../commu">커뮤니티</a></li>
                     </ul>
                   </li>
-                  <li><a href="./charger">전기차 충전소</a></li>
+                  <li><a href="../charger">전기차 충전소</a></li>
                   <li>
-                    <form id="locationForm" action="sharelist" method="post">
+                    <form id="locationForm" action="../sharelist" method="post">
                       <input type="hidden" id="lat" name="lat" />
                       <input type="hidden" id="lng" name="lng" />
                       <a onclick="shareList()" style="cursor: pointer">
@@ -52,7 +52,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                       </a>
                     </form>
                   </li>
-                  <li><a href="./mypage">Mypage</a></li>
+                  <li><a href="../mypage">Mypage</a></li>
                 </ul>
               </nav>
               <div class="header__nav__widget">
