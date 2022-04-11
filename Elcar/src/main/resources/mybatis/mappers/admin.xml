@@ -20,4 +20,20 @@
  		]]>
 	</select>
 
+	<!-- 관리자_드라이버 회원 관리 -->
+	<select id="selectalldriverCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from driver;
+ 		]]>
+	</select>
+
+	<select id="selectalldriverList" resultType="Driver">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select id, name, getdate, carnum, cartype, img from driver where name like'%${mem_text}%' ) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
+
+
 </mapper>

@@ -1,14 +1,23 @@
 package com.elcar.driver;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.CacheControl;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,6 +37,26 @@ public class DriverController {
 	@Autowired
 	DriverService driverserv;
 
+	// 이미지 보여주기
+	@ResponseBody
+	@GetMapping("/view/{img}")
+	public ResponseEntity<byte[]> getImageAsResponseEntity(@PathVariable String img) {
+		HttpHeaders headers = new HttpHeaders();
+		InputStream in = servletContext.getResourceAsStream("upload/" + img);
+
+		byte[] media;
+		try {
+			media = in.readAllBytes();
+			headers.setCacheControl(CacheControl.noCache().getHeaderValue());
+			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
+			return responseEntity;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	// 드라이버 신청 등록하기
 	@ResponseBody
 	@PostMapping(value = "/driver-regist")
@@ -35,8 +64,12 @@ public class DriverController {
 		try {
 			model.addAttribute("id", session.getAttribute("id"));
 			String path = servletContext.getRealPath("/upload/");
-			File destFile = new File(path + file.getOriginalFilename());
-			driver.setImg(file.getOriginalFilename());
+			String uuid = UUID.randomUUID().toString();
+
+			String newFileName = uuid
+					+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+			File destFile = new File(path + newFileName);
+			driver.setImg(newFileName);
 			file.transferTo(destFile);
 			driverserv.driverregist(driver);
 		} catch (Exception e) {

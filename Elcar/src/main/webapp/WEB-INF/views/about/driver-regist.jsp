@@ -195,7 +195,7 @@
 				type : 'post',
 				success : function(data) {
 					if (data == 'ok') {
-						alert('와 DB 등록 다했다. 고생했어 by_강사님');
+						alert('드라이버 등록이 완료되었습니다. 마이페이지에서 확인하세요.');
 						window.location.href = "/";
 					} else {
 						alert('신청을 다시 확인하세요');

@@ -56,10 +56,10 @@ public class MainController {
 		return "about/commu";
 	}
 
-	@GetMapping("/admin_driverlist")
-	public String admin_driverlist() {
-		return "admin/admin_driverlist";
-	}
+	/*
+	 * @GetMapping("/admin_driverlist") public String admin_driverlist() { return
+	 * "admin/admin_driverlist"; }
+	 */
 
 	@GetMapping("/admin_singolist")
 	public String admin_singolist() {

@@ -37,7 +37,8 @@
 					<div class="breadcrumb__text">
 						<h2>Admin</h2>
 						<div class="breadcrumb__links">
-							<a href="./"><i class="fa fa-home"></i> Home</a> <span>관리자_드라이버회원관리</span>
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>관리자_드라이버회원관리
+							</span>
 						</div>
 					</div>
 				</div>
@@ -45,11 +46,15 @@
 		</div>
 	</div>
 
-	<!-- Contact Address Begin -->
+	<!-- 관리자_드라이버 회원 관리 -->
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
-
+				<form action="admin_driverlist" method="get">
+					<input type="text" id="mem_text" name="mem_text" /> <input
+						type="submit" value="찾기" class="btn btn-light"
+						style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
+				</form>
 				<div class="container-fluid py-4">
 					<div class="row">
 						<div class="col-12">
@@ -58,185 +63,125 @@
 									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 									<div
 										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">Authors table</h6>
+										<h6 class="text-white text-capitalize ps-3">관리자_드라이버 회원
+											관리</h6>
 									</div>
 								</div>
-								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0">
-										<table class="table align-items-center mb-0">
-											<thead>
-												<tr>
-													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-													<th
-														class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-													<th
-														class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-													<th class="text-secondary opacity-7"></th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">John Michael</h6>
-																<p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Manager</p>
-														<p class="text-xs text-secondary mb-0">Organization</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-success">Online</span></td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">23/04/18</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Alexa Liras</h6>
-																<p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Programator</p>
-														<p class="text-xs text-secondary mb-0">Developer</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-secondary">Offline</span>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">11/01/19</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Laurent Perrier</h6>
-																<p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Executive</p>
-														<p class="text-xs text-secondary mb-0">Projects</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-success">Online</span></td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">19/09/17</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Michael Levi</h6>
-																<p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Programator</p>
-														<p class="text-xs text-secondary mb-0">Developer</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-success">Online</span></td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">24/12/08</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Richard Gran</h6>
-																<p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Manager</p>
-														<p class="text-xs text-secondary mb-0">Executive</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-secondary">Offline</span>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">04/10/21</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-												<tr>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm">Miriam Eric</h6>
-																<p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">Programator</p>
-														<p class="text-xs text-secondary mb-0">Developer</p>
-													</td>
-													<td class="align-middle text-center text-sm"><span
-														class="badge badge-sm bg-gradient-secondary">Offline</span>
-													</td>
-													<td class="align-middle text-center"><span
-														class="text-secondary text-xs font-weight-bold">14/09/20</span>
-													</td>
-													<td class="align-middle"><a href="javascript:;"
-														class="text-secondary font-weight-bold text-xs"
-														data-toggle="tooltip" data-original-title="Edit user">
-															Edit </a></td>
-												</tr>
-											</tbody>
-										</table>
-									</div>
-								</div>
+								<c:choose>
+									<c:when test="${driver!=null && pageInfo.listCount>0 }">
+										<form action="admin_driverlist" method="get">
+											<div class="card-body px-0 pb-2">
+												<div class="table-responsive p-0">
+													<table class="table align-items-center mb-0">
+														<thead>
+															<tr>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-6">이름</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-1">아이디</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-4">면허
+																	취득일</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-1">차
+																	번호</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">차종</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">면허증</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">처리</th>
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach var="driver" items="${driver }">
+																<tr>
+																	<td>
+																		<div class="d-flex px-2 py-1">
+																			<div
+																				class="d-flex flex-column justify-content-center">
+																				<h6 class="mb-0 text-sm ps-5">${driver.name }</h6>
+																			</div>
+																		</div>
+																	</td>
+																	<td>
+																		<h6 class="mb-0 text-sm ps-0">${driver.id }</h6>
+																	</td>
+																	<td>
+																		<h6 class="mb-0 text-sm ps-4">${driver.getdate }</h6>
+																	</td>
+																	<td>
+																		<h6 class="mb-0 text-sm ps-0">${driver.carnum }</h6>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${driver.cartype }</p>
+																	</td>
+																	<td>
+																		<!--  <p class="text-xs font-weight-bold mb-0">${driver.img }</p> -->
+																		<a href="/view/${driver.img }" download><img
+																			width="50px" src="/view/${driver.img }"></a>
+																	</td>
+																	<td><select class="form-select form-select-sm"
+																		aria-label=".form-select-sm example">
+																			<option selected>상태</option>
+																			<option value="1">승인</option>
+																			<option value="2">대기중</option>
+																			<option value="3">반려</option>
+																	</select></td>
+																</tr>
+															</c:forEach>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</form>
+
+										<!-- 페이징 처리  -->
+										<section id="pageList" style="text-align: center;">
+											<c:choose>
+												<c:when test="${pageInfo.page<=1}">
+					[이전]&nbsp;
+				</c:when>
+												<c:otherwise>
+													<a
+														href="admin_driverlist?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
+				</c:otherwise>
+											</c:choose>
+											<c:forEach var="i" begin="${pageInfo.startPage }"
+												end="${pageInfo.endPage }">
+												<c:choose>
+													<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+													<c:otherwise>
+														<a href="admin_driverlist?page=${i}&mem_text=${mem_text}">[${i }]</a>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+											<c:choose>
+												<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+					[다음]
+				</c:when>
+												<c:otherwise>
+													<a
+														href="admin_driverlist?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
+												</c:otherwise>
+											</c:choose>
+										</section>
+									</c:when>
+								</c:choose>
 							</div>
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>
-	<!-- Contact Address End -->
 </body>
 
 <!--   Core JS Files   -->
