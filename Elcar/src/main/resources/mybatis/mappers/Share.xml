@@ -11,7 +11,8 @@
 		values(#{sincheng_id},#{date},#{person},#{request},#{start_long},#{start_lat},#{goal_long},#{goal_lat},#{status},#{start_name},#{goal_name})
 	]]>
 	</insert>
-	<select id="selectShareList" resultType="share">
+	<select id="selectShareList" resultType="share"
+		parameterType="Map">
       <![CDATA[
          SELECT *,
 		(6371*acos(cos(radians(#{lat}))*cos(radians(start_lat))*cos(radians(start_long)
@@ -40,7 +41,7 @@
       ]]>
 	</select>
 
-	<select id="sincheongInfo" resultType="HashMap"
+	<select id="sinchengInfo" resultType="HashMap"
 		parameterType="int">
       <![CDATA[
     	select 
@@ -58,24 +59,24 @@
       <![CDATA[
        select * from talge where num = #{num}
       ]]>
-	</select>
-	
+	</select> 	
+
 	<insert id="insertSincheng" parameterType="Share">
  	<![CDATA[
-		insert into sincheonglist(talge_num,sincheng_id,surak_id) 
-		values(#{num},#{sincheng_id},#{surak_id})
+		insert into sinchenglist(talge_num,sincheng_id,surak_id) 
+		values(#{num},#{sincheng_id},#{surak_id});
 	]]>
 	</insert>
 	
 	<select id="talgelist" resultType="Share" parameterType="String">
 	  <![CDATA[
-       select * from sincheonglist join member on surak_id = member.id join driver on surak_id = driver.id where sincheng_id = #{id}
+       select * from sinchenglist join member on surak_id = member.id join driver on surak_id = driver.id where sincheng_id = #{id}
       ]]>
 	</select>
 
 	<select id="taewoolist" resultType="Share" parameterType="String">
 	  <![CDATA[
-       select * from sincheonglist join member on sincheng_id = member.id join talge on talge_num = talge.num  where sincheonglist.surak_id = #{id}
+       select * from sinchenglist join member on sincheng_id = member.id join talge on talge_num = talge.num  where sinchenglist.surak_id = #{id}
       ]]>
 	</select>
 
@@ -93,7 +94,7 @@
 
 	<delete id="talge_delete" parameterType="Integer">
 	  <![CDATA[
-		delete from sincheonglist where num=#{num}
+		delete from sinchenglist where num=#{num}
  		]]>
 	</delete>
 	
@@ -112,7 +113,14 @@
 	
 	<delete id="accept_delete" parameterType="Integer">
 	  <![CDATA[
-		delete from sincheonglist where talge_num=#{talge_num}
+		delete from sinchenglist where talge_num=#{talge_num}
  		]]>
 	</delete>
+	
+	<select id="sinchengOverlap" resultType="Sinchenglist"
+		parameterType="Share">
+      <![CDATA[
+       select * from sinchenglist where surak_id=#{id} and talge_num=#{num};
+      ]]>
+	</select>
 </mapper>

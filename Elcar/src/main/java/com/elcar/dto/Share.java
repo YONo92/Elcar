@@ -1,6 +1,7 @@
 package com.elcar.dto;
 
 public class Share {
+	String id;
 	int num;
 	int talge_num;
 	String sincheng_id;
@@ -23,10 +24,11 @@ public class Share {
 		
 	}
 
-	public Share(int num, int talge_num, String sincheng_id, String surak_id, String date, int person, String request,
-			double start_long, double start_lat, double goal_long, double goal_lat, int status, String start_name,
-			String goal_name, String nickname, int gender, String cartype) {
+	public Share(String id, int num, int talge_num, String sincheng_id, String surak_id, String date, int person,
+			String request, double start_long, double start_lat, double goal_long, double goal_lat, int status,
+			String start_name, String goal_name, String nickname, int gender, String cartype) {
 		super();
+		this.id = id;
 		this.num = num;
 		this.talge_num = talge_num;
 		this.sincheng_id = sincheng_id;
@@ -44,6 +46,14 @@ public class Share {
 		this.nickname = nickname;
 		this.gender = gender;
 		this.cartype = cartype;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public int getNum() {
