@@ -80,7 +80,7 @@
                                 <div class="col-lg-6">
                                 	<label for="gender"><b>&nbsp;성별</b></label>
                                 	<input type="hidden" id="gender" name='gender' value="${member.gender}">                      	
-                                    <input type="text" value="${member.gender == 1 ? '남성' : '여성'}" readonly>
+                                    <input type="text" value="${member.gender == 0 ? '남성' : '여성'}" readonly>
                                 </div>
 							<div style=" height:200px;"></div>  <!--버튼 높이 조정-->
                             </div>
