@@ -8,14 +8,10 @@
 	<!-- 드라이버 신청 등록하기 -->
 	<insert id="insertDriver" parameterType="driver">
 		<![CDATA[
-			INSERT INTO driver(num, id, name, img, getdate, carnum, cartype) VALUES 
-			(#{num}, #{id}, #{name}, #{img}, #{getdate}, #{carnum}, #{cartype});
+			INSERT INTO driver(id, name, img, getdate, carnum, cartype) VALUES 
+			(#{id}, #{name}, #{img}, #{getdate}, #{carnum}, #{cartype});
 		]]>
 	</insert>
-
-
-
-
 
 
 

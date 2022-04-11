@@ -19,4 +19,8 @@ public interface MemberService {
 	boolean idCheck(String id)throws Exception;
 
 	boolean EmailCheck(String email, String name) throws Exception;
+
+	Member searchId(String name, String birth)throws Exception;
+
+	boolean phoneCheck(String phone) throws Exception;
 }

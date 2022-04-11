@@ -81,7 +81,7 @@
 			alert("비밀번호가 일치하지 않습니다");
 			return false;
 		} else {
-			alert("컨트롤러");
+			alert("비밀번호가 변경되었습니다!");
 			return true;
 		}
 	}
@@ -90,6 +90,7 @@
 	if (name == "modify") {
 		location.href = "main/main";
 	}
+	
 </script>
 
 </html>

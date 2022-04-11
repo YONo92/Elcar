@@ -45,7 +45,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<div class="blog__item ">
 									<div class="blog__item__pic set-bg" data-setbg="resources/img/breadcrumb-bg.jpg">
-										<a href="shareList/${share.num}">
+										<a href="sinchenginfo/${share.num}">
 											<ul>
 												<li>${share.date}</li>
 												<li>${share.num}</li>
@@ -69,8 +69,14 @@
 				</div>
 			</div>
 		</div>
+	</section>
+	<div id="test">
+	</div>
 
-	</section> 
+	
+
+
+
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<!-- 무한스크롤링 기능구현  -->
