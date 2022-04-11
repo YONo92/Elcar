@@ -93,10 +93,14 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           document.getElementById('locationForm').submit();
         },
         function (err) {
-          alert('위치정보 허용 하시는 것을 권장 드립니다.');
-          $('#lat').val(37.570028);
-          $('#lng').val(126.986072);
-          document.getElementById('locationForm').submit();
+          Swal.fire({
+            icon: 'warning',
+            text: '위치정보 허용 하시는 것을 권장 드립니다.',
+          }).then(function (isOkay) {
+            $('#lat').val(37.570028);
+            $('#lng').val(126.986072);
+            document.getElementById('locationForm').submit();
+          });
         }
       );
     }
