@@ -119,7 +119,7 @@ public class ShareController {
 	@GetMapping(value = "/sinchenginfo/{num}")
 	public ModelAndView sincheongInfo(@PathVariable("num") int num, Share share) {
 		ModelAndView mav = new ModelAndView("share/sincheonginfo");
-		String id = (String) session.getAttribute("id"); 
+		String id = (String) session.getAttribute("id");
 		try {
 			if (id == null) {
 				mav.setViewName("redirect:/loginform");
@@ -171,12 +171,13 @@ public class ShareController {
 			Member mem = memserv.selectMember_kakao(id);
 			if (mem.getLicense() != 1) {
 				mav.setViewName("redirect:/driver-regist");
-			}
-			share = shareserv.selectShare(share.getNum());
-			if (id.equals(share.getSincheng_id())) {
 			} else {
-				share.setSurak_id(id);
-				shareserv.insertSincheng(share);
+				share = shareserv.selectShare(share.getNum());
+				if (id.equals(share.getSincheng_id())) {
+				} else {
+					share.setSurak_id(id);
+					shareserv.insertSincheng(share);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
