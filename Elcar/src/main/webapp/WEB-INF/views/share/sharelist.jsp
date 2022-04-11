@@ -69,43 +69,8 @@
 				</div>
 			</div>
 		</div>
+
 	</section> 
-
-<%-- 	<div class="container">
-		<table class="table">
-			<!--<table class="table table-striped table-hover">-->
-			<thead>
-				<tr>
-					<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">번호</th>
-					<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">작성자</th>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">출발지</th>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">도착지</th>
-					<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">상태</th>
-					<th class="text-secondary opacity-7">작성일</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="share" items="${shareList}">
-					<tr>
-						<td class="scrolling">${share.num}</td>
-						<td class="text-xs font-weight-bold mb-0">${share.sincheng_id}</td>
-						<td class="fw-bold mb-1 ">${share.start_name}</td>
-						<td class="fw-bold mb-1">${share.goal_name}</td>
-						<td class="text-xs font-weight-bold mb-0"><span class="badge badge-success rounded-pill d-inline">${share.status == 0? '매칭전' : '매칭'}</span></td>
-						<td class="text-xs font-weight-bold mb-0">${share.date}</td>
-					</tr>
-				</c:forEach>
-
-			</tbody>
-		</table>
-		<div id="disp"></div>
-		<button class="badge badge-success rounded-pill d-inline"
-			type="button" onclick="location.href='share'">탈래 신청</button>
-	</div> --%>
-
-
-
-
 
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<!-- 무한스크롤링 기능구현  -->
@@ -145,15 +110,17 @@
 							html += "<div class='row'>"
 								html += "<div class='col-lg-12 col-md-12 col-sm-12'>"
 									html += "<div class='blog__item'>"
-										html += '<div class="blog__item__pic set-bg" data-setbg="resources/img/breadcrumb-bg.jpg">'
+										html += '<div class="blog__item__pic set-bg" ' + `data-setbg="../resources/img/breadcrumb-bg.jpg" style="background-image: url('resources/img/breadcrumb-bg.jpg');">`
 											html += '<a href="shareList/${share.num}">'
-												html += '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>'
+												html += '<a href=shareList/'+ value.num + '>' + '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>' +'</a>'
 											html += '</a>'
 										html += '</div>'
 										html += '<div class="blog__item__text ">'
 										html += '<h5><a href="#">'+ '출발지:'+ value.start_name + '</a></h5>'
-										html += '<h5><a href="#">'+ '출발지:'+ value.goal_name + '</a></h5>'										
-										html += '<span class="badge badge-success rounded-pill d-inline">' +  '{'+value.status  == 0 ? "매칭전" : "매칭" + '}' + '</span>'
+										html += '<h5><a href="#">'+ '출발지:'+ value.goal_name + '</a></h5>'	
+										html += '<span class="badge badge-success rounded-pill d-inline">'
+										html +=  value.status   == 0 ? "매칭전":"매칭"   
+										html += '</span>' 
 										html += '<p>'+'요구사항:'+ value.request+'</p>'
 									html += '</div>'
 								html += '</div>'
