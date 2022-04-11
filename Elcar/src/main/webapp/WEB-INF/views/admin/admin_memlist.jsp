@@ -46,10 +46,15 @@
 		</div>
 	</div>
 
-	<!-- 관리자_전체 회원 조회 -->
+	<!-- 관리자_회원 관리 -->
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
+				<form action="admin_memlist" method="get">
+					<input type="text" id="mem_text" name="mem_text" /> <input
+						type="submit" value="찾기" class="btn btn-outline-success"
+						style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
+				</form>
 				<div class="container-fluid py-4">
 					<div class="row">
 						<div class="col-12">
@@ -58,103 +63,103 @@
 									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 									<div
 										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">관리자_회원관리</h6>
+										<h6 class="text-white text-capitalize ps-3">관리자_회원 관리</h6>
 									</div>
 								</div>
-								<form action="admin_memlist" method="get">
-								<div class="card-body px-0 pb-2">
-									<div class="table-responsive p-0">
-										<table class="table align-items-center mb-0">
-											<thead>
-												<tr>
-													<th
-														class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-5">번호</th>
-													<th
-														class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-5">이름</th>
-													<th
-														class="text-uppercase text-secondary 
+								<c:choose>
+									<c:when test="${mem!=null && pageInfo.listCount>0 }">
+										<form action="admin_memlist" method="get">
+											<div class="card-body px-0 pb-2">
+												<div class="table-responsive p-0">
+													<table class="table align-items-center mb-0">
+														<thead>
+															<tr>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-6">이름</th>
+																<th
+																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">아이디</th>
-													<th
-														class="text-uppercase text-secondary 
+																<th
+																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">닉네임</th>
-													<th
-														class="text-uppercase text-secondary 
+																<th
+																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">생일</th>
-													<th
-														class="text-uppercase text-secondary 
+																<th
+																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">연락처</th>
-													<th
-														class="text-uppercase text-secondary 
+																<th
+																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">이메일</th>
-												</tr>
-											</thead>
-											<tbody>
-												<c:forEach items="${mem }" var="mem">
-												<tr>
-													<td>
-														<p class="text-xs font-weight-bold mb-0 ps-5">1</p>
-													</td>
-													<td>
-														<div class="d-flex px-2 py-1">
-															<div class="d-flex flex-column justify-content-center">
-																<h6 class="mb-0 text-sm ps-4">${mem.name }</h6>
-															</div>
-														</div>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">${mem.id }</p>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">${mem.nickname }</p>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">${mem.birth }</p>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">${mem.phone }</p>
-													</td>
-													<td>
-														<p class="text-xs font-weight-bold mb-0">${mem.email }</p>
-													</td>
-												</tr>
-		</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</div>
-								</form>
-								<!-- 페이징 처리  -->
-								<section id="pageList" style="text-align: center;">
-					<c:choose>
-						<c:when test="${pageInfo.page<=1}">
+															</tr>
+														</thead>
+														<tbody>
+															<c:forEach var="mem" items="${mem }">
+																<tr>
+																	<td>
+																		<div class="d-flex px-2 py-1">
+																			<div
+																				class="d-flex flex-column justify-content-center">
+																				<h6 class="mb-0 text-sm ps-5">${mem.name }</h6>
+																			</div>
+																		</div>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${mem.id }</p>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${mem.nickname }</p>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${mem.birth }</p>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${mem.phone }</p>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${mem.email }</p>
+																	</td>
+																</tr>
+															</c:forEach>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</form>
+
+										<!-- 페이징 처리  -->
+										<section id="pageList" style="text-align: center;">
+											<c:choose>
+												<c:when test="${pageInfo.page<=1}">
 					[이전]&nbsp;
 				</c:when>
-						<c:otherwise>
-							<a
-								href="admin_memlist?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
+												<c:otherwise>
+													<a
+														href="admin_memlist?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
 				</c:otherwise>
-					</c:choose>
-					<c:forEach var="i" begin="${pageInfo.startPage }"
-						end="${pageInfo.endPage }">
-						<c:choose>
-							<c:when test="${pageInfo.page==i }">[${i }]</c:when>
-							<c:otherwise>
-								<a href="admin_memlist?page=${i}&mem_text=${mem_text}">[${i }]</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-					<c:choose>
-						<c:when test="${pageInfo.page>=pageInfo.maxPage }">
+											</c:choose>
+											<c:forEach var="i" begin="${pageInfo.startPage }"
+												end="${pageInfo.endPage }">
+												<c:choose>
+													<c:when test="${pageInfo.page==i }">[${i }]</c:when>
+													<c:otherwise>
+														<a href="admin_memlist?page=${i}&mem_text=${mem_text}">[${i }]</a>
+													</c:otherwise>
+												</c:choose>
+											</c:forEach>
+											<c:choose>
+												<c:when test="${pageInfo.page>=pageInfo.maxPage }">
 					[다음]
 				</c:when>
-						<c:otherwise>
-							<a
-								href="admin_memlist?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
-						</c:otherwise>
-					</c:choose>
-				</section>
+												<c:otherwise>
+													<a
+														href="admin_memlist?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
+												</c:otherwise>
+											</c:choose>
+										</section>
+									</c:when>
+								</c:choose>
 							</div>
 						</div>
 					</div>

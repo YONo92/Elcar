@@ -4,75 +4,111 @@
 
 
 	<!-- 아이디로 회원 조회 -->
-	<select id="queryMember" resultType="Member" parameterType="String">
+	<select id="queryMember" resultType="Member"
+		parameterType="String">
       <![CDATA[
          select * from member where id = #{id}
       ]]>
 	</select>
-	
-	<!-- 이용내역 조회 -->
-	<select id="historyMember" resultType="Member" parameterType="String">
-      <![CDATA[
-         select * from history where member_id = #{member_id}
-      ]]>
-	</select>
-	
+
 	<!-- 나의 정보 수정 -->
 	<update id="updateMember" parameterType="member">
       <![CDATA[
       update member set name=#{name}, email=#{email}, nickname=#{nickname}, phone=#{phone}
       where id=#{id}
       ]]>
-   </update>
-   
+	</update>
+
 	<!-- 비밀번호 변경 -->
 	<update id="updatePw" parameterType="Map">
       <![CDATA[
       update member set pw=#{pw} where id=#{id}
       ]]>
 	</update>
-	
+
 	<!-- 회원탈퇴 -->
 	<delete id="deleteId" parameterType="String"> 
 	<![CDATA[ 
 		delete from member WHERE id = #{id}
 	]]>
 	</delete>
-	
+
+	<!-- 드라이버 정보 -->
+	<select id="queryDriver" resultType="Driver"
+		parameterType="String">
+		<![CDATA[ 
+		select * from driver where id = #{id}
+	]]>
+	</select>
+
 	<!-- 매너 점수 조회 -->
-	<select id="queryPoint" resultType="Member" parameterType="String">
+	<select id="queryDriverPoint" resultType="History"
+		parameterType="String">
       <![CDATA[
-         select point from member where member_id = #{member_id}
+         select * from history where taker_id = #{id} and type = "기사" ORDER BY date
+      ]]>
+	</select>
+
+	<!-- 매너 점수 조회 -->
+	<select id="queryDDubukPoint" resultType="History"
+		parameterType="String">
+      <![CDATA[
+         select * from history where taker_id = #{id} and type = "뚜벅초" ORDER BY date
       ]]>
 	</select>
 	
 	
 	
-    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->    <!--  -->
-	<!-- 매너 점수 변동 -->
-	<update id="updatePoint" parameterType="Map">
-		<![CDATA[ 
-		update member set member_point = #{member_point} where sincheng_id=#{sincheng_id} and surak_id=#{surak_id}
-	]]>
+	
+	
+	
+<!-- --><!--  -->	<!--  -->	<!--  -->	<!-- -->
+	<!-- 매너 점수 주기 -->
+	<update id="driverPoint5"  parameterType="history">
+      <![CDATA[
+		update history set point = point+5 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+      ]]>
+	</update>
+	
+		<!-- 매너 점수 주기 -->
+	<update id="driverPoint3"  parameterType="history">
+      <![CDATA[
+		update history set point = point+3 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+      ]]>
+	</update>
+	
+		<!-- 매너 점수 주기 -->
+	<update id="driverPoint-1"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+      ]]>
 	</update>
 	
 	
 	
-		<!-- 탈게 매너 점수 변동 -->
-	<update id="updateTalgaePoint" parameterType="Map">
-		<![CDATA[ 
-		update member set member_point = #{member_point} where surak_id=#{surak_id}
-	]]>
+	
+		<!-- 매너 점수 주기 -->
+	<update id="ddubukPoint5"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
+      ]]>
 	</update>
 	
-<!-- 	 드라이버 정보 
-	<select id="queryDriver" parameterType="driver">
-		<![CDATA[
-		select * from driver where num=#{num} 
-		select driver_num from driver where member_id=#{member_id} 
-		]]>
-	</select> -->
+			<!-- 매너 점수 주기 -->
+	<update id="ddubukPoint3"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
+      ]]>
+	</update>
 	
+			<!-- 매너 점수 주기 -->
+	<update id="ddubukPoint-1"  parameterType="history">
+      <![CDATA[
+		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
+      ]]>
+	</update>
+
+
 	
-	
-	</mapper>
+
+</mapper>
