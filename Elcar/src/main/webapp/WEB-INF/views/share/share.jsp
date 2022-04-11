@@ -322,7 +322,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       //경로그림정보
       var drawInfoArr = [];
       var drawInfoArr2 = [];
-
       var chktraffic = [];
       var resultdrawArr = [];
       var resultMarkerArr = [];

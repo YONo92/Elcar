@@ -37,6 +37,8 @@ public interface ShareService {
 
 	public void insertHistory(String sincheng_id, String surak_id);
 
+	public void insertHistory2(String sincheng_id, String surak_id);
+
 	public void modifyShare(String surak_id, int talge_num);
 
 	public void accept_delete(int talge_num);

@@ -22,7 +22,7 @@
 		having date > now() 
 		and distance <= 10 
 		ORDER BY distance 
-		LIMIT 0,1000;
+		LIMIT #{liststartsize},#{listlastsize};
       ]]>
 	</select>
 
@@ -100,8 +100,15 @@
 	
 	<insert id="insertHistory">
  	<![CDATA[
-		insert into history(giver_id,taker_id) 
-		values(#{sincheng_id},#{surak_id})
+		insert into history(giver_id,taker_id,type,status) 
+		values(#{sincheng_id},#{surak_id},"기사",0)
+	]]>
+	</insert>
+
+	<insert id="insertHistory2">
+ 	<![CDATA[
+		insert into history(giver_id,taker_id,type,status) 
+		values(#{surak_id},#{sincheng_id},"뚜벅초",0)
 	]]>
 	</insert>
 	

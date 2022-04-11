@@ -7,6 +7,11 @@
 <meta charset="EUC-KR" />
 <title>Insert title here</title>
 </head>
+<link
+		href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+		rel="stylesheet">
+	
+
 <body>
 	<!-- 드라이버 등록 상단 이미지 -->
 	<div class="breadcrumb-option set-bg"
@@ -32,16 +37,15 @@
 	<section class="blog spad">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-12"  id="disp">
 					<button class="badge badge-success rounded-pill d-inline"
 						type="button" onclick="location.href='share'">탈래 신청</button>
 					<c:forEach var="share" items="${shareList}">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12">
 								<div class="blog__item ">
-									<div class="blog__item__pic set-bg"
-										data-setbg="resources/img/breadcrumb-bg.jpg">
-										<a href="shareList/${share.num}">
+									<div class="blog__item__pic set-bg" data-setbg="resources/img/breadcrumb-bg.jpg">
+										<a href="sinchenginfo/${share.num}">
 											<ul>
 												<li>${share.date}</li>
 												<li>${share.num}</li>
@@ -62,7 +66,6 @@
 							</div>
 						</div>
 					</c:forEach>
-					<div id="disp"></div>
 				</div>
 			</div>
 		</div>
@@ -110,19 +113,23 @@
 					success: function (response) {
 						var html =""
 						$.each(response,function(key,value){
-							html += '<div class="row">'
-							html += '<div class="col-lg-12 col-md-12 col-sm-12">'
-							html += '<div class="blog__item">'
-							html += '<div class="blog__item__pic set-bg">'
-							html += '<div class="resources/img/breadcrumb-bg.jpg">'
-							html += '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>'
-							html += '<div class="blog__item__text">'+'<h5>'+value.start_name+'</h5>'+'<h5>'+value.goal_name+'</h5>'
-								// 자문을 구하도록하자 
-							html += '<span class="badge badge-success rounded-pill d-inline">' +  '{'+value.status  == 0 ? "매칭전" : "매칭" +'}'+'</span>'
-							html += '<p>'+'요구사항:'+ value.request+'</p>'
-							html += '</div>'
-							html += '</div>'
-							html += '</div>'
+							html += "<div class='row'>"
+								html += "<div class='col-lg-12 col-md-12 col-sm-12'>"
+									html += "<div class='blog__item'>"
+										html += '<div class="blog__item__pic set-bg" ' + `data-setbg="../resources/img/breadcrumb-bg.jpg" style="background-image: url('resources/img/breadcrumb-bg.jpg');">`
+											html += '<a href="shareList/${share.num}">'
+												html += '<a href=shareList/'+ value.num + '>' + '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>' +'</a>'
+											html += '</a>'
+										html += '</div>'
+										html += '<div class="blog__item__text ">'
+										html += '<h5><a href="#">'+ '출발지:'+ value.start_name + '</a></h5>'
+										html += '<h5><a href="#">'+ '출발지:'+ value.goal_name + '</a></h5>'	
+										html += '<span class="badge badge-success rounded-pill d-inline">'
+										html +=  value.status   == 0 ? "매칭전":"매칭"   
+										html += '</span>' 
+										html += '<p>'+'요구사항:'+ value.request+'</p>'
+									html += '</div>'
+								html += '</div>'
 							html += '</div>'
 							html += '</div>'
 							html += '</div>'
@@ -132,7 +139,6 @@
 						if (response != null) {
 							liststartsize += 10;
 						}
-						
 					}
 				}); 
 			}

@@ -66,6 +66,11 @@ public class ShareServiceImpl implements ShareService {
 	}
 
 	@Override
+	public void insertHistory2(String sincheng_id, String surak_id) {
+		sharedao.insertHistory2(sincheng_id,surak_id);
+	}
+
+	@Override
 	public void modifyShare(String surak_id, int talge_num) {
 		sharedao.modifyShare(surak_id,talge_num);
 	}

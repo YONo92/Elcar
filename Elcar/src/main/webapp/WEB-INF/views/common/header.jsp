@@ -39,10 +39,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                     <ul class="dropdown">
                       <li><a href="../about">서비스 안내</a></li>
                       <li><a href="../driver-regist">드라이버 등록</a></li>
-                      <li><a href="../commu">커뮤니티</a></li>
+                      <li><a href="../boardlist">커뮤니티</a></li>
                     </ul>
                   </li>
-                  <li><a href="../charger">전기차 충전소</a></li>
+                  <li><a href= "https://map.kakao.com/link/search/전기차충전소">전기차 충전소</a></li>
                   <li>
                     <form id="locationForm" action="../sharelist" method="post">
                       <input type="hidden" id="lat" name="lat" />
