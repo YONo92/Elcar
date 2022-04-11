@@ -16,5 +16,7 @@ public interface MemberDAO {
 	Member queryMember_email(String id) throws Exception;
 	Member queryMember_nickname(String nickname)throws Exception;
 	void updateUserPassword(@Param(value="id") String id, @Param(value="pw")String pw) throws Exception;
+	Member searchId(@Param(value="name")String name, @Param(value="birth")String birth)throws Exception;
+	Member queryMember_phone(String phone) throws Exception;
 
 }

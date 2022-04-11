@@ -141,9 +141,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			<br /><br />
             <h4 style="float: left">인원수</h4>
             <input
-              type="text"
+              type="number" min="1"
               class="text_custom text"
               name="person"
+              id="person"
+              
             />
 			<br /><br />
             <h4 style="float: left">출발지 검색</h4>
@@ -290,11 +292,13 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           ></textarea
           ><br /><br />
           <input
-            type="submit"
+            type="button"
             value="날 태워"
             class="btn btn-danger"
             style="width: 100px"
+            onclick="click_insert()"
           />
+          <input hidden type="submit" id="submit"> 
 		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
       </div>
@@ -318,10 +322,52 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       //경로그림정보
       var drawInfoArr = [];
       var drawInfoArr2 = [];
-
       var chktraffic = [];
       var resultdrawArr = [];
       var resultMarkerArr = [];
+   
+      function click_insert() {
+        if(document.getElementById("datepicker").value===""){
+          Swal.fire({
+            icon:'error',
+            title:'탈래 신청',
+            text:'날짜를 입력해주세요.',
+          })
+        } else if(document.getElementById("person").value===""){
+          Swal.fire({
+            icon:'error',
+            title:'탈래 신청',
+            text:'인원수를 입력해주세요.',
+          }) 
+        } else if(document.getElementById("person").value<1){
+          Swal.fire({
+            icon:'error',
+            title:'탈래 신청',
+            text:'0보다 큰 숫자를 입력하세요',
+          }) 
+        } 
+        else if(document.getElementById("searchKeyword1").value===""){
+          Swal.fire({
+            icon:'error',
+            title:'탈래 신청',
+            text:'출발지를 입력해주세요.',
+          })
+        } else if(document.getElementById("searchKeyword2").value===""){
+          Swal.fire({
+            icon:'error',
+            title:'탈래 신청',
+            text:'도착지를 입력해주세요.',
+          })
+        } else {
+        Swal.fire({
+            icon:'success',
+            title:"탈래 신청",
+            text:'신청이 완료 되었습니다.',
+          }).then(function(isOkay){
+            document.getElementById("submit").click();
+            })  
+          }
+      }
       $("#datepicker").datepicker({
     	language: 'ko',
       timepicker: true,
@@ -329,6 +375,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
     }); 
       var status = '출발지 클릭하기';
       function initTmap() {
+        navigator.geolocation.getCurrentPosition(
+          function (pos) {
             navigator.geolocation.getCurrentPosition(function (pos) {
               map = new Tmapv2.Map('map_div', {
                 center: new Tmapv2.LatLng(
@@ -342,7 +390,9 @@ uri="http://java.sun.com/jsp/jstl/core" %>
                 scrollwheel: true,
               });
               map.addListener('click', onClick);
-            }, function (err) {
+            });
+          },
+          function (err) {
             map = new Tmapv2.Map('map_div', {
               center: new Tmapv2.LatLng(37.570028, 126.986072),
               width: '100%',
@@ -353,13 +403,19 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             });
             map.addListener('click', onClick);
           }
-            );
-         
+        );
         // 1. 지도 띄우기
 
         //2. POI 통합 검색 API 요청
         
         $('#btn_select_start').click(function () {
+          if(document.getElementById("searchKeyword1").value===""){
+          Swal.fire({
+            icon:'error',
+            title:'출발지 검색',
+            text:'출발지를 입력해주세요.',
+          })
+        } else{
           //동적 사이즈 
 			map.resize(1420,694);
 			$('.center_map').css({
@@ -368,6 +424,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 			$('.center_addr').css({
 				"width": "30%"
 			})
+      
           var searchKeyword = $('#searchKeyword1').val();
           $.ajax({
             method: 'GET',
@@ -455,8 +512,24 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               );
             },
           });
+        }
         });
+        
         $('#btn_select_end').click(function () {
+          if(document.getElementById("searchKeyword2").value===""){
+          Swal.fire({
+            icon:'error',
+            title:'도착지 검색',
+            text:'도착지를 입력해주세요.',
+          })
+        } else {
+          map.resize(1420,694);
+			$('.center_map').css({
+				"width": "70%"
+			})
+			$('.center_addr').css({
+				"width": "30%"
+			})
           var searchKeyword = $('#searchKeyword2').val();
           $.ajax({
             method: 'GET',
@@ -544,6 +617,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               );
             },
           });
+        }
         });
 
         // 3. 경로탐색 API 사용요청
@@ -947,7 +1021,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       }
 
       function start_search(lat, lon, name) {
-        alert(lat + '/' + lon + '/' + name);
         $('#searchKeyword1').val(name);
         $('#startlat').attr('value', lat);
         $('#startlon').attr('value', lon);
@@ -971,7 +1044,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       }
 
       function end_search(lat, lon, name) {
-        alert(lat + '/' + lon + '/' + name);
+
         $('#searchKeyword2').val(name);
         $('#endlat').attr('value', lat);
         $('#endlon').attr('value', lon);
@@ -995,13 +1068,21 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 
       function click_start() {
         status = $('#start').val();
-        alert('출발지를 설정합니다.');
+        Swal.fire({
+            icon:'success',
+            title:"출발지 선택",
+            text:'출발지를 클릭하세요.',
+          })
         console.log(status);
       }
 
       function click_end() {
         status = $('#end').val();
-        alert('도착지를 설정합니다.');
+        Swal.fire({
+            icon:'success',
+            title:"도착지 선택",
+            text:'도착지를 클릭하세요.',
+          })
       }
 
       function onClick(e) {

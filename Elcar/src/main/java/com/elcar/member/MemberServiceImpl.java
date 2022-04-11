@@ -26,9 +26,9 @@ public class MemberServiceImpl implements MemberService {
 		mem.setEmail(mem.getId());
 		String gender = mem.getGender2();
 		if(gender.equals("male") || gender.equals("M")) {
-			mem.setGender(1);
+			mem.setGender(0);
 		}else if(gender.equals("female") || gender.equals("F")) {
-			mem.setGender(2);
+			mem.setGender(1);
 		}
 		
 		memdao.insertMember(mem);		
@@ -83,8 +83,6 @@ public class MemberServiceImpl implements MemberService {
 	public boolean EmailCheck(String email, String name) throws Exception{
 
         Member mem = memdao.queryMember_email(email);
-        System.out.println(name);
-        System.out.println(mem.getName());
         if(mem!=null && mem.getName().equals(name)) {
             return true;
         }
@@ -92,6 +90,28 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
     }
+
+	@Override
+	public Member searchId(String name, String birth) throws Exception {
+		Member mem =  memdao.searchId(name, birth);
+		if(mem!=null) {
+			return mem;
+		}
+		return null;
+	}
+
+	@Override
+	public boolean phoneCheck(String phone) throws Exception {
+
+        Member mem = memdao.queryMember_phone(phone);
+        System.out.println(phone);
+        if(mem!=null) {
+            return true;
+        }
+        else {
+            return false;
+        }
+	}
 	
 	
 }

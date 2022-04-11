@@ -5,7 +5,8 @@
 <html>
 <body>
 	<!-- Footer Section Begin -->
-	<footer class="footer set-bg" data-setbg="resources/img/footer-bg.jpg">
+	<footer class="footer set-bg"
+		data-setbg="../resources/img/footer-bg.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
@@ -24,10 +25,14 @@
 						<ul>
 							<li><a href="../about"><i class="fa fa-angle-right"></i>
 									About</a></li>
-							<li><a href="../charger"><i class="fa fa-angle-right"></i>
-									충전소 검색</a></li>
-							<li><a href="../share"><i class="fa fa-angle-right"></i>
-									카쉐어링</a></li>
+							<li><a href="https://map.kakao.com/link/search/전기차충전소"><i
+									class="fa fa-angle-right"></i> 충전소 검색</a></li>
+							<form id="locationForm" action="../sharelist" method="post">
+								<input type="hidden" id="lat" name="lat" /> <input
+									type="hidden" id="lng" name="lng" />
+								<li><a onclick="shareList()" style="cursor: pointer"><i
+										class="fa fa-angle-right"></i> 카쉐어링</a></li>
+							</form>
 							<li><a href="../join"><i class="fa fa-angle-right"></i>
 									Sign Up</a></li>
 						</ul>
@@ -46,5 +51,23 @@
 		</div>
 	</footer>
 	<!-- Footer Section End -->
+	<script>
+		function shareList() {
+			navigator.geolocation.getCurrentPosition(function(position) {
+				$('#lat').val(position.coords.latitude);
+				$('#lng').val(position.coords.longitude);
+				document.getElementById('locationForm').submit();
+			}, function(err) {
+				Swal.fire({
+					icon : 'warning',
+					text : '위치정보 허용 하시는 것을 권장 드립니다.',
+				}).then(function(isOkay) {
+					$('#lat').val(37.570028);
+					$('#lng').val(126.986072);
+					document.getElementById('locationForm').submit();
+				});
+			});
+		}
+	</script>
 </body>
 </html>

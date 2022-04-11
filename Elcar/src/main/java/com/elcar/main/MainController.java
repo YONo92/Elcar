@@ -51,10 +51,10 @@ public class MainController {
 
 	}
 
-	@GetMapping("/commu")
-	public String commu() {
-		return "about/commu";
-	}
+//	@GetMapping("/commu")
+//	public String commu() {
+//		return "about/commu";
+//	}
 
 	/*
 	 * @GetMapping("/admin_driverlist") public String admin_driverlist() { return
