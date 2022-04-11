@@ -22,7 +22,7 @@
 		having date > now() 
 		and distance <= 10 
 		ORDER BY distance 
-		LIMIT 0,1000;
+		LIMIT #{liststartsize},#{listlastsize};
       ]]>
 	</select>
 
