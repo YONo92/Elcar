@@ -85,7 +85,7 @@ public class ShareController {
 			mapParam.put("listlastsize", listsize + 10);
 			List<Share> shareList = shareserv.selectShareList(mapParam);
 			model.addAttribute("shareList",shareList);
-			System.out.println(shareList.size());
+			System.out.println(shareList);
 			return shareList;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -93,6 +93,7 @@ public class ShareController {
 		return null;
 	}
 
+	@ResponseBody
 	@PostMapping(value = "/sharelist")
 	public ModelAndView shareList(@RequestParam(value = "lat", required = false, defaultValue = "0") double lat,
 			@RequestParam(value = "lng", required = false, defaultValue = "0") double lng) {
