@@ -15,6 +15,9 @@ import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -104,9 +107,18 @@ public class ChargerController {
     
 	}
 	
-	@GetMapping("/charchar")
+	@GetMapping("/newcharger")
 	public String charchar() {
-		return "charger/char";
+		return "charger/newcharger";
+	}
+	
+	
+	@ResponseBody
+	@PostMapping("/newcharger")
+	public String newcharger() {
+		System.out.println("어디니");
+		System.out.println("버튼클릭할떄나옴");
+		return "charger/newcharger";
 	}
 }
 
