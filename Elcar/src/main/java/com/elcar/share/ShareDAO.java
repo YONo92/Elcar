@@ -41,6 +41,8 @@ public interface ShareDAO {
 
 	public void insertHistory(@Param(value = "sincheng_id") String sincheng_id, @Param(value = "surak_id") String surak_id);
 
+	public void insertHistory2(@Param(value = "sincheng_id") String sincheng_id, @Param(value = "surak_id") String surak_id);
+
 	public void modifyShare(@Param(value = "surak_id") String surak_id,@Param(value = "talge_num") int talge_num);
 
 	public void accept_delete(int talge_num);
