@@ -351,6 +351,7 @@ public class MypageController {
 			@RequestParam(value = "surak_id", required = false) String surak_id, @RequestParam(value = "talge_num", required = false) int talge_num) {
 		try {
 			shareserv.insertHistory(sincheng_id,surak_id);
+			shareserv.insertHistory2(sincheng_id,surak_id);
 			shareserv.modifyShare(surak_id,talge_num);
 			shareserv.accept_delete(talge_num);
 		}catch (Exception e) {
