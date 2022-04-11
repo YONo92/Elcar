@@ -5,7 +5,7 @@
 <html>
 <body>
 	<!-- Footer Section Begin -->
-	<footer class="footer set-bg" data-setbg="resources/img/footer-bg.jpg">
+	<footer class="footer set-bg" data-setbg="../resources/img/footer-bg.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4">

@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 <title>ELCAR | Hello :)</title>
@@ -56,187 +57,63 @@
 						<b>태울래 신청 내역</b>
 					</h4>
 					
-					
+					<c:forEach var="taewoolist" items="${taewoolist}">
 					<div align="center" style="height:100px;">						
 						 <span style="font-size: 1.7em; color: black;"> 현재 </span> 
-						<span style="font-size: 1.7em; color: green;">$[탈게] </span>
+						<span style="font-size: 1.7em; color: green;">${taewoolist.nickname} </span>
 						<span style="font-size: 1.7em; color: black;"> 님의 수락을 기다리는중입니다.</span>
 					</div>
+					</c:forEach>
 					
-					
-					<div align="center" style="height:100px;">						
-						 <span style="font-size: 1.7em; color: black;"> 현재 </span> 
-						<span style="font-size: 1.7em; color: green;">$[탈게] </span>
-						<span style="font-size: 1.7em; color: black;"> 님과 최종 매칭되신 상태입니다.&nbsp;&nbsp;</span>
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.5em; color: black;">
-									<i class="fas fa-car"> 출발지</i>
-								</botton>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.5em; color: black;">
-									<i class="fas fa-car"> 도착지</i>
-								</botton>						
-					</div>
-					
-					<div align="center" style="height:100px;">						
-						 <span style="font-size: 1.7em; color: black;"> 매칭중인 상대가 없습니다. <- 거절돼도 이거 </span> 
-
-					</div>
-					
-					
+					<c:forEach var="taewoostatus" items="${taewoostatus}">
+					<c:if test="${taewoostatus.status eq '1'}">
+						<div align="center" style="height: 100px;">
+							<span style="font-size: 2em; color: green;">${taewoostatus.nickname}
+							</span> <span style="font-size: 2em; color: black;"> 님과</span> <span
+								style="font-size: 2em; color: black;"> 매칭되셨습니다.</span>
+						</div>
+					</c:if>
+					</c:forEach>
 					
 				</div>
 
-				<hr style="height:100px;"/>
+					<div class="table-responsive">
 
-				<div align="left">
+					<table class="table custom-table">
+						<thead>
+							<tr>
+								<th scope="col">태울자</th>
+								<th scope="col">출발시간</th>
+								<th scope="col">인원</th>
+								<th scope="col">성별</th>
+								<th scope="col">취소</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="taewoolist" items="${taewoolist}">
+								<tr>
+									<td>${taewoolist.nickname}</td>
+									<td>${taewoolist.date}</td>
+									<td>${taewoolist.person}</td>
+									<c:choose>
+									<c:when test="${taewoolist.gender eq '0'}">
+									<td>남자</td>
+									</c:when>
+									<c:otherwise>
+									<td>여자</td>
+									</c:otherwise>
+									</c:choose>
+									<td><input type="button" value="취소"
+										class="btn btn-outline-danger"
+										onclick="location.href='taewooSincheng_delete?num=${taewoolist.num}'"></td>
+								</tr>
+							</c:forEach>
+						</tbody>
 
-
-
-
-
-					<!-- 신청서  -->
-					<div class="testimonial__item__author col-20" >
-						<div class="row">
-
-							<div class='col-1'>
-								22.03.26
-								 16:30
-							</div>
-							<div class='col-4'>
-							<span> <b style="font-size: 1.0em; color: black;">근처</b></span>
-									<b style="font-size: 1.2em; color: green" class="nanum"> $[name] 
-									<span> <b style="font-size: 1.0em; color: black;">님이 탈래를 신청했습니다.</b></span>
-									 </b>
-							</div>
-		
-							<div class='col-lg-4'>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 0.75em; color: black;">
-									<i class="fas fa-car"> 출발지</i>
-								</botton>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 0.75em; color: black;">
-									<i class="fas fa-car"> 도착지</i>
-								</botton>
-								</div>
-								
-								
-								
-							<div class='col-lg-3'>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.0em; color: black;">
-									 수락
-								</botton>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.0em; color: black;">
-									 거절
-								</botton>
-
-						</div>
-						</div>
-								
-
-						</div>
-						
-					<hr>
-					<!-- 신청서 끝/// -->
-					
-					
-					
-					
-					
-
-					<!-- 신청서  -->
-					<div class="testimonial__item__author col-20" >
-						<div class="row">
-
-							<div class='col-1'>
-								22.03.26
-								 16:30
-							</div>
-							<div class='col-4'>
-
-									<b style="font-size: 1.2em; color: green" class="nanum"> $[name] 
-									<span> <b style="font-size: 1.0em; color: black;">님이 수락 대기중입니다.</b></span>
-									 </b>
-							</div>
-		
-							<div class='col-lg-4'>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 0.75em; color: black;">
-									<i class="fas fa-car"> 출발지</i>
-								</botton>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 0.75em; color: black;">
-									<i class="fas fa-car"> 도착지</i>
-								</botton>
-								</div>
-								
-			
-								
-							<div class='col-lg-1.1'>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 1.0em; color: black;">
-									 수락대기중
-								</botton>
-								</div>
-
-							
-															
-								<div class='col-lg-1'>
-								
-								<botton type="submit" class="btn btn-outline-success" style="font-size: 0.6em; color: black; width:150px;">
-									 <p>회원정보</p><p>요청사항</p>
-								</botton>
-								</div>
-
-						</div>
-						</div>
-								</div>
-
-						</div></div>
-					</div>	
-					</div>
-					<hr>
-					<!-- 신청서 끝/// -->
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					<!-- 페이지 이동 버튼 -->
-					<div class="pagination__option" style=" height:150px;" align=center>
-					<a href="#"><span class="arrow_carrot-2left"></span></a>
-                        <a href="#" >1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><span class="arrow_carrot-2right"></span></a>
-                    </div>
+					</table>
 				</div>
 			</div>
-
-			<div class="col-lg-10" style="margin: 1px; height: 15px;">
-				<!-- 페이지 이동 버튼 끝/// -->
-
-			</div>
-			
-			
-		
-					
-					
-					
-
+		</div>
 	</section>
-	<!--  이용 내역 끝 -->
 </body>
 </html>
