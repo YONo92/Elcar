@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Driver;
@@ -230,7 +232,25 @@ public class MypageController {
 		}
 		
 		
-		
+
+	
+
+	// 프로필 보기 화면 이동
+	@GetMapping(value = "mypageMyinfo")
+	public ModelAndView mypageMyinfoForm() {
+		ModelAndView mav = new ModelAndView("mypage/mypageMyinfo");
+		String member_id = (String) session.getAttribute("id");
+		try {
+			Member member = mypageService.mypageInfo(member_id);
+			mav.addObject("member", member);
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.setViewName("err");
+		}
+		return mav;
+	}
+	
+	
 	// 이용내역
 	@GetMapping(value = "history")
 	public ModelAndView historyForm() {
@@ -250,29 +270,43 @@ public class MypageController {
 		return mav;
 	}
 	
-
-	// 프로필 보기 화면 이동
-	@GetMapping(value = "mypageMyinfo")
-	public ModelAndView mypageMyinfoForm() {
-		ModelAndView mav = new ModelAndView("mypage/mypageMyinfo");
-		String member_id = (String) session.getAttribute("id");
+	
+	// 이용평가
+	@GetMapping(value = "pyeongga/{num}")
+	public ModelAndView pyeonggaForm(@PathVariable int num) {
+		ModelAndView mav = new ModelAndView("mypage/pyeongga");
 		try {
-			Member member = mypageService.mypageInfo(member_id);
-			mav.addObject("member", member);
+			History history = mypageService.selectHistoryByNum(num);
+			if (history.getPoint() != 0) {
+				mav.setViewName("mypage/history");
+			} else {
+				mav.addObject("history", history);
+			}
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
-			mav.setViewName("err");
 		}
 		return mav;
 	}
 
-	// 이용평가
-	@GetMapping(value = "pyeongga")
-	public ModelAndView pyeonggaForm() {
-		ModelAndView mav = new ModelAndView("mypage/pyeongga");
-		String member_id = (String) session.getAttribute("id");
-		return mav;
+	@ResponseBody
+	@PostMapping(value = "pyeongga")
+	public String pyeongga(@RequestParam int num, @RequestParam int point) {
+		try {
+			History history = mypageService.selectHistoryByNum(num);
+			String user_id = (String) session.getAttribute("id");
+			if(user_id.equals(history.getTaker_id())) {
+				mypageService.pointUpdate(num, point, "giver_id");
+			} else {
+				mypageService.pointUpdate(num, point, "taker_id");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "실패";
+		}
+		return "성공";
 	}
+	
 
 	// 신고
 	@GetMapping(value = "singo")

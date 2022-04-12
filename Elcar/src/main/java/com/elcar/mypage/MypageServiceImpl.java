@@ -81,6 +81,34 @@ public class MypageServiceImpl implements MypageService {
 			History history =mypageDAO.insertDriverPoint(id);
 			return history;
 		}
+		
+	//이용 내역 평가1(insert)	
+		@Override
+		public History insertToHistory(String id) throws Exception {
+			History history =mypageDAO.insertHistory(id);
+			return history;
+		}
+	//이용 내역 평가2(update)	
+		@Override
+		public void pointUpdate(int num, int point, String id) throws Exception {
+			mypageDAO.updateHistoryPoint(num, point);
+			mypageDAO.updateMemberPoint(num, point, id);
+		}
+
+		@Override
+		public History selectHistoryByNum(int num) throws Exception {
+			History history = mypageDAO.selectHistoryByNum(num);
+			return history;
+		}
+		
+		
+		//이용 내역 신고 등록	
+//		@Override
+//		public Driver_report insertSingo(String id) throws Exception {
+//			Driver_report driver_report =mypageDAO.insertDriverReport(id);
+//			return driver_report;			
+//		}		
+		
 }
 
 
