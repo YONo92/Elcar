@@ -112,14 +112,7 @@ public class ChargerController {
 		return "charger/newcharger";
 	}
 	
-	
-	@ResponseBody
-	@PostMapping("/newcharger")
-	public String newcharger() {
-		System.out.println("어디니");
-		System.out.println("버튼클릭할떄나옴");
-		return "charger/newcharger";
-	}
+
 }
 
 

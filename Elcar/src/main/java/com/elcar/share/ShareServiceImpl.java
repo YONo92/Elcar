@@ -56,7 +56,7 @@ public class ShareServiceImpl implements ShareService {
 	}
 
 	@Override
-	public void talge_delete(int num) {
+	public void talge_delete(int num){
 		sharedao.talge_delete(num);		
 	}
 
@@ -93,5 +93,11 @@ public class ShareServiceImpl implements ShareService {
 	@Override
 	public Sinchenglist sinchengOverlap(Share share) throws Exception {	
 		return sharedao.sinchengOverlap(share);
+	}
+
+	@Override
+	public void modifyShareInfo(int num) throws Exception {
+		sharedao.modifyShareInfo(num);
+		
 	}
 }

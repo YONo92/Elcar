@@ -40,7 +40,7 @@
 										<li><a href="../driver-regist">드라이버 등록</a></li>
 										<li><a href="../boardlist">커뮤니티</a></li>
 									</ul></li>
-								<li><a href="https://map.kakao.com/link/search/전기차충전소">전기차
+								<li><a href="../newcharger">전기차
 										충전소</a></li>
 								<li>
 									<form id="locationForm" action="../sharelist" method="post">
@@ -51,6 +51,7 @@
 								</li>
 								<c:choose>
 									<c:when test="${empty type}">
+										
 									</c:when>
 									<c:when test="${type == 1 }">
 										<li><a href="../mypage">Mypage</a></li>
@@ -61,6 +62,9 @@
 												<li><a href="../admin_singolist">신고회원관리</a></li>
 											</ul></li>
 									</c:when>
+									<c:otherwise>
+										<li><a href="../mypage">Mypage</a></li>
+									</c:otherwise>
 								</c:choose>
 							</ul>
 						</nav>
