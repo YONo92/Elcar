@@ -11,10 +11,9 @@ public class DriverServiceImpl implements DriverService {
 	@Autowired
 	DriverDAO driverdao;
 
-	//드라이버 신청 등록하기
+	// 드라이버 신청 등록하기
 	@Override
 	public void driverregist(Driver driver) throws Exception {
 		driverdao.insertDriver(driver);
 	}
 }
-	

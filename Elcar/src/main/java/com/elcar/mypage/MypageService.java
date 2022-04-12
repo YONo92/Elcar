@@ -16,5 +16,9 @@ public interface MypageService {
 	Driver selectDriverInfo(String id) throws Exception;
 	History giveDDubukPoint(String id) throws Exception;
 	History giveDriverPoint(String id) throws Exception;
+	History insertToHistory(String id) throws Exception;
+	// Driver_report insertSingo(String id) throws Exception;
+	History selectHistoryByNum(int num) throws Exception;
+	void pointUpdate(int num, int point, String id) throws Exception;
 	
 }

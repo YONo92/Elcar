@@ -52,7 +52,7 @@
 			<div class="contact__address__text">
 				<form action="admin_memlist" method="get">
 					<input type="text" id="mem_text" name="mem_text" /> <input
-						type="submit" value="찾기" class="btn btn-outline-success"
+						type="submit" value="찾기" class="btn btn-light"
 						style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
 				</form>
 				<div class="container-fluid py-4">
@@ -79,19 +79,19 @@
 														text-xxs font-weight-bolder opacity-7 ps-6">이름</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">아이디</th>
+														text-xxs font-weight-bolder opacity-7 ps-6">아이디</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">닉네임</th>
+														text-xxs font-weight-bolder opacity-7 ps-6">닉네임</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">생일</th>
+														text-xxs font-weight-bolder opacity-7 ps-6">생일</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">연락처</th>
+														text-xxs font-weight-bolder opacity-7 ps-6">연락처</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">이메일</th>
+														text-xxs font-weight-bolder opacity-7 ps-6">이메일</th>
 															</tr>
 														</thead>
 														<tbody>
@@ -106,19 +106,19 @@
 																		</div>
 																	</td>
 																	<td>
-																		<p class="text-xs font-weight-bold mb-0">${mem.id }</p>
+																		<h6 class="mb-0 text-sm ps-5">${mem.id }</h6>
 																	</td>
 																	<td>
-																		<p class="text-xs font-weight-bold mb-0">${mem.nickname }</p>
+																		<h6 class="mb-0 text-sm ps-6">${mem.nickname }</h6>
 																	</td>
 																	<td>
-																		<p class="text-xs font-weight-bold mb-0">${mem.birth }</p>
+																		<h6 class="mb-0 text-sm ps-5">${mem.birth }</h6>
 																	</td>
 																	<td>
-																		<p class="text-xs font-weight-bold mb-0">${mem.phone }</p>
+																		<h6 class="mb-0 text-sm ps-5">${mem.phone }</h6>
 																	</td>
 																	<td>
-																		<p class="text-xs font-weight-bold mb-0">${mem.email }</p>
+																		<h6 class="mb-0 text-sm ps-5">${mem.email }</h6>
 																	</td>
 																</tr>
 															</c:forEach>
