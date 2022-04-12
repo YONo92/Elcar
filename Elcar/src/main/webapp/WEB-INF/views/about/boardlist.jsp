@@ -46,9 +46,16 @@
 										</c:if>
 										</td>
 										<td>
+										<c:if test="${boardlist.type eq '1'}">
 										<a href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }">
 										${boardlist.title }
 										</a>
+										</c:if>
+										<c:if test="${boardlist.type eq '2'}">
+										<a href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }">
+										${boardlist.location } : ${boardlist.title }
+										</a>
+										</c:if>
 										</td>
 										<td>${boardlist.mem_id }</td> 
 									</tr>

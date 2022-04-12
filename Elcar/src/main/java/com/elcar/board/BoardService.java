@@ -13,4 +13,9 @@ public interface BoardService {
 
 	Board getBoard(int num)throws Exception;
 
+	void deleteboard(int num)throws Exception;
+
+	void modifyBoard(Board board)throws Exception;
+
+
 }
