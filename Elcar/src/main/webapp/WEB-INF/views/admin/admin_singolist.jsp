@@ -46,11 +46,10 @@
 		</div>
 	</div>
 
-	<!-- Contact Address Begin -->
+	<!-- 관리자_신고 회원 관리 -->
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
-
 				<div class="container-fluid py-4">
 					<div class="row">
 						<div class="col-12">
