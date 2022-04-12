@@ -33,7 +33,7 @@
 	]]>
 	</delete>
 
-	<!-- 드라이버 정보 -->
+	<!-- 드라이버 정보 조회 -->
 	<select id="queryDriver" resultType="Driver"
 		parameterType="String">
 		<![CDATA[ 
@@ -57,58 +57,35 @@
       ]]>
 	</select>
 	
-	
-	
-	
-	
-	
-<!-- --><!--  -->	<!--  -->	<!--  -->	<!-- -->
-	<!-- 매너 점수 주기 -->
-	<update id="driverPoint5"  parameterType="history">
+	<!-- 평가하기 위한 이용내역 조회 -->
+	<select id="selectHistoryByNum" resultType="History"
+		parameterType="int">
       <![CDATA[
-		update history set point = point+5 where taker_id=#{taker_id } and type = "기사" and num=#{num };
+         select * from history where num = #{num}
       ]]>
-	</update>
-	
-		<!-- 매너 점수 주기 -->
-	<update id="driverPoint3"  parameterType="history">
-      <![CDATA[
-		update history set point = point+3 where taker_id=#{taker_id } and type = "기사" and num=#{num };
-      ]]>
-	</update>
-	
-		<!-- 매너 점수 주기 -->
-	<update id="driverPoint-1"  parameterType="history">
-      <![CDATA[
-		update history set point = point-1 where taker_id=#{taker_id } and type = "기사" and num=#{num };
-      ]]>
-	</update>
-	
-	
-	
-	
-		<!-- 매너 점수 주기 -->
-	<update id="ddubukPoint5"  parameterType="history">
-      <![CDATA[
-		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
-      ]]>
-	</update>
-	
-			<!-- 매너 점수 주기 -->
-	<update id="ddubukPoint3"  parameterType="history">
-      <![CDATA[
-		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
-      ]]>
-	</update>
-	
-			<!-- 매너 점수 주기 -->
-	<update id="ddubukPoint-1"  parameterType="history">
-      <![CDATA[
-		update history set point = point-1 where taker_id=#{taker_id } and type = "뚜벅초" and num=#{num };
-      ]]>
-	</update>
+	</select>
 
-
+	
+				<!-- 이용 내역 평가2 -->
+	<update id="updateHistoryPoint"  parameterType="map">
+      <![CDATA[
+		update History set point = #{point} where num=#{num};
+      ]]>
+	</update>
+	
+	<update id="updateMemberPoint"  parameterType="map">
+      <![CDATA[
+		update Member set point = point + #{point} where id = (select ${id} from history where num=#{num})
+      ]]>
+	</update>
+	
+			<!-- 신고 -->
+	<insert id="insertDriverReport" parameterType="Driver_report">
+		<![CDATA[
+			INSERT INTO driver_report(history_num, category, content, reply, status) VALUES 
+			(#{history_num}, #{category}, #{content}, #{reply}, #{status});
+		]]>
+	</insert>
 	
 
 </mapper>

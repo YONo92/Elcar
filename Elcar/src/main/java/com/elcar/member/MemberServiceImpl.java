@@ -112,6 +112,11 @@ public class MemberServiceImpl implements MemberService {
             return false;
         }
 	}
+
+	@Override
+	public int getType(String id) throws Exception {
+		return memdao.queryMember(id).getType();
+	}
 	
 	
 }

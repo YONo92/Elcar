@@ -9,16 +9,16 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-	<!-- Breadcrumb End -->
+	<!-- 서비스 안내 상단 이미지 -->
 	<div class="breadcrumb-option set-bg"
 		data-setbg="resources/img/breadcrumb-bg.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>About Us</h2>
+						<h2>Elcar Service</h2>
 						<div class="breadcrumb__links">
-							<a href="./index.html"><i class="fa fa-home"></i> Home</a> <span>서비스
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>서비스
 								안내</span>
 						</div>
 					</div>
@@ -26,9 +26,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- Breadcrumb Begin -->
 
-	<!-- About Us Section Begin -->
+	<!-- 서비스 안내 -->
 	<section class="about spad">
 		<div class="container">
 			<div class="row">
@@ -102,9 +101,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- About Us Section End -->
 
-	<!-- Testimonial Section Begin -->
 	<section class="testimonial spad">
 		<div class="container">
 			<div class="row">
@@ -206,4 +203,3 @@
 			</div>
 		</div>
 	</section>
-	<!-- Testimonial Section End -->

@@ -20,4 +20,33 @@
  		]]>
 	</select>
 
+	<!-- 관리자_드라이버 회원 관리 -->
+	<select id="selectalldriverCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from driver;
+ 		]]>
+	</select>
+
+	<select id="selectalldriverList" resultType="Driver">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select num, id, name, getdate, carnum, cartype, img, status from driver where name like'%${mem_text}%' ) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
+
+	<!-- 관리자_드라이버 회원 관리_status 업데이트 처리 -->
+	<update id="updateDriver" parameterType="map">
+ 	<![CDATA[
+ 		UPDATE driver SET status=#{status} WHERE num=#{num}
+  		]]>
+	</update>
+
+	<!-- 관리자_드라이버 회원 관리_멤버 라이센스 업데이트 처리 -->
+	<update id="updateLicense" parameterType="map">
+ 	<![CDATA[
+	 	update member set license = #{status} where id = (select id from driver where num = #{num})
+  		]]>
+	</update>
+
 </mapper>
