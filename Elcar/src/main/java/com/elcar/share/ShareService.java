@@ -44,4 +44,6 @@ public interface ShareService {
 	public void accept_delete(int talge_num);
 
 	public Sinchenglist sinchengOverlap(Share share)throws Exception;
+
+	public void modifyShareInfo(int num) throws Exception;
 }
