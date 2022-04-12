@@ -11,26 +11,36 @@
 </head>
 <body>
 	<section style="margin-bottom: 100px; margin-top: 30px; height: 700px;">
-			<form action="write" method="post">
+		<form action="modify" method="post">
 			<div>
+			<c:if test="${boardlist.type eq '1'}">
 				<input type="radio" name="type" id="type1" autocomplete="off" required value="1" checked>자유
 			    <input type="radio"	name="type" id="type2" autocomplete="off" required value="2">후기
+			</c:if>   
+			<c:if test="${boardlist.type eq '2'}">
+				<input type="radio" name="type" id="type1" autocomplete="off" required value="1" >자유
+			    <input type="radio"	name="type" id="type2" autocomplete="off" required value="2" checked>후기
+			</c:if> 	 
 			</div>
 			<div id="location" style=display:none>
-				지역<input type="text" name="location" style="width: 300px"/>
+				지역<input type="text" name="location" style="width: 300px" value="${board.location}"/>
 			</div>
 			<div>
-				제목<input type="text" name="title" style="width: 300px"></input>
-				유저아이디<input type="text" name="mem_id" value="${id }" readonly></input>
+				제목<input type="text" name="title" style="width: 300px" value="${board.title }"></input>
+				유저아이디<input type="text" name="id" value="${id }" readonly></input>
 			</div>
 			
 			
 			<!-- CKEDITOR -->
-			<textarea id="editor4" name="content"></textarea>
+			<textarea id="editor4" name="content">
+			${board.content }
+			</textarea>
 			<script>
 			 CKEDITOR.replace('editor4');
  			</script>
-			<input type="submit" value="등록하기">
+
+
+			<input type="submit" value="수정하기">
 			</form>
 			<input type="button" onclick="location.href='/boardlist'" value="목록으로">
 	</section>
