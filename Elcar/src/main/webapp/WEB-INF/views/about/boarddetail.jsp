@@ -9,6 +9,24 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
+
+<div class="breadcrumb-option set-bg"
+		data-setbg="resources/img/breadcrumb-bg.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Board Detail</h2>
+						<div class="breadcrumb__links">
+							<a href="boardlist"><i class="fa fa-home"></i> Board</a> <span>detail</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
 제목 : ${board.title }
 <br>
 지역 : ${board.location  }
@@ -36,7 +54,7 @@
 </form>
 </div>
 
-
+<input type="button" onclick="location.href='/boardlist'" value="목록으로">
 
 </body>
 <script>

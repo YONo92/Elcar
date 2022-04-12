@@ -10,6 +10,24 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
+
+<div class="breadcrumb-option set-bg"
+		data-setbg="resources/img/breadcrumb-bg.jpg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb__text">
+						<h2>Board modify</h2>
+						<div class="breadcrumb__links">
+							<a href="boardlist"><i class="fa fa-home"></i> Board</a> <span>modify
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<section style="margin-bottom: 100px; margin-top: 30px; height: 700px;">
 		<form action="modify" method="post">
 			<div>
