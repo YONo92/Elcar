@@ -45,7 +45,7 @@
 						<img src="resources/img/services/services-1.png" alt="">
 						<h5>ELCAR Service</h5>
 						<p>ELCAR만의 이용자 편의 중심 전기차 충전소 검색 서비스와 카쉐어링을 추천합니다.</p>
-						<a href="#"><i class="fa fa-long-arrow-right"></i></a>
+						<a href="./about"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -55,7 +55,7 @@
 						<p>
 							지역별, 사용자 위치별 <br>가장 가까운 전기차 충전소를 <br>검색해보세요.
 						</p>
-						<a href="#"><i class="fa fa-long-arrow-right"></i></a>
+						<a href="./newcharger"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -65,7 +65,7 @@
 						<p>
 							드라이버와 함께 목적지까지 전기차 쉐어링 어떠세요? <br> <br>
 						</p>
-						<a href="#"><i class="fa fa-long-arrow-right"></i></a>
+						<a href="./sharelist"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
