@@ -26,6 +26,7 @@
 								style="color: white; cursor: pointer">
 								바로가기 </a>
 						</form>
+						<a href="../newcharger" class="primary-btn more-btn">More</a>
 					</div>
 				</div>
 			</div>
@@ -51,7 +52,7 @@
 						<img src="resources/img/services/services-1.png" alt="" />
 						<h5>ELCAR Service</h5>
 						<p>ELCAR만의 이용자 편의 중심 전기차 충전소 검색 서비스와 카쉐어링을 추천합니다.</p>
-						<a href="../about"><i class="fa fa-long-arrow-right"></i></a>
+						<a href="./about"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -61,8 +62,7 @@
 						<p>
 							지역별, 사용자 위치별 <br />가장 가까운 전기차 충전소를 <br />검색해보세요.
 						</p>
-						<a href="https://map.kakao.com/link/search/전기차충전소"><i
-							class="fa fa-long-arrow-right"></i></a>
+						<a href="./newcharger"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -78,6 +78,7 @@
 								style="cursor: pointer"><i
 								class="fa fa-long-arrow-right"></i></a>
 						</form>
+						<a href="./sharelist"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
