@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Member;
 
@@ -92,17 +93,20 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "login")
-	public String access(@RequestParam Map<String, String> info,HttpServletRequest request) {
+	public ModelAndView access(@RequestParam Map<String, String> info,HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("main/main");
 		String id = info.get("id");
 		String pw = info.get("pw");
 			try {
 				memserv.access(id, pw);
+				int type =memserv.getType(id);
+				System.out.println("로그인한 사람의 타입은 >>>> "+type);
 				session.setAttribute("id", id);
-				return "main/main";
+				session.setAttribute("type", type);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			return "main/main";
+			return mav;
 	}
 	
 	@ResponseBody

@@ -80,4 +80,12 @@ public class AdminServiceImpl implements AdminService {
 		int startrow = (page - 1) * 10 + 1;
 		return admindao.selectalldriverList(startrow, mem_text);
 	}
+
+	// 관리자_드라이버 회원 관리_status 업데이트 처리
+	// 관리자_드라이버 회원 관리_멤버 라이센스 업데이트 처리
+	@Override
+	public void driverModify(int num, int status) throws Exception {
+		admindao.updateDriver(num, status); // 드라이버 status 변경 db업데이트
+		admindao.updateLicense(num, status); // 드라이버 승인/반려한 경우 -> 멤버_라이센스 db업데이트
+	}
 }

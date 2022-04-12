@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.Member;
+import com.elcar.member.MemberService;
 
 @Controller
 public class DriverController {
@@ -33,6 +35,9 @@ public class DriverController {
 
 	@Autowired
 	ServletContext servletContext;
+
+	@Autowired
+	MemberService memserv;
 
 	@Autowired
 	DriverService driverserv;
@@ -51,7 +56,6 @@ public class DriverController {
 			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 			return responseEntity;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -77,5 +81,21 @@ public class DriverController {
 			return "nok";
 		}
 		return "ok";
+	}
+
+	// 드라이버 신청 등록하기_로그인 여부
+	@GetMapping("/driver-regist")
+	public String driverregist(Model model) {
+		String id = (String) session.getAttribute("id");
+		try {
+			Member mem = memserv.selectMember_kakao(id);
+			if (id != null) {
+				model.addAttribute("name", mem.getName());
+				return "about/driver-regist";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "main/loginform";
 	}
 }

@@ -27,7 +27,7 @@
 	rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="resources/css/sb-admin-2.min.css" rel="stylesheet">
+<!-- <link href="resources/css/sb-admin-2.min.css" rel="stylesheet"> -->
 
 </head>
 <body>
@@ -153,7 +153,6 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="resources/js/sb-admin-2.min.js"></script>
-
 </body>
 
 <script>
@@ -206,6 +205,5 @@
 		})
 	});
 </script>
-
 
 </html>

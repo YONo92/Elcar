@@ -23,4 +23,6 @@ public interface MemberService {
 	Member searchId(String name, String birth)throws Exception;
 
 	boolean phoneCheck(String phone) throws Exception;
+
+	int getType(String id) throws Exception;
 }

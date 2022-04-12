@@ -72,7 +72,8 @@
 										<form action="admin_driverlist" method="get">
 											<div class="card-body px-0 pb-2">
 												<div class="table-responsive p-0">
-													<table class="table align-items-center mb-0">
+													<table class="table align-items-center mb-0"
+														style="”table-layout: fixed”">
 														<thead>
 															<tr>
 																<th
@@ -128,12 +129,25 @@
 																		<a href="/view/${driver.img }" download><img
 																			width="50px" src="/view/${driver.img }"></a>
 																	</td>
-																	<td><select class="form-select form-select-sm"
-																		aria-label=".form-select-sm example">
-																			<option selected>상태</option>
-																			<option value="1">승인</option>
-																			<option value="2">대기중</option>
-																			<option value="3">반려</option>
+																	<td><select id='driverStatus${driver.num }'
+																		class="driverStatus">
+																			<c:choose>
+																				<c:when test="${driver.status eq 0}">
+																					<option value="0" selected>대기중</option>
+																					<option value="1">승인</option>
+																					<option value="2">반려</option>
+																				</c:when>
+																				<c:when test="${driver.status eq 1}">
+																					<option value="0">대기중</option>
+																					<option value="1" selected>승인</option>
+																					<option value="2">반려</option>
+																				</c:when>
+																				<c:otherwise>
+																					<option value="0">대기중</option>
+																					<option value="1">승인</option>
+																					<option value="2" selected>반려</option>
+																				</c:otherwise>
+																			</c:choose>
 																	</select></td>
 																</tr>
 															</c:forEach>
@@ -198,4 +212,26 @@
 		Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
 	}
 </script>
+<script>
+	// status 처리
+	$(document).ready(function() {
+		$('.driverStatus').on('change', function(e) {
+			let driverNum = e.currentTarget.id.slice(12);
+			let status = e.currentTarget.value;
+			$.ajax({
+				url : "/admin_driverupdate",
+				data : {
+					"num" : driverNum,
+					"status" : status
+				},
+				dataType : "text",
+				type : "Post",
+				success : function(data) {
+					alert(data);
+				}
+			})
+		})
+	})
+</script>
+
 </html>

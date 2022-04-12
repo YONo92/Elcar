@@ -33,8 +33,8 @@
 								<li><a onclick="shareList()" style="cursor: pointer"><i
 										class="fa fa-angle-right"></i> 카쉐어링</a></li>
 							</form>
-							<li><a href="../join"><i class="fa fa-angle-right"></i>
-									Sign Up</a></li>
+							<li><a href="../loginform"><i class="fa fa-angle-right"></i>
+									Login</a></li>
 						</ul>
 					</div>
 				</div>
@@ -51,6 +51,7 @@
 		</div>
 	</footer>
 	<!-- Footer Section End -->
+	
 	<script>
 		function shareList() {
 			navigator.geolocation.getCurrentPosition(function(position) {
