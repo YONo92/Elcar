@@ -44,6 +44,7 @@ public class MemberController {
 			if(mem!=null) {
 				result=memserv.selectMember_kakao(id);
 				session.setAttribute("id", result.getId());
+				session.setAttribute("type", result.getType());
 				model.addAttribute("mem", result);
 				return "main/main";
 			}else {

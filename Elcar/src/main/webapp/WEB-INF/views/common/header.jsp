@@ -51,6 +51,7 @@
 								</li>
 								<c:choose>
 									<c:when test="${empty type}">
+										
 									</c:when>
 									<c:when test="${type == 1 }">
 										<li><a href="../mypage">Mypage</a></li>
@@ -61,6 +62,9 @@
 												<li><a href="../admin_singolist">신고회원관리</a></li>
 											</ul></li>
 									</c:when>
+									<c:otherwise>
+										<li><a href="../mypage">Mypage</a></li>
+									</c:otherwise>
 								</c:choose>
 							</ul>
 						</nav>
