@@ -414,8 +414,9 @@ main > div { width: 100%; }
 				</div>
 			</div>
 		</div>
-	</section>
-	<main></main>
+    <main></main>
+  </section>
+
 	
 	<script>
 		const $ = (s) => document.querySelector(s);
