@@ -219,9 +219,7 @@ public class ShareController {
 		ModelAndView mav = new ModelAndView("share/sharelist");
 		System.out.println(share.toString());
 		try {
-			System.out.println("2222222222222");
 			shareserv.modifyShareInfo(share);
-			System.out.println("3333333333333");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -231,7 +229,6 @@ public class ShareController {
 	@PostMapping(value ="/deletesincheng/{num}")
 	public ModelAndView deleteSincheng(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("share/sharelist");
-		System.out.println("111111");
 		try {
 			System.out.println(num);
 			shareserv.deleteShareInfo(num);
