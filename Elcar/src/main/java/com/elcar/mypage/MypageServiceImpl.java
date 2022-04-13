@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.Driver_report;
 import com.elcar.dto.History;
 import com.elcar.dto.Member;
 
@@ -84,9 +85,8 @@ public class MypageServiceImpl implements MypageService {
 		
 	//이용 내역 평가1(insert)	
 		@Override
-		public History insertToHistory(String id) throws Exception {
-			History history =mypageDAO.insertHistory(id);
-			return history;
+		public void insertToHistory(String id) throws Exception {
+			mypageDAO.insertHistory(id);
 		}
 	//이용 내역 평가2(update)	
 		@Override
@@ -103,11 +103,16 @@ public class MypageServiceImpl implements MypageService {
 		
 		
 		//이용 내역 신고 등록	
-//		@Override
-//		public Driver_report insertSingo(String id) throws Exception {
-//			Driver_report driver_report =mypageDAO.insertDriverReport(id);
-//			return driver_report;			
-//		}		
+		@Override
+		public void insertSingo(Driver_report dr) throws Exception {
+				mypageDAO.insertDriverReport(dr);
+		}		
+		
+
+		@Override
+		public List<Driver_report> selectDriverReportBySingoId(String user_id) throws Exception {
+			return mypageDAO.selectDriverReportBySingoId(user_id);
+		}		
 		
 }
 
