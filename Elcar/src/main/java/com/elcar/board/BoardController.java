@@ -115,4 +115,9 @@ public class BoardController {
 		return "/boarddetail";
 	}
 	
+	@GetMapping(value="list")
+	public String list() {
+	return "about/get";
+	}
+	
 }
