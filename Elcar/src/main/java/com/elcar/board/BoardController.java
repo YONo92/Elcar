@@ -1,7 +1,22 @@
 package com.elcar.board;
 
-import java.util.List;
 
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +25,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.elcar.dto.Board;
 import com.elcar.dto.PageInfo;
@@ -20,24 +39,27 @@ public class BoardController {
 
 	@Autowired
 	BoardService boardserv;
-	
+
 	@Autowired
 	HttpSession session;
-	
-	@GetMapping(value="boardform")
+
+	@Autowired
+	ServletContext servletContext;
+
+	@GetMapping(value = "boardform")
 	public String boardform(Model model) {
 		String id = (String) session.getAttribute("id");
-		if(session.getAttribute("id")!=null) {
+		if (session.getAttribute("id") != null) {
 			model.addAttribute(id);
 			return "about/boardform";
-		}else {
+		} else {
 			return "main/loginform";
 		}
 	}
-	
+
 	@GetMapping(value = "/boardlist")
-	public String boardlist(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
-			Model model, @RequestParam(value = "search_text", defaultValue = "") String search_text) {
+	public String boardlist(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model,
+			@RequestParam(value = "search_text", defaultValue = "") String search_text) {
 		PageInfo pageInfo = new PageInfo();
 		try {
 			List<Board> boardlist = boardserv.boardList(page, pageInfo, search_text);
@@ -49,8 +71,8 @@ public class BoardController {
 		}
 		return "about/boardlist";
 	}
-	
-	@PostMapping(value="write")
+
+	@PostMapping(value = "write")
 	public String write(@ModelAttribute Board board) {
 		try {
 			boardserv.write(board);
@@ -58,33 +80,33 @@ public class BoardController {
 			e.printStackTrace();
 		}
 		return "redirect:/boardlist";
-		
+
 	}
-	
-	@GetMapping(value="boarddetail")
-	public String boarddetail(@RequestParam(value="num")int num, @RequestParam(value="page", required=false, defaultValue="1")int page,Model model)
-	{
+
+	@GetMapping(value = "boarddetail")
+	public String boarddetail(@RequestParam(value = "num") int num,
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
 		String id = (String) session.getAttribute("id");
-		if(session.getAttribute("id")!=null) {
-		Board board;
-		try {
-			board = boardserv.getBoard(num);
-			model.addAttribute("board",board);
-			model.addAttribute("page", page);
-			model.addAttribute("id",id);
-			return "about/boarddetail";
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "about/boardlist";
-		}
-		}else {
+		if (session.getAttribute("id") != null) {
+			Board board;
+			try {
+				board = boardserv.getBoard(num);
+				model.addAttribute("board", board);
+				model.addAttribute("page", page);
+				model.addAttribute("id", id);
+				return "about/boarddetail";
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "about/boardlist";
+			}
+		} else {
 			return "main/loginform";
 		}
-		
+
 	}
-	
-	@PostMapping(value="delete")
-	public String deleteboard(@RequestParam(value="num")int num) {
+
+	@PostMapping(value = "delete")
+	public String deleteboard(@RequestParam(value = "num") int num) {
 		try {
 			boardserv.deleteboard(num);
 		} catch (Exception e) {
@@ -92,8 +114,8 @@ public class BoardController {
 		}
 		return "redirect:/boardlist";
 	}
-	
-	@PostMapping(value="modify")
+
+	@PostMapping(value = "modify")
 	public String deletemodify(@ModelAttribute Board board) {
 		try {
 			boardserv.modifyBoard(board);
@@ -102,22 +124,23 @@ public class BoardController {
 		}
 		return "redirect:/boardlist";
 	}
-	
-	@GetMapping(value="modifyform")
-	public String boardmodifyform(@RequestParam(value="num")int num, @ModelAttribute Board board, Model model) {
+
+	@GetMapping(value = "modifyform")
+	public String boardmodifyform(@RequestParam(value = "num") int num, @ModelAttribute Board board, Model model) {
 		try {
 			board = boardserv.getBoard(num);
-			model.addAttribute("board",board);
+			model.addAttribute("board", board);
 			return "about/boardmodify";
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "/boarddetail";
 	}
-	
-	@GetMapping(value="list")
+
+	@GetMapping(value = "list")
 	public String list() {
-	return "about/get";
+		return "about/get";
 	}
-	
+
+
 }

@@ -8,6 +8,14 @@
 <title>Insert title here</title>
 <script src="resources/js/ckeditor/ckeditor.js"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script></head>
+<style>
+.cke_top{
+display:none;
+}
+.cke_bottom{
+display:none;
+}
+</style>
 <body>
 
 <div class="breadcrumb-option set-bg"
@@ -41,7 +49,7 @@
 
 							<div class="">
 								<input type="text" id="form-field-1-1" class="form-control"
-									name='title' value="${board.title }" readonly="readonly" />
+									name='title' value="${board.title }" readonly style=" text-align: center; background-color:white; border-radius: 40px;"/>
 							</div>
 
 
@@ -50,17 +58,17 @@
 
 							<div class="">
 								<input type="text" id="form-field-1-1" class="form-control"
-									name='mem_id' value="${board.mem_id }" readonly="readonly" />
+									name='mem_id' value="${board.mem_id }" readonly style=" text-align: center;background-color:white; border-radius: 40px;"/>
 							</div>
 
 
 
 
 
-							<div class="" style="display:none">
-								<%-- <input type="text" id="form-field-1-1" class="form-control"
+							<%-- <div class="" style="display:none">
+								<input type="text" id="form-field-1-1" class="form-control"
 										name='writer' value='<c:out value="${board.writer }"/>'
-										readonly="readonly" /> --%>
+										readonly="readonly" />
 								<c:if test="${board.type eq '1'}">
 									<input type="radio" name="type" id="type1" autocomplete="off"
 										required value="1" checked style="margin-right: 5px;">자유
@@ -76,7 +84,8 @@
 										style="margin-left: 30px; margin-right: 5px;">후기
 			</c:if>
 
-							</div>
+							</div> --%>
+							
 							<c:if test="${board.type eq '1'}">
 							<div id="location" style=display:none>
 							<label class="col-sm-6" for="form-field-1-1"
@@ -91,7 +100,7 @@
 							<label class="col-sm-6" for="form-field-1-1"
 								style="margin-top: 30px;"> <h4>지역</h4> </label>
 								<div>
-				<input type="text" id="form-field-1-1" class="form-control"	name='location' value="${board.location }" />
+				<input type="text" id="form-field-1-1" class="form-control"	name='location' value="${board.location }" style="background-color:white; border-radius: 40px; text-align: center;"/>
 			</div>
 			</div>
 			</c:if>
@@ -104,13 +113,14 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<h4 class="header blue clearfix" style="margin-bottom: 10px;">CONTENT</h4>
 
-								<textarea id="editor4" name="content" readonly>
+								<textarea id="editor4" name="content" readonly  >
 									${board.content }
 									</textarea>
-								<script>
+								<!-- <script>
 									 CKEDITOR.replace('editor4');
-						 			</script>
-							
+						 			</script> -->
+							<script>CKEDITOR.replace('editor4',{filebrowserUploadUrl:'/mine/imageUpload.do'});</script>
+
 
 								<div class="hr hr-double dotted"></div>
 

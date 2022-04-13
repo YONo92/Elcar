@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 							<div class="">
 								<input type="text" id="form-field-1-1" class="form-control"
-									name='title' value="${board.title }" />
+									name='title' value="${board.title }" style="border-radius: 40px; text-align: center;"/>
 							</div>
 
 
@@ -71,7 +71,7 @@ $(document).ready(function(){
 
 							<div class="">
 								<input type="text" id="form-field-1-1" class="form-control"
-									name='mem_id' value="${board.mem_id }" readonly="readonly" />
+									name='mem_id' value="${board.mem_id }" readonly="readonly"  style="border-radius: 40px; text-align: center;"/>
 							</div>
 
 
@@ -114,7 +114,7 @@ $(document).ready(function(){
 							<label class="col-sm-6" for="form-field-1-1"
 								style="margin-top: 30px;"> <h4>지역</h4> </label>
 								<div>
-				<input type="text" id="form-field-1-1" class="form-control"	name='location' value="${board.location }" />
+				<input type="text" id="form-field-1-1" class="form-control"	name='location' value="${board.location }" style="border-radius: 40px; text-align: center;"/>
 			</div>
 			</div>
 			</c:if>
