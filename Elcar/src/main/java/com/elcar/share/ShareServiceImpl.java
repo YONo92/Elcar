@@ -96,8 +96,14 @@ public class ShareServiceImpl implements ShareService {
 	}
 
 	@Override
-	public void modifyShareInfo(int num) throws Exception {
-		sharedao.modifyShareInfo(num);
+	public void modifyShareInfo(Share share) throws Exception {
+		sharedao.modifyShareInfo(share);
+		
+	}
+
+	@Override
+	public void deleteShareInfo(int num) throws Exception {
+		sharedao.deleteShareInfo(num);
 		
 	}
 }

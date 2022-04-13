@@ -283,10 +283,29 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             style="width: 100px"
             onclick="click_insert()"
           />
-          <input hidden type="submit" id="submit"> 
+          <input hidden type="submit" id="in_submit"> 
         </form>
+ 
+        <a
+        href="../sinchengmodi/${num}"    
+        type="button"
+        class="btn btn-danger"
+        style="width: 100px; float: right;"
+        id="mod"
+        >수정</a>
 		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
+        <form action="/deletesincheng/${num}" method="post">
+          <input
+          type="button"
+          value="삭제"
+          class="btn btn-danger"
+          style="width: 100px"
+          onclick="click_delete()"
+          id="del"
+        />
+        <input hidden type="submit" id="del_submit"> 
+      </form>
       </div>
     </section>
     
@@ -343,7 +362,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             title:'태울래 신청',
             text:'드라이버 등록이 되어있지 않습니다.',
           }).then(function(isOkay){
-            document.getElementById("submit").click();
+            document.getElementById("in_submit").click();
           })
         } 
         else {
@@ -352,11 +371,26 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             title:"태울래 신청",
             text:'신청이 완료 되었습니다.',
           }).then(function(isOkay){
-            document.getElementById("submit").click();
+            document.getElementById("in_submit").click();
             })  
         }
+      }         
+      function click_delete(){
+       
       }
+   
 			function initTmap() {
+        if (sincheng_id === "${id}"){
+          $("#mod").show();
+        }else{
+          $("#mod").hide();
+        }
+
+        if (sincheng_id === "${id}" || "${mem.type}"===1){
+          $("#del").show();
+        }else{
+          $("#del").hide();
+        }
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {
 					center : new Tmapv2.LatLng(37.49241689559544, 127.03171389453507),
