@@ -26,7 +26,7 @@
 								style="color: white; cursor: pointer">
 								바로가기 </a>
 						</form>
-						<a href="../newcharger" class="primary-btn more-btn">More</a>
+
 					</div>
 				</div>
 			</div>
@@ -52,7 +52,7 @@
 						<img src="resources/img/services/services-1.png" alt="" />
 						<h5>ELCAR Service</h5>
 						<p>ELCAR만의 이용자 편의 중심 전기차 충전소 검색 서비스와 카쉐어링을 추천합니다.</p>
-						<a href="./about"><i class="fa fa-long-arrow-right"></i></a>
+						<a href="./guide"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -78,7 +78,6 @@
 								style="cursor: pointer"><i
 								class="fa fa-long-arrow-right"></i></a>
 						</form>
-						<a href="./sharelist"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -88,14 +87,13 @@
 						<p>
 							카쉐어링을 통한 ELCAR만의 포인트를 적립해보세요. <br /> <br />
 						</p>
-						<a href="../about"><i class="fa fa-long-arrow-right"></i></a>
+						<a href="../guide"><i class="fa fa-long-arrow-right"></i></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- Services Section End -->
-	
 	<script>
       function shareList() {
         navigator.geolocation.getCurrentPosition(

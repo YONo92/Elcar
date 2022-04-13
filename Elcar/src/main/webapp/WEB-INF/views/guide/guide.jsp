@@ -69,7 +69,6 @@ body {
   white-space: normal;
   vertical-align: top;
   transition: all .3s;
-
   -webkit-box-shadow: var(--shadowColor);
   -moz-box-shadow: var(--shadowColor);
   box-shadow: var(--shadowColor);

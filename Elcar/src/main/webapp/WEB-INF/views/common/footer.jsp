@@ -13,7 +13,8 @@
 						<div class="footer__widget">
 							<h5>ELCAR</h5>
 						</div>
-						<p>엘카입니다.......!!!!</p>
+						<p>엘카는 전기차 충전소 찾기 서비스와 전기차카쉐어링을 제공하는 서비스입니다.
+						</p>
 					</div>
 				</div>
 				<div class="col-lg-2 offset-lg-1 col-md-3"></div>
