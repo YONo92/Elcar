@@ -83,6 +83,9 @@
 																<th
 																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-1">history_num</th>
+														<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">singouser</th>
 																<th
 																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-4">category
@@ -93,6 +96,15 @@
 																<th
 																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">status</th>
+														<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">reply</th>
+														<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">date</th>
+														<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">minususer</th>
 														<th
 																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">매너포인트</th>
@@ -113,6 +125,9 @@
 																		<h6 class="mb-0 text-sm ps-0">${driversingo.history_num }</h6>
 																	</td>
 																	<td>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.singouser }</h6>
+																	</td>
+																	<td>
 																		<h6 class="mb-0 text-sm ps-4">${driversingo.category }</h6>
 																	</td>
 																	<td>
@@ -121,6 +136,15 @@
 																	<td>
 																		<p class="text-xs font-weight-bold mb-0">${driversingo.status }</p>
 																	</td>	
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${driversingo.reply }</p>
+																	</td>	
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${driversingo.date }</p>
+																	</td>
+																	<td>
+																		<p class="text-xs font-weight-bold mb-0">${driversingo.minususer }</p>
+																	</td>
 																	<td><select id='driverPoint${driversingo.num }'
 																		class="driverPoint">
 																			<c:choose>
