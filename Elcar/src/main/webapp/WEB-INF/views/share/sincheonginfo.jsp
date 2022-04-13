@@ -270,9 +270,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >${sincheng.request}</textarea
           ><br /><br />
         </form>
-  
-
-
           <form action="/sincheng" method="post">
           <input type="hidden" name="num" value="${num }">
           <input type="hidden" name="sincheng_id" value="${sincheng.id }">
@@ -286,26 +283,27 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           <input hidden type="submit" id="in_submit"> 
         </form>
  
-        <a
-        href="../sinchengmodi/${num}"    
-        type="button"
-        class="btn btn-danger"
-        style="width: 100px; float: right;"
-        id="mod"
-        >수정</a>
-		  <div class="map_act_btn_wrap clear_box"></div>
-        </div>
+       
         <form action="/deletesincheng/${num}" method="post">
           <input
           type="button"
           value="삭제"
           class="btn btn-danger"
-          style="width: 100px"
+          style="width: 100px; float:right;"
           onclick="click_delete()"
           id="del"
         />
         <input hidden type="submit" id="del_submit"> 
       </form>
+      <a
+      href="../sinchengmodi/${num}"    
+      type="button"
+      class="btn btn-danger"
+      style="width: 100px; float: right; margin-right: 10px;"
+      id="mod"
+      >수정</a>
+		  <div class="map_act_btn_wrap clear_box"></div>
+        </div>
       </div>
     </section>
     
@@ -376,7 +374,27 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         }
       }         
       function click_delete(){
-       
+        Swal.fire({
+          title: "신청삭제",
+          text: "정말 삭제 하시겠습니까?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          cancelButtonText: '취소',
+          confirmButtonText: '삭제',
+}).then((result) => {
+    if (result.isConfirmed) {
+          Swal.fire(
+          '삭제가 완료되었습니다.',
+          'success'
+          ).then(function(isOkay){
+            document.getElementById("del_submit").click();       
+          })
+    }else{
+        return false;
+    }
+});
       }
    
 			function initTmap() {

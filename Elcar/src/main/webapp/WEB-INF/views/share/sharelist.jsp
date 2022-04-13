@@ -123,9 +123,7 @@
 								html += "<div class='col-lg-12 col-md-12 col-sm-12'>"
 									html += "<div class='blog__item'>"
 										html += '<div class="blog__item__pic set-bg" ' + `data-setbg="../resources/img/breadcrumb-bg.jpg" style="background-image: url('resources/img/breadcrumb-bg.jpg');">`
-											html += '<a href="shareList/${share.num}">'
-												html += '<a href=shareList/'+ value.num + '>' + '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>' +'</a>'
-											html += '</a>'
+												html += '<a href=sinchenginfo/' + value.num + '>' + '<ul>'+'<li>'+value.date+'</li>'+''+'<li>'+value.num+'</li>'+'</ul>' +'</a>'
 										html += '</div>'
 										html += '<div class="blog__item__text ">'
 										html += '<h5><a href="#">'+ '출발지:'+ value.start_name + '</a></h5>'
