@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Car sharing</h2>
+						<h2>Car Sharing</h2>
 						<div class="breadcrumb__links">
 							<a href="./"><i class="fa fa-home"></i> Home</a> <span>카쉐어링</span>
 						</div>

@@ -25,9 +25,4 @@ public class MainController {
 	public String charger() {
 		return "charger/charger";
 	}
-
-	@GetMapping("/admin_singolist")
-	public String admin_singolist() {
-		return "admin/admin_singolist";
-	}
 }

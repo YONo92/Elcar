@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<div class="breadcrumb__text">
-						<h2>Driver registration</h2>
+						<h2>Driver Registration</h2>
 						<div class="breadcrumb__links">
 							<a href="./"><i class="fa fa-home"></i> Home</a> <span>드라이버
 								등록</span>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.Driver_report;
 import com.elcar.dto.Member;
 import com.elcar.dto.PageInfo;
 
@@ -64,5 +65,33 @@ public class AdminController {
 		}
 		return num + "데이터가 " + status + "상태로 변경되었습니다."; // 페이지가 따로 없기 때문에 이렇게 값을 보여주기 = alert(data);
 	}
-	// Response~ 쓴 이유는 return 값을 전달하려면 필요하고, 리퀘스트파람으로 넘길 때는 매개변수주의 int num, int status 이렇게 써야함
-}
+	// Response~ 쓴 이유는 return 값을 전달하려면 필요하고, 리퀘스트파람으로 넘길 때는 매개변수주의 int num, int
+	// status 이렇게 써야함
+
+	// 관리자_드라이버 신고 회원 관리
+	@GetMapping(value = "/admin_driversingolist")
+	public String admin_driversingo(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			Model model, @RequestParam(value = "mem_text", defaultValue = "") String mem_text) {
+		PageInfo pageInfo = new PageInfo();
+		try {
+			List<Driver_report> driversingo = adminservice.alldriversingoList(page, pageInfo, mem_text);
+			model.addAttribute("mem_text", mem_text);
+			model.addAttribute("pageInfo", pageInfo);
+			model.addAttribute("driversingo", driversingo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "admin/admin_driversingolist";
+	}
+	
+	/*@ResponseBody
+	@PostMapping("admin_driverpoint") 
+	public String admin_driversingo(@RequestParam("num") int num, @RequestParam("minusPoint") int point, @RequestParam("status") int status) {
+		System.out.println(num);
+		System.out.println(point);
+		System.out.println(status);*/
+		
+		//adminservice.singoBadUser(num, point, status);
+		//return "ok";
+	}
+
