@@ -72,9 +72,18 @@
 									</div>
 								</div>
 								<div style="margin-top: 20px; margin-left: 17px;">
-								<button style="width: 4%; float: left">전체</button>
-								<button style="width: 4%; float: left">자유</button>
-								<button style="width: 4%; float: left">후기</button>
+								<form action="boardlist" method="get">
+								<input type="number" value="" name="type" style="display: none"/>
+								<input class="btn btn-primary" id="writebtn" type="submit" style="width: 10%; float: left; margin-left: 10px" value="전체"/>
+								</form>
+								<form action="boardlist" method="get">
+								<input type="number" value="1" name="type" style="display: none"/>
+								<input class="btn btn-primary" id="writebtn" type="submit" style="width: 10%; float: left; margin-left: 10px" value="자유"/>
+								</form>
+								<form action="boardlist" method="get">
+								<input type="number" value="2" name="type" style="display: none"/>
+								<input class="btn btn-primary" id="writebtn" type="submit" style="width: 10%; float: left; margin-left: 10px" value="후기"/>
+								</form>
 								</div>
 								<c:choose>
 									<c:when test="${boardlist!=null && pageInfo.listCount>0 }">
