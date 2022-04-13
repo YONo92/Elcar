@@ -130,4 +130,17 @@
        select * from sinchenglist where surak_id=#{id} and talge_num=#{num};
       ]]>
 	</select>
+	
+	<update id="modifyShareInfo" parameterType="Share">
+	 <![CDATA[
+		update talge set date=#{date},person=#{person},request=#{request},start_long=#{start_long},start_lat=#{start_lat},goal_long=#{goal_long},goal_lat=#{goal_lat},start_name=#{start_name},goal_name=#{goal_name}
+		where num = #{num};
+ 		]]>
+	</update>
+	
+	<delete id="deleteShareInfo" parameterType="int">
+	  <![CDATA[
+		delete from talge where num=#{num};
+ 		]]>
+	</delete>
 </mapper>

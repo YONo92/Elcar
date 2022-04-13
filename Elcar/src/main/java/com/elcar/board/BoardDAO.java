@@ -19,4 +19,8 @@ public interface BoardDAO {
 	List<Board> selectBoardList(@Param(value="startrow")int startrow, @Param(value="search_text")String search_text)throws Exception;
 
 	Board selectBoard(int num)throws Exception;
+
+	void deleteBoard(int num)throws Exception;
+
+	void modifyBoard(Board board)throws Exception;
 }

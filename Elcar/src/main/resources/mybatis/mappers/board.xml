@@ -34,6 +34,18 @@
 			select * from board where num=#{num}
 		]]>
 	</select>
+	
+	<delete id="deleteBoard" parameterType="int">
+	<![CDATA[
+		delete from board where num=#{num}	
+	]]>
+	</delete>
+	
+	<update id="modifyBoard" parameterType="board">
+	<![CDATA[
+		update board set content=#{content}, title=#{title}, lacation=#{location}, type=#{type}  where mem_id=#{id} and num=#{num}
+	]]>
+	</update>
 
 
 

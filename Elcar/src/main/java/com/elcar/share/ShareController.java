@@ -184,4 +184,57 @@ public class ShareController {
 		}
 		return mav;
 	}
+	
+	@GetMapping(value = "/sinchengmodi/{num}")
+	public ModelAndView sinchengModi(@PathVariable int num) {
+		ModelAndView mav = new ModelAndView("share/sinchengmodi");
+		String id = (String) session.getAttribute("id");
+		try {
+				Member mem = memserv.selectMember_kakao(id);
+				mav.addObject("nickname", mem.getNickname());
+				HashMap<String, Object> sincheng = shareserv.sinchengInfo(num);
+				String dateSet = sincheng.get("date").toString().substring(0, 10);
+				String datetime = sincheng.get("date").toString().substring(11, 16);
+				String date = dateSet + " " + datetime;
+				String gender;
+				if ((Integer) sincheng.get("gender") == 0) {
+					gender = "남자";
+				} else {
+					gender = "여자";
+				}
+				mav.addObject("id", id);
+				mav.addObject("mem", mem);
+				mav.addObject("sincheng", sincheng);
+				mav.addObject("date", date);
+				mav.addObject("gender", gender);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@ResponseBody
+	@PostMapping(value ="/sinchengmodify/{num}")
+	public ModelAndView sinchengModify(@PathVariable int num, Share share) {
+		ModelAndView mav = new ModelAndView("share/sharelist");
+		System.out.println(share.toString());
+		try {
+			shareserv.modifyShareInfo(share);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+	
+	@PostMapping(value ="/deletesincheng/{num}")
+	public ModelAndView deleteSincheng(@PathVariable int num) {
+		ModelAndView mav = new ModelAndView("share/sharelist");
+		try {
+			System.out.println(num);
+			shareserv.deleteShareInfo(num);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
 }

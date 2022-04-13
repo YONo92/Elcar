@@ -64,16 +64,55 @@ public class BoardController {
 	@GetMapping(value="boarddetail")
 	public String boarddetail(@RequestParam(value="num")int num, @RequestParam(value="page", required=false, defaultValue="1")int page,Model model)
 	{
+		String id = (String) session.getAttribute("id");
+		if(session.getAttribute("id")!=null) {
 		Board board;
 		try {
 			board = boardserv.getBoard(num);
 			model.addAttribute("board",board);
 			model.addAttribute("page", page);
+			model.addAttribute("id",id);
 			return "about/boarddetail";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "about/boardlist";
 		}
+		}else {
+			return "main/loginform";
+		}
 		
 	}
+	
+	@PostMapping(value="delete")
+	public String deleteboard(@RequestParam(value="num")int num) {
+		try {
+			boardserv.deleteboard(num);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/boardlist";
+	}
+	
+	@PostMapping(value="modify")
+	public String deletemodify(@ModelAttribute Board board) {
+		try {
+			boardserv.modifyBoard(board);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:/boardlist";
+	}
+	
+	@GetMapping(value="modifyform")
+	public String boardmodifyform(@RequestParam(value="num")int num, @ModelAttribute Board board, Model model) {
+		try {
+			board = boardserv.getBoard(num);
+			model.addAttribute("board",board);
+			return "about/boardmodify";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "/boarddetail";
+	}
+	
 }

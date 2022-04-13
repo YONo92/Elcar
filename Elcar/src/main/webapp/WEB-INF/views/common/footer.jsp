@@ -5,8 +5,7 @@
 <html>
 <body>
 	<!-- Footer Section Begin -->
-	<footer class="footer set-bg"
-		data-setbg="../resources/img/footer-bg.jpg">
+	<footer class="footer set-bg" data-setbg="../resources/img/footer-bg.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-4">
@@ -14,7 +13,8 @@
 						<div class="footer__widget">
 							<h5>ELCAR</h5>
 						</div>
-						<p>엘카입니다.......!!!!</p>
+						<p>엘카는 전기차 충전소 찾기 서비스와 전기차카쉐어링을 제공하는 서비스입니다.
+						</p>
 					</div>
 				</div>
 				<div class="col-lg-2 offset-lg-1 col-md-3"></div>
@@ -53,22 +53,26 @@
 	<!-- Footer Section End -->
 	
 	<script>
-		function shareList() {
-			navigator.geolocation.getCurrentPosition(function(position) {
-				$('#lat').val(position.coords.latitude);
-				$('#lng').val(position.coords.longitude);
-				document.getElementById('locationForm').submit();
-			}, function(err) {
-				Swal.fire({
-					icon : 'warning',
-					text : '위치정보 허용 하시는 것을 권장 드립니다.',
-				}).then(function(isOkay) {
-					$('#lat').val(37.570028);
-					$('#lng').val(126.986072);
-					document.getElementById('locationForm').submit();
-				});
-			});
-		}
-	</script>
+    function shareList() {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            $('#lat').val(position.coords.latitude);
+            $('#lng').val(position.coords.longitude);
+            document.getElementById('locationForm').submit();
+          },
+          function (err) {
+            Swal.fire({
+              icon: 'warning',
+              text: '위치정보 허용 하시는 것을 권장 드립니다.',
+            }).then(function (isOkay) {
+              $('#lat').val(37.570028);
+              $('#lng').val(126.986072);
+              document.getElementById('locationForm').submit();
+            });	
+          }
+        );
+      }
+    </script>
+	<!-- Footer Section End -->
 </body>
 </html>
