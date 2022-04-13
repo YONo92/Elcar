@@ -93,7 +93,6 @@
 		</div>
 	</section>
 	<!-- Services Section End -->
-	
 	<script>
       function shareList() {
         navigator.geolocation.getCurrentPosition(

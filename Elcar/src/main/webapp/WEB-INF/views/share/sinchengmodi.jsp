@@ -106,7 +106,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       </div>
     </div>
     <!-- Breadcrumb Begin -->
-    <form action="sinchengmodify" method="post">
+    <form action="/sinchengmodify/${num}" method="post">
     <section>
       <div class="frame">
         <div class="top_title" style="margin-top: 30px"><h1>날 태워!</h1></div>
@@ -214,10 +214,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
               찾기</button
             >
 			<br /><br />
-			
-			
           </div>
-
           <div class="top_bottom" style="margin-top: 100px">
             <br id="map_wrap" class="map_wrap">
               <h4>클릭하여 찾기</h4></br>	  

@@ -270,9 +270,6 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           >${sincheng.request}</textarea
           ><br /><br />
         </form>
-  
-
-
           <form action="/sincheng" method="post">
           <input type="hidden" name="num" value="${num }">
           <input type="hidden" name="sincheng_id" value="${sincheng.id }">
@@ -283,8 +280,28 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             style="width: 100px"
             onclick="click_insert()"
           />
-          <input hidden type="submit" id="submit"> 
+          <input hidden type="submit" id="in_submit"> 
         </form>
+ 
+       
+        <form action="/deletesincheng/${num}" method="post">
+          <input
+          type="button"
+          value="삭제"
+          class="btn btn-danger"
+          style="width: 100px; float:right;"
+          onclick="click_delete()"
+          id="del"
+        />
+        <input hidden type="submit" id="del_submit"> 
+      </form>
+      <a
+      href="../sinchengmodi/${num}"    
+      type="button"
+      class="btn btn-danger"
+      style="width: 100px; float: right; margin-right: 10px;"
+      id="mod"
+      >수정</a>
 		  <div class="map_act_btn_wrap clear_box"></div>
         </div>
       </div>
@@ -343,7 +360,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             title:'태울래 신청',
             text:'드라이버 등록이 되어있지 않습니다.',
           }).then(function(isOkay){
-            document.getElementById("submit").click();
+            document.getElementById("in_submit").click();
           })
         } 
         else {
@@ -352,11 +369,46 @@ uri="http://java.sun.com/jsp/jstl/core" %>
             title:"태울래 신청",
             text:'신청이 완료 되었습니다.',
           }).then(function(isOkay){
-            document.getElementById("submit").click();
+            document.getElementById("in_submit").click();
             })  
         }
+      }         
+      function click_delete(){
+        Swal.fire({
+          title: "신청삭제",
+          text: "정말 삭제 하시겠습니까?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: '#d33',
+          cancelButtonColor: '#3085d6',
+          cancelButtonText: '취소',
+          confirmButtonText: '삭제',
+}).then((result) => {
+    if (result.isConfirmed) {
+          Swal.fire(
+          '삭제가 완료되었습니다.',
+          'success'
+          ).then(function(isOkay){
+            document.getElementById("del_submit").click();       
+          })
+    }else{
+        return false;
+    }
+});
       }
+   
 			function initTmap() {
+        if (sincheng_id === "${id}"){
+          $("#mod").show();
+        }else{
+          $("#mod").hide();
+        }
+
+        if (sincheng_id === "${id}" || "${mem.type}"===1){
+          $("#del").show();
+        }else{
+          $("#del").hide();
+        }
 				// 1. 지도 띄우기
 				map = new Tmapv2.Map("map_div", {
 					center : new Tmapv2.LatLng(37.49241689559544, 127.03171389453507),
