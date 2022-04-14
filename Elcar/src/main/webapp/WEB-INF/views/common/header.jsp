@@ -43,7 +43,7 @@
 								<li><a href="../newcharger">전기차
 										충전소</a></li>
 								<li>
-									<form id="locationForm" action="../sharelist" method="post">
+									<form id="locationForm" action="../sharelist" method="get">
 										<input type="hidden" id="lat" name="lat" /> <input
 											type="hidden" id="lng" name="lng" /> <a
 											onclick="shareList()" style="cursor: pointer"> 카쉐어링 </a>

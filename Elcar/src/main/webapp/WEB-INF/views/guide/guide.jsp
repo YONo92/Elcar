@@ -425,17 +425,17 @@ const GALLERY = [
     title: "엘카 이용시 유의사항",
     img: {
       src: "resources/img/about/warning.png",
-      alt: "a brown French bulldog puppy laying down and looking up with a hopeful look in its eyes.",
-      title: "Photo by Karsten Winegeart for Unsplash"
+      alt: "엘카 이용시 유의사항",
+      title: "엘카이용 유의사항"
     }
   },
 
   {
     title: "엘카 회원 등급제도",
     img: {
-      src: "resources/img/about/grade.png",
-      alt: "A tabby kitten with green eyes.",
-      title: "Photo by Sergey Semin for Unsplash"
+      src: "resources/img/about/grade2.png",
+      alt: "엘카 회원 등급제도",
+      title: "엘카 회원 등급제도."
     }
   }
 

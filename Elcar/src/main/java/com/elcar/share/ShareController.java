@@ -70,8 +70,8 @@ public class ShareController {
 
 	@ResponseBody
 	@PostMapping("/sharelist_more")
-	public List<Share> shareList_more(@RequestParam(value = "lat", required = false, defaultValue = "0") double lat,
-			@RequestParam(value = "lng", required = false, defaultValue = "0") double lng,
+	public List<Share> shareList_more(@RequestParam(value = "lat") double lat,
+			@RequestParam(value = "lng") double lng,
 			@RequestParam(value = "liststartsize") String liststartsize, Model model) {
 		try {
 			System.out.println(lng);
@@ -92,11 +92,11 @@ public class ShareController {
 		}
 		return null;
 	}
-
-	@ResponseBody
-	@PostMapping(value = "/sharelist")
-	public ModelAndView shareList(@RequestParam(value = "lat", required = false, defaultValue = "0") double lat,
-			@RequestParam(value = "lng", required = false, defaultValue = "0") double lng) {
+	
+// 컨트롤러 Post , Get 분리 시키고 sharelist get으로는 페이지만 불러오고 post로는 데이터를 불러들여오는 방식이 적합함.
+	@GetMapping(value = "/sharelist")
+	public ModelAndView shareList(@RequestParam(value = "lat") double lat,
+			@RequestParam(value = "lng") double lng) {
 		ModelAndView mav = new ModelAndView("share/sharelist");
 		try {
 			int liststartsize = 0;
@@ -115,6 +115,8 @@ public class ShareController {
 		}
 		return mav;
 	}
+	
+	
 
 	@GetMapping(value = "/sinchenginfo/{num}")
 	public ModelAndView sincheongInfo(@PathVariable("num") int num, Share share) {
