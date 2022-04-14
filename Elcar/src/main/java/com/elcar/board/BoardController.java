@@ -58,14 +58,21 @@ public class BoardController {
 	}
 
 	@GetMapping(value = "/boardlist")
-	public String boardlist(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model,
-			@RequestParam(value = "search_text", defaultValue = "") String search_text) {
+	public String boardlist(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			Model model, @RequestParam(value = "search_text", defaultValue = "") String search_text,
+			@RequestParam(value = "type", required = false, defaultValue = "0")int type) {
 		PageInfo pageInfo = new PageInfo();
 		try {
-			List<Board> boardlist = boardserv.boardList(page, pageInfo, search_text);
-			model.addAttribute("search_text", search_text);
-			model.addAttribute("pageInfo", pageInfo);
-			model.addAttribute("boardlist", boardlist);
+			if(type==1 || type==2) {
+				List<Board> boardlist = boardserv.selectBoardList_type(page, pageInfo, type);
+				model.addAttribute("pageInfo", pageInfo);
+				model.addAttribute("boardlist", boardlist);
+			} else {
+				List<Board> boardlist = boardserv.boardList(page, pageInfo, search_text);
+				model.addAttribute("search_text", search_text);
+				model.addAttribute("pageInfo", pageInfo);
+				model.addAttribute("boardlist", boardlist);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

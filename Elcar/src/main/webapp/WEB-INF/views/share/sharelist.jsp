@@ -177,7 +177,10 @@
 
       let overlapId = "${sinchengOverlap.surak_id}";
       let overlapNum = "${sinchengOverlap.talge_num}";
+	
 
+
+      
       var map;
 			var markerInfo;
 			//출발지,도착지 마커

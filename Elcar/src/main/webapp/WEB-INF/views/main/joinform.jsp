@@ -69,8 +69,8 @@
             </div>
             
             <div class="btn-area">
-            <input type="radio" name="gender" id="gender" autocomplete="off" required value="1" checked>남자
-            <input type="radio" name="gender" id="gender" autocomplete="off" required value="2">여자
+            <input type="radio" name="gender" id="gender" autocomplete="off" required value="0" checked>남자
+            <input type="radio" name="gender" id="gender" autocomplete="off" required value="1">여자
             </div>
             
             <div class="int-area">
@@ -432,7 +432,6 @@
 			type:'post',
 			data:{phone:phone},
 			success:function(data){
-				alert(data);
 				if(data == 'true'){
 					$('#phone_check').text("이미 사용중인 번호 입니다");
 					$('#phone_check').css("color","red");

@@ -119,9 +119,19 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         height: 100%;
         border-radius: 10px;
       }
+      .creaBlock::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        width: calc(var(--sizeCreaBlock) * 2);
+        height: calc(var(--sizeCreaBlock) * 2);
+        background-color: #89c8ef;
+        transform: rotateZ(70deg);
+        z-index: -1;
+      }
 
       /* FIN CREA BLOCK */
-
       .creaBlock {
         transform: scale(0.9);
       }

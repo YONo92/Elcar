@@ -22,7 +22,7 @@
 
 	<select id="selectBoardList" resultType="Board">
       <![CDATA[
-         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+        select * from (select @rownum:=@rownum+1 rnum, tot.* 
 		from(select num,title ,mem_id,type,location from board where mem_id like'%${search_text}%' or title like'%${search_text}%' or location
 		like'%${search_text}%' order by num desc) tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
@@ -47,6 +47,17 @@
 	]]>
 	</update>
 
+	<select id="selectBoardList_type" resultType="Board">
+      <![CDATA[
+		select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select num,title ,mem_id,type,location from board where type = #{type} order by num desc) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
 
-
+	<select id="selectBoardCount_type" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from(select title, mem_id, content, location from board where type=#{type})pro
+ 		]]>
+	</select>
 </mapper>
