@@ -239,7 +239,7 @@
     		$('#btn').attr('disabled',true);
     	}else{
    		$.ajax({
-    			url:"http://localhost:8080/idCheck",
+    			url:"http://118.67.133.185:8080/idCheck",
     			type:'post',
     			data:{id:id},
     			success:function(data){
@@ -280,7 +280,7 @@
     		$('#btn').attr('disabled',true);
     	}else{
    		$.ajax({
-    			url:"http://localhost:8080/emailcheck",
+    			url:"http://118.67.133.185:8080/emailcheck",
     			type:'post',
     			data:{email:email},
     			success:function(data){
@@ -330,7 +330,7 @@
     		$('#btn').attr('disabled',true);
     	} else{
    		$.ajax({
-    			url:"http://localhost:8080/nicknameCheck",
+    			url:"http://118.67.133.185:8080/nicknameCheck",
     			type:'post',
     			data:{nickname:nickname},
     			success:function(data){
@@ -428,7 +428,7 @@
    		}
    		else{
    		$.ajax({
-			url:"http://localhost:8080/phoneCheck",
+			url:"http://118.67.133.185:8080/phoneCheck",
 			type:'post',
 			data:{phone:phone},
 			success:function(data){
