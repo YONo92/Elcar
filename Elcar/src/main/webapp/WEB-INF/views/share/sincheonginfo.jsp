@@ -319,6 +319,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       let surak_id = "${id}";
       let license = "${mem.license}";
 
+      console.log("${mem.type}");
+
       let overlapId = "${sinchengOverlap.surak_id}";
       let overlapNum = "${sinchengOverlap.talge_num}";
 
