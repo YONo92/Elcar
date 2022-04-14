@@ -142,7 +142,7 @@
 																		<h6 class="mb-0 text-sm ps-0">${driversingo.status }</h6>
 																	</td>
 																	<td>
-																		<h6 class="mb-0 text-sm ps-0">${driversingo.reply }</h6>
+																		<input class="mb-0 text-sm ps-0" value="${driversingo.reply }" >
 																	</td>		
 																	<td><select id='driverPoint${driversingo.num }'
 																		class="driverPoint">
