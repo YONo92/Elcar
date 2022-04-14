@@ -37,7 +37,7 @@
 					<div class="breadcrumb__text">
 						<h2>Admin</h2>
 						<div class="breadcrumb__links">
-							<a href="./"><i class="fa fa-home"></i> Home</a> <span>관리자_드라이버회원관리
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>관리자_드라이버신고회원관리
 							</span>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 		</div>
 	</div>
 
-	<!-- 관리자_드라이버 회원 관리 -->
+	<!-- 관리자_드라이버 신고 회원 관리 -->
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
@@ -63,13 +63,13 @@
 									class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 									<div
 										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-										<h6 class="text-white text-capitalize ps-3">관리자_드라이버 회원
-											관리</h6>
+										<h6 class="text-white text-capitalize ps-3">관리자_드라이버 신고
+											회원 관리</h6>
 									</div>
 								</div>
 								<c:choose>
-									<c:when test="${driver!=null && pageInfo.listCount>0 }">
-										<form action="admin_driverlist" method="get">
+									<c:when test="${driversingo!=null && pageInfo.listCount>0 }">
+										<form action="admin_driversingolist" method="get">
 											<div class="card-body px-0 pb-2">
 												<div class="table-responsive p-0" style="height: 350px">
 													<table class="table align-items-center mb-0"
@@ -78,74 +78,83 @@
 															<tr>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-6">이름</th>
+														text-xxs font-weight-bolder opacity-7 ps-6">num</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-1">아이디</th>
+														text-xxs font-weight-bolder opacity-7 ps-1">이용내역순</th>
+														<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">날짜</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-4">면허
-																	취득일</th>
+														text-xxs font-weight-bolder opacity-7 ps-2">신고유저</th>
+														<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">마이너스유저</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-1">차
-																	번호</th>
+														text-xxs font-weight-bolder opacity-7 ps-4">종류
+																</th>
 																<th
 																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">차종</th>
-																<th
-																	class="text-uppercase text-secondary 
-														text-xxs font-weight-bolder opacity-7 ps-2">면허증</th>
+														text-xxs font-weight-bolder opacity-7 ps-1">내용</th>
 																<th
 																	class="text-uppercase text-secondary 
 														text-xxs font-weight-bolder opacity-7 ps-2">처리</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">답변</th>
+																<th
+																	class="text-uppercase text-secondary 
+														text-xxs font-weight-bolder opacity-7 ps-2">매너포인트</th>
 															</tr>
 														</thead>
 														<tbody>
-															<c:forEach var="driver" items="${driver }">
+															<c:forEach var="driversingo" items="${driversingo }">
 																<tr>
 																	<td>
 																		<div class="d-flex px-2 py-1">
 																			<div
 																				class="d-flex flex-column justify-content-center">
-																				<h6 class="mb-0 text-sm ps-5">${driver.name }</h6>
+																				<h6 class="mb-0 text-sm ps-5">${driversingo.num }</h6>
 																			</div>
 																		</div>
 																	</td>
 																	<td>
-																		<h6 class="mb-0 text-sm ps-0">${driver.id }</h6>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.history_num }</h6>
 																	</td>
 																	<td>
-																		<h6 class="mb-0 text-sm ps-4">${driver.getdate }</h6>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.date }</h6>
 																	</td>
 																	<td>
-																		<h6 class="mb-0 text-sm ps-0">${driver.carnum }</h6>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.singouser }</h6>
 																	</td>
 																	<td>
-																		<p class="text-xs font-weight-bold mb-0">${driver.cartype }</p>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.minususer }</h6>
 																	</td>
 																	<td>
-																		<!--  <p class="text-xs font-weight-bold mb-0">${driver.img }</p> -->
-																		<a href="/view/${driver.img }" download><img
-																			width="50px" src="/view/${driver.img }"></a>
+																		<h6 class="mb-0 text-sm ps-4">${driversingo.category }</h6>
 																	</td>
-																	<td><select id='driverStatus${driver.num }'
-																		class="driverStatus">
+																	<td>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.content }</h6>
+																	</td>
+																	<td>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.status }</h6>
+																	</td>
+																	<td>
+																		<h6 class="mb-0 text-sm ps-0">${driversingo.reply }</h6>
+																	</td>		
+																	<td><select id='driverPoint${driversingo.num }'
+																		class="driverPoint">
 																			<c:choose>
-																				<c:when test="${driver.status eq 0}">
-																					<option value="0" selected>대기중</option>
-																					<option value="1">승인</option>
-																					<option value="2">반려</option>
-																				</c:when>
-																				<c:when test="${driver.status eq 1}">
-																					<option value="0">대기중</option>
-																					<option value="1" selected>승인</option>
-																					<option value="2">반려</option>
+																				<c:when test="${driversingo.status < 2 }">
+																					<option value="0" selected>마이너스 선택</option>
+																					<option value="-10">-10 차감</option>
+																					<option value="-20">-20 차감</option>
+																					<option value="-30">-30 차감</option>
 																				</c:when>
 																				<c:otherwise>
-																					<option value="0">대기중</option>
-																					<option value="1">승인</option>
-																					<option value="2" selected>반려</option>
+																					<option value="" selected disabled>차감 완료</option>
 																				</c:otherwise>
 																			</c:choose>
 																	</select></td>
@@ -165,7 +174,7 @@
 				</c:when>
 												<c:otherwise>
 													<a
-														href="admin_driverlist?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
+														href="admin_driversingolist?page=${pageInfo.page-1}&mem_text=${mem_text}">[이전]</a>&nbsp;
 				</c:otherwise>
 											</c:choose>
 											<c:forEach var="i" begin="${pageInfo.startPage }"
@@ -173,7 +182,8 @@
 												<c:choose>
 													<c:when test="${pageInfo.page==i }">[${i }]</c:when>
 													<c:otherwise>
-														<a href="admin_driverlist?page=${i}&mem_text=${mem_text}">[${i }]</a>
+														<a
+															href="admin_driversingolist?page=${i}&mem_text=${mem_text}">[${i }]</a>
 													</c:otherwise>
 												</c:choose>
 											</c:forEach>
@@ -183,7 +193,7 @@
 				</c:when>
 												<c:otherwise>
 													<a
-														href="admin_driverlist?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
+														href="admin_driversingolist?page=${pageInfo.page+1}&mem_text=${mem_text}">[다음]</a>
 												</c:otherwise>
 											</c:choose>
 										</section>
@@ -213,16 +223,19 @@
 	}
 </script>
 <script>
-	// status 처리
+	// 매너포인트 차감 처리
 	$(document).ready(function() {
-		$('.driverStatus').on('change', function(e) {
-			let driverNum = e.currentTarget.id.slice(12);
-			let status = e.currentTarget.value;
+		$('.driverPoint').on('change', function(e) {
+			let driverReportNum = e.currentTarget.id.slice(11);
+			console.log(driverReportNum);
+			let minusPoint = e.currentTarget.value;
+			console.log(minusPoint);
 			$.ajax({
-				url : "/admin_driverupdate",
+				url : "/admin_driverpoint",
 				data : {
-					"num" : driverNum,
-					"status" : status
+					"num" : driverReportNum,
+					"status" : 1,
+					"minusPoint" : minusPoint
 				},
 				dataType : "text",
 				type : "Post",

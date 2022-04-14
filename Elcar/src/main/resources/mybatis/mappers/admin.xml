@@ -49,4 +49,29 @@
   		]]>
 	</update>
 
+	<!-- 관리자_드라이버 신고 회원 관리 -->
+	<select id="selectalldriversingoCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from driver_report;
+ 		]]>
+	</select>
+
+	<select id="selectalldriversingoList" resultType="Driver_report">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select * from driver_report where num like'%${mem_text}%' ) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
+
+	<!-- 관리자_드라이버 신고 회원 관리_매너포인트 & status 처리 -->
+	<update id="updateMinusUserPoint" parameterType="int">
+		update member
+		set point = point + #{point} where id = (SELECT minususer FROM elcar.driver_report where num = #{num});
+	</update>
+
+	<update id="updateDriverReportStatus" parameterType="int">
+		update driver_report set status = status + 2 where num = #{num};
+	</update>
+
 </mapper>

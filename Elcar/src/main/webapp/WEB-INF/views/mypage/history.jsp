@@ -97,9 +97,10 @@
 										<span id="alerts" style="margin: 5px;"> <span
 											id="alert" class="alert"
 											style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px"><a
-												href="singo">신고</a></span> <input type="hidden" id="mwarning"
+												href="singo/${history.num }">신고</a></span> <input type="hidden" id="mwarning"
 											name="mwarning" value=''>
 										</span> <br>
+										
 										<c:if test="${history.point eq 0 }">
 											<span id="alerts" style="margin: 5px;"> <span
 												id="alert" class="alert"
@@ -207,7 +208,9 @@
 								<span id="alerts" style="margin: 5px;"> <span id="alert"
 									class="alert"
 									style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
-										<a href="singo">신고</a>
+										<!-- 잊지마 -->
+			
+										<a href="singo/${history.num }">신고</a>
 								</span> <input type="hidden" id="mwarning" name="mwarning" value=''><br>
 								</span>
 								<c:if test="${history.point eq 0 }">

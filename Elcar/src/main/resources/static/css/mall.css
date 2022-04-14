@@ -5262,7 +5262,7 @@ select {
     word-break: break-all;
   }
 
-  .asset-card .card-cont-wrap ul li i {
+  .asset-card .card-cont-wrap ul i {
     font-size: 16px;
   }
 

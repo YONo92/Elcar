@@ -24,7 +24,7 @@
       <![CDATA[
          select * from (select @rownum:=@rownum+1 rnum, tot.* 
 		from(select num,title ,mem_id,type,location from board where mem_id like'%${search_text}%' or title like'%${search_text}%' or location
-		like'%${search_text}%') tot, 
+		like'%${search_text}%' order by num desc) tot, 
 		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
  		]]>
 	</select>
@@ -43,7 +43,7 @@
 	
 	<update id="modifyBoard" parameterType="board">
 	<![CDATA[
-		update board set content=#{content}, title=#{title}, lacation=#{location}, type=#{type}  where mem_id=#{id} and num=#{num}
+		update board set content=#{content}, title=#{title}, location=#{location}, type=#{type}  where num=#{num}
 	]]>
 	</update>
 

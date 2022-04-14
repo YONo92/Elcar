@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.Driver_report;
 import com.elcar.dto.History;
 import com.elcar.dto.Member;
 import com.elcar.dto.Share;
@@ -31,19 +32,17 @@ public class MypageController {
 
 	@Autowired
 	MypageService mypageService;
-	
+
 	@Autowired
 	ShareService shareserv;
 
 	@Autowired
 	HttpSession session;
-	
-	
+
 //////////////////// 산하
 //////////////////// 6조 화이팅
-	
-	
-	//(마이 페이지)
+
+	// (마이 페이지)
 	@GetMapping("/mypage")
 	public ModelAndView mypage() {
 		ModelAndView mav = new ModelAndView("mypage/mypage");
@@ -81,8 +80,7 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
-	
+
 	// 비번 변경 전 비번 확인(현재 비밀번호 창)
 	@GetMapping(value = "checkPw")
 	public ModelAndView checkPwForm() {
@@ -100,7 +98,7 @@ public class MypageController {
 
 		return mav;
 	}
-	
+
 	// 비밀번호 수정
 	@PostMapping(value = "pwmodifyform")
 	public ModelAndView pwmodifyFormForm(@RequestParam String password) {
@@ -193,47 +191,40 @@ public class MypageController {
 		try {
 			String id = (String) session.getAttribute("id");
 			Member member = mypageService.mypageInfo(id);
-			
+
 			mav.addObject("id", member.getId());
 			// 신청 중인지=..
 			Driver driver = mypageService.selectDriverInfo(id);
 			if (driver != null) {
 				mav.addObject("driver", driver);
 			}
-			// 신청 중이라면 인증 대기중, 거절 , 인증되었는지 (status)  0 : 대기중 1 : 거절 2 : 승인		
+			// 신청 중이라면 인증 대기중, 거절 , 인증되었는지 (status) 0 : 대기중 1 : 거절 2 : 승인
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
-	
-	
-	
-	
-	// 매너포인트
-		@GetMapping(value = "mannerPoint")
-		public ModelAndView mannerPointForm() {
-			ModelAndView mav = new ModelAndView("mypage/mannerPoint");
-			String taker_id = (String) session.getAttribute("id");
-			try {
-				Member member = mypageService.mypageInfo(taker_id);
-				mav.addObject("member", member);
-				
-				List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
-				mav.addObject("historyDrivingList", historyDrivingList);
-				
-				List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
-				mav.addObject("historyDDubukList", historyDDubukList);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return mav;
-		}
-		
-		
 
-	
+	// 매너포인트
+	@GetMapping(value = "mannerPoint")
+	public ModelAndView mannerPointForm() {
+		ModelAndView mav = new ModelAndView("mypage/mannerPoint");
+		String taker_id = (String) session.getAttribute("id");
+		try {
+			Member member = mypageService.mypageInfo(taker_id);
+			mav.addObject("member", member);
+
+			List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
+			mav.addObject("historyDrivingList", historyDrivingList);
+
+			List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
+			mav.addObject("historyDDubukList", historyDDubukList);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
 
 	// 프로필 보기 화면 이동
 	@GetMapping(value = "mypageMyinfo")
@@ -249,8 +240,7 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
-	
+
 	// 이용내역
 	@GetMapping(value = "history")
 	public ModelAndView historyForm() {
@@ -261,7 +251,7 @@ public class MypageController {
 			mav.addObject("member", member);
 			List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
 			mav.addObject("historyDrivingList", historyDrivingList);
-			
+
 			List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
 			mav.addObject("historyDDubukList", historyDDubukList);
 		} catch (Exception e) {
@@ -269,8 +259,7 @@ public class MypageController {
 		}
 		return mav;
 	}
-	
-	
+
 	// 이용평가
 	@GetMapping(value = "pyeongga/{num}")
 	public ModelAndView pyeonggaForm(@PathVariable int num) {
@@ -295,7 +284,7 @@ public class MypageController {
 		try {
 			History history = mypageService.selectHistoryByNum(num);
 			String user_id = (String) session.getAttribute("id");
-			if(user_id.equals(history.getTaker_id())) {
+			if (user_id.equals(history.getTaker_id())) {
 				mypageService.pointUpdate(num, point, "giver_id");
 			} else {
 				mypageService.pointUpdate(num, point, "taker_id");
@@ -306,29 +295,77 @@ public class MypageController {
 		}
 		return "성공";
 	}
-	
 
 	// 신고
-	@GetMapping(value = "singo")
-	public ModelAndView singoForm() {
+	@GetMapping(value = "singo/{num}")
+	public ModelAndView singoForm(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("mypage/singo");
+		try {
+			String user_id = (String) session.getAttribute("id");
+			History history = mypageService.selectHistoryByNum(num);
+			mav.addObject("history_num", num);
+			if (user_id.equals(history.getTaker_id())) {
+				mav.addObject("badUser", history.getGiver_id());
+			} else {
+				mav.addObject("badUser", history.getTaker_id());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mav;
+	}
+
+	// 신고 등록
+	@PostMapping(value = "singo")
+	public ModelAndView singo(Driver_report dr) {
+		ModelAndView mav = new ModelAndView("redirect:/history");
+		try {
+			dr.setSingouser((String) session.getAttribute("id"));
+			mypageService.insertSingo(dr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 
 	// 신고내역
 	@GetMapping(value = "singoHistory")
-	public ModelAndView singoHistoryForm() {
+	public ModelAndView singoHistoryForm(Driver_report dr) {
 		ModelAndView mav = new ModelAndView("mypage/singoHistory");
+
+		try {
+			String user_id = (String) session.getAttribute("id");
+			
+			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
+			mav.addObject("drlist", drlist);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 
-	// 신고내역에 대한  처리 결과 페이지
-	@GetMapping(value = "singoHistoryDetail")
-	public ModelAndView singoHistoryDetailForm() {
+	// 신고내역에 대한 처리 결과 페이지
+	// 잊지마 public ModelAndView singoForm(@PathVariable int num) { 
+	@GetMapping(value = "singoHistoryDetail/{num}")
+	public ModelAndView singoHistoryDetailForm(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("mypage/singoHistoryDetail");
+		try {
+			String user_id = (String) session.getAttribute("id");	
+			History history = mypageService.selectHistoryByNum(num);
+			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
+			mav.addObject("history_num", num);
+			mav.addObject("drlist", drlist);
+			if (user_id.equals(history.getTaker_id())) {
+				mav.addObject("badUser", history.getGiver_id());
+			} else {
+				mav.addObject("badUser", history.getTaker_id());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
-	
+
 	// 태울래 수락 내역
 	@GetMapping(value = "taewoolraeSurak")
 	public ModelAndView taewoolraeSurakForm() {
@@ -337,19 +374,19 @@ public class MypageController {
 		try {
 			List<Share> taewoolist = shareserv.taewoolist(id);
 			List<Share> taewoostatus = shareserv.taewoostatus(id);
-			mav.addObject("taewoolist",taewoolist);
-			mav.addObject("taewoostatus",taewoostatus);
-		}catch(Exception e) {
+			mav.addObject("taewoolist", taewoolist);
+			mav.addObject("taewoostatus", taewoostatus);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
-	
+
 	@GetMapping(value = "taewooSincheng_delete")
 	public String taewooSincheng_delete(@RequestParam(value = "num", required = false) int num) {
 		try {
 			shareserv.talge_delete(num);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:/taewoolraeSurak";
@@ -362,37 +399,37 @@ public class MypageController {
 		try {
 			List<Share> talgeList = shareserv.talgelist(id);
 			List<Share> talgestatus = shareserv.talgestatus(id);
-			mav.addObject("talgeList",talgeList);
-			mav.addObject("talgestatus",talgestatus);
-		}catch(Exception e) {
+			mav.addObject("talgeList", talgeList);
+			mav.addObject("talgestatus", talgestatus);
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return mav;
 	}
-	
+
 	@GetMapping(value = "talgaeSincheng_delete")
 	public String talgaeSincheng_delete(@RequestParam(value = "num", required = false) int num) {
 		try {
 			shareserv.talge_delete(num);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:/talgaeSincheng";
 	}
 
 	@GetMapping(value = "talgaeSincheng_accept")
-	public String talgaeSincheng_accept(@RequestParam(value = "sincheng_id", required = false) String sincheng_id, 
-			@RequestParam(value = "surak_id", required = false) String surak_id, @RequestParam(value = "talge_num", required = false) int talge_num) {
+	public String talgaeSincheng_accept(@RequestParam(value = "sincheng_id", required = false) String sincheng_id,
+			@RequestParam(value = "surak_id", required = false) String surak_id,
+			@RequestParam(value = "talge_num", required = false) int talge_num) {
 		try {
-			shareserv.insertHistory(sincheng_id,surak_id);
-			shareserv.insertHistory2(sincheng_id,surak_id);
-			shareserv.modifyShare(surak_id,talge_num);
+			shareserv.insertHistory(sincheng_id, surak_id);
+			shareserv.insertHistory2(sincheng_id, surak_id);
+			shareserv.modifyShare(surak_id, talge_num);
 			shareserv.accept_delete(talge_num);
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "redirect:/talgaeSincheng";
 	}
-	
-	
+
 }

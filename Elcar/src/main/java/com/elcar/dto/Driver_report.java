@@ -1,5 +1,6 @@
 package com.elcar.dto;
 
+import java.sql.Date;
 
 public class Driver_report {
 	
@@ -9,17 +10,25 @@ public class Driver_report {
 	String content;
 	String reply;
 	int status;
+	String singouser;
+	String minususer;
+	Date date;
 	
 	public Driver_report(){}
 	
 	
-	public Driver_report(int num, int history_num, int category, String content, String reply, int status) {
+	public Driver_report(int num, int history_num, int category, String content, String reply, int status, Date date, String singouser, String minususer) {
 		this.num = num;
 		this.history_num = history_num;
 		this.category = category;
 		this.content = content;
 		this.reply = reply;
 		this.status = status;
+		this.singouser = singouser;
+		this.minususer = minususer;
+		this.date = date;
+		this.singouser = singouser;
+		this.minususer = minususer;
 	}
 	
 	
@@ -58,6 +67,24 @@ public class Driver_report {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getSingouser() {
+		return singouser;
+	}
+	public void setSingouser(String singouser) {
+		this.singouser = singouser;
+	}
+	public String getMinususer() {
+		return minususer;
+	}
+	public void setMinususer(String minususer) {
+		this.minususer = minususer;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }
 	

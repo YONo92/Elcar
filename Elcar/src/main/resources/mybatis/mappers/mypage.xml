@@ -66,7 +66,7 @@
 	</select>
 
 	
-				<!-- 이용 내역 평가2 -->
+	<!-- 이용 내역 평가2 -->
 	<update id="updateHistoryPoint"  parameterType="map">
       <![CDATA[
 		update History set point = #{point} where num=#{num};
@@ -82,10 +82,15 @@
 			<!-- 신고 -->
 	<insert id="insertDriverReport" parameterType="Driver_report">
 		<![CDATA[
-			INSERT INTO driver_report(history_num, category, content, reply, status) VALUES 
-			(#{history_num}, #{category}, #{content}, #{reply}, #{status});
+			INSERT INTO driver_report(history_num, category, content, singouser, minususer) VALUES 
+			(#{history_num}, #{category}, #{content}, #{singouser}, #{minususer});
 		]]>
 	</insert>
 	
-
+			<!-- 신고 -->
+	<select id="selectDriverReportBySingoId" resultType="Driver_report" parameterType="String">
+		<![CDATA[
+			select * from driver_report where singouser=#{user_id}
+		]]>
+	</select>
 </mapper>
