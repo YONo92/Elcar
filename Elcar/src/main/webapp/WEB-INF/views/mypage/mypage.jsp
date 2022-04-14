@@ -23,7 +23,7 @@
 					<div class="breadcrumb__text">
                         <a href="./mypage"><h2>My Page</h2></a>
 						<div class="breadcrumb__links">
-							<a href="./index.html"><i class="fa fa-home"></i> Home</a> 
+							<a href="./"><i class="fa fa-home"></i> Home</a> 
 							<span>마이페이지</span>
 						</div>
 					</div>

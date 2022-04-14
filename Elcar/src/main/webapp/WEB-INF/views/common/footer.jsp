@@ -14,9 +14,9 @@
 						<div class="footer__widget">
 							<h5>ELCAR</h5>
 						</div>
-						<p>엘카는 전기차 충전소 찾기 서비스와 전기차카쉐어링을 제공하는 서비스입니다.
-						<br/>
-						고객센터 02-1234-5678
+						<p>
+							엘카는 전기차 충전소 찾기 서비스와 전기차카쉐어링을 제공하는 서비스입니다. <br /> 고객센터
+							02-1234-5678
 						</p>
 					</div>
 				</div>
@@ -26,18 +26,20 @@
 					<div class="footer__brand">
 						<h5>Infomation</h5>
 						<ul>
-							<li><a href="../guide"><i class="fa fa-angle-right"></i>
-									안내</a></li>
-							<li><a href="../newcharger"><i
+							<li><a href="../guide" style="color: rgba(120, 120, 120);"><i
+									class="fa fa-angle-right"></i> 안내</a></li>
+							<li><a href="../newcharger"
+								style="color: rgba(120, 120, 120);"><i
 									class="fa fa-angle-right"></i> 충전소 검색</a></li>
 							<form id="locationForm" action="../sharelist" method="get">
 								<input type="hidden" id="lat" name="lat" /> <input
 									type="hidden" id="lng" name="lng" />
-								<li><a onclick="shareList()" style="cursor: pointer"><i
+								<li><a onclick="shareList()"
+									style="cursor: pointer; color: rgba(120, 120, 120);"><i
 										class="fa fa-angle-right"></i> 카쉐어링</a></li>
-								<li><a href="../mypage"><i class="fa fa-angle-right"></i>
-										MyPage</a></li>
 							</form>
+							<li><a href="../mypage" style="color: rgba(120, 120, 120);"><i
+									class="fa fa-angle-right"></i> MyPage</a></li>
 						</ul>
 					</div>
 				</div>
