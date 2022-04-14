@@ -1,24 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" isELIgnored="false"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+pageEncoding="UTF-8" isELIgnored="false"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-</head>
-<body>
-	<!-- Offcanvas Menu Begin -->
-	<div class="offcanvas-menu-overlay"></div>
-	<div class="offcanvas-menu-wrapper">
-		<div class="offcanvas__widget">
-			<a href="../login" class="primary-btn">Login</a>
-		</div>
-		<div class="offcanvas__logo">
-			<a href="../"><img src="../resources/img/001.png" alt="" /></a>
-		</div>
-		<div id="mobile-menu-wrap"></div>
-	</div>
-	<!-- Offcanvas Menu End -->
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+      <div class="offcanvas__widget">
+        <a href="../login" class="primary-btn">Login</a>
+      </div>
+      <div class="offcanvas__logo">
+        <a href="../"><img src="../resources/img/001.png" alt="" /></a>
+      </div>
+      <div id="mobile-menu-wrap"></div>
+    </div>
+    <!-- Offcanvas Menu End -->
 
 	<!-- Header Section Begin -->
 	<header class="header">
@@ -42,7 +42,7 @@
 									</ul></li>
 								<li><a href="../newcharger">전기차 충전소</a></li>
 								<li>
-									<form id="locationForm" action="../sharelist" method="post">
+									<form id="locationForm" action="../sharelist" method="get">
 										<input type="hidden" id="lat" name="lat" /> <input
 											type="hidden" id="lng" name="lng" /> <a
 											onclick="shareList()" style="cursor: pointer"> 카쉐어링 </a>
@@ -87,22 +87,25 @@
 	<!-- Header Section End -->
 </body>
 
-<script>
-	function shareList() {
-		navigator.geolocation.getCurrentPosition(function(position) {
-			$('#lat').val(position.coords.latitude);
-			$('#lng').val(position.coords.longitude);
-			document.getElementById('locationForm').submit();
-		}, function(err) {
-			Swal.fire({
-				icon : 'warning',
-				text : '위치정보 허용 하시는 것을 권장 드립니다.',
-			}).then(function(isOkay) {
-				$('#lat').val(37.570028);
-				$('#lng').val(126.986072);
-				document.getElementById('locationForm').submit();
-			});
-		});
-	}
-</script>
+  <script>
+    function shareList2() {
+      navigator.geolocation.getCurrentPosition(
+        function (position) {
+          $('#lat').val(position.coords.latitude);
+          $('#lng').val(position.coords.longitude);
+          document.getElementById('locationForm').submit();
+        },
+        function (err) {
+          Swal.fire({
+            icon: 'warning',
+            text: '위치정보 허용 하시는 것을 권장 드립니다.',
+          }).then(function (isOkay) {
+            $('#lat').val(37.570028);
+            $('#lng').val(126.986072);
+            document.getElementById('locationForm').submit();
+          });
+        }
+      );
+    }
+  </script> 
 </html>

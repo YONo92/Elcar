@@ -48,7 +48,6 @@ public class DriverController {
 	public ResponseEntity<byte[]> getImageAsResponseEntity(@PathVariable String img) {
 		HttpHeaders headers = new HttpHeaders();
 		InputStream in = servletContext.getResourceAsStream("upload/" + img);
-
 		byte[] media;
 		try {
 			media = in.readAllBytes();
@@ -56,7 +55,6 @@ public class DriverController {
 			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 			return responseEntity;
 		} catch (IOException e) {
-			e.printStackTrace();
 		}
 		return null;
 	}

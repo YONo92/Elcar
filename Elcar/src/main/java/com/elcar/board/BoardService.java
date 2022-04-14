@@ -11,11 +11,13 @@ public interface BoardService {
 
 	List<Board> boardList(int page, PageInfo pageInfo, String search_text)throws Exception;
 
+	List<Board> selectBoardList_type(int page, PageInfo pageInfo,int type)throws Exception;
+
 	Board getBoard(int num)throws Exception;
 
 	void deleteboard(int num)throws Exception;
 
 	void modifyBoard(Board board)throws Exception;
 
-
+	
 }

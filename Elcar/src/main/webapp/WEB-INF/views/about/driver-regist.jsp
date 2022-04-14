@@ -56,13 +56,13 @@
 				<form id='form'>
 					<div class="row">
 						<div class="col-lg-5">
-							<img id="preview"
+							<img id="preview" src="resources/img/about/dr.png"
 								style="width: 350px; height: 250px; margin-left: 90px; margin-top: 100px;" />
 							<br /> <br />
 							<div class="input-group mb-3"
 								style="margin-left: 90px; width: 350px;">
 								<label class="input-group-text mr-2" for="inputGroupFile01">Upload</label>
-								<input type="file" class="form-control" id="inputGroupFile01"
+								<input type="file" class="form-control" id="inputGroupFile01" style="display: none;"
 									name="file" onchange="readURL(this);" required>
 							</div>
 						</div>
@@ -91,16 +91,16 @@
 											class="form-control form-control-user"
 											id="inputGroupSelect01" name="cartype" style="height: 40px;">
 											<option selected value="">차종을 선택하세요</option>
-											<option value="쏘나타">쏘나타</option>
+											<option value="볼트">볼트</option>
 											<option value="아이오닉5">아이오닉5</option>
-											<option value="그랜저">그랜저</option>
-											<option value="싼타페">싼타페</option>
-											<option value="포터2">포터2</option>
+											<option value="니로">니로</option>
 											<option value="Taycan">Taycan</option>
 											<option value="ModelS">ModelS</option>
 											<option value="Model3">Model3</option>
 											<option value="GV60">GV60</option>
-											<option value="eG80">eG80</option>
+											<option value="GV70">GV70</option>
+											<option value="GV80">GV80</option>
+											<option value="G80">G80</option>
 										</select>
 										<div id="cartype-invalid"></div>
 									</div>
@@ -118,7 +118,7 @@
 										<span class="input-group-text mr-2"
 											id="inputGroup-sizing-default">면허 취득일</span> <input
 											type="date" class="form-control" name="getdate"
-											id="startDate" max="2022-03-31" style="height: 40px;"
+											id="startDate" max="2022-04-30" style="height: 40px;"
 											required>
 									</div>
 								</div>
