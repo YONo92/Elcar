@@ -48,5 +48,20 @@
 	 	update member set license = #{status} where id = (select id from driver where num = #{num})
   		]]>
 	</update>
+	
+	<!-- 관리자_드라이버 신고 회원 관리 -->
+	<select id="selectalldriversingoCount" resultType="int">
+ 		<![CDATA[
+ 			select count(*) from driver_report;
+ 		]]>
+	</select>
+
+	<select id="selectalldriversingoList" resultType="Driver_report">
+      <![CDATA[
+         select * from (select @rownum:=@rownum+1 rnum, tot.* 
+		from(select num, history_num, category, content, status from driver_report where num like'%${mem_text}%' ) tot, 
+		(select @rownum:=0) temp) sub where rnum between #{startrow} and #{startrow}+9
+ 		]]>
+	</select>
 
 </mapper>

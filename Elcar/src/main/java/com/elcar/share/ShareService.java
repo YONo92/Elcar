@@ -45,5 +45,7 @@ public interface ShareService {
 
 	public Sinchenglist sinchengOverlap(Share share)throws Exception;
 
-	public void modifyShareInfo(int num) throws Exception;
+	public void modifyShareInfo(Share share) throws Exception;
+
+	public void deleteShareInfo(int num) throws Exception;
 }

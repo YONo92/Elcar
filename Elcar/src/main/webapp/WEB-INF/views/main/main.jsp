@@ -26,7 +26,6 @@
 								style="color: white; cursor: pointer">
 								바로가기 </a>
 						</form>
-
 					</div>
 				</div>
 			</div>

@@ -20,6 +20,15 @@ public class Share {
 	int gender;
 	String cartype;
 	
+	@Override
+	public String toString() {
+		return "Share [id=" + id + ", num=" + num + ", talge_num=" + talge_num + ", sincheng_id=" + sincheng_id
+				+ ", surak_id=" + surak_id + ", date=" + date + ", person=" + person + ", request=" + request
+				+ ", start_long=" + start_long + ", start_lat=" + start_lat + ", goal_long=" + goal_long + ", goal_lat="
+				+ goal_lat + ", status=" + status + ", start_name=" + start_name + ", goal_name=" + goal_name
+				+ ", nickname=" + nickname + ", gender=" + gender + ", cartype=" + cartype + "]";
+	}
+
 	public Share() {
 		
 	}

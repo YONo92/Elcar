@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.elcar.dto.Driver;
+import com.elcar.dto.Driver_report;
 import com.elcar.dto.History;
 import com.elcar.dto.Member;
 
@@ -24,10 +25,11 @@ public interface MypageDAO {
 	public List<History> queryDDubukPoint(String id) throws Exception;
 	public History  insertDDubukPoint(String id) throws Exception;
 	public History  insertDriverPoint(String id) throws Exception;
-	public History insertHistory(String id);
-	public History updatePoint(String id);
-//	public Driver_report insertDriverReport(String id);
+	public void insertHistory(String id) throws Exception;
+	public void updatePoint(String id) throws Exception;
 	public History selectHistoryByNum(int num) throws Exception;
 	public void updateHistoryPoint(@Param("num") int num, @Param("point") int point) throws Exception;
 	public void updateMemberPoint(@Param("num") int num, @Param("point") int point, @Param("id") String id) throws Exception;
+	public void insertDriverReport(Driver_report dr)  throws Exception;
+	public List<Driver_report> selectDriverReportBySingoId(String user_id)  throws Exception;
 }
