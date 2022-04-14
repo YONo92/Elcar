@@ -90,7 +90,14 @@
 			<!-- 신고 -->
 	<select id="selectDriverReportBySingoId" resultType="Driver_report" parameterType="String">
 		<![CDATA[
-			select * from driver_report where singouser=#{user_id}
+			select * from driver_report where singouser=#{user_id};
+		]]>
+	</select>
+	
+				<!-- 신고 -->
+	<select id="selectDriverReportByNum" resultType="Driver_report" parameterType="int">
+		<![CDATA[
+			select * from driver_report where num=#{num};
 		]]>
 	</select>
 </mapper>

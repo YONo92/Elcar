@@ -75,53 +75,37 @@
 							<p class="txt-alert bb000">카쉐어링 신고에 대한 답변은 마이페이지의 카쉐어링 신고 내역을
 								통해 확인하실 수 있습니다.</p>
 						</div>
-						
-
-							<ul class="inp-list-wrap">
 
 
-
-								<li><label class="inp-tit">신고 대상</label>
-									<div class="inp-sel-box"></div>
-									<div align="left">
-										<input type="text" class="inp-txt" name="minususer"  value="${badUser }" readOnly>
-										<input type="hidden" name="history_num" value="${history_num }">
-									</div></li>
+						<ul class="inp-list-wrap">
 
 
 
-								<li><label class="inp-tit">분류</label>
-									<div class="inp-sel-box pc-ver">
+							<li><label class="inp-tit">신고 대상</label>
+								<div class="inp-sel-box"></div>
+								<div align="left">
+									<input type="text" class="inp-txt" name="minususer"
+										value="${dr.minususer }" readOnly> <input
+										type="hidden" name="history_num" value="${dr.history_num }">
+								</div></li>
 
-										<select class="select" name="category">
-											<option value="" selected>문의 유형 선택</option>
-											<option value="1">난폭운전</option>
-											<option value="2">ㅎㅇㅎㅇ</option>
-											<option value="3">ㅂㅇㅂㅇ</option>
-										</select>
-									</div>
-								</li>
-								<li><label class="inp-tit">문의 내용</label>
-								<textarea name="content" placeholder="문의 내용 입력" readonly></textarea></li>
-								<li><label class="inp-tit">답변</label>
-								
-								<textarea name="content" name="reply" value=${driver_report.reply } readonly>
+
+
+							<li><label class="inp-tit">분류</label>
+								<div class="inp-sel-box"></div>
+								<div align="left">
+									<input type="text" class="inp-txt" id="inputGroupSelect01"
+										name="category" value="${category }" readOnly>
+
+								</div></li>
+							<li><label class="inp-tit">문의 내용</label> <textarea
+									name="content" placeholder="문의 내용 입력" readonly>${dr.content }</textarea></li>
+							<c:if test="${dr.reply != null }">
+								<li><label class="inp-tit">답변</label> <textarea
+										name="reply" readonly>
 								</textarea></li>
-							</ul>
-							<ul class="btn-box ty01">
-								<li>
-									<div class="btn-inner">
-										<button type="reset" class="site-btn">취소</button>
-									</div>
-								</li>
-								<li>
-									<div class="btn-inner">
-										<button type="submit" class="site-btn">등록하기</button>
-									</div>
-								</li>
-
-							</ul>
-						
+							</c:if>
+						</ul>
 					</div>
 					<!-- //cont group -->
 				</div>
