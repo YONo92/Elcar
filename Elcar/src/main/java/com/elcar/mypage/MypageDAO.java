@@ -32,4 +32,6 @@ public interface MypageDAO {
 	public void updateMemberPoint(@Param("num") int num, @Param("point") int point, @Param("id") String id) throws Exception;
 	public void insertDriverReport(Driver_report dr)  throws Exception;
 	public List<Driver_report> selectDriverReportBySingoId(String user_id)  throws Exception;
+	public Driver_report selectDriverReportByNum(int num) throws Exception;	
+	
 }

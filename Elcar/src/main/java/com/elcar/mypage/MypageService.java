@@ -22,5 +22,6 @@ public interface MypageService {
 	History selectHistoryByNum(int num) throws Exception;
 	void pointUpdate(int num, int point, String id) throws Exception;
 	List<Driver_report> selectDriverReportBySingoId(String user_id) throws Exception;
+	Driver_report selectDriverReportByNum(int num) throws Exception;
 	
 }

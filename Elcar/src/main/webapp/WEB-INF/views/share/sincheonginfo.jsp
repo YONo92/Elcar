@@ -406,7 +406,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
           $("#mod").hide();
         }
 
-        if (sincheng_id === "${id}" || "${mem.type}"===1){
+        if (sincheng_id === "${id}" || "${mem.type}"==1){
           $("#del").show();
         }else{
           $("#del").hide();

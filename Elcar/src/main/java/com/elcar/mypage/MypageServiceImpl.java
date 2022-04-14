@@ -112,7 +112,15 @@ public class MypageServiceImpl implements MypageService {
 		@Override
 		public List<Driver_report> selectDriverReportBySingoId(String user_id) throws Exception {
 			return mypageDAO.selectDriverReportBySingoId(user_id);
-		}		
+		}	
+		
+		
+		// 신고내역 조회에서 num으로 조회 (driver_report)
+		@Override
+		public Driver_report selectDriverReportByNum(int num) throws Exception {
+			Driver_report dr = mypageDAO.selectDriverReportByNum(num);
+			return dr;
+		}
 		
 }
 

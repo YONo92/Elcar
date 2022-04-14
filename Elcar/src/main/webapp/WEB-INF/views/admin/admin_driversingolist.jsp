@@ -50,7 +50,7 @@
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
-				<form action="admin_driverlist" method="get">
+				<form action="admin_driversingolist" method="get">
 					<input type="text" id="mem_text" name="mem_text" /> <input
 						type="submit" value="찾기" class="btn btn-light"
 						style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />
@@ -142,7 +142,7 @@
 																		<h6 class="mb-0 text-sm ps-0">${driversingo.status }</h6>
 																	</td>
 																	<td>
-																		<h6 class="mb-0 text-sm ps-0">${driversingo.reply }</h6>
+																		<input class="mb-0 text-sm ps-0" value="${driversingo.reply }" >
 																	</td>		
 																	<td><select id='driverPoint${driversingo.num }'
 																		class="driverPoint">

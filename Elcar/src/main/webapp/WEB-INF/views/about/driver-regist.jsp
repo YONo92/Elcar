@@ -61,7 +61,7 @@
 							<br /> <br />
 							<div class="input-group mb-3"
 								style="margin-left: 90px; width: 350px;">
-								<label class="input-group-text mr-2" for="inputGroupFile01">Upload</label>
+								<label class="input-group-text mr-2" for="inputGroupFile01">License Upload</label>
 								<input type="file" class="form-control" id="inputGroupFile01" style="display: none;"
 									name="file" onchange="readURL(this);" required>
 							</div>

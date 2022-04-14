@@ -11,7 +11,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
       <div class="offcanvas__widget">
-        <a href="../login" class="primary-btn">Login</a>
+        <!--  <a href="../login" class="primary-btn">Login</a> -->
+        <c:choose>
+          <c:when test="${empty id}">
+            <a href="../loginform" class="primary-btn">Login</a>
+          </c:when>
+          <c:otherwise>
+            <a href="../logout" class="primary-btn">Logout</a>
+          </c:otherwise>
+        </c:choose>
       </div>
       <div class="offcanvas__logo">
         <a href="../"><img src="../resources/img/001.png" alt="" /></a>
@@ -33,8 +41,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <div class="header__nav">
               <nav class="header__menu">
                 <ul>
-                  <li class="active"><a href="./">Home</a></li>
-                  <li><a href="../guide">안내</a></li>
+                  <li><a href="./">Home</a></li>
+                  <li><a href="../guide">Guide</a></li>
                   <li>
                     <a href="#">About</a>
                     <ul class="dropdown">
@@ -42,13 +50,15 @@ uri="http://java.sun.com/jsp/jstl/core"%>
                       <li><a href="../boardlist">커뮤니티</a></li>
                     </ul>
                   </li>
-                  <li><a href="../newcharger">전기차 충전소</a></li>
+                  <li><a href="../newcharger">charger</a></li>
                   <li>
                     <form id="locationForm" action="../sharelist" method="get">
                       <input type="hidden" id="lat" name="lat" />
                       <input type="hidden" id="lng" name="lng" />
-                      <a onclick="shareList()" style="cursor: pointer">
-                        카쉐어링
+                      <a
+                        onclick="shareList()"
+                        style="cursor: pointer; color: rgba(0, 0, 0, 0.795)"
+                        >sharing
                       </a>
                     </form>
                   </li>
