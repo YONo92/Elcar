@@ -1,22 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8" isELIgnored="false"%>
+  pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>ELCAR | Hello :)</title>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
-
 body {
   margin: 0;
   padding: 0;
-
 }
-
-
 :root {
   --sizeCreaBlock: 470px;
   --bgCreaBlock: #f5bfba;
@@ -86,7 +84,7 @@ body {
   left: 10%;
   width: calc(var(--sizeCreaBlock) * 2);
   height: calc(var(--sizeCreaBlock) * 2);
-  background-color: #f5bfba;
+  background-color: #89c8ef;
   transform: rotateZ(70deg);
   z-index: -1;
 }
@@ -393,7 +391,7 @@ main > div { width: 100%; }
          <div class="row">
             <div class="col-lg-12">
                <div class="about__pic">
-                  <img src="img/about/about-pic.jpg" alt="">
+                  <img src="/resources/img/about/Ecar.jpg" alt="">
                </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -416,32 +414,34 @@ main > div { width: 100%; }
     <main></main>
   </section>
 
+  
    
    <script>
       const $ = (s) => document.querySelector(s);
 
-const GALLERY = [
+  const GALLERY = [
   {
     title: "엘카 이용시 유의사항",
     img: {
       src: "resources/img/about/warning.png",
-      alt: "a brown French bulldog puppy laying down and looking up with a hopeful look in its eyes.",
-      title: "Photo by Karsten Winegeart for Unsplash"
+      alt: "엘카 이용시 유의사항",
+      title: "엘카이용 유의사항"
     }
   },
 
   {
     title: "엘카 회원 등급제도",
     img: {
-      src: "resources/img/about/grade.png",
-      alt: "A tabby kitten with green eyes.",
-      title: "Photo by Sergey Semin for Unsplash"
+      src: "resources/img/about/grade2.png",
+      alt: "엘카 회원 등급제도",
+      title: "엘카 회원 등급제도."
     }
   }
 
 ];
 
-const initGallery = (function() {
+const initGallery = (
+  function() {
   const createContent = function(content) {
     const $creaBlock = document.createElement('figure')
     $creaBlock.classList.add('creaBlock')
@@ -474,3 +474,5 @@ const initGallery = (function() {
    </script>
 
    <!-- About Us Section End -->
+  </body>
+  </html>
