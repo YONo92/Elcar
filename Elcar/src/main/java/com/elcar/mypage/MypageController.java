@@ -338,6 +338,7 @@ public class MypageController {
 			
 			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
 			mav.addObject("drlist", drlist);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

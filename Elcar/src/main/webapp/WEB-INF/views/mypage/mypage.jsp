@@ -90,7 +90,6 @@
 					<div class="blog__sidebar__categories">
 						<ul>
 							<li><a href="history"><b>카쉐어링 이용내역</b></a></li>
-							<li><a href="singo"><b>카쉐어링 신고</b></a></li>
 							<li><a href="singoHistory"><b>카쉐어링 신고 내역</b></a></li>
 						</ul>
 					</div>
