@@ -20,72 +20,83 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     </div>
     <!-- Offcanvas Menu End -->
 
-	<!-- Header Section Begin -->
-	<header class="header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-2">
-					<div class="header__logo">
-						<a href="../"><img src="../resources/img/001.png" alt="" /></a>
-					</div>
-				</div>
-				<div class="col-lg-10">
-					<div class="header__nav">
-						<nav class="header__menu">
-							<ul>
-								<li class="active"><a href="./">Home</a></li>
-								<li><a href="../guide">안내</a></li>
-								<li><a href="#">About</a>
-									<ul class="dropdown">
-										<li><a href="../driver-regist">드라이버 등록</a></li>
-										<li><a href="../boardlist">커뮤니티</a></li>
-									</ul></li>
-								<li><a href="../newcharger">전기차 충전소</a></li>
-								<li>
-									<form id="locationForm" action="../sharelist" method="get">
-										<input type="hidden" id="lat" name="lat" /> <input
-											type="hidden" id="lng" name="lng" /> <a
-											onclick="shareList()" style="cursor: pointer"> 카쉐어링 </a>
-									</form>
-								</li>
-								<c:choose>
-									<c:when test="${empty type}">
-									</c:when>
-									<c:when test="${type == 1 }">
-										<li><a href="../mypage">Mypage</a></li>
-										<li><a href="#">Admin</a>
-											<ul class="dropdown">
-												<li><a href="../admin_memlist">회원관리</a></li>
-												<li><a href="../admin_driverlist">드라이버회원관리</a></li>
-												<li><a href="../admin_driversingolist">드라이버신고회원관리</a></li>
-											</ul></li>
-									</c:when>
-									<c:otherwise>
-										<li><a href="../mypage">Mypage</a></li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-						</nav>
-						<div class="header__nav__widget">
-							<c:choose>
-								<c:when test="${empty id}">
-									<a href="../loginform" class="primary-btn">Login</a>
-								</c:when>
-								<c:otherwise>
-									<a href="../logout" class="primary-btn">Logout</a>
-								</c:otherwise>
-							</c:choose>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="canvas__open">
-				<span class="fa fa-bars"></span>
-			</div>
-		</div>
-	</header>
-	<!-- Header Section End -->
-</body>
+    <!-- Header Section Begin -->
+    <header class="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2">
+            <div class="header__logo">
+              <a href="../"><img src="../resources/img/001.png" alt="" /></a>
+            </div>
+          </div>
+          <div class="col-lg-10">
+            <div class="header__nav">
+              <nav class="header__menu">
+                <ul>
+                  <li class="active"><a href="./">Home</a></li>
+                  <li><a href="../guide">안내</a></li>
+                  <li>
+                    <a href="#">About</a>
+                    <ul class="dropdown">
+                      <li><a href="../driver-regist">드라이버 등록</a></li>
+                      <li><a href="../boardlist">커뮤니티</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="../newcharger">전기차 충전소</a></li>
+                  <li>
+                    <form id="locationForm" action="../sharelist" method="get">
+                      <input type="hidden" id="lat" name="lat" />
+                      <input type="hidden" id="lng" name="lng" />
+                      <a onclick="shareList()" style="cursor: pointer">
+                        카쉐어링
+                      </a>
+                    </form>
+                  </li>
+                  <c:choose>
+                    <c:when test="${empty type}"> </c:when>
+                    <c:when test="${type == 1 }">
+                      <li><a href="../mypage">Mypage</a></li>
+                      <li>
+                        <a href="#">Admin</a>
+                        <ul class="dropdown">
+                          <li><a href="../admin_memlist">회원관리</a></li>
+                          <li>
+                            <a href="../admin_driverlist">드라이버회원관리</a>
+                          </li>
+                          <li>
+                            <a href="../admin_driversingolist"
+                              >드라이버신고회원관리</a
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                    </c:when>
+                    <c:otherwise>
+                      <li><a href="../mypage">Mypage</a></li>
+                    </c:otherwise>
+                  </c:choose>
+                </ul>
+              </nav>
+              <div class="header__nav__widget">
+                <c:choose>
+                  <c:when test="${empty id}">
+                    <a href="../loginform" class="primary-btn">Login</a>
+                  </c:when>
+                  <c:otherwise>
+                    <a href="../logout" class="primary-btn">Logout</a>
+                  </c:otherwise>
+                </c:choose>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="canvas__open">
+          <span class="fa fa-bars"></span>
+        </div>
+      </div>
+    </header>
+    <!-- Header Section End -->
+  </body>
 
   <script>
     function shareList2() {
@@ -107,5 +118,5 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         }
       );
     }
-  </script> 
+  </script>
 </html>
