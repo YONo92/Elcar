@@ -419,7 +419,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <div class="row">
           <div class="col-lg-12">
             <div class="about__pic">
-              <img src="img/about/about-pic.jpg" alt="" />
+              <img src="resources/img/about/Ecar.jpg" alt="" />
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6">
