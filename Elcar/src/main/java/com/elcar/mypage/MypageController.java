@@ -337,7 +337,18 @@ public class MypageController {
 			String user_id = (String) session.getAttribute("id");
 			
 			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
+			int cate = dr.getCategory();
+			String category = null;
+			if (cate == 1) {
+				category = "난폭운전";
+			}else if (cate == 2) {
+				category ="ㅎㅇㅎㅇ";
+			} else {
+				category ="ㅂㅇㅂㅇ";
+			}
+			mav.addObject("category", category);
 			mav.addObject("drlist", drlist);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -351,15 +362,19 @@ public class MypageController {
 		ModelAndView mav = new ModelAndView("mypage/singoHistoryDetail");
 		try {
 			String user_id = (String) session.getAttribute("id");	
-			History history = mypageService.selectHistoryByNum(num);
-			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
-			mav.addObject("history_num", num);
-			mav.addObject("drlist", drlist);
-			if (user_id.equals(history.getTaker_id())) {
-				mav.addObject("badUser", history.getGiver_id());
+			Driver_report dr  = mypageService.selectDriverReportByNum(num);
+			int cate = dr.getCategory();
+			String category = null;
+			if (cate == 1) {
+				category = "난폭운전";
+			}else if (cate == 2) {
+				category ="ㅎㅇㅎㅇ";
 			} else {
-				mav.addObject("badUser", history.getTaker_id());
+				category ="ㅂㅇㅂㅇ";
 			}
+			
+			mav.addObject("category", category);
+			mav.addObject("dr", dr);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

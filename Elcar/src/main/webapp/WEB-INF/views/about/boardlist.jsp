@@ -25,17 +25,17 @@
 <link id="pagestyle" href="resources/css/material-dashboard.css?v=3.0.2"
 	rel="stylesheet" />
 <style>
-.bg-gradient-primary{
+.bg-gradient-primary {
 	background-image: linear-gradient(339deg, #ec407a, #1b71d8 91.6%);
 }
 
-#writebtn{
-	background-image:  linear-gradient(263deg, #ec407a, #1b71d8 91.6%);
+#writebtn {
+	background-image: linear-gradient(263deg, #ec407a, #1b71d8 91.6%);
 }
 </style>
 <body>
 
-<div class="breadcrumb-option set-bg"
+	<div class="breadcrumb-option set-bg"
 		data-setbg="resources/img/breadcrumb-bg.jpg">
 		<div class="container">
 			<div class="row">
@@ -43,7 +43,7 @@
 					<div class="breadcrumb__text">
 						<h2>Board</h2>
 						<div class="breadcrumb__links">
-							<a href="./"><i class="fa fa-home"></i> Home</a> <span>board
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>게시판
 							</span>
 						</div>
 					</div>
@@ -51,8 +51,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
@@ -65,25 +65,33 @@
 									<div
 										class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
 										<h4 class="text-white text-capitalize ps-3">Board</h4>
-										<form action="boardlist" method="get" style="margin-left: 15px;">
-											<input type="text" id="search_text" name="search_text" /> 
-											<input type="submit" value="찾기" class="btn btn-light" style="padding: 6px 10px 7px; margin-bottom: 0px !important;">
+										<form action="boardlist" method="get"
+											style="margin-left: 15px;">
+											<input type="text" id="search_text" name="search_text" /> <input
+												type="submit" value="찾기" class="btn btn-light"
+												style="padding: 6px 10px 7px; margin-bottom: 0px !important;">
 										</form>
 									</div>
 								</div>
 								<div style="margin-top: 20px; margin-left: 17px;">
-								<form action="boardlist" method="get">
-								<input type="number" value="" name="type" style="display: none"/>
-								<input class="btn btn-primary" id="writebtn" type="submit" style="width: 10%; float: left; margin-left: 10px" value="전체"/>
-								</form>
-								<form action="boardlist" method="get">
-								<input type="number" value="1" name="type" style="display: none"/>
-								<input class="btn btn-primary" id="writebtn" type="submit" style="width: 10%; float: left; margin-left: 10px" value="자유"/>
-								</form>
-								<form action="boardlist" method="get">
-								<input type="number" value="2" name="type" style="display: none"/>
-								<input class="btn btn-primary" id="writebtn" type="submit" style="width: 10%; float: left; margin-left: 10px" value="후기"/>
-								</form>
+									<form action="boardlist" method="get">
+										<input type="number" value="" name="type"
+											style="display: none" /> <input class="btn btn-primary"
+											id="writebtn" type="submit"
+											style="width: 10%; float: left; margin-left: 10px" value="전체" />
+									</form>
+									<form action="boardlist" method="get">
+										<input type="number" value="1" name="type"
+											style="display: none" /> <input class="btn btn-primary"
+											id="writebtn" type="submit"
+											style="width: 10%; float: left; margin-left: 10px" value="자유" />
+									</form>
+									<form action="boardlist" method="get">
+										<input type="number" value="2" name="type"
+											style="display: none" /> <input class="btn btn-primary"
+											id="writebtn" type="submit"
+											style="width: 10%; float: left; margin-left: 10px" value="후기" />
+									</form>
 								</div>
 								<c:choose>
 									<c:when test="${boardlist!=null && pageInfo.listCount>0 }">
@@ -108,15 +116,18 @@
 																		</c:if></td>
 																	<td><c:if test="${boardlist.type eq '1'}">
 																			<a
-																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }" style="margin-left: 18px !important;">
+																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }"
+																				style="margin-left: 18px !important;">
 																				${boardlist.title } </a>
 																		</c:if> <c:if test="${boardlist.type eq '2'}">
 																			<a
-																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }" style="margin-left: 18px !important;">
+																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }"
+																				style="margin-left: 18px !important;">
 																				${boardlist.location } : ${boardlist.title } </a>
 																		</c:if></td>
 																	<td><a style="margin-left: 15px !important;">${boardlist.mem_id }</a></td>
 																</tr>
+
 															</c:forEach>
 														</tbody>
 													</table>
@@ -156,20 +167,21 @@
 										</section>
 									</c:when>
 									<c:otherwise>
-								
+
 										<section id="emptyArea">게시글이 없습니다.</section>
 									</c:otherwise>
 								</c:choose>
-								
+
 							</div>
-							<button id="writebtn" onclick="location.href='boardform'" style="float: right; margin-right: 10px" class="btn btn-primary">글작성</button>
+							<button id="writebtn" onclick="location.href='boardform'"
+								style="float: right; margin-right: 10px" class="btn btn-primary">글작성</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 </body>
 </body>
 </html>

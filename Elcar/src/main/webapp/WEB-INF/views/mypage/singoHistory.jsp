@@ -84,7 +84,7 @@
 								<div class='col-lg-4'>
 									<h5 style="font-size: 1.4em; color: black" class="nanum">
 										<b> 신고유형 : </b> <span> <b
-											style="font-size: 1.2em; color: green;">${dr.category }</b></span>
+											style="font-size: 1.2em; color: green;">${category }</b></span>
 									</h5>
 								</div>
 
