@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-	integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
-	crossorigin="anonymous">
+
 <body>
 	<!-- Breadcrumb Begin -->
 	<div class="breadcrumb-option set-bg"
@@ -50,7 +48,7 @@
 				$('.iframe-wrap').wrap(
 						'<div class="embed-responsive embed-responsive-16by9"></div>');
 						$('iframe').addClass("embed-responsive-item");
-						});
+						}); 
 	</script>
 
 </body>
