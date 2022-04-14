@@ -28,7 +28,7 @@
 						<ul>
 							<li><a href="../guide"><i class="fa fa-angle-right"></i>
 									안내</a></li>
-							<li><a href="https://map.kakao.com/link/search/전기차충전소"><i
+							<li><a href="../newcharger"><i
 									class="fa fa-angle-right"></i> 충전소 검색</a></li>
 							<form id="locationForm" action="../sharelist" method="get">
 								<input type="hidden" id="lat" name="lat" /> <input
