@@ -40,18 +40,11 @@
 										<li><a href="../driver-regist">드라이버 등록</a></li>
 										<li><a href="../boardlist">커뮤니티</a></li>
 									</ul></li>
-								<li><a href="../newcharger">전기차
-										충전소</a></li>
-								<li>
-									<form id="locationForm" action="../sharelist" method="post">
-										<input type="hidden" id="lat" name="lat" /> <input
-											type="hidden" id="lng" name="lng" /> <a
-											onclick="shareList()" style="cursor: pointer"> 카쉐어링 </a>
-									</form>
-								</li>
+								<li><a href="../newcharger">전기차 충전소</a></li>
+								<li><a href="../sharelist">카쉐어링</a></li>
 								<c:choose>
 									<c:when test="${empty type}">
-										
+
 									</c:when>
 									<c:when test="${type == 1 }">
 										<li><a href="../mypage">Mypage</a></li>
@@ -90,7 +83,7 @@
 </body>
 
 <script>
-	function shareList() {
+/* 	function shareList() {
 		navigator.geolocation.getCurrentPosition(function(position) {
 			$('#lat').val(position.coords.latitude);
 			$('#lng').val(position.coords.longitude);
@@ -105,6 +98,6 @@
 				document.getElementById('locationForm').submit();
 			});
 		});
-	}
+	} */
 </script>
 </html>

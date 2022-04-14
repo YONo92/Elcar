@@ -27,7 +27,7 @@
 									About</a></li>
 							<li><a href="https://map.kakao.com/link/search/전기차충전소"><i
 									class="fa fa-angle-right"></i> 충전소 검색</a></li>
-							<form id="locationForm" action="../sharelist" method="post">
+							<form id="locationForm" action="../sharelist" method="get">
 								<input type="hidden" id="lat" name="lat" /> <input
 									type="hidden" id="lng" name="lng" />
 								<li><a onclick="shareList()" style="cursor: pointer"><i

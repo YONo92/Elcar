@@ -993,13 +993,11 @@ uri="http://java.sun.com/jsp/jstl/core" %>
 						resultdrawArr[i].setMap(null);
 					}
 				}
-		
 				chktraffic = [];
 				drawInfoArr = [];
 				resultMarkerArr = [];
 				resultdrawArr = [];
 			}
-      
     </script>
 </body>
 </html>
