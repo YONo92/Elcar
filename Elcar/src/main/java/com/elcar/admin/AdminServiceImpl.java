@@ -123,10 +123,18 @@ public class AdminServiceImpl implements AdminService {
 		return admindao.selectalldriversingoList(startrow, mem_text);
 	}
 
+	// 관리자_드라이버 신고 회원 관리_매너포인트 & status 처리
 	@Override
 	public void singoBadUser(int num, int point, int status) throws Exception {
-		// num으로 driverReport를 조회해서 status 를 1로 업데이트
-		
-		
+		// 1번
+		// update member set point = point + #{point} where id = (SELECT minususer FROM elcar.driver_report where num = #{num});
+		// num을 통해 driver_report에서 minus_user 아이디 가져온다.
+		// 두번째로 가져온 minus_user를 통해 point 차감
+		admindao.updateMinusUserPoint(num, point);
+
+		// 2번
+		// update driver_report set status = status + 2 where num = #{num};
+		admindao.updateDriverReportStatus(num);
+
 	}
 }

@@ -37,4 +37,9 @@ public interface AdminDAO {
 
 	public List<Driver_report> selectalldriversingoList(@Param(value = "startrow") int startrow,
 			@Param(value = "mem_text") String mem_text) throws Exception;
+
+	// 관리자_드라이버 신고 회원 관리_매너포인트 & status 처리
+	public void updateMinusUserPoint(@Param("num") int num, @Param("point") int point) throws Exception;
+
+	public void updateDriverReportStatus(@Param("num") int num) throws Exception;
 }

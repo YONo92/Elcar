@@ -83,15 +83,20 @@ public class AdminController {
 		}
 		return "admin/admin_driversingolist";
 	}
-	
-	/*@ResponseBody
-	@PostMapping("admin_driverpoint") 
-	public String admin_driversingo(@RequestParam("num") int num, @RequestParam("minusPoint") int point, @RequestParam("status") int status) {
-		System.out.println(num);
-		System.out.println(point);
-		System.out.println(status);*/
-		
-		//adminservice.singoBadUser(num, point, status);
-		//return "ok";
-	}
 
+	// 관리자_드라이버 신고 회원 관리_매너포인트 & status 처리
+	@ResponseBody
+	@PostMapping("admin_driverpoint")
+	public String admin_driversingo(@RequestParam("num") int num, @RequestParam("minusPoint") int point,
+			@RequestParam("status") int status) {
+//		System.out.println(num);
+//		System.out.println(point);
+//		System.out.println(status);
+		try {
+			adminservice.singoBadUser(num, point, status);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return num + "데이터의 매너포인트가 " + point + " 으로 변경되었습니다.";
+	}
+}

@@ -71,7 +71,7 @@
 									<c:when test="${driver!=null && pageInfo.listCount>0 }">
 										<form action="admin_driverlist" method="get">
 											<div class="card-body px-0 pb-2">
-												<div class="table-responsive p-0">
+												<div class="table-responsive p-0" style="height: 350px">
 													<table class="table align-items-center mb-0"
 														style="”table-layout: fixed”">
 														<thead>
