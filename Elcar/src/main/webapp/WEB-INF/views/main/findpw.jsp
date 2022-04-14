@@ -101,7 +101,7 @@ $(btn).on('click', function(){
         let name = $("#name").val();
         $.ajax({
             type: "GET",
-            url: "http://localhost:8080/check/findPw",
+            url: "http://118.67.133.185:8080/check/findPw",
             data: {
                 "email": email,
                 "name": name
