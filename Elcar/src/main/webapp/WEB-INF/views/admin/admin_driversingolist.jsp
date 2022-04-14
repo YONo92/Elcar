@@ -50,7 +50,7 @@
 	<div class="contact-address">
 		<div class="container">
 			<div class="contact__address__text">
-				<form action="admin_driverlist" method="get">
+				<form action="admin_driversingolist" method="get">
 					<input type="text" id="mem_text" name="mem_text" /> <input
 						type="submit" value="찾기" class="btn btn-light"
 						style="padding-left: 10px; padding-right: 10px; padding-top: 6.5; padding-top: 6.5; padding-top: 6.5; padding-top: 6px; padding-bottom: 7px;" />

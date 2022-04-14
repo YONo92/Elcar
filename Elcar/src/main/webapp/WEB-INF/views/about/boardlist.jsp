@@ -43,7 +43,7 @@
 					<div class="breadcrumb__text">
 						<h2>Board</h2>
 						<div class="breadcrumb__links">
-							<a href="./"><i class="fa fa-home"></i> Home</a> <span>board
+							<a href="./"><i class="fa fa-home"></i> Home</a> <span>게시판
 							</span>
 						</div>
 					</div>
