@@ -106,7 +106,6 @@
 								<li><label class="inp-tit">답변</label>
 								
 								<textarea name="content" name="reply" value=${driver_report.reply } readonly>
-						
 								</textarea></li>
 							</ul>
 							<ul class="btn-box ty01">
