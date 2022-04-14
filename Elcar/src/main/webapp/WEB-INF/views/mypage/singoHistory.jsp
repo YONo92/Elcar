@@ -89,10 +89,11 @@
 								</div>
 
 								<div class='col-lg-3'>
-												<a href='/singoHistoryDetail/${dr.num }'><input type="text" value="${dr.status  == 0 ? '답변 대기중' : '답변 완료'}"
+												<a href='/singoHistoryDetail/${dr.num }'><input type="text" value="${(dr.status % 2) == 0 ? '답변 대기중' : '답변 완료'}"
 													class="btn btn-outline-success"
 													style="font-size: 1.0em; color: black;">
 												</a>
+												
 								</div>
 							</div>
 						</div>

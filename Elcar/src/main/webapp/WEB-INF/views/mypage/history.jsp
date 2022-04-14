@@ -209,7 +209,8 @@
 									class="alert"
 									style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
 										<!-- 잊지마 -->
-										<a href="singo">신고</a>
+			
+										<a href="singo/${history.num }">신고</a>
 								</span> <input type="hidden" id="mwarning" name="mwarning" value=''><br>
 								</span>
 								<c:if test="${history.point eq 0 }">

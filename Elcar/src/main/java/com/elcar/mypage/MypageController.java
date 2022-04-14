@@ -345,10 +345,24 @@ public class MypageController {
 	}
 
 	// 신고내역에 대한 처리 결과 페이지
-	// 잊지마 public ModelAndView singoForm(@PathVariable int num) { 보고 따라 해보기
+	// 잊지마 public ModelAndView singoForm(@PathVariable int num) { 
 	@GetMapping(value = "singoHistoryDetail/{num}")
-	public ModelAndView singoHistoryDetailForm() {
+	public ModelAndView singoHistoryDetailForm(@PathVariable int num) {
 		ModelAndView mav = new ModelAndView("mypage/singoHistoryDetail");
+		try {
+			String user_id = (String) session.getAttribute("id");	
+			History history = mypageService.selectHistoryByNum(num);
+			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
+			mav.addObject("history_num", num);
+			mav.addObject("drlist", drlist);
+			if (user_id.equals(history.getTaker_id())) {
+				mav.addObject("badUser", history.getGiver_id());
+			} else {
+				mav.addObject("badUser", history.getTaker_id());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return mav;
 	}
 

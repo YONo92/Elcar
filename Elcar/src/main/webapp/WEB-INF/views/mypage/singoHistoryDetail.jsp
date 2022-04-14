@@ -76,6 +76,7 @@
 								통해 확인하실 수 있습니다.</p>
 						</div>
 						
+
 							<ul class="inp-list-wrap">
 
 
@@ -83,7 +84,7 @@
 								<li><label class="inp-tit">신고 대상</label>
 									<div class="inp-sel-box"></div>
 									<div align="left">
-										<input type="text" class="inp-txt" value="${badUser }" disabled>
+										<input type="text" class="inp-txt" name="minususer"  value="${badUser }" readOnly>
 										<input type="hidden" name="history_num" value="${history_num }">
 									</div></li>
 
