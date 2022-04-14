@@ -102,20 +102,20 @@
 															<c:forEach items="${boardlist }" var="boardlist">
 																<tr>
 																	<td><c:if test="${boardlist.type eq '1'}">
-																			<a>자유</a>
+																			<a style="margin-left: 20px !important;">자유</a>
 																		</c:if> <c:if test="${boardlist.type eq '2'}">
-																			<a>후기</a>
+																			<a style="margin-left: 20px !important;">후기</a>
 																		</c:if></td>
 																	<td><c:if test="${boardlist.type eq '1'}">
 																			<a
-																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }">
+																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }" style="margin-left: 18px !important;">
 																				${boardlist.title } </a>
 																		</c:if> <c:if test="${boardlist.type eq '2'}">
 																			<a
-																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }">
+																				href="./boarddetail?num=${boardlist.num }&page=${pageInfo.page }" style="margin-left: 18px !important;">
 																				${boardlist.location } : ${boardlist.title } </a>
 																		</c:if></td>
-																	<td>${boardlist.mem_id }</td>
+																	<td><a style="margin-left: 15px !important;">${boardlist.mem_id }</a></td>
 																</tr>
 															</c:forEach>
 														</tbody>
