@@ -1,102 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>elcar join</title>
- 
-    <link rel ="stylesheet" href="resources/css/Login.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<link rel="stylesheet" href="resources/css/Login.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
-    <section class="login-form" style="margin-bottom: 100px; margin-top: 30px;">
-        <h1>Join</h1>
-        <form id="joinForm" action="join" method="post">
-            <div class="int-area" >
-            <input type="text" name="id" id="id" autocomplete="off"  required oninput="idcheck()"/>
-            <label for="id">ID</label>
-            </div>
-            <div class="int-area" id="id_check"> 
-              
-            </div> 
-            
-            <div class="int-area">
-            <input type="password" name="pw" id="pw" autocomplete="off"  required oninput="pwcheck()"/>
-            <label for="id">PW</label>
-            </div>
-            <div class="int-area" id="pw_check"> 
-              
-            </div> 
-            
-            <div class="int-area">
-            <input type="password" name="checkpw" id="checkpw" autocomplete="off"  required oninput="fcheckpw()"/>
-            <label for="id">PW CHECK</label>
-            </div>
-            <div class="int-area" id="pwpw"> 
-              
-            </div> 
-            
-            <div class="int-area">
-            <input type="text" name="name" id="name" autocomplete="off"  required>
-            <label for="id">Name</label>
-            </div>
-            
-            <div class="int-area">
-            <input type="text" name="email" id="email" autocomplete="off" required oninput="emailcheck()"/>
-            <label for="id">Email</label>
-            </div>
-            <div class="int-area" id="email_check"> 
-             
-            </div>
-            
-            <div class="int-area">
-            <input type="text" name="nickname" id="nickname" autocomplete="off" required oninput="nickcheck()"/>
-            <label for="id">Nickname</label>
-            </div>
-            <div class="int-area" id="nickname_check"> 
-              
-            </div>            
-            
-            <div class="int-area">
-            <input type="text" name="phone" id="phone" autocomplete="off" required oninput="phonecheck()">
-            <label for="id">Phone</label>
-            </div>
-             <div class="int-area" id="phone_check"> 
-             
-            </div>
-            
-            <div class="btn-area">
-            <input type="radio" name="gender" id="gender" autocomplete="off" required value="0" checked>남자
-            <input type="radio" name="gender" id="gender" autocomplete="off" required value="1">여자
-            </div>
-            
-            <div class="int-area">
-            <input type="text" name="birth" id="birth" autocomplete="off" required oninput="birthcheck()"/>
-            <label for="id">Birth</label>
-            </div>
-            <div class="int-area" id="birth_check"> 
-             
-            </div>
-            
-            <div class="my-2 align-items-center" style="width: 400px; margin:auto; !important;" >
-			<div class="form-check d-flex justify-content-between" style="padding:0;">
-            	<div style="padding-right:30px; float: left;">
-          			<label for="agree1" class="form-check-label text-black" style="text-align: left;">엘카 이용 동의</label>
-       			</div>
-       			<div>
-        			<input id="checkbox1" name="checkTmp" type="checkbox"  class="form-check-input">
-    			</div>
-       		</div>
-      	</div>
+	<section class="login-form"
+		style="margin-bottom: 100px; margin-top: 30px;">
+		<h1>Join</h1>
+		<form id="joinForm" action="join" method="post">
+			<div class="int-area">
+				<input type="text" name="id" id="id" autocomplete="off" required
+					oninput="idcheck()" /> <label for="id">ID</label>
+			</div>
+			<div class="int-area" id="id_check"></div>
+
+			<div class="int-area">
+				<input type="password" name="pw" id="pw" autocomplete="off" required
+					oninput="pwcheck()" /> <label for="id">PW</label>
+			</div>
+			<div class="int-area" id="pw_check"></div>
+
+			<div class="int-area">
+				<input type="password" name="checkpw" id="checkpw"
+					autocomplete="off" required oninput="fcheckpw()" /> <label for="id">PW
+					CHECK</label>
+			</div>
+			<div class="int-area" id="pwpw"></div>
+
+			<div class="int-area">
+				<input type="text" name="name" id="name" autocomplete="off" required>
+				<label for="id">Name</label>
+			</div>
+
+			<div class="int-area">
+				<input type="text" name="email" id="email" autocomplete="off"
+					required oninput="emailcheck()" /> <label for="id">Email</label>
+			</div>
+			<div class="int-area" id="email_check"></div>
+
+			<div class="int-area">
+				<input type="text" name="nickname" id="nickname" autocomplete="off"
+					required oninput="nickcheck()" /> <label for="id">Nickname</label>
+			</div>
+			<div class="int-area" id="nickname_check"></div>
+
+			<div class="int-area">
+				<input type="text" name="phone" id="phone" autocomplete="off"
+					required oninput="phonecheck()"> <label for="id">Phone</label>
+			</div>
+			<div class="int-area" id="phone_check"></div>
+
+			<div class="btn-area">
+				<input type="radio" name="gender" id="gender" autocomplete="off"
+					required value="0" checked>남자 <input type="radio"
+					name="gender" id="gender" autocomplete="off" required value="1">여자
+			</div>
+
+			<div class="int-area">
+				<input type="text" name="birth" id="birth" autocomplete="off"
+					required oninput="birthcheck()" /> <label for="id">Birth</label>
+			</div>
+			<div class="int-area" id="birth_check"></div>
+
+			<div class="my-2 align-items-center"
+				style="width: 400px; margin: auto; !important;">
+				<div class="form-check d-flex justify-content-between"
+					style="padding: 0;">
+					<div style="padding-right: 30px; float: left;">
+						<label for="agree1" class="form-check-label text-black"
+							style="text-align: left;">엘카 이용 동의</label>
+					</div>
+					<div>
+						<input id="checkbox1" name="checkTmp" type="checkbox"
+							class="form-check-input">
+					</div>
+				</div>
+			</div>
 
 
-    <div class="form-floating" style="width: 400px; margin:auto; !important;">
-      <textarea style="width:100%; height: 100px; resize:none;">
+			<div class="form-floating"
+				style="width: 400px; margin: auto; !important;">
+				<textarea style="width: 100%; height: 100px; resize: none;">
      이용약관 및 주요사항 고지
-만 14세 미만 회원은 부모님을 통해서 회원가입이 가능합니다.
 
 선택약관에 동의하지 않아도 회원가입은 가능합니다.
 
@@ -120,14 +114,15 @@
 
 ④‘비회원’이라 함은 회원에 가입하지 않고 “몰”이 제공하는 서비스를 이용하는 자를 말합니다.
      </textarea>
-     </div>
-            
-                <div class="btn-area" id="form_submit" >
-				<input id="btn" class="btn btn-primary w-100 mb-3" type="submit" value="Join" style="width: 324.5px !important;" disabled>
-				</div>
-            </form>
-    </section>
-<%--     <form id="loginForm" action="sign-up_kakao" method="post">
+			</div>
+
+			<div class="btn-area" id="form_submit">
+				<input id="btn" class="btn btn-primary w-100 mb-3" type="submit"
+					value="Join" style="width: 324.5px !important;" disabled>
+			</div>
+		</form>
+	</section>
+	<%--     <form id="loginForm" action="sign-up_kakao" method="post">
 					<label for="Email" class="form-label"></label> <input type="text"
 						class="form-control mb-3" id="id" name="id" value="${id }"></input>
 
@@ -140,8 +135,8 @@
 						class="btn btn-outline-danger mb-3"
 						style="float: center; width: 100%">Sign in</button>
 				</form> --%>
-				
- <!-- <form id="loginForm" action="sign-in" method="post">
+
+	<!-- <form id="loginForm" action="sign-in" method="post">
                     <label for="Input Email" class="form-label">Input ID</label>
                     <input type="text" class="form-control mb-3" id="id" name="id" placeholder="Input your ID">
 
@@ -239,7 +234,7 @@
     		$('#btn').attr('disabled',true);
     	}else{
    		$.ajax({
-    			url:"http://118.67.133.185:8080/idCheck",
+    			url:"https://118.67.133.185:8080/idCheck",
     			type:'post',
     			data:{id:id},
     			success:function(data){
@@ -280,7 +275,7 @@
     		$('#btn').attr('disabled',true);
     	}else{
    		$.ajax({
-    			url:"http://118.67.133.185:8080/emailcheck",
+    			url:"https://118.67.133.185:8080/emailcheck",
     			type:'post',
     			data:{email:email},
     			success:function(data){
@@ -330,7 +325,7 @@
     		$('#btn').attr('disabled',true);
     	} else{
    		$.ajax({
-    			url:"http://118.67.133.185:8080/nicknameCheck",
+    			url:"https://118.67.133.185:8080/nicknameCheck",
     			type:'post',
     			data:{nickname:nickname},
     			success:function(data){
@@ -428,7 +423,7 @@
    		}
    		else{
    		$.ajax({
-			url:"http://118.67.133.185:8080/phoneCheck",
+			url:"https://118.67.133.185:8080/phoneCheck",
 			type:'post',
 			data:{phone:phone},
 			success:function(data){

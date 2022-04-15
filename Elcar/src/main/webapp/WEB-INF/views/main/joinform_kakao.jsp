@@ -114,7 +114,7 @@
     		$('#btn').attr('disabled',true);
     	} else{
    		$.ajax({
-    			url:"http://118.67.133.185:8080/nicknameCheck",
+    			url:"https://118.67.133.185:8080/nicknameCheck",
     			type:'post',
     			data:{nickname:nickname},
     			success:function(data){

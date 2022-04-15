@@ -42,14 +42,14 @@
 
 
 	</section>
-	<script>
+<!-- 	<script>
 		$(document).ready(
 			function() {
 				$('.iframe-wrap').wrap(
 						'<div class="embed-responsive embed-responsive-16by9"></div>');
 						$('iframe').addClass("embed-responsive-item");
 						}); 
-	</script>
+	</script> -->
 
 </body>
 </html>
