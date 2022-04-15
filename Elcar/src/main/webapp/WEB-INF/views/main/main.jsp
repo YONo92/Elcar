@@ -10,11 +10,7 @@
 </head>
 <body>
 	<!-- Main Section Begin -->
-<<<<<<< HEAD
-	<section class="hero spad set-bg" data-setbg="../resources/img/main.png">
-=======
 	<section class="hero spad set-bg" data-setbg="resources/img/main.PNG">
->>>>>>> refs/heads/main
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-7">
