@@ -109,7 +109,7 @@
 
 				$.ajax({
 					type: "post",
-					url: "http://118.67.133.185:8080/sharelist_more",
+					url: "https://118.67.133.185:8080/sharelist_more",
 					dataType: "json",
 					data: {
 						"liststartsize": liststartsize,

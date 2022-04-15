@@ -31,7 +31,7 @@
 <script> 
 var naverLogin = new naver.LoginWithNaverId( { 
 	clientId: "{EZJDTdNIOoDkCowSs_Ux}", 
-	callbackUrl: "{http://118.67.133.185:8080/join_naver1}", 
+	callbackUrl: "{https://118.67.133.185:8080/join_naver1}", 
 	callbackHandle: true 
 	/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */ 
 	} 
