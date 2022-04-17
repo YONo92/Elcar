@@ -17,6 +17,18 @@ public class Driver_report {
 	public Driver_report(){}
 	
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Driver_report [num=" + num + ", history_num=" + history_num + ", category=" + category + ", content="
+				+ content + ", reply=" + reply + ", status=" + status + ", singouser=" + singouser + ", minususer="
+				+ minususer + ", date=" + date + "]";
+	}
+
+
+
+
 	public Driver_report(int num, int history_num, int category, String content, String reply, int status, Date date, String singouser, String minususer) {
 		this.num = num;
 		this.history_num = history_num;

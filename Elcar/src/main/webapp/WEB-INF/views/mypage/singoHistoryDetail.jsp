@@ -63,7 +63,7 @@
 						</p>
 						<!-- [D] 200305 버튼 추가 -->
 						<div class="btn-box">
-							<a href="게시판 페이지.jsp" class="btn line-gray">게시판 바로가기</a>
+							<a href="boardlist.jsp/" class="btn line-gray">게시판 바로가기</a>
 						</div>
 					</div>
 
@@ -77,7 +77,7 @@
 						</div>
 
 
-						<ul class="inp-list-wrap">
+						<ul class="inp-list-wrap" style="list-style:none;">
 
 
 
@@ -102,7 +102,7 @@
 									name="content" placeholder="문의 내용 입력" readonly>${dr.content }</textarea></li>
 							<c:if test="${dr.reply != null }">
 								<li><label class="inp-tit">답변</label> <textarea
-										name="reply" readonly>
+										name="reply" readonly>${dr.reply }
 								</textarea></li>
 							</c:if>
 						</ul>

@@ -27,13 +27,16 @@
 		</div>
 	</div>
 
+
+
 	<!-- 현재 비밀번호 입력 -->
 	<section class="services spad">
 		<div class="container">
 			<div class="row">
 				<!--  폼태그 시작  @PostMapping(value = "pwmodify")-->
+				<div class="col-lg-12">
 				<form action="pwmodify" method="post">
-					<div class="col-lg-12">
+
 						<div class="section-title" style="height: 550px;">
 							<h2>비밀번호 변경</h2>
 							<hr width=”” color=”” noshade />
@@ -57,10 +60,10 @@
 							<input type="submit" onclick="equalPw()" id="modify"
 								name="modify" class="site-btn" style="width: 380px;" value="다음">
 						</div>
-					</div>
+
 				</form>
 				<!--  폼태그 종료 -->
-
+					</div>
 			</div>
 		</div>
 	</section>

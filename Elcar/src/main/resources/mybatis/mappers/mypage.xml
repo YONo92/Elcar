@@ -45,7 +45,7 @@
 	<select id="queryDriverPoint" resultType="History"
 		parameterType="String">
       <![CDATA[
-         select * from history where taker_id = #{id} and type = "기사" ORDER BY date
+         select * from history where ${query} = #{id} and type = "기사" ORDER BY date
       ]]>
 	</select>
 
@@ -53,7 +53,7 @@
 	<select id="queryDDubukPoint" resultType="History"
 		parameterType="String">
       <![CDATA[
-         select * from history where taker_id = #{id} and type = "뚜벅초" ORDER BY date
+         select * from history where ${query} = #{id} and type = "뚜벅초" ORDER BY date
       ]]>
 	</select>
 	

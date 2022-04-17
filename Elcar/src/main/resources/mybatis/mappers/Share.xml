@@ -100,15 +100,15 @@
 	
 	<insert id="insertHistory">
  	<![CDATA[
-		insert into history(giver_id,taker_id,type,status) 
-		values(#{sincheng_id},#{surak_id},"기사",0)
+		insert into history(giver_id,taker_id,type,status, date) 
+		values(#{sincheng_id},#{surak_id},"기사",0, #{date})
 	]]>
 	</insert>
 
 	<insert id="insertHistory2">
  	<![CDATA[
-		insert into history(giver_id,taker_id,type,status) 
-		values(#{surak_id},#{sincheng_id},"뚜벅초",0)
+		insert into history(giver_id,taker_id,type,status, date) 
+		values(#{surak_id},#{sincheng_id},"뚜벅초",0, #{date})
 	]]>
 	</insert>
 	

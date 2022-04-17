@@ -21,8 +21,10 @@ public interface MypageDAO {
 	public void deleteId(String member_id) throws Exception;
 	public void updatePoint(Member member)throws Exception;
 	public Driver queryDriver(String id) throws Exception;
-	public List<History> queryDriverPoint(String id) throws Exception;
-	public List<History> queryDDubukPoint(String id) throws Exception;
+	
+	public List<History> queryDriverPoint(@Param("query")String query, @Param("id") String id) throws Exception;
+	public List<History> queryDDubukPoint(@Param("query")String query, @Param("id") String id) throws Exception;
+	
 	public History  insertDDubukPoint(String id) throws Exception;
 	public History  insertDriverPoint(String id) throws Exception;
 	public void insertHistory(String id) throws Exception;

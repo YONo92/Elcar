@@ -7,6 +7,44 @@
 <meta charset="UTF-8">
 <title>ELCAR | Hello :)</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>
+      section {
+        width: 100%;
+        height: 1200px;
+        display: table;
+      }
+    
+      div.top_text {
+        width: 500px;
+        height: 600px;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+
+      input.text {
+        margin-top: 15px;
+        width: 500px;
+        height: 40px;
+        font-size: 15px;
+        border: 0;
+        border-radius: 15px;
+        outline: none;
+        padding-left: 10px;
+        background-color: rgb(233, 233, 233);
+      }
+      textarea {
+        width: 1000px;
+        height: 300px;
+        font-size: 15px;
+        border: 0;
+        border-radius: 15px;
+        outline: none;
+        padding-left: 10px;
+        background-color: rgb(233, 233, 233);
+        resize: none;
+      }
+    </style>
 </head>
 <body>
 <!-- Breadcrumb End -->
@@ -27,7 +65,7 @@
     </div>
     <!-- Breadcrumb Begin -->
     
-     <section class="services spad" style="height:100px;">
+     <section class="services spad" style="height:10px;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -43,60 +81,87 @@
 				</div>
 			</div>
 		</div>
-		</section>
-
-    
-    
-
-     <!-- Contact Section Begin -->
-    <section class="contact spad" align="right" >
-        <div class="container"  align="right" >
-            <div class="right">
-
-                <div class="col-lg-10 col-md-6" align="right" >
-                    <div class="contact__form" style="width:750px; height:800px;" align="left">
-                        <form action="membermodifyform" method="post" >
-                            <div class="row" >
-                             <div class="col-lg-6" >
-                                	<label for="name"><b>&nbsp;아이디</b></label>
-                                    <input type="text" id="id" name='id' value="${id}" readonly>
-                                </div>&nbsp;
-                                <br><div class="col-lg-6">
-                                	<label for="name"><b>&nbsp;이름</b></label>
-                                    <input type="text" id="name" name='name' value="${member.name }" readonly>
-                                </div>&nbsp;
-                                <div class="col-lg-6">
-                                	<label for="email"><b>&nbsp;이메일</b></label>
-                                    <input type="text" id="emaii" name='email' value="${member.email }" readonly>
-                                </div>&nbsp;
-                                 <div class="col-lg-6">
-                                	<label for="nickname"><b>&nbsp;닉네임</b></label>
-                                    <input type="text" id="nickname" name='nickname' value="${member.nickname }" readonly>
-                                </div>&nbsp;
-                                 <div class="col-lg-6">
-                                	<label for="phone"><b>&nbsp;전화번호</b></label>
-                                    <input type="text" id="phone" name='phone' value="${member.phone }" readonly>
-                                </div>&nbsp;
-                                <div class="col-lg-6">
-                                	<label for="gender"><b>&nbsp;성별</b></label>
-                                	<input type="hidden" id="gender" name='gender' value="${member.gender}">                      	
-                                    <input type="text" value="${member.gender == 0 ? '남성' : '여성'}" readonly>
-                                </div>
-							<div style=" height:200px;"></div>  <!--버튼 높이 조정-->
-                            </div>
+		<div style=height:10px;></div>
+       <div class="top_frame">
+          <div class="top_text">
+          <form action="membermodifyform" method="post" >
+            <h4 style="float: left">아이디</h4>
+            <input
+              type="text"
+               id="id"
+              class="text_custom text"
+              name="id"
+              value="${id}"
+              readonly
+            >
+			<br /><br />
+            <h4 style="float: left">이름</h4>
+            <input
+              type="text"
+               id="name"
+              class="text_custom text"
+              name="name"
+              value="${member.name }"
+              readonly
+            >
+			<br /><br />
+      <h4 style="float: left">이메일</h4>
+            <input
+              type="text"
+              id="email"
+              class="text_custom text"
+              value="${member.email }"
+              name="email"
+              readonly
+            />
+			<br /><br />
+            <h4 style="float: left">닉네임</h4>
+            <input
+              type="text"
+               id="nickname"
+              class="text_custom text"
+              name="nickname"
+              value="${member.nickname }"
+              readonly
+            />
+			<br /><br />
+            <h4 style="float: left">전화번호</h4>
+            <input
+              type="text"
+              id="phone"
+              class="text_custom text"
+              name="phone"
+              value="${member.phone }"
+              readonly
+            />
+			<br /><br />
+            <h4 style="float: left">성별</h4>
+            
+            <input type="hidden" id="gender" name='gender' value="${member.gender}">                      	
+            <input
+             id="phone"
+              type="text"
+              class="text_custom text"
+              name="person"
+              value="${member.gender == 0 ? '남성' : '여성'}"
+              readonly
+            />
+			<br /><br />
+			
+			
+				<div style=" height:150px;"></div>  <!--버튼 높이 조정-->
                            
-                           
-                            <div style="width:650px; float: right"> <!--  버튼 위치 수정 -->
+                            <div style="width:550px; float: right"> <!--  버튼 위치 수정 -->
                             <button type="submit" class="site-btn" >내 정보 변경하러 가기</button>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+            
+            </form>
+          </div>
+   </div>
     </section>
     <!-- Contact Section End -->
 
-   
+ 
 </body>
 </html>

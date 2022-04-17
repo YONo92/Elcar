@@ -3267,7 +3267,14 @@ ol {
 
 @media only screen and (min-width: 1200px) {
 	.container {
-		max-width: 1170px;
+		max-width: 1400px;
+	}
+
+}
+
+@media only screen and (min-width: 1200px) {
+	.container2 {
+		max-width: 1300px;
 	}
 
 }
@@ -3348,6 +3355,9 @@ ol {
 		display: none;
 	}
 	.header .container {
+		position: relative;
+	}
+	.header .container2 {
 		position: relative;
 	}
 	.canvas__open {
@@ -3583,6 +3593,9 @@ ol {
 		display: block;
 	}
 	.header .container {
+		position: relative;
+	}
+		.header .container2 {
 		position: relative;
 	}
 	.canvas__open {

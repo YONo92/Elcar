@@ -13,11 +13,20 @@
 <script src="https://kit.fontawesome.com/b31b46a561.js"
 	crossorigin="anonymous"></script>
 
+<link href="//fonts.googleapis.com/earlyaccess/hanna.css"
+	rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/earlyaccess/nanumgothic.css"
+	rel="stylesheet" type="text/css">
+<style type="text/css">
+.nanum {
+	font-family: 'Nanum Barun Gothic';
+}
+</style>
 </head>
 <body>
 	<!-- Breadcrumb End -->
 	<div class="breadcrumb-option set-bg"
-		data-setbg="resources/img/breadcrumb-bg.jpg">
+		data-setbg="../resources/img/breadcrumb-bg.jpg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -33,6 +42,10 @@
 		</div>
 	</div>
 	<!-- Breadcrumb end -->
+
+
+
+
 
 
 	<!--  매너 등급 -->
@@ -56,18 +69,16 @@
 						<input type="hidden" id="historyNum" value="${history.num }">
 						<div class="row">
 							<div class='col-lg-2'>${history.date}</div>
-							<div class='col-lg-2'>
-								<h5 style="font-size: 1.7em; color: green">
+							<div class='col-lg-4'>
+								<span style="font-size: 1.5em; color: green">
 									${id == history.taker_id ? history.giver_id : history.taker_id}<span>
-										<b style="font-size: 1.5em; color: black;">님을</b>
+										<b style="font-size: 1.3em; color: black;">님을</b>
+								<span style="font-size: 1.3em; color: black;"> <b>평가해주세요.</b>
+								</span>
 									</span>
-								</h5>
-							</div>
-
-							<div class='col-lg-2'>
-								<span style="font-size: 1.4em; color: black;"> <b>평가해주세요.</b>
 								</span>
 							</div>
+
 
 
 							<div class='col-lg-2 pointOption'>
@@ -128,7 +139,7 @@
 			$('#pyeonggaBtn').on('click', function(e) {
 				
 				if ($('.selected')[0] == undefined) {
-					alert("아 선택좀해~");
+					alert("점수를 선택하지 않으셨습니다.");
 				} else {
 					let num = $('#historyNum').val();
 					let point = $('.selected')[0].getElementsByTagName('a')[0].innerText;
@@ -138,10 +149,10 @@
 						data: { "num" : num, "point" : point},
 						success: function(data) {
 							if(data == "성공") {
-								alert("점수가 잘 들어갔습니다.");
+								alert("평가가 완료되었습니다.");
 								window.location.href = "/history"
 							} else {
-								alert("점수 평가 오류, 다시 시도해");
+								alert("점수 평가 오류");
 								window.location.reload();
 							}
 							

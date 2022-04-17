@@ -74,11 +74,11 @@
 
 								</div>
 
-								<div class='col-lg-3'>
-									<h5 style="font-size: 1.4em; color: black" class="nanum">
-										<b> 닉네임 : </b> <span> <b
-											style="font-size: 1.2em; color: green;">${dr.minususer }</b></span>
-									</h5>
+								<div class='col-lg-4'>
+									<span style="font-size: 1.4em; color: black" class="nanum">
+										<b> 닉네임 : </b> <span> 
+										<b style="font-size: 1.2em; color: green;">${dr.minususer }</b></span>
+									</span>
 								</div>
 
 								<div class='col-lg-4'>
@@ -88,7 +88,7 @@
 									</h5>
 								</div>
 
-								<div class='col-lg-3'>
+								<div class='col-lg-2'>
 												<a href='/singoHistoryDetail/${dr.num }'><input type="text" value="${(dr.status % 2) == 0 ? '답변 대기중' : '답변 완료'}"
 													class="btn btn-outline-success"
 													style="font-size: 1.0em; color: black;">
@@ -102,17 +102,7 @@
 					<!-- 신고 내역 끝/// -->
 
 
-					<!-- 페이지 이동 버튼 -->
-					<div class="pagination__option" style="height: 150px;" align=center>
-						<a href="#"><span class="arrow_carrot-2left"></span></a> <a
-							href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#"><span
-							class="arrow_carrot-2right"></span></a>
-					</div>
-				</div>
-			</div>
-			<hr />
-			<div class="col-lg-10" style="margin: 1px; height: 15px;">
-				<!-- 페이지 이동 버튼 끝/// -->
+					
 
 			</div>
 		</div>

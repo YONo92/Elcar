@@ -104,7 +104,7 @@
 							<div class="col-lg-7">
 								<div class="p-5">
 									<div class="text-center">
-										<h1 class="h4 text-gray-900 mb-4">드라이버 등록</h1>
+										<h1 class="h4 text-gray-900 mb-4">드라이버 등록증</h1>
 									</div>
 									<div class="row mb-4">
 										<div class="input-group col-6">

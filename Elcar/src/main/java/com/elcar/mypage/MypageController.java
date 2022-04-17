@@ -214,10 +214,10 @@ public class MypageController {
 			Member member = mypageService.mypageInfo(taker_id);
 			mav.addObject("member", member);
 
-			List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
+			List<History> historyDrivingList = mypageService.mannerDriverPointbatki(taker_id);
 			mav.addObject("historyDrivingList", historyDrivingList);
 
-			List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
+			List<History> historyDDubukList = mypageService.mannerDDubukPointbatki(taker_id);
 			mav.addObject("historyDDubukList", historyDDubukList);
 
 		} catch (Exception e) {
@@ -249,10 +249,10 @@ public class MypageController {
 		try {
 			Member member = mypageService.mypageInfo(taker_id);
 			mav.addObject("member", member);
-			List<History> historyDrivingList = mypageService.mannerDriverPoint(taker_id);
+			List<History> historyDrivingList = mypageService.mannerDriverPointjugi(taker_id);
 			mav.addObject("historyDrivingList", historyDrivingList);
 
-			List<History> historyDDubukList = mypageService.mannerDDubukPoint(taker_id);
+			List<History> historyDDubukList = mypageService.mannerDDubukPointjugi(taker_id);
 			mav.addObject("historyDDubukList", historyDDubukList);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -271,6 +271,10 @@ public class MypageController {
 			} else {
 				mav.addObject("history", history);
 			}
+			
+			/*
+			 * if (history.getPoint() != 0) { type = }
+			 */
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -335,18 +339,22 @@ public class MypageController {
 
 		try {
 			String user_id = (String) session.getAttribute("id");
-			
-			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
-			int cate = dr.getCategory();
-			String category = null;
-			if (cate == 1) {
-				category = "난폭운전";
-			}else if (cate == 2) {
-				category ="ㅎㅇㅎㅇ";
-			} else {
-				category ="ㅂㅇㅂㅇ";
-			}
-			mav.addObject("category", category);
+			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);			
+			System.out.println(drlist.get(0).getCategory());
+			for(Driver_report driver_report : drlist) {
+				driver_report.getCategory();
+				int cate = dr.getCategory();
+				String category = null;
+				if (cate == 1) {
+					category = "난폭운전";
+				}else if (cate == 2) {
+					category ="성희롱";
+				} else if (cate == 3){
+					category ="비매너";
+				}
+				mav.addObject("category", category);
+			}			
+
 			mav.addObject("drlist", drlist);
 
 		} catch (Exception e) {
@@ -365,12 +373,14 @@ public class MypageController {
 			Driver_report dr  = mypageService.selectDriverReportByNum(num);
 			int cate = dr.getCategory();
 			String category = null;
+			System.out.println(cate);
+			
 			if (cate == 1) {
 				category = "난폭운전";
 			}else if (cate == 2) {
-				category ="ㅎㅇㅎㅇ";
+				category ="성희롱";
 			} else {
-				category ="ㅂㅇㅂㅇ";
+				category ="비매너";
 			}
 			
 			mav.addObject("category", category);

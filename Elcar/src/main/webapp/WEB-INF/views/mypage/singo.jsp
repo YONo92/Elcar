@@ -76,7 +76,7 @@
 								통해 확인하실 수 있습니다.</p>
 						</div>
 						<form action='../singo' method="post">
-							<ul class="inp-list-wrap">
+							<ul class="inp-list-wrap" style="list-style:none";>
 
 
 
@@ -95,8 +95,8 @@
 										<select class="select" name="category">
 											<option value="" selected>문의 유형 선택</option>
 											<option value="1">난폭운전</option>
-											<option value="2">ㅎㅇㅎㅇ</option>
-											<option value="3">ㅂㅇㅂㅇ</option>
+											<option value="2">성희롱</option>
+											<option value="3">비매너</option>
 										</select>
 									</div>
 								</li>
@@ -106,7 +106,7 @@
 								
 								
 							</ul>
-							<ul class="btn-box ty01">
+							<ul class="btn-box ty01" style="list-style:none";>
 								<li>
 									<div class="btn-inner">
 										<button type="reset" class="site-btn">취소</button>

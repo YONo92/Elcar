@@ -54,7 +54,7 @@
 						<span style="font-size: 2em; color: green;">${id } </span> <span
 							style="font-size: 2em; color: black;"> 님의 현재 매너 포인트는 </span> <span
 							style="font-size: 2em; color: darkblue;">${member.point }
-						</span> <span style="font-size: 2em; color: black;"> 입니다. </span>
+						</span> <span style="font-size: 2em; color: black;"> 포인트입니다. </span>
 					</div>
 
 				</div>
@@ -63,127 +63,110 @@
 				<div style="height: 80px;"></div>
 				<div align="left">
 					<h4>
-						<b>기사역할을 했을 때</b>
+						<b>탈래 이용</b>
 					</h4>
 					<div style="height: 30px;"></div>
-					<div class="row">
-						<div class='col-3' style="height: 80px;">
-							<select style="display: none;">
-								<option value="">태울래</option>
-							</select>
-						</div>
-					</div>
-			
+					<div class="row"></div>
 
-					<!-- 멤버 별 이용 평가  -->
-					<div class="testimonial__item__author" style="height: 200px;">
-						<c:forEach var="history" items="${historyDrivingList }">
-							<div class="row">
-							<div style="height=200px;"></div>
-								<div class='col-lg-2'>
-									${history.date}
-									<!--	<i class="fa-solid fa-circle-user">
-											</i></div> -->
-								</div>
-								<div class='col-lg-2'>
-									<h5 style="font-size: 1.7em; color: green" >
-										${history.giver_id }<span> <b
-											style="font-size: 1.5em; color: black;">님이</b></span>
-									</h5>
-								</div>
 
-								<div class='col-lg-1'>
-									<div class="services__item3">
-										<a id="point" ><b>${history.point }</b></a>
-									</div>
-								</div>
+				<!-- 멤버 별 이용 평가  -->
 
-								<div class='col-lg-3'>
-									<span style="font-size: 1.4em; color: black;"> <b>점을
-											주셨습니다.</b>
+
+	 	<!--  태울래 매너포인트 -->
+	 	
+	<div class="card-body px-0 pb-2">
+		<div class="table-responsive p-0">
+			<table class="table align-items-center mb-0">
+				<thead>
+					<tr>
+						<th scope="col">Date</th>
+						<th scope="col">내용</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="history" items="${historyDrivingList }">
+						<tr>
+							<td><c:if test="${history.point != 0 }">
+									<a style="margin-left: 20px !important;">${history.date}</a>
+								</c:if></td>
+
+
+							<td><c:if test="${history.point != 0 }">
+									<span style="font-size: 1.7em; color: green">${history.taker_id }&nbsp;
 									</span>
-								</div>
+									<b style="font-size: 1.5em; color: black;">님이 &nbsp;&nbsp;</b>
+									<span class="services__item3"> <a id="point"><b>${history.point }</b></a>
+									</span>
+									<span style="font-size: 1.4em; color: black;"> <b>&nbsp;&nbsp;점을
+											&nbsp;&nbsp;주셨습니다.</b>
+									</span>
+								</c:if></td>
+						</tr>
+					</c:forEach>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+ 	<!--  태울래 매너포인트 끝 -->	
 
 
-								<div class='col-lg-4'>
+				<hr width=”” color=”” noshade />
 
-									<botton type="submit" class="btn btn-outline-success"
-										style="font-size: 1.3em; color: black;"> <i
-										class="fas fa-car"> 출발지</i> </botton>
 
-									<botton type="submit" class="btn btn-outline-success"
-										style="font-size: 1.3em; color: black; "> <i
-										class="fas fa-car"> 도착지</i> </botton><br><br><br>
 
-								</div>
-								
-								
-							</div>
-						</c:forEach>
-					</div>
-					
-					
-							<hr style="height:120px;">
-					
+				<div style="height: 200px;"></div>
+				<div align="left">
 					<h4>
-						<b>뚜벅이</b>
+						<b>태울래 이용</b>
 					</h4>
 					<div style="height: 30px;"></div>
-					<div class="row">
-						<div class='col-3' style="height: 80px;">
-							<select style="display: none;">
-								<option value="">탈래</option>
-							</select>
-						</div>
-					</div>
-					<div class="testimonial__item__author" style="height: 400px;">
-						<c:forEach var="history" items="${historyDDubukList }">
-							<div class="row">
-								<div class='col-lg-2'>
-									${history.date}
-									<!--	<i class="fa-solid fa-circle-user">
-											</i></div> -->
-								</div>
-								<div class='col-lg-2'>
-									<h5 style="font-size: 1.7em; color: green" id="sincheng_id"
-										name="sincheng_id">
-										${history.giver_id }<span> <b
-											style="font-size: 1.5em; color: black;">님이</b></span>
-									</h5>
-								</div>
+					<div class="row"></div>
+<!--  탈래 매너포인트 -->
+	<div class="card-body px-0 pb-2">
+		<div class="table-responsive p-0">
+			<table class="table align-items-center mb-0">
+				<thead>
+					<tr>
+						<th scope="col">Date</th>
+						<th scope="col">내용</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="history" items="${historyDDubukList }">
+						<tr>
+							<td><c:if test="${history.point != 0 }">
+									<a style="margin-left: 20px !important;">${history.date}</a>
+								</c:if></td>
 
-								<div class='col-lg-1'>
-									<div class="services__item3">
-										<a id="point" name="point"><b>${history.point }</b></a>
-									</div>
-								</div>
 
-								<div class='col-lg-3'>
-									<span style="font-size: 1.4em; color: black;"> <b>점을
-											주셨습니다.</b>
+							<td><c:if test="${history.point != 0 }">
+									<span style="font-size: 1.7em; color: green">${history.taker_id }&nbsp;
 									</span>
-								</div>
+									<b style="font-size: 1.5em; color: black;">님이 &nbsp;&nbsp;</b>
+									<span class="services__item3"> <a id="point"><b>${history.point }</b></a>
+									</span>
+									<span style="font-size: 1.4em; color: black;"> <b>&nbsp;&nbsp;점을
+											&nbsp;&nbsp;주셨습니다.</b>
+									</span>
+								</c:if></td>
+						</tr>
+					</c:forEach>
 
-
-								<div class='col-lg-4'>
-
-									<botton type="submit" class="btn btn-outline-success"
-										style="font-size: 1.3em; color: black;"> <i
-										class="fas fa-car"> 출발지</i> </botton>
-
-									<botton type="submit" class="btn btn-outline-success"
-										style="font-size: 1.3em; color: black;"> <i
-										class="fas fa-car"> 도착지</i> </botton><br><br><br>
-
-								</div>
-							</div>
-						</c:forEach>
-					</div>
+				</tbody>
+			</table>
+		</div>
+	</div>
+ 	<!--  탈래 매너포인트 끝 -->	
 				</div>
 			</div>
 
 		</div>
 	</section>
 	<!--  매너 등급 끝 -->
+	
+	
+	
+	
 </body>
 </html>
