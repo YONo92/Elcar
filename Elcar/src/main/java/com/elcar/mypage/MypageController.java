@@ -1,5 +1,6 @@
 package com.elcar.mypage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -332,21 +333,25 @@ public class MypageController {
 	@GetMapping(value = "singoHistory")
 	public ModelAndView singoHistoryForm(Driver_report dr) {
 		ModelAndView mav = new ModelAndView("mypage/singoHistory");
-
 		try {
 			String user_id = (String) session.getAttribute("id");
-			
 			List<Driver_report> drlist = mypageService.selectDriverReportBySingoId(user_id);
-			int cate = dr.getCategory();
-			String category = null;
-			if (cate == 1) {
-				category = "난폭운전";
-			}else if (cate == 2) {
-				category ="ㅎㅇㅎㅇ";
-			} else {
-				category ="ㅂㅇㅂㅇ";
+			List<String> categoryList = new ArrayList<String>();
+			for (Driver_report driver_report : drlist) {
+				int cate = driver_report.getCategory();
+				String category = null;
+				if (cate == 1) {
+					category = "난폭운전";
+				}else if (cate == 2) {
+					category ="성희롱";
+				} else if (cate == 3) {
+					category ="비매너";
+				} else {
+					category = "기타";
+				}
+				categoryList.add(category);
 			}
-			mav.addObject("category", category);
+			mav.addObject("categoryList", categoryList);
 			mav.addObject("drlist", drlist);
 
 		} catch (Exception e) {
@@ -368,11 +373,12 @@ public class MypageController {
 			if (cate == 1) {
 				category = "난폭운전";
 			}else if (cate == 2) {
-				category ="ㅎㅇㅎㅇ";
+				category ="성희롱";
+			} else if (cate == 3) {
+				category ="비매너";
 			} else {
-				category ="ㅂㅇㅂㅇ";
+				category = "기타";
 			}
-			
 			mav.addObject("category", category);
 			mav.addObject("dr", dr);
 		} catch (Exception e) {
