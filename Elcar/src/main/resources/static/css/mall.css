@@ -159,7 +159,6 @@ select {
   width: .917rem;
   height: .542rem;
   margin-top: -.250rem;
-  background: url("../images/common/m_arrow_select.png") 0 0/.917rem .542rem no-repeat;
 }
 
 .select {
@@ -442,7 +441,6 @@ select {
   left: 0;
   width: 1.25rem;
   height: 1.25rem;
-  background: url("../images/common/ico_alert.png") 0 0/1.25rem 1.25rem no-repeat;
 }
 
 .txt.order-num {

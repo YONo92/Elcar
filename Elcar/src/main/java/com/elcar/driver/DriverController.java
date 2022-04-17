@@ -55,31 +55,33 @@ public class DriverController {
 			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(media, headers, HttpStatus.OK);
 			return responseEntity;
 		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return null;
 	}
 
-	// 드라이버 신청 등록하기
-	@ResponseBody
-	@PostMapping(value = "/driver-regist")
-	public String driverregist(@ModelAttribute Driver driver, Model model, @RequestParam("file") MultipartFile file) {
-		try {
-			model.addAttribute("id", session.getAttribute("id"));
-			String path = servletContext.getRealPath("/upload/");
-			String uuid = UUID.randomUUID().toString();
+	   @ResponseBody
+	   @PostMapping(value = "/driver-regist")
+	   public String driverregist(@ModelAttribute Driver driver, Model model, @RequestParam("file") MultipartFile file) {
+	      try {
+	         model.addAttribute("id", session.getAttribute("id"));
+	         String path = servletContext.getRealPath("/upload/");
+	         
+	         String uuid = UUID.randomUUID().toString();
 
-			String newFileName = uuid
-					+ file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-			File destFile = new File(path + newFileName);
-			driver.setImg(newFileName);
-			file.transferTo(destFile);
-			driverserv.driverregist(driver);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "nok";
-		}
-		return "ok";
-	}
+	         String newFileName = uuid
+	               + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+	         File destFile = new File(path + newFileName);
+	         
+	         driver.setImg(newFileName);
+	         file.transferTo(destFile);
+	         driverserv.driverregist(driver);
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         return "nok";
+	      }
+	      return "ok";
+	   }
 
 	// 드라이버 신청 등록하기_로그인 여부
 	@GetMapping("/driver-regist")

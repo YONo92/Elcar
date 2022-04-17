@@ -59,24 +59,169 @@
 			<div class="section-title">
 				<h2>이용 내역</h2>
 				<hr width=”” color=”” noshade />
+<<<<<<< HEAD
 				
 	
+=======
+
+
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 				<div align="left">
+<<<<<<< HEAD
 					<h4 style="margin: 50px">					
 					</h4>
+=======
+					<h4 style="margin: 50px"></h4>
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 				</div>
 
 				<div align="left">
 
+<<<<<<< HEAD
 					<div class="container col-10" >
 						<div class="row">
+=======
+					<div class="container col-10">
+						<div class="row"></div>
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 
+<<<<<<< HEAD
+=======
+					</div>
+
+
+				</div>
+			</div>
+
+			<div align="left">
+
+				<h4>
+					<b>탈래 이용내역</b>
+				</h4>
+				<div style="height: 30px;"></div>
+				<div class="row"></div>
+
+
+				<!-- 여기부터 탈래 -->
+				<div class="section-title">
+
+					<!--  탈래 테이블-->
+
+					<div class="card-body px-0 pb-2">
+						<div class="table-responsive p-0">
+							<table class="table align-items-center mb-0">
+								<thead>
+									<tr>
+										<th scope="col">신고/평가</th>
+										<th scope="col">Date</th>
+										<th scope="col">내용</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="history" items="${historyDDubukList }">
+										<tr>
+											<td><span id="alerts" style="margin: 5px;"> <span
+													id="alert" class="alert"
+													style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
+
+														<a href="singo/${history.num }">신고하기</a>
+												</span> <input type="hidden" id="mwarning" name="mwarning" value=''><br>
+											</span> <c:if test="${history.point eq 0 }">
+													<span id="alerts" style="margin: 5px;"> <span
+														id="alert" class="alert"
+														style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
+															<a href="pyeongga/${history.num }">평가하기</a>
+													</span>
+													</span>
+												</c:if></td>
+											<td><a style="margin-left: 20px !important;">${history.date}</a></td>
+											<td><span style="font-size: 1.5em; color: green"
+												class="nanum"> ${history.taker_id }<span> <b
+														style="font-size: 1.3em; color: black;">님이</b></span>
+											</span> <span style="font-size: 1.5em; color: green" class="nanum">
+													${history.giver_id }<span> <b
+														style="font-size: 1.3em; color: black;">님에게</b></span>
+											</span> <span style="font-size: 1.3em; color: black;"> <b>
+														탈래했습니다.</b>
+											</span></td>
+										</tr>
+									</c:forEach>
+
+								</tbody>
+							</table>
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 						</div>
+					</div>
+					<hr style="height: 200px;">
+					<!--  탈래 테이블 -->
+					<div align="left">
+						<h4>
+							<b>태울래 이용내역</b>
+						</h4>
+					</div>
+					<div style="height: 30px;"></div>
+					<div class="row"></div>
+		
+					<!--  태울래 테이블-->
+					<div class="card-body px-0 pb-2">
+						<div class="table-responsive p-0">
+							<table class="table align-items-center mb-0">
+								<thead>
+									<tr>
+										<th scope="col">신고/평가</th>
+										<th scope="col">Date</th>
+										<th scope="col">내용</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="history" items="${historyDrivingList }">
+										<tr>
+											<td><span id="alerts" style="margin: 5px;"> <span
+													id="alert" class="alert"
+													style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
+
+														<a href="singo/${history.num }">신고하기</a>
+												</span> <input type="hidden" id="mwarning" name="mwarning" value=''><br>
+											</span> <c:if test="${history.point eq 0 }">
+													<span id="alerts" style="margin: 5px;"> <span
+														id="alert" class="alert"
+														style="border: none; background-color: #d3d3d3; cursor: pointer; width: 55px; padding: 0px">
+															<a href="pyeongga/${history.num }">평가하기</a>
+													</span>
+													</span>
+												</c:if></td>
 
  					</div>
 
+											<td><a style="margin-left: 20px !important;">${history.date}</a></td>
 
+<<<<<<< HEAD
+=======
+
+											<td><span style="font-size: 1.5em; color: green"
+												class="nanum"> ${history.taker_id  }<span> <b
+														style="font-size: 1.3em; color: black;">님이</b></span>
+											</span> <span style="font-size: 1.5em; color: green" class="nanum">
+													${history.giver_id }<span> <b
+														style="font-size: 1.3em; color: black;">님을</b></span>
+											</span> <span style="font-size: 1.3em; color: black;"> <b>
+														태우셨습니다.</b>
+											</span></td>
+										</tr>
+									</c:forEach>
+
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--  태울래 테이블 -->
+
+					<hr style="height: 150px;">
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 				</div>
+<<<<<<< HEAD
 			</div>			
 						
 					<div align="left">
@@ -233,10 +378,18 @@
 						<hr style="height: 150px;">
 					</div>
 				</div>
+=======
+			</div>
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 		</div>
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 	</section>
 	<!--  이용 내역 끝 -->
+<<<<<<< HEAD
 
 	
 	
@@ -253,5 +406,7 @@
 	
 	
 	
+=======
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 </body>
 </html>

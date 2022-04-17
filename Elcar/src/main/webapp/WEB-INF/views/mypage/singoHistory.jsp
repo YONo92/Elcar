@@ -64,8 +64,8 @@
 
 				<div align="left">
 					<!-- 신고 내용 시작  -->
-					<c:forEach var='dr' items='${drlist }'>
-						
+					<c:forEach var='dr' items='${drlist }' varStatus="status">
+
 						<div class="testimonial__item__author">
 							<div class="row">
 								<div class='col-lg-2'>
@@ -76,24 +76,37 @@
 
 								<div class='col-lg-4'>
 									<span style="font-size: 1.4em; color: black" class="nanum">
+<<<<<<< HEAD
 										<b> 닉네임 : </b> <span> 
 										<b style="font-size: 1.2em; color: green;">${dr.minususer }</b></span>
+=======
+										<b> 닉네임 : </b> <span> <b
+											style="font-size: 1.2em; color: green;">${dr.minususer }</b></span>
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 									</span>
 								</div>
 
 								<div class='col-lg-4'>
 									<h5 style="font-size: 1.4em; color: black" class="nanum">
 										<b> 신고유형 : </b> <span> <b
-											style="font-size: 1.2em; color: green;">${category }</b></span>
+											style="font-size: 1.2em; color: green;">${categoryList[status.index] }</b></span>
 									</h5>
 								</div>
 
 								<div class='col-lg-2'>
+<<<<<<< HEAD
 												<a href='/singoHistoryDetail/${dr.num }'><input type="text" value="${(dr.status % 2) == 0 ? '답변 대기중' : '답변 완료'}"
 													class="btn btn-outline-success"
 													style="font-size: 1.0em; color: black;">
 												</a>
 												
+=======
+									<a href='/singoHistoryDetail/${dr.num }'><input type="text"
+										value="${(dr.status % 2) == 0 ? '답변 대기중' : '답변 완료'}"
+										class="btn btn-outline-success"
+										style="font-size: 1.0em; color: black;"> </a>
+
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 								</div>
 							</div>
 						</div>
@@ -102,10 +115,17 @@
 					<!-- 신고 내역 끝/// -->
 
 
+<<<<<<< HEAD
 					
 
 			</div>
 		</div>
+=======
+
+
+				</div>
+			</div>
+>>>>>>> branch 'main' of https://github.com/YONo92/Elcar.git
 	</section>
 	<!--  이용 내역 끝 -->
 </body>
